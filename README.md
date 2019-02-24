@@ -14,8 +14,8 @@ A charitable donation app using the Stripe API and written in React Native, Styl
 - Clone this repository to your local machine
 - Use the command `yarn` inside both the root directory and the client directory to install dependencies for the server and client, respectively
 - Utilize the command `yarn server` inside the root directory to start up the Burning Heart back-end
-- Execute the command `yarn start` inside the client directory to start up Expo in the terminal
-- Scan the Expo QR code with your phone's camera and follow the on-screen prompts to open Burning Heart on your mobile device
+- Execute the command `yarn start` inside the root directory to start up the server
+- Make sure that Apple's XCode is installed, and then `cd` into the `client` directory and run the `react-native run-ios` command to start up the virtual iPhone environment
 - Enjoy!
 
 ## Project Management
