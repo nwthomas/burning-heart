@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable("donations", tbl => {
     tbl.increments("id");
-    tbl.integer("donation_amount");
+    tbl.integer("amount");
     tbl.integer("charity_id").unsigned();
     tbl.integer("user_id").unsigned();
     tbl.foreign("charity_id").references("charities.id");

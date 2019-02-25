@@ -1,4 +1,5 @@
 const server = require("./server.js");
+require("dotenv").config();
 
 const port = process.env.PORT || 5000;
 server.listen(port, () => {
@@ -6,5 +7,5 @@ server.listen(port, () => {
   ----------------------------------------
           Listening on Port ${port}
   ----------------------------------------
-  `)
+  `);
 });
