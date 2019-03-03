@@ -1,3 +1,5 @@
+const bcrypt = require("bcryptjs");
+
 exports.seed = function(knex, Promise) {
   return knex("users")
     .truncate()
@@ -7,25 +9,25 @@ exports.seed = function(knex, Promise) {
           first_name: "Nathan",
           last_name: "Thomas",
           username: "nwthomas",
-          password: "asdfasdf"
+          password: bcrypt.hashSync("asdfasdf", 14)
         },
         {
           first_name: "Admin",
           last_name: "Admin",
           username: "admin",
-          password: "password"
+          password: bcrypt.hashSync("password", 14)
         },
         {
           first_name: "Veronica",
           last_name: "Smith",
           username: "vero2019",
-          password: "password"
+          password: bcrypt.hashSync("password", 14)
         },
         {
           first_name: "Steven",
           last_name: "Taylor",
           username: "staytay",
-          password: "password"
+          password: bcrypt.hashSync("password", 14)
         }
       ]);
     });

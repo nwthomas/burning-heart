@@ -18,6 +18,12 @@ A charitable donation app using the Stripe API and written in React Native, Styl
 - Make sure that Apple's XCode is installed, and then `cd` into the `client` directory and run the `react-native run-ios` command to start up the virtual iPhone environment
 - Enjoy!
 
+## Back-End API Points and Schemas
+
+### API Points
+
+### Data Modeling Schemas
+
 ## Project Management
 
 - You can view the [Trello Board](https://trello.com/b/YWsebwOT/burning-heart) for this project to review past checkpoints and current aspects of the project timeline

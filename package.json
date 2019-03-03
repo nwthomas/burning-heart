@@ -1,10 +1,10 @@
 {
   "name": "burning-heart",
   "version": "1.0.0",
-  "description": "The back-end server for Burning Heart, the chartibale giving app",
+  "description": "The back-end server for Burning Heart, the charitable giving app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "server": "nodemon index.js"
   },
   "repository": {
@@ -26,12 +26,12 @@
     "nodemon": "^1.18.10"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "express-graphql": "^0.7.1",
-    "graphql": "^14.1.1",
     "helmet": "^3.15.1",
+    "jsonwebtoken": "^8.5.0",
     "knex": "^0.16.3",
     "morgan": "^1.9.1",
     "sqlite3": "^4.0.6"

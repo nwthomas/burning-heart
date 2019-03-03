@@ -2,13 +2,13 @@ module.exports = {
   development: {
     client: "sqlite3",
     connection: {
-      filename: "./data/burningHeart.db3"
+      filename: "./database/burningHeart.db3"
     },
     migrations: {
-      directory: "./data/migrations"
+      directory: "./database/migrations"
     },
     seeds: {
-      directory: "./data/seeds"
+      directory: "./database/seeds"
     },
     useNullAsDefault: true
   }
