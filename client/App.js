@@ -10,7 +10,7 @@ const AppContainer = styled.View`
 `;
 
 const FontTest = styled.Text`
-  /* font-family: "Ubuntu-Medium"; */
+  font-family: "Ubuntu-Medium";
   font-size: 20;
   text-align: center;
 `;
@@ -19,7 +19,7 @@ const App = _ => {
   const [value, setValue] = useState("Dude");
   return (
     <AppContainer>
-      <FontTest>Burning Heart {value}</FontTest>
+      <FontTest>burning heart</FontTest>
     </AppContainer>
   );
 };
