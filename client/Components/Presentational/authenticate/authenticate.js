@@ -4,9 +4,10 @@ import PropTypes from "prop-types";
 // ComponentOne is App, ComponentTwo is LoginView
 const authenticate = App => LoginView => {
   return _ => {
-    const [loggedIn, setLoggedIn] = useState(true);
+    const [loggedIn, setLoggedIn] = useState(true); // Logged in boolean flag hook
     return (
-      <>{loggedIn ? <App /> : <LoginView />}</> // Hinges on boolean flag
+      // Authenticate hinges on boolean flag hook "loggedIn"
+      <>{loggedIn ? <App /> : <LoginView setLoggedIn={setLoggedIn} />}</>
     );
   };
 };
@@ -21,12 +22,3 @@ authenticate.defaultProps = {
 };
 
 export default authenticate;
-
-// useEffect(async () => {
-//   const loginStatus = await AsyncStorage.getItem("token");
-//   if (loginStatus) {
-//     setLoggedIn(true);
-//   } else {
-//     return; // Finish building out
-//   }
-// }, []);

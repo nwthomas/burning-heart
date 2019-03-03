@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useReducer } from "react";
-import { Text, View } from "react-native";
 import styled from "styled-components/native";
-import { NativeRouter, Route, Link } from "react-router-native";
+import { NativeRouter, Route, Link, ScrollView } from "react-router-native";
 
 import { LoginView } from "./Components/Views/LoginView";
-// import { HomeView } from "./Components/Views/HomeView";
+import { HomeView } from "./Components/Views/HomeView";
+import { SearchView } from "./Components/Views/SearchView";
+import { ProfileView } from "./Components/Views/ProfileView";
 import { authenticate } from "./Components/Presentational/authenticate";
+import { Header } from "./Components/Presentational/Header";
+import { Navbar } from "./Components/Presentational/Navbar";
 
 const AppContainer = styled.View`
   justify-content: center;
@@ -14,22 +17,19 @@ const AppContainer = styled.View`
   background: #e9eeef;
 `;
 
-const FontTest = styled.Text`
-  font-family: "Ubuntu-Medium";
-  font-size: 20;
-  text-align: center;
-`;
-
 const App = _ => {
-  const [value, setValue] = useState("Dude");
   return (
     <NativeRouter>
       <AppContainer>
-        <FontTest>burning heart</FontTest>
+        <Header />
+        <Route exact path="/" component={HomeView} />
+        <Route exact path="/search" component={SearchView} />
+        <Route exact path="/profile" component={ProfileView} />
+        <Navbar />
       </AppContainer>
     </NativeRouter>
   );
 };
 
-// export default authenticate(App)(LoginView);
+// Export through authenticate with LoginView via currying function
 export default authenticate(App)(LoginView);
