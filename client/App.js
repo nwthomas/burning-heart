@@ -3,6 +3,10 @@ import { Text, View } from "react-native";
 import styled from "styled-components/native";
 import { NativeRouter, Route, Link } from "react-router-native";
 
+import { LoginView } from "./Components/Views/LoginView";
+// import { HomeView } from "./Components/Views/HomeView";
+import { authenticate } from "./Components/Presentational/authenticate";
+
 const AppContainer = styled.View`
   justify-content: center;
   flex: 1;
@@ -27,4 +31,5 @@ const App = _ => {
   );
 };
 
-export default App;
+// export default authenticate(App)(LoginView);
+export default authenticate(App)(LoginView);

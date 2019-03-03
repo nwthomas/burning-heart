@@ -1,11 +1,11 @@
 import React from "react";
 
-import { LogoSplash } from "../../Presentational/LogoSplash";
+import { Login } from "../../Presentational/Login";
 
 const LoginView = _ => {
   return (
     <>
-      <LogoSplash />
+      <Login />
     </>
   );
 };
