@@ -8,13 +8,13 @@ module.exports = {
 
 function generateToken(user) {
   const payload = {
-    subject: user.id, // sub in payload is what the token is about if you want
+    subject: user.id, // sub in payload is what the token is about
     username: user.username,
     roles: ["Student"]
     // Include other data as is needed
   };
 
-  // You can put in any days/hours/minutes that you want
+  // Change to shorter timespan for production
   const options = {
     expiresIn: "1d"
   };
