@@ -1,6 +1,6 @@
 # Burning Heart
 
-A charitable donation app using the Stripe API and written in React Native, Styled Components, and Express.js
+A charitable donation app using the Stripe API and written with React Native, Styled Components, and Express
 
 ## Table of Contents
 
@@ -11,7 +11,7 @@ A charitable donation app using the Stripe API and written in React Native, Styl
 
 ## Getting Started
 
-- Clone this repository to your local machine
+- Fork or clone this repository to your local machine
 - Use the command `yarn` inside both the root directory and the client directory to install dependencies for the server and client, respectively
 - Utilize the command `yarn server` inside the root directory to start up the Burning Heart back-end
 - Execute the command `yarn start` inside the root directory to start up the server
