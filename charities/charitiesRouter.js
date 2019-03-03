@@ -46,6 +46,33 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Create new charity route
+router.post("/", async (req, res) => {
+  if (!req.body.name) {
+    res
+      .status(404)
+      .json({ message: "Please include a name to update and try again." });
+  }
+  try {
+    const newCharity = await Charities.insert(req.body);
+    if (newCharity) {
+      res.status(201).json({
+        message: "The new charity was created successfully.",
+        numCreated: newCharity
+      });
+    } else {
+      res.status(404).json({
+        message: "The new charity could not be created in the database."
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      message:
+        "There was an error while creating the new charity in the database."
+    });
+  }
+});
+
 // Update charity route
 router.put("/:id", async (req, res) => {
   if (!req.body.name) {
