@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import styled from "styled-components/native";
+import { NativeRouter, Route, Link } from "react-router-native";
 
 const AppContainer = styled.View`
   justify-content: center;
@@ -18,9 +19,11 @@ const FontTest = styled.Text`
 const App = _ => {
   const [value, setValue] = useState("Dude");
   return (
-    <AppContainer>
-      <FontTest>burning heart</FontTest>
-    </AppContainer>
+    <NativeRouter>
+      <AppContainer>
+        <FontTest>burning heart</FontTest>
+      </AppContainer>
+    </NativeRouter>
   );
 };
 
