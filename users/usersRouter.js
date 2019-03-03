@@ -1,10 +1,9 @@
 const express = require("express");
 const Users = require("./usersModel.js"); // Knex functions
 
-// Creates router for specific API route for import in server.js
 const router = express.Router();
 
-// Get all users request
+// Get all users route
 router.get("/", async (req, res) => {
   try {
     const users = await Users.find().select("id", "username");
@@ -26,7 +25,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get users by id request
+// Get users by id route
 router.get("/:id", async (req, res) => {
   try {
     const user = await Users.findById(req.params.id).select("id", "username");
@@ -48,33 +47,33 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Create user request is a duplicate of register but is here in case it's needed
-// router.post("/", async (req, res) => {
-//   if (!req.body.name) {
-//     return res
-//       .status(404)
-//       .json({ message: "Please include a name and try again." });
-//   }
-//   try {
-//     const newUser = await User.insert(req.body);
-//     if (newUser) {
-//       res.status(200).json({
-//         message: "The new user was created in the database",
-//         newUser
-//       });
-//     } else {
-//       res
-//         .status(404)
-//         .json({ message: "The user could not be created in the database." });
-//     }
-//   } catch (error) {
-//     res.status(500).json({
-//       message: "There was an error creating the user in the database."
-//     });
-//   }
-// });
+// Create new user route - Redundant with /auth/register route, but left in for completion purposes
+router.post("/", async (req, res) => {
+  if (!req.body.name) {
+    return res
+      .status(404)
+      .json({ message: "Please include a name and try again." });
+  }
+  try {
+    const newUser = await User.insert(req.body);
+    if (newUser) {
+      res.status(200).json({
+        message: "The new user was created in the database",
+        newUser
+      });
+    } else {
+      res
+        .status(404)
+        .json({ message: "The user could not be created in the database." });
+    }
+  } catch (error) {
+    res.status(500).json({
+      message: "There was an error creating the user in the database."
+    });
+  }
+});
 
-// Update individual user request
+// Update individual user route
 router.put("/:id", async (req, res) => {
   if (!req.body.username || !req.body.password) {
     res.status(404).json({ message: "Please include a name and try again." });
@@ -99,7 +98,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// Delete indiviudal user request
+// Delete indiviudal user route
 router.delete("/:id", async (req, res) => {
   try {
     const deletedUser = await Users.remove(req.params.id);

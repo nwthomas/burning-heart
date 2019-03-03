@@ -11,23 +11,13 @@ module.exports = {
     seeds: {
       directory: "./database/seeds"
     },
-    useNullAsDefault: true,
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run("PRAGMA foreign_keys = ON", done);
-      }
-    }
+    useNullAsDefault: true
   },
   production: {
     client: "sqlite3",
     useNullAsDefault: true,
     connection: {
       database: "./database/users.db3"
-    },
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run("PRAGMA foreign_keys = ON", done);
-      }
     },
     migrations: {
       directory: "./database/migrations",

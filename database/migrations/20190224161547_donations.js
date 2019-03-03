@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     tbl.integer("amount");
     tbl.integer("charity_id").unsigned();
     tbl.integer("user_id").unsigned();
+    tbl.timestamps(true, true);
     tbl.foreign("charity_id").references("charities.id");
     tbl.foreign("user_id").references("users.id");
   });

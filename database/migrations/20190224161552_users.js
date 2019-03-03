@@ -4,7 +4,8 @@ exports.up = function(knex, Promise) {
     tbl.string("first_name", 128);
     tbl.string("last_name", 128);
     tbl.string("username", 128);
-    tbl.string("password", 128);
+    tbl.string("password", 255);
+    tbl.timestamps(true, true);
     tbl.unique("username", "uq_user_username");
   });
 };

@@ -1,6 +1,5 @@
 const express = require("express");
 const Charities = require("./charitiesModel.js");
-const tokenService = require("../auth/tokenService.js");
 
 const router = express.Router();
 
@@ -90,11 +89,31 @@ router.put("/:id", async (req, res) => {
     } else {
       res
         .status(404)
-        .json({ message: "The charity could not be updated in the database." });
+        .json({ message: "The charity could not be found in the database." });
     }
   } catch (error) {
     res.status(500).json({
       message: "There was an error updating the charity in the database."
+    });
+  }
+});
+
+// Delete charity route
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedCharity = await Charities.remove(req.params.id);
+    if (deletedCharity) {
+      res.status(200).json({
+        message: "The charity was deleted from the database successfully."
+      });
+    } else {
+      res.status(404).json({
+        message: "The charity could not be found in the database."
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      message: "There was an error deleting the charity in the database."
     });
   }
 });
