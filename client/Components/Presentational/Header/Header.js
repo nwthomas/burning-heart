@@ -8,8 +8,10 @@ const HeaderContainer = styled.View`
   top: 0;
   right: 0;
   left: 0;
-  background-color: #890620;
+  background-color: transparent;
 `;
+
+// Burgundy background = #890620
 
 const Header = _ => {
   return <HeaderContainer />;

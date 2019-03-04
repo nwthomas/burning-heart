@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components/native";
 import { Link } from "react-router-native";
 
-import searchIcon from "../../../assets/icons/search-icon.png";
-import homeIcon from "../../../assets/icons/home-icon.png";
-import profileIcon from "../../../assets/icons/profile-icon.png";
+import searchIcon from "../../../assets/images/search-icon.png";
+import homeIcon from "../../../assets/images/home-icon.png";
+import profileIcon from "../../../assets/images/profile-icon.png";
 
 const NavbarContainer = styled.View`
   z-index: 10;
-  border-color: #7a7a7a;
+  border-color: #5d6e6f;
   border-width: 1;
   border-left-color: transparent;
   border-right-color: transparent;
