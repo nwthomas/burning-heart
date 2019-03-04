@@ -5,12 +5,11 @@ import styled from "styled-components/native";
 const ProfileText = styled.Text`
   font-family: "Ubuntu-Medium";
   font-size: 20;
-  text-align: center;
 `;
 
-const ProfileView = _ => {
+const ProfileView = props => {
   return (
-    <View>
+    <View home={props.history}>
       <ProfileText>This is the profile screen.</ProfileText>
     </View>
   );
