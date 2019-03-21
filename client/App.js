@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useReducer } from "react";
+import { Text, View } from "react-native";
 import styled from "styled-components/native";
 import { NativeRouter, Route, Link, ScrollView } from "react-router-native";
 

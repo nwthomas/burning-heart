@@ -10,9 +10,9 @@ const server = express();
 configureMiddleware(server);
 
 // Custom API routes
-server.use("/api/auth", authRouter);
-server.use("/api/restricted/users", restricted, usersRouter);
 server.use("/api/restricted/charities", restricted, charitiesRouter);
+server.use("/api/restricted/users", restricted, usersRouter);
+server.use("/api/auth", authRouter);
 
 // Single test server / route
 server.get("/", (req, res) => {

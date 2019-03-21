@@ -2,7 +2,7 @@
 <h4 align="center">A charitable micro-donation app for people who like to give</h4>
 <br>
 
-# Burning Heart
+# What is Burning Heart?
 
 Too often in today's world, people desire to do the right thing but lack the time and resources necessary to feel like they're actually making a difference. It can be costly both in effort and money to feel like you have provided impact to those around you.
 
@@ -12,14 +12,16 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
 
 - [Getting Started](#getting-started)
 - [Built With](#built-with)
-- [API Points and Data Modeling](#api-points-and-data-modeling)
+- [Server Documentation](#server-documentation)
+  - [Schemas and Data Modeling](#schemas-and-data-modeling)
+  - [API Endpoints](#api-points-and-data-modeling)
 - [Project Management](#project-management)
 - [Author](#author)
 - [Acknowledgements](#acknowledgements)
 
 ## Getting Started
 
-(NOTE: `Burning Heart` is currently iOS-only. There are plans to create a web application, but you will need a Mac computer with XCode installed to turn the mobile `Burning Heart` client on. If you don't, please use the Expo link above in the Github header for this repo.)
+(NOTE: `Burning Heart` is currently iOS-only. There are plans to create a web application, but you will need a Mac computer with XCode installed to turn the mobile `Burning Heart` client on. If you don't have one, I've prepared a `Snack` example link for you up above in the Github header for this repo.)
 
 - Fork and clone (or just clone) this repository to your local machine
 - Use the command `yarn` inside both the root directory and the client directories to install dependencies for the server and client, respectively
@@ -47,11 +49,13 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
 - [Bcrypt.js](https://www.npmjs.com/package/bcryptjs)
 - [Stripe API](https://stripe.com/docs/api)
 
-## API Points and Data Modeling
+## Server Documentation
 
-### API Points
+### Schemas and Data Modeling
 
-### Data Modeling/Schemas
+Checkout the [DB Designer](https://www.dbdesigner.net/designer/schema/235466) modeling link for a visual representation of how this project's tables work.
+
+### API Endpoints
 
 ## Project Management
 
