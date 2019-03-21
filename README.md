@@ -53,7 +53,72 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
 
 ### Schemas and Data Modeling
 
-Checkout the [DB Designer](https://www.dbdesigner.net/designer/schema/235466) modeling link for a visual representation of how this project's tables work.
+Checkout this project's [DB Designer](https://www.dbdesigner.net/designer/schema/235466) modeling link for a visual representation of how this project's tables work.
+
+`Accounts`
+
+```
+{
+  "id": 2,                                  // Integer (primary key provided by server and autoincrements)
+  "username": "admin",                      // String, required
+  "password": "password",                   // String, required
+  "email": "email@gmail.com"                // String, required
+}
+```
+
+`Users`
+
+```
+{
+  "id": 1,                                  // Integer (primary key provided by server and autoincrements)
+  "accountId": 3,                           // Integer, required (foreign key constraint linked to id column on accounts table)
+  "firstName": "Nathan",                    // String, required
+  "middleName": "Middle",                   // String, required
+  "lastName": "Thomas",                     // String, required
+  "phone": 7078881298                       // Integer, required
+}
+```
+
+`Charity Contact`
+
+```
+{
+  "id": 6,                                  // Integer (primary key provided by server and autoincrements)
+  "charityId": 1,                           // Integer, required (foreign key constraint to id column on charity table)
+  "accountId": 2,                           // Integer, required (foreign key constraint to id column on accounts table)
+  "firstName": "Jordan",                    // String, required
+  "middleName": "Middle",                   // String, required
+  "lastName": "Reichert",                   // String, required
+  "phone": 7078881298,                      // Integer, required
+  "driversLicense": "D45HC34F9"             // String, required
+}
+```
+
+`Charity`
+
+```
+{
+  "id": 3,                                  // Integer (primary key provided by server and autoincrements)
+  "charityName": "Wounded Warriors",        // String, required
+  "phone": 7078881298,                      // Integer, required
+  "street1": "100 Street Way",              // String, required
+  "street2": "P.O. Box 400",                // String
+  "city": "San Francisco",                  // String, required
+  "state": "CA",                            // String, required
+  "zip": 94567                              // Integer, required
+}
+```
+
+`Donations`
+
+```
+{
+  "id": 1,                                  // Integer (primary key provided by server and autoincrements)
+  "charityId": 4,                           // Integer, required (foreign key constraint to id column on charity table)
+  "userId": 1,                              // Integer, required (foreign key constraint to id column on user table)
+  "amount": 5.46                            // Integer (float), required
+}
+```
 
 ### API Endpoints
 
