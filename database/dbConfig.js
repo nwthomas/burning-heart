@@ -1,5 +1,9 @@
 const knex = require("knex");
+require("dotenv").config();
 
-const knexConfig = require("../knexfile.js");
+const db = process.env.DB_ENV || "development"; // Setup for Heroku postgres deployment
 
-module.exports = knex(knexConfig.development);
+const knexConfig = require("../knexfile.js")[db]; // DB environment assignment
+
+// Export new knex configuration
+module.exports = knex(knexConfig);

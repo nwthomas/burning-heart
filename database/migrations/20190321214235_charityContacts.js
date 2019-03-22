@@ -20,6 +20,7 @@ exports.up = function(knex, Promise) {
     tbl.string("lastName", 256);
     tbl.integer("phone").unsigned();
     tbl.string("driversLicense", 128);
+    tbl.timestamps(true, true);
     tbl.unique("accountId", "uq_charityContacts_accountId");
     tbl.unique("charityId", "uq_charityContacts_charityId");
   });

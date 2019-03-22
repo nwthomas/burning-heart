@@ -1,8 +1,21 @@
+require("dotenv").config();
+
+// Postgres imports
+const pg = require("pg");
+pg.defaults.ssl = true;
+
+// Production database connection
+const dbConnection = process.env.DATABASE_URL || {
+  filename: "./database/burningHeart.db3"
+};
+
 module.exports = {
   development: {
     client: "sqlite3",
-    connection: {
-      filename: "./database/burningHeart.db3"
+    connection: dbConnection,
+    pool: {
+      min: 2,
+      max: 10
     },
     migrations: {
       directory: "./database/migrations",
@@ -28,10 +41,12 @@ module.exports = {
     useNullAsDefault: true
   },
   production: {
-    client: "sqlite3",
+    client: "pg",
     useNullAsDefault: true,
-    connection: {
-      database: "./database/users.db3"
+    connection: dbConnection,
+    pool: {
+      min: 2,
+      max: 10
     },
     migrations: {
       directory: "./database/migrations",
