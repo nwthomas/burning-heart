@@ -1,40 +1,298 @@
+const faker = require("faker");
+
 exports.seed = function(knex, Promise) {
   return knex("charities")
     .del()
     .then(function() {
       return knex("charities").insert([
-        { name: "Wounded Warriors" },
-        { name: "Bill & Melinda Gates Foundation" },
-        { name: "United Way Worldwide" },
-        { name: "Feeding America" },
-        { name: "Americares Foundation" },
-        { name: "Task Force for GLobal Health" },
-        { name: "Salvation Army" },
-        { name: "St. Jude Children's Research Hospital" },
-        { name: "Habitat for Humanity" },
-        { name: "YMCA of the USA" },
-        { name: "Food for the Poor" },
-        { name: "Goodwill Industries International" },
-        { name: "Samaritan's Purse" },
-        { name: "Lutheran Services in America" },
-        { name: "American Cancer Society" },
-        { name: "World Vision" },
-        { name: "American National Red Cross" },
-        { name: "American Heart Association" },
-        { name: "Planned Parenthood Federation of America" },
-        { name: "Doctor's Without Borders" },
-        { name: "Museum of Modern Art" },
-        { name: "American Civil Liberties Union and Foundation" },
-        { name: "World Wildlife Fund" },
-        { name: "Humane Society of the United States" },
-        { name: "Scholarship America" },
-        { name: "Mount Sinai Health Systems" },
-        { name: "Save the Children Federation" },
-        { name: "Mayo Clinic" },
-        { name: "Feed the Children" },
-        { name: "Make-A-Wish Foundation of America" },
-        { name: "Rotary Foundation of Rotary International" },
-        { name: "American Kidney Fund" }
+        {
+          charityName: "Wounded Warriors",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Bill & Melinda Gates Foundation",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "United Way Worldwide",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Feeding America",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Americares Foundation",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Task Force for GLobal Health",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Salvation Army",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "St. Jude Children's Research Hospital",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Habitat for Humanity",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "YMCA of the USA",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Food for the Poor",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Goodwill Industries International",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Samaritan's Purse",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Lutheran Services in America",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "American Cancer Society",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "World Vision",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "American National Red Cross",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "American Heart Association",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Planned Parenthood Federation of America",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Doctor's Without Borders",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Museum of Modern Art",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "American Civil Liberties Union and Foundation",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "World Wildlife Fund",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Humane Society of the United States",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Scholarship America",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Mount Sinai Health Systems",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Save the Children Federation",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Mayo Clinic",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Feed the Children",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Make-A-Wish Foundation of America",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "Rotary Foundation of Rotary International",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        },
+        {
+          charityName: "American Kidney Fund",
+          phone: faker.fake("{{phone.phoneNumber}}"),
+          street1: faker.fake("{{address.streetAddress}}"),
+          street2: faker.fake("{{address.secondaryAddress}}"),
+          city: faker.fake("{{address.city}}"),
+          state: faker.fake("{{address.state}}"),
+          zip: faker.fake("{{address.zipCode}}")
+        }
       ]);
     });
 };

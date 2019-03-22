@@ -1,5 +1,3 @@
-const faker = require("faker");
-
 exports.seed = function(knex, Promise) {
   return knex("charityContacts")
     .del()
