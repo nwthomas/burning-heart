@@ -1,33 +1,35 @@
-const bcrypt = require("bcryptjs");
-
 exports.seed = function(knex, Promise) {
   return knex("users")
     .del()
     .then(function() {
       return knex("users").insert([
         {
-          first_name: "Nathan",
-          last_name: "Thomas",
-          username: "nwthomas",
-          password: bcrypt.hashSync("asdfasdf", 14)
+          accountId: 1,
+          firstName: "Nathan",
+          middleName: "William",
+          lastName: "Thomas",
+          phone: 7074932054
         },
         {
-          first_name: "Admin",
-          last_name: "Admin",
-          username: "admin",
-          password: bcrypt.hashSync("password", 14)
+          accountId: 2,
+          firstName: "Admin",
+          middleName: "Admin",
+          lastName: "Admin",
+          phone: 9098832912
         },
         {
-          first_name: "Veronica",
-          last_name: "Smith",
-          username: "vero2019",
-          password: bcrypt.hashSync("password", 14)
+          accountId: 3,
+          firstName: "Veronica",
+          middleName: "Mary",
+          lastName: "Smith",
+          phone: 3037892873
         },
         {
-          first_name: "Steven",
-          last_name: "Taylor",
-          username: "staytay",
-          password: bcrypt.hashSync("password", 14)
+          accountId: 4,
+          firstName: "Steven",
+          middleName: "James",
+          lastName: "Taylor",
+          phone: 5108943782
         }
       ]);
     });
