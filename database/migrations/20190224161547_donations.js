@@ -1,12 +1,22 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable("donations", tbl => {
     tbl.increments("id");
+    tbl
+      .integer("charity_id")
+      .unsigned()
+      .references("id")
+      .inTable("charities")
+      .onDelete("CASCADE")
+      .notNullable();
+    tbl
+      .integer("userId")
+      .unsigned()
+      .references("id")
+      .inTable("users")
+      .onDelete("CASCADE")
+      .notNullable();
     tbl.integer("amount");
-    tbl.integer("charity_id").unsigned();
-    tbl.integer("user_id").unsigned();
     tbl.timestamps(true, true);
-    tbl.foreign("charity_id").references("charities.id");
-    tbl.foreign("user_id").references("users.id");
   });
 };
 
