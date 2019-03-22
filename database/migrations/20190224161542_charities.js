@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
     tbl.string("state", 128);
     tbl.integer("zip").unsigned();
     tbl.timestamps(true, true);
-    tbl.unique("name", "uq_charities_name");
+    tbl.unique("charityName", "uq_charities_name");
     tbl.unique("phone", "uq_charities_phone");
   });
 };

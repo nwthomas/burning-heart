@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
     tbl.string("lastName", 256);
     tbl.integer("phone").unsigned();
     tbl.timestamps(true, true);
-    tbl.unique("username", "uq_user_username");
+    tbl.unique("phone", "uq_user_phone");
     tbl.unique("accountId", "uq_user_accountId");
   });
 };

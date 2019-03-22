@@ -1,13 +1,32 @@
-
 exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
+  return knex("accounts")
+    .del()
+    .then(function() {
+      return knex("accounts").insert([
+        {
+          first_name: "Nathan",
+          last_name: "Thomas",
+          username: "nwthomas",
+          password: bcrypt.hashSync("asdfasdf", 14)
+        },
+        {
+          first_name: "Admin",
+          last_name: "Admin",
+          username: "admin",
+          password: bcrypt.hashSync("password", 14)
+        },
+        {
+          first_name: "Veronica",
+          last_name: "Smith",
+          username: "vero2019",
+          password: bcrypt.hashSync("password", 14)
+        },
+        {
+          first_name: "Steven",
+          last_name: "Taylor",
+          username: "staytay",
+          password: bcrypt.hashSync("password", 14)
+        }
       ]);
     });
 };

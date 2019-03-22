@@ -1,6 +1,6 @@
 exports.seed = function(knex, Promise) {
   return knex("charities")
-    .truncate()
+    .del()
     .then(function() {
       return knex("charities").insert([
         { name: "Wounded Warriors" },
