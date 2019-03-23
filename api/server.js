@@ -4,6 +4,7 @@ const restricted = require("../auth/restricted.js"); // Auth JWT import
 const authRouter = require("../auth/authRouter.js");
 const usersRouter = require("../users/usersRouter.js");
 const charitiesRouter = require("../charities/charitiesRouter.js");
+const accountsRouter = require("../accounts/accountsRouter.js");
 const server = express();
 
 // Pass server through general middleware configurations
@@ -12,6 +13,7 @@ configureMiddleware(server);
 // Custom API routes
 server.use("/api/restricted/charities", restricted, charitiesRouter);
 server.use("/api/restricted/users", restricted, usersRouter);
+server.use("/api/accounts", accountsRouter);
 server.use("/api/auth", authRouter);
 
 // Single test server / route
