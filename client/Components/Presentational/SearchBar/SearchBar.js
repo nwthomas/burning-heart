@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, TextInput } from "react-native";
-import styled from "styled-components/native";
-
-const Input = styled.TextInput`
-  padding-bottom: 20;
-  border-color: black;
-  border-width: 1;
-`;
+import { Text, View, TextInput, StyleSheet } from "react-native";
 
 const SearchBar = props => {
   const [search, setSearch] = useState("");
@@ -16,7 +9,8 @@ const SearchBar = props => {
   };
   return (
     <View>
-      <Input
+      <TextInput
+        style={styles.input}
         placeholder="Dude"
         onChange={handleChange}
         name="search"
@@ -25,5 +19,13 @@ const SearchBar = props => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  input: {
+    paddingBottom: 20,
+    borderColor: "black",
+    borderWidth: 1
+  }
+});
 
 export default SearchBar;

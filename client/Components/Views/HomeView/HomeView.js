@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 
-const HomeView = props => {
+const HomeView = _ => {
   return (
     <View style={styles.container}>
       <View style={styles.profileSummary}>
@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
     zIndex: 10,
     height: 230,
     marginTop: 70,
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: 15,
+    marginRight: 15,
     alignSelf: "stretch",
     position: "absolute",
     flex: 1,
@@ -37,12 +37,14 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
-
-    elevation: 3
+    elevation: 3,
+    borderRadius: 8
   },
   profileName: {
     fontSize: 20,
-    fontFamily: "Ubuntu-Medium"
+    fontFamily: "Roboto-Medium",
+    marginTop: 20,
+    marginLeft: 20
   },
   scrollView: {
     zIndex: 10,

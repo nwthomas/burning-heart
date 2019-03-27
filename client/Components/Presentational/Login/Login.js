@@ -1,26 +1,26 @@
 import React from "react";
-import { Text, View } from "react-native";
-import styled from "styled-components/native";
-
-const LoginContainer = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background: #e9eeef;
-`;
-
-const FontTest = styled.Text`
-  font-family: "Ubuntu-Medium";
-  font-size: 20;
-  text-align: center;
-`;
+import { Text, View, StyleSheet } from "react-native";
 
 const Login = _ => {
   return (
-    <LoginContainer>
-      <FontTest>Please sign in.</FontTest>
-    </LoginContainer>
+    <View style={styles.container}>
+      <Text style={styles.signInText}>Please sign in.</Text>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#e9eeef"
+  },
+  signInText: {
+    fontFamily: "Ubuntu-Medium",
+    fontSize: 20,
+    textAlign: "center"
+  }
+});
 
 export default Login;

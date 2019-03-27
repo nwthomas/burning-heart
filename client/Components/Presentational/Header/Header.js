@@ -1,20 +1,19 @@
 import React from "react";
-import { View, Text } from "react-native";
-import styled from "styled-components/native";
-
-const HeaderContainer = styled.View`
-  height: 100;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  background-color: transparent;
-`;
-
-// Burgundy background = #890620
+import { View, Text, StyleSheet } from "react-native";
 
 const Header = _ => {
-  return <HeaderContainer />;
+  return <View style={styles.container} />;
 };
+
+const styles = StyleSheet.create({
+  container: {
+    height: 100,
+    position: "absolute",
+    top: 0,
+    right: 0,
+    left: 0,
+    backgroundColor: "transparent"
+  }
+});
 
 export default Header;

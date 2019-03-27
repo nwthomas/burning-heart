@@ -1,18 +1,19 @@
 import React from "react";
-import { View, Text } from "react-native";
-import styled from "styled-components/native";
-
-const ProfileText = styled.Text`
-  font-family: "Ubuntu-Medium";
-  font-size: 20;
-`;
+import { View, Text, StyleSheet } from "react-native";
 
 const ProfileView = props => {
   return (
     <View home={props.history}>
-      <ProfileText>This is the profile screen.</ProfileText>
+      <Text style={styles.profileText}>This is the profile screen.</Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  profileText: {
+    fontFamily: "Roboto-Medium",
+    fontSize: 20
+  }
+});
 
 export default ProfileView;

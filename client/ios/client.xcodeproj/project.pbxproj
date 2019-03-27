@@ -39,15 +39,29 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
-		C18C91E0B09C4656826AD614 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB8A8CCEC42B40F5A2B90309 /* Ubuntu-Bold.ttf */; };
-		09B06BA4FED64A149D487517 /* Ubuntu-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D958C21314D443B7893E6C35 /* Ubuntu-BoldItalic.ttf */; };
-		66D683F5D0A44AB09D43F5B0 /* Ubuntu-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F82E71702C994ACD9B44E335 /* Ubuntu-Italic.ttf */; };
-		B407BD6DD11A4FCC94CF8AEA /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A7128DC24524BFF9454A2D9 /* Ubuntu-Light.ttf */; };
-		8742DBC30B6A44C5A9878F5A /* Ubuntu-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 324FEB6539B64D9B96FADAC6 /* Ubuntu-LightItalic.ttf */; };
-		FB2352C33ECF4D419D53A683 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55ED097FB60340E4AB11B2AA /* Ubuntu-Medium.ttf */; };
-		C2B5A6A47F5C4869A96BFD5B /* Ubuntu-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D5C8FC3D4284486A40240A7 /* Ubuntu-MediumItalic.ttf */; };
-		A2FC969B890B49299BD62B72 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79570AFF4E44246A6D5786B /* Ubuntu-Regular.ttf */; };
 		17AACA87EA3343C2BD0E33F6 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF06A5C6064E6284495D84 /* libRNGestureHandler.a */; };
+		A5D0B43E6A6D4A6DAC926A38 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A382CFAD19824E50BB1E876E /* OpenSans-Bold.ttf */; };
+		BCEF402EAF92426A815EFCB0 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACF365508BAD4179BCF8A1AE /* OpenSans-BoldItalic.ttf */; };
+		9C5DBF4115AD477197E067CB /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E21ABBF7F094BB0B4F20564 /* OpenSans-ExtraBold.ttf */; };
+		04196F420BB24C04AE9B5D4A /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D64B191077D44924AE7AADC0 /* OpenSans-ExtraBoldItalic.ttf */; };
+		F5DF6CF23A594F3EAD8EF41D /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04F1753E74B841FEA731C4E0 /* OpenSans-Italic.ttf */; };
+		93B5CB7203FB4849A61F4091 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C39FDDE8DEFE402A9DFCE8AB /* OpenSans-Light.ttf */; };
+		5C2FFFD8830E46598E4E3A26 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83B576EE9A5E49A7B40FFBA0 /* OpenSans-LightItalic.ttf */; };
+		86F6FD89C39D4CC98D5F2880 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F87E5CFB1AAC47D0A26D50C3 /* OpenSans-Regular.ttf */; };
+		256B555155604E35A42F7E49 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBC8EE1238234E419F46A81C /* OpenSans-SemiBold.ttf */; };
+		5AF211D9A35F408A82BF203C /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE8E1904DBA8433C9FB5211B /* OpenSans-SemiBoldItalic.ttf */; };
+		1361250DE294470990FF48E0 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60F277D5761E41D8BE47A3B1 /* Roboto-Black.ttf */; };
+		C9FE957131FA4BBEB09F200C /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E220A4B914584EB6968DAB48 /* Roboto-BlackItalic.ttf */; };
+		83F6173853B148268398D95C /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B847DAB80B5438D8362747F /* Roboto-BoldItalic.ttf */; };
+		1C38CDE333D946E4817D268B /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4154A4A8DE0C462AB6A33FAC /* Roboto-Italic.ttf */; };
+		88A4C6BB22AC4A0F8377F2D9 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B493A10D9F4581B8810D43 /* Roboto-Light.ttf */; };
+		479F8739868E457E83A2472F /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC790F491EE54A9988B634FE /* Roboto-LightItalic.ttf */; };
+		A7236C4532F744E5B6ED46E4 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 930C3EF12CBB49BBBAE293B1 /* Roboto-Medium.ttf */; };
+		B2FC62F1D2CF47039CA413EB /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31A3CA55B8224974A26833DD /* Roboto-MediumItalic.ttf */; };
+		5997C699195B441CBD98E5FF /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8E6E74818FB4CA0A004D83C /* Roboto-Regular.ttf */; };
+		31F4DED677554870BF2C3080 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBF2F61359F14BDDBC2EEE4B /* Roboto-Thin.ttf */; };
+		5828991131B94940B2152EFA /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81F8E748484D4F4AA4C76327 /* Roboto-ThinItalic.ttf */; };
+		AF0195FB394148F188DF772C /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB5E8FDC073D4310A7C8EC79 /* libTouchID.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -363,6 +377,29 @@
 		55ED097FB60340E4AB11B2AA /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Medium.ttf"; path = "../assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		7D5C8FC3D4284486A40240A7 /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Ubuntu-MediumItalic.ttf"; path = "../assets/fonts/Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E79570AFF4E44246A6D5786B /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Regular.ttf"; path = "../assets/fonts/Ubuntu-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A382CFAD19824E50BB1E876E /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; name = "OpenSans-Bold.ttf"; path = "../assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		ACF365508BAD4179BCF8A1AE /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-BoldItalic.ttf"; path = "../assets/fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9E21ABBF7F094BB0B4F20564 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; name = "OpenSans-ExtraBold.ttf"; path = "../assets/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D64B191077D44924AE7AADC0 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../assets/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		04F1753E74B841FEA731C4E0 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; name = "OpenSans-Italic.ttf"; path = "../assets/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C39FDDE8DEFE402A9DFCE8AB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; name = "OpenSans-Light.ttf"; path = "../assets/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		83B576EE9A5E49A7B40FFBA0 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-LightItalic.ttf"; path = "../assets/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F87E5CFB1AAC47D0A26D50C3 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; name = "OpenSans-Regular.ttf"; path = "../assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DBC8EE1238234E419F46A81C /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "OpenSans-SemiBold.ttf"; path = "../assets/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BE8E1904DBA8433C9FB5211B /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-SemiBoldItalic.ttf"; path = "../assets/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		60F277D5761E41D8BE47A3B1 /* Roboto-Black.ttf */ = {isa = PBXFileReference; name = "Roboto-Black.ttf"; path = "../assets/fonts/Roboto-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E220A4B914584EB6968DAB48 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-BlackItalic.ttf"; path = "../assets/fonts/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1B847DAB80B5438D8362747F /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-BoldItalic.ttf"; path = "../assets/fonts/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4154A4A8DE0C462AB6A33FAC /* Roboto-Italic.ttf */ = {isa = PBXFileReference; name = "Roboto-Italic.ttf"; path = "../assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D7B493A10D9F4581B8810D43 /* Roboto-Light.ttf */ = {isa = PBXFileReference; name = "Roboto-Light.ttf"; path = "../assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FC790F491EE54A9988B634FE /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-LightItalic.ttf"; path = "../assets/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		930C3EF12CBB49BBBAE293B1 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; name = "Roboto-Medium.ttf"; path = "../assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		31A3CA55B8224974A26833DD /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-MediumItalic.ttf"; path = "../assets/fonts/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D8E6E74818FB4CA0A004D83C /* Roboto-Regular.ttf */ = {isa = PBXFileReference; name = "Roboto-Regular.ttf"; path = "../assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FBF2F61359F14BDDBC2EEE4B /* Roboto-Thin.ttf */ = {isa = PBXFileReference; name = "Roboto-Thin.ttf"; path = "../assets/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		81F8E748484D4F4AA4C76327 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-ThinItalic.ttf"; path = "../assets/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		16C974365E344EA4A1FF2FCA /* TouchID.xcodeproj */ = {isa = PBXFileReference; name = "TouchID.xcodeproj"; path = "../node_modules/react-native-touch-id/TouchID.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		EB5E8FDC073D4310A7C8EC79 /* libTouchID.a */ = {isa = PBXFileReference; name = "libTouchID.a"; path = "libTouchID.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +428,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				AF0195FB394148F188DF772C /* libTouchID.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +618,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
+				16C974365E344EA4A1FF2FCA /* TouchID.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -639,6 +678,27 @@
 				55ED097FB60340E4AB11B2AA /* Ubuntu-Medium.ttf */,
 				7D5C8FC3D4284486A40240A7 /* Ubuntu-MediumItalic.ttf */,
 				E79570AFF4E44246A6D5786B /* Ubuntu-Regular.ttf */,
+				A382CFAD19824E50BB1E876E /* OpenSans-Bold.ttf */,
+				ACF365508BAD4179BCF8A1AE /* OpenSans-BoldItalic.ttf */,
+				9E21ABBF7F094BB0B4F20564 /* OpenSans-ExtraBold.ttf */,
+				D64B191077D44924AE7AADC0 /* OpenSans-ExtraBoldItalic.ttf */,
+				04F1753E74B841FEA731C4E0 /* OpenSans-Italic.ttf */,
+				C39FDDE8DEFE402A9DFCE8AB /* OpenSans-Light.ttf */,
+				83B576EE9A5E49A7B40FFBA0 /* OpenSans-LightItalic.ttf */,
+				F87E5CFB1AAC47D0A26D50C3 /* OpenSans-Regular.ttf */,
+				DBC8EE1238234E419F46A81C /* OpenSans-SemiBold.ttf */,
+				BE8E1904DBA8433C9FB5211B /* OpenSans-SemiBoldItalic.ttf */,
+				60F277D5761E41D8BE47A3B1 /* Roboto-Black.ttf */,
+				E220A4B914584EB6968DAB48 /* Roboto-BlackItalic.ttf */,
+				1B847DAB80B5438D8362747F /* Roboto-BoldItalic.ttf */,
+				4154A4A8DE0C462AB6A33FAC /* Roboto-Italic.ttf */,
+				D7B493A10D9F4581B8810D43 /* Roboto-Light.ttf */,
+				FC790F491EE54A9988B634FE /* Roboto-LightItalic.ttf */,
+				930C3EF12CBB49BBBAE293B1 /* Roboto-Medium.ttf */,
+				31A3CA55B8224974A26833DD /* Roboto-MediumItalic.ttf */,
+				D8E6E74818FB4CA0A004D83C /* Roboto-Regular.ttf */,
+				FBF2F61359F14BDDBC2EEE4B /* Roboto-Thin.ttf */,
+				81F8E748484D4F4AA4C76327 /* Roboto-ThinItalic.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1098,6 +1158,27 @@
 				FB2352C33ECF4D419D53A683 /* Ubuntu-Medium.ttf in Resources */,
 				C2B5A6A47F5C4869A96BFD5B /* Ubuntu-MediumItalic.ttf in Resources */,
 				A2FC969B890B49299BD62B72 /* Ubuntu-Regular.ttf in Resources */,
+				A5D0B43E6A6D4A6DAC926A38 /* OpenSans-Bold.ttf in Resources */,
+				BCEF402EAF92426A815EFCB0 /* OpenSans-BoldItalic.ttf in Resources */,
+				9C5DBF4115AD477197E067CB /* OpenSans-ExtraBold.ttf in Resources */,
+				04196F420BB24C04AE9B5D4A /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				F5DF6CF23A594F3EAD8EF41D /* OpenSans-Italic.ttf in Resources */,
+				93B5CB7203FB4849A61F4091 /* OpenSans-Light.ttf in Resources */,
+				5C2FFFD8830E46598E4E3A26 /* OpenSans-LightItalic.ttf in Resources */,
+				86F6FD89C39D4CC98D5F2880 /* OpenSans-Regular.ttf in Resources */,
+				256B555155604E35A42F7E49 /* OpenSans-SemiBold.ttf in Resources */,
+				5AF211D9A35F408A82BF203C /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				1361250DE294470990FF48E0 /* Roboto-Black.ttf in Resources */,
+				C9FE957131FA4BBEB09F200C /* Roboto-BlackItalic.ttf in Resources */,
+				83F6173853B148268398D95C /* Roboto-BoldItalic.ttf in Resources */,
+				1C38CDE333D946E4817D268B /* Roboto-Italic.ttf in Resources */,
+				88A4C6BB22AC4A0F8377F2D9 /* Roboto-Light.ttf in Resources */,
+				479F8739868E457E83A2472F /* Roboto-LightItalic.ttf in Resources */,
+				A7236C4532F744E5B6ED46E4 /* Roboto-Medium.ttf in Resources */,
+				B2FC62F1D2CF47039CA413EB /* Roboto-MediumItalic.ttf in Resources */,
+				5997C699195B441CBD98E5FF /* Roboto-Regular.ttf in Resources */,
+				31F4DED677554870BF2C3080 /* Roboto-Thin.ttf in Resources */,
+				5828991131B94940B2152EFA /* Roboto-ThinItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1230,6 +1311,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/client.app/client";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
+				);
 			};
 			name = Debug;
 		};
@@ -1251,10 +1340,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
 				);
 			};
 			name = Release;
@@ -1278,6 +1369,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
 				);
 			};
 			name = Debug;
@@ -1300,6 +1392,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
 				);
 			};
 			name = Release;
@@ -1330,10 +1423,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
 				);
 			};
 			name = Debug;
@@ -1364,10 +1459,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
 				);
 			};
 			name = Release;
@@ -1397,10 +1494,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
 				);
 			};
 			name = Debug;
@@ -1430,10 +1529,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
 				);
 			};
 			name = Release;

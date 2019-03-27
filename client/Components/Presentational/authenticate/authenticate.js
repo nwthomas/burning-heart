@@ -7,7 +7,13 @@ const authenticate = App => LoginView => {
     const [loggedIn, setLoggedIn] = useState(true); // Logged in boolean flag hook
     return (
       // Authenticate hinges on boolean flag hook "loggedIn"
-      <>{loggedIn ? <App /> : <LoginView setLoggedIn={setLoggedIn} />}</>
+      <>
+        {loggedIn ? (
+          <App setLoggedIn={setLoggedIn} />
+        ) : (
+          <LoginView setLoggedIn={setLoggedIn} />
+        )}
+      </>
     );
   };
 };
