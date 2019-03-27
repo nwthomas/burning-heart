@@ -1,11 +1,15 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 
-const HomeView = _ => {
+const HomeView = props => {
+  const { user } = props;
+  console.log(user);
   return (
     <View style={styles.container}>
       <View style={styles.profileSummary}>
-        <Text style={styles.profileName}>Nathan Thomas</Text>
+        <Text style={styles.profileName}>
+          {user.username ? user.username : ""}
+        </Text>
       </View>
       <ScrollView style={styles.scrollView} />
     </View>
@@ -58,5 +62,9 @@ const styles = StyleSheet.create({
     backgroundColor: "grey"
   }
 });
+
+HomeView.defaultProps = {
+  username: ""
+};
 
 export default HomeView;

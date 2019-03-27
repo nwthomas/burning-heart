@@ -26,9 +26,9 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
 - Fork and clone (or just clone) this repository to your local machine
 - Use the command `yarn` inside both the root directory and the client directories to install dependencies for the server and client, respectively
 - Utilize the command `yarn server` inside the root directory to start up the Burning Heart back-end
-- Execute the command `yarn start` inside the root directory to start up the server
 - Make sure that Apple's XCode is installed, and then `cd` into the `client` directory and run the `react-native run-ios` command to start up the virtual iPhone environment
 - Create a `.env` file in the root directory and make `PORT` and `JWT_SECRET` variables inside of it (e.g. `PORT = 8000`, `JWT_SECRET = Whatever you want.`)
+- Open the debugging pane your local browser by going to the XCode Simulator and using `command + D` to open dev tools
 - Enjoy!
 
 ## Built With
