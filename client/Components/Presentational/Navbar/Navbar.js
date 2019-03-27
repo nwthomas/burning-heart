@@ -18,7 +18,6 @@ const NavbarContainer = styled.View`
   left: 0;
   right: 0;
   bottom: 0;
-  background: #e9eeef;
 `;
 
 const NavbarImage = styled.Image`
