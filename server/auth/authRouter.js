@@ -1,44 +1,38 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const Users = require("../accounts/accountsModel");
+const Accounts = require("../accounts/accountsModel.js");
 const tokenService = require("../auth/tokenService.js");
+const authConstraints = require("./authConstraints.js"); // Error handling middleware for duplicate usernames and passwords
 
-// Creates router for specific API route
 const router = express.Router();
 
-router.post("/register", async (req, res) => {
-  let newUser = req.body;
-  if (
-    !newUser.username ||
-    !newUser.password ||
-    !newUser.firstName ||
-    !newUser.lastName
-  ) {
-    return res.status(406).json({
-      message: "Please include a username and password and try again."
-    });
-  }
-
+// Account creation API route
+router.post("/register", authConstraints, async (req, res) => {
   // Encryption of password
-  const hash = bcrypt.hashSync(newUser.password, 14); // Must be the same as the seeds
-  newUser.password = hash;
-
-  // Adding new user to database
+  const hash = bcrypt.hashSync(req.body.password, 14);
+  req.body.password = hash;
   try {
-    const user = await Users.insert(newUser);
-    if (user) {
-      res
-        .status(200)
-        .json({ message: "The account was created successfully.", user });
+    const account = await Accounts.insert(req.body);
+    console.log(account);
+    if (account) {
+      res.status(200).json({
+        error: false,
+        message: "Your account was created successfully in the database.",
+        account
+      });
     } else {
-      res
-        .status(404)
-        .json({ message: "The account could not be created in the database." });
+      res.status(404).json({
+        error: true,
+        message: "Your account could not be created in the database.",
+        account: {}
+      });
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "The account could not be created.", error });
+    res.status(500).json({
+      error: true,
+      message: "There was an error processing your request.",
+      account: {}
+    });
   }
 });
 

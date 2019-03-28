@@ -48,8 +48,7 @@ function insert(creds) {
     .insert(creds)
     .then(id => {
       return db("accounts")
-        .where({ id })
-        .first()
+        .where({ id: id[0] })
         .select(
           "id",
           "username",
