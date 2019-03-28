@@ -3,9 +3,20 @@ exports.seed = function(knex, Promise) {
     .del()
     .then(function() {
       return knex("creditCards").insert([
-        { id: 1, colName: "rowValue1" },
-        { id: 2, colName: "rowValue2" },
-        { id: 3, colName: "rowValue3" }
+        {
+          cardNumber: 000000000000,
+          expDate: "12/2019",
+          securityCode: 342,
+          accountId: 1,
+          cardName: "Nathan William Thomas"
+        },
+        {
+          cardNumber: 111111111111,
+          expDate: "03/2020",
+          securityCode: 909,
+          accountId: 2,
+          cardName: "Admin Admin Admin"
+        }
       ]);
     });
 };
