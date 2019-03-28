@@ -8,22 +8,26 @@ exports.seed = function(knex, Promise) {
         {
           username: "nwthomas",
           password: bcrypt.hashSync("asdfasdf", 14),
-          email: "email@me.com"
+          email: "email@me.com",
+          type: "user"
         },
         {
           username: "admin",
           password: bcrypt.hashSync("password", 14),
-          email: "admin@gmail.com"
+          email: "admin@gmail.com",
+          type: "user"
         },
         {
           username: "vero2019",
           password: bcrypt.hashSync("password", 14),
-          email: "vero2019@gmail.com"
+          email: "vero2019@gmail.com",
+          type: "charity"
         },
         {
           username: "staytay",
           password: bcrypt.hashSync("password", 14),
-          email: "candycane301@gmail.com"
+          email: "candycane301@gmail.com",
+          type: "charity"
         }
       ]);
     });

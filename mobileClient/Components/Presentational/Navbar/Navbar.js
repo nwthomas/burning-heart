@@ -1,24 +1,21 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
-import { Link, TouchableOpacity } from "react-router-native";
+import { Link, TouchableHighlight } from "react-router-native";
 
 import searchIcon from "../../../assets/images/search-icon.png";
 import homeIcon from "../../../assets/images/home-icon.png";
 import profileIcon from "../../../assets/images/profile-icon.png";
 
-// Background color for transparent onPress
-const linkBackground = "#e9eeef";
-
 const Navbar = _ => {
   return (
     <View style={styles.container}>
-      <Link underlayColor={linkBackground} to="/search">
+      <Link underlayColor={styles.linkBackground} to="/search">
         <Image style={styles.navbarImg} source={searchIcon} />
       </Link>
-      <Link underlayColor={linkBackground} exact to="/">
+      <Link underlayColor={styles.linkBackground} exact to="/">
         <Image style={styles.navbarImg} source={homeIcon} />
       </Link>
-      <Link underlayColor={linkBackground} to="/profile">
+      <Link underlayColor={styles.linkBackground} to="/profile">
         <Image style={styles.navbarImg} source={profileIcon} />
       </Link>
     </View>
@@ -26,9 +23,12 @@ const Navbar = _ => {
 };
 
 const styles = StyleSheet.create({
+  linkBackground: {
+    backgroundColor: "#ffffff"
+  },
   container: {
     zIndex: 10,
-    height: 90,
+    height: 80,
     paddingTop: 10,
     alignSelf: "stretch",
     position: "absolute",
@@ -48,12 +48,12 @@ const styles = StyleSheet.create({
     shadowRadius: 2.22,
     elevation: 3,
     borderRadius: 8,
-    backgroundColor: "#e9eeef"
+    backgroundColor: "#ffffff"
   },
   navbarImg: {
     height: 40,
     width: 40,
-    backgroundColor: "#e9eeef"
+    backgroundColor: "#ffffff"
   }
 });
 
