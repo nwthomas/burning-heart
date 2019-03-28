@@ -3,6 +3,7 @@ const db = require("../database/dbConfig.js");
 module.exports = {
   find,
   findById,
+  findWithPassword,
   insert,
   remove,
   update
@@ -22,6 +23,10 @@ function find() {
     "created_at",
     "updated_at"
   );
+}
+
+function findWithPassword() {
+  return db("accounts");
 }
 
 function findById(id) {

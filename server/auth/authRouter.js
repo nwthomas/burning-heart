@@ -6,7 +6,7 @@ const authConstraints = require("./authConstraints.js"); // Error handling middl
 
 const router = express.Router();
 
-// Account creation API route
+// Auth account creation API route
 router.post("/register", authConstraints, async (req, res) => {
   // Encryption of password
   const hash = bcrypt.hashSync(req.body.password, 14);
@@ -36,26 +36,46 @@ router.post("/register", authConstraints, async (req, res) => {
   }
 });
 
+// Auth account login API route
 router.post("/login", async (req, res) => {
   let creds = req.body;
   try {
-    const user = await Users.find()
+    const account = await Accounts.findWithPassword()
       .where({ username: creds.username })
       .first();
-    if (user && bcrypt.compareSync(creds.password, user.password)) {
-      const token = tokenService.generateToken(user);
+    if (account && bcrypt.compareSync(creds.password, account.password)) {
+      const token = tokenService.generateToken(account);
       res.status(200).json({
-        message: "The user was logged in successfully.",
-        user: { id: user.id, username: user.username }, // Expand with additional info as needed
+        error: false,
+        message: "You were logged in successfully.",
+        account: {
+          username: account.username,
+          firstName: account.firstName,
+          middleName: account.middleName,
+          lastName: account.lastName,
+          email: account.email,
+          phone: account.phone,
+          type: account.type,
+          charityId: account.charityId,
+          driversLicense: account.driversLicense,
+          created_at: account.created_at,
+          updated_at: account.updated_at
+        },
         token
       });
     } else {
-      res.status(404).json({ message: "The user could not be logged in." });
+      res.status(404).json({
+        error: true,
+        message: "The user could not be logged in.",
+        account: {}
+      });
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "There was an error logging in the user.", error });
+    res.status(500).json({
+      error: true,
+      message: "There was an error logging in the user.",
+      account: {}
+    });
   }
 });
 
