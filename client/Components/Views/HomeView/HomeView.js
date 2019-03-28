@@ -8,7 +8,7 @@ const HomeView = props => {
     <View style={styles.container}>
       <View style={styles.profileSummary}>
         <Text style={styles.profileName}>
-          {user.username ? user.username : ""}
+          {user ? `${user.firstName} ${user.lastName}` : ""}
         </Text>
       </View>
       <ScrollView style={styles.scrollView} />

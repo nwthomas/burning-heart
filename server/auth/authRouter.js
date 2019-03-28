@@ -1,6 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const Users = require("../users/usersModel.js");
+const Users = require("../accounts/accountsModel");
 const tokenService = require("../auth/tokenService.js");
 
 // Creates router for specific API route

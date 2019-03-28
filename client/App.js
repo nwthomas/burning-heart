@@ -17,7 +17,7 @@ const App = _ => {
   });
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/accounts/2")
+      .get("http://localhost:8000/api/restricted/accounts/1")
       .then(res => {
         setUser(res.data.account);
       })

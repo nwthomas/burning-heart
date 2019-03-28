@@ -6,11 +6,10 @@ module.exports = {
   generateToken
 };
 
-function generateToken(user) {
+function generateToken(account) {
   const payload = {
-    subject: user.id, // sub in payload is what the token is about
-    username: user.username,
-    roles: ["Student"]
+    subject: account.id, // sub in payload is what the token is about
+    username: account.username
     // Include other data as is needed
   };
 
