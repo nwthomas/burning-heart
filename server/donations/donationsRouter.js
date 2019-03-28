@@ -117,7 +117,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Donation update API route
+// Donation update by ID API route
 router.put("/:id", async (req, res) => {
   try {
     const updatedDonation = await Donations.update(req.params.id, req.body);

@@ -9,25 +9,85 @@ module.exports = {
 };
 
 function find() {
-  return db("accounts");
+  return db("accounts").select(
+    "id",
+    "username",
+    "firstName",
+    "middleName",
+    "lastName",
+    "email",
+    "phone",
+    "type",
+    "charityId",
+    "created_at",
+    "updated_at"
+  );
 }
 
 function findById(id) {
   return db("accounts")
     .where({ id })
-    .first();
+    .first()
+    .select(
+      "id",
+      "username",
+      "firstName",
+      "middleName",
+      "lastName",
+      "email",
+      "phone",
+      "type",
+      "charityId",
+      "created_at",
+      "updated_at"
+    );
 }
 
 function insert(creds) {
   return db("accounts")
     .insert(creds)
-    .then(ids => ids);
+    .then(id => {
+      return db("accounts")
+        .where({ id })
+        .first()
+        .select(
+          "id",
+          "username",
+          "firstName",
+          "middleName",
+          "lastName",
+          "email",
+          "phone",
+          "type",
+          "charityId",
+          "created_at",
+          "updated_at"
+        );
+    });
 }
 
 function update(id, changes) {
   return db("accounts")
     .where({ id })
-    .update(changes);
+    .update(changes)
+    .then(id => {
+      return db("accounts")
+        .where({ id })
+        .first()
+        .select(
+          "id",
+          "username",
+          "firstName",
+          "middleName",
+          "lastName",
+          "email",
+          "phone",
+          "type",
+          "charityId",
+          "created_at",
+          "updated_at"
+        );
+    });
 }
 
 function remove(id) {

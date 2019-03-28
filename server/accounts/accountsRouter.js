@@ -4,20 +4,20 @@ const bcrypt = require("bcryptjs");
 
 const router = express();
 
+// Accounts retrieval API route
 router.get("/", async (req, res) => {
   try {
     const accounts = await Accounts.find();
     if (accounts.length) {
       res.status(200).json({
         error: false,
-        message: "The accounts were retrieved from the database.",
+        message: "The accounts were retrieved successfully from the database.",
         accounts
       });
     } else {
       res.status(404).json({
         error: true,
-        message:
-          "There was an error retrieving your accounts from the database.",
+        message: "The accounts could not be retrieved from the database.",
         accounts: []
       });
     }
@@ -30,14 +30,14 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get account by ID request
+// Account retrieval by ID API route
 router.get("/:id", async (req, res) => {
   try {
     const account = await Accounts.findById(req.params.id);
     if (account) {
       res.status(200).json({
         error: false,
-        message: "The account was retrieved from the database.",
+        message: "Your account was retrieved successfully from the database.",
         account
       });
     } else {
@@ -57,37 +57,21 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Update account by ID request
+// Account update by ID API route
 router.put("/:id", async (req, res) => {
-  // Encryption of password
+  // Conditional encryption of password
   if (req.body.password) {
-    const hash = bcrypt.hashSync(req.body.password, 14);
+    const hash = bcrypt.hashSync(req.body.password, 14); // Must be the same as account creation
     req.body.password = hash;
   }
   try {
     const account = await Accounts.update(req.params.id, req.body);
     if (account) {
-      const newAccount = await Accounts.findById(req.params.id);
-      if (newAccount) {
-        const { id, username, email, created_at, updated_at } = newAccount;
-        res.status(200).json({
-          error: false,
-          message: "Your account was successfully updated in the database.",
-          account: {
-            id,
-            username,
-            email,
-            created: created_at,
-            updated: updated_at
-          }
-        });
-      } else {
-        res.status(404).json({
-          error: true,
-          message: "Your account was created but could not be retrieved.",
-          account: {}
-        });
-      }
+      res.status(200).json({
+        error: false,
+        message: "Your account was updated successfully in the database.",
+        account
+      });
     } else {
       res.status(404).json({
         error: true,
@@ -104,22 +88,21 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// Account delete by ID API request
 router.delete("/:id", async (req, res) => {
   try {
     const deleted = await Accounts.remove(req.params.id);
     if (deleted) {
-      res
-        .status(200)
-        .json({
-          error: false,
-          message: "Your account was deleted successfully.",
-          numDeleted: 1
-        });
+      res.status(200).json({
+        error: false,
+        message: "Your account was deleted successfully.",
+        numDeleted: deleted
+      });
     } else {
       res.status(404).json({
         error: true,
         message: "There was an error deleting your account in the database.",
-        account: {}
+        numDeleted: 0
       });
     }
   } catch (error) {
