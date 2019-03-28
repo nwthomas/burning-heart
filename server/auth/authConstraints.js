@@ -1,4 +1,4 @@
-const Users = require("../users/usersModel.js");
+const Accounts = require("../accounts/accountsModel.js");
 
 module.exports = authConstraints;
 
@@ -45,12 +45,12 @@ async function authConstraints(req, res, next) {
 
 // Returns boolean flag after checking the database
 async function checkForUsername(username) {
-  const foundUsername = await Users.find().where({ username });
+  const foundUsername = await Accounts.find().where({ username });
   return foundUsername.length ? true : false;
 }
 
 // Returns boolean flag after checking the database
 async function checkForEmail(email) {
-  const foundEmail = await Users.find().where({ email });
+  const foundEmail = await Accounts.find().where({ email });
   return foundEmail.length ? true : false;
 }
