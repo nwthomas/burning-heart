@@ -18,16 +18,25 @@ function findById(id) {
     .first();
 }
 
-function insert(profile) {
+function insert(charity) {
   return db("charities")
-    .insert(profile)
-    .then(ids => ids);
+    .insert(charity)
+    .then(id => {
+      return db("charities")
+        .where({ id: id[0] })
+        .first();
+    });
 }
 
 function update(id, changes) {
   return db("charities")
     .where({ id })
-    .update(changes);
+    .update(changes)
+    .then(updated => {
+      return db("charities")
+        .where({ id })
+        .first();
+    });
 }
 
 function remove(id) {

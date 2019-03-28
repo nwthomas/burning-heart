@@ -3,117 +3,141 @@ const Charities = require("./charitiesModel.js");
 
 const router = express.Router();
 
-// Get all charities in database route
+// Charities retrieval API route
 router.get("/", async (req, res) => {
   try {
     const charities = await Charities.find();
     if (charities.length) {
       res.status(200).json({
-        message: "The charities were found in the database.",
+        error: false,
+        message: "The charities were retrieved successfully from the database.",
         charities
       });
     } else {
-      res
-        .status(404)
-        .json({ message: "No charities could be found in the databse." });
+      res.status(404).json({
+        error: true,
+        message: "No charities could be retrieved from the databse.",
+        charities: []
+      });
     }
   } catch (error) {
     res.status(500).json({
-      message: "There was an error retrieving the charities from the database."
+      error: true,
+      message: "There was an error processing your request.",
+      charities: []
     });
   }
 });
 
-// Get charity by ID route
+// Charities retrieval by ID API route
 router.get("/:id", async (req, res) => {
   try {
-    const charities = await Charities.findById(req.params.id);
-    if (charities) {
+    const charity = await Charities.findById(req.params.id);
+    if (charity) {
       res.status(200).json({
-        message: "The charity was found in the database.",
-        charities
-      });
-    } else {
-      res
-        .status(404)
-        .json({ message: "The charity could not be found in the database." });
-    }
-  } catch (error) {
-    res.status(500).json({
-      message: "There was an error retrieving the charity from the database."
-    });
-  }
-});
-
-// Create new charity route
-router.post("/", async (req, res) => {
-  if (!req.body.name) {
-    res
-      .status(404)
-      .json({ message: "Please include a name to update and try again." });
-  }
-  try {
-    const newCharity = await Charities.insert(req.body);
-    if (newCharity) {
-      res.status(201).json({
-        message: "The new charity was created successfully.",
-        numCreated: newCharity
+        error: false,
+        message: "The charity was retrieved successfully from the database.",
+        charity
       });
     } else {
       res.status(404).json({
-        message: "The new charity could not be created in the database."
+        error: true,
+        message: "The charity could not be retrieved from the database.",
+        charity: {}
       });
     }
   } catch (error) {
     res.status(500).json({
-      message:
-        "There was an error while creating the new charity in the database."
+      error: true,
+      message: "There was an error processing your request.",
+      charity: {}
     });
   }
 });
 
-// Update charity route
-router.put("/:id", async (req, res) => {
-  if (!req.body.name) {
-    res
-      .status(404)
-      .json({ message: "Please include a name to update and try again." });
+// Charity creation API route
+router.post("/", async (req, res) => {
+  if (!req.body.charityName) {
+    res.status(400).json({
+      error: true,
+      message: "Please include the required charity information and try again.",
+      charity: {}
+    });
+  } else {
+    try {
+      const charity = await Charities.insert(req.body);
+      if (charity) {
+        res.status(201).json({
+          error: false,
+          message: "Your charity was created successfully in the database.",
+          charity
+        });
+      } else {
+        res.status(404).json({
+          error: true,
+          message: "Your charity could not be created in the database.",
+          charity: {}
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
+        error: true,
+        message: "There was an error processing your request.",
+        charity: {}
+      });
+    }
   }
+});
+
+// Charity update by ID API route
+router.put("/:id", async (req, res) => {
   try {
-    const updatedCharity = await Charities.update(req.params.id, req.body);
-    if (updatedCharity) {
+    const charity = await Charities.update(req.params.id, req.body);
+    console.log(charity);
+    if (charity) {
       res.status(200).json({
-        message: "The charity was updated in the database.",
-        numUpdated: updatedCharity
+        error: false,
+        message: "The charity was updated successfully in the database.",
+        charity
       });
     } else {
-      res
-        .status(404)
-        .json({ message: "The charity could not be found in the database." });
+      res.status(404).json({
+        error: true,
+        message: "The charity could not be found in the database.",
+        charity: {}
+      });
     }
   } catch (error) {
     res.status(500).json({
-      message: "There was an error updating the charity in the database."
+      error: true,
+      message: "There was an error processing your request.",
+      charity: {}
     });
   }
 });
 
-// Delete charity route
+// Charity delete by ID API route
 router.delete("/:id", async (req, res) => {
   try {
-    const deletedCharity = await Charities.remove(req.params.id);
-    if (deletedCharity) {
+    const deleted = await Charities.remove(req.params.id);
+    if (deleted) {
       res.status(200).json({
-        message: "The charity was deleted from the database successfully."
+        error: false,
+        message: "The charity was deleted successfully from the database.",
+        numDeleted: deleted
       });
     } else {
       res.status(404).json({
-        message: "The charity could not be found in the database."
+        error: true,
+        message: "The charity could not be deleted from the database.",
+        numDeleted: 0
       });
     }
   } catch (error) {
     res.status(500).json({
-      message: "There was an error deleting the charity in the database."
+      error: true,
+      message: "There was an error processing your request.",
+      numDeleted: 0
     });
   }
 });

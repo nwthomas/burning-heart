@@ -95,15 +95,15 @@ router.post("/", async (req, res) => {
     try {
       const donation = await Donations.insert(req.body);
       if (donation) {
-        res.status(200).json({
+        res.status(201).json({
           error: false,
-          message: "Your donation was created successfully.",
+          message: "Your donation was created successfully in the database.",
           donation
         });
       } else {
         res.status(404).json({
           error: true,
-          message: "Your donation was created but could not be returned.",
+          message: "Your donation could not be created in the database.",
           donation: {}
         });
       }
@@ -124,13 +124,13 @@ router.put("/:id", async (req, res) => {
     if (updatedDonation) {
       res.status(200).json({
         error: false,
-        message: "Your donation was updated successfully.",
+        message: "Your donation was updated successfully in the database.",
         donation: updatedDonation
       });
     } else {
       res.status(404).json({
         error: true,
-        message: "Your donation was updated but could not be returned.",
+        message: "Your donation could not be updated in the database.",
         donation: {}
       });
     }
@@ -150,13 +150,13 @@ router.delete("/:id", async (req, res) => {
     if (deleted) {
       res.status(200).json({
         error: false,
-        message: "Your donation was deleted successfully.",
+        message: "Your donation was deleted successfully from the database.",
         numDeleted: deleted
       });
     } else {
       res.status(404).json({
         error: true,
-        message: "Your donation could not be deleted.",
+        message: "Your donation could not be deleted in the database.",
         numDeleted: 0
       });
     }
