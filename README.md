@@ -1,5 +1,5 @@
 <h1 align="center"><img src="./assets/readme-images/readme-header.png" alt="Burning Heart repo banner" /></h1>
-<h4 align="center">A charitable micro-donation app for people who like to give</h4>
+<h4 align="center">A charitable micro-donation mobile and web app for people who like to give</h4>
 <br>
 
 # What is Burning Heart?
