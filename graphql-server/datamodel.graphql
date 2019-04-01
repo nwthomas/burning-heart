@@ -1,0 +1,47 @@
+type Account {
+  id: ID! @unique
+  username: String! @unique
+  password: String!
+  firstName: String!
+  middleName: String!
+  lastName: String!
+  email: String! @unique
+  phone: String! @unique
+  type: String!
+  charityId: Int! # Foreign key reference to charity type
+  driversLicense: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Charity {
+  id: ID! @unique
+  name: String! @unique
+  phone: String! @unique
+  street1: String!
+  street2: String!
+  city: String!
+  zip: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Donation {
+  id: ID! @unique
+  charityId: Int! # Foreign key reference to charity
+  accountId: Int! # Foreign key reference to account
+  amount: Int! # Stored in cents
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type creditCard {
+  id: ID! @unique
+  cardNumber: Int!
+  expDate: Int!
+  securityCode: Int!
+  accountId: Int! # Foreign key reference to account
+  cardName: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

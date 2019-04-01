@@ -1,0 +1,2 @@
+endpoint: https://us1.prisma.sh/nwthomas/burning-server/dev
+datamodel: datamodel.prisma
