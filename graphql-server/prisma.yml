@@ -1,2 +1,6 @@
-endpoint: https://us1.prisma.sh/nwthomas/burning-server/dev
-datamodel: datamodel.prisma
+endpoint: ${env:PRISMA_ENDPOINT}
+datamodel: datamodel.graphql
+# secret: ${env:PRISMA_SECRET}
+hooks:
+  post-depley:
+    - graphql get-schema -p prisma
