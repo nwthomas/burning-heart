@@ -1,19 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import styled from "styled-components/native";
+
+import { ProfileCard } from "../../Presentational/ProfileCard";
+import { ContributionsCard } from "../../Presentational/ContributionsCard";
+import { CardInformation } from "../../Presentational/CardInformation";
+
+const ProfileContainer = styled.View`
+  flex: 1;
+  align-self: stretch;
+`;
 
 const ProfileView = props => {
   return (
-    <View home={props.history}>
-      <Text style={styles.profileText}>This is the profile screen.</Text>
-    </View>
+    <ProfileContainer>
+      <CardInformation />
+      <ContributionsCard />
+      <ProfileCard />
+    </ProfileContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  profileText: {
-    fontFamily: "Roboto-Medium",
-    fontSize: 20
-  }
-});
 
 export default ProfileView;

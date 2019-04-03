@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     alignItems: "center",
-    backgroundColor: "#000000"
+    backgroundColor: "#ffffff"
   }
 });
 
