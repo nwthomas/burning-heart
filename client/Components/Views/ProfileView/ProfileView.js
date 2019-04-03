@@ -5,13 +5,13 @@ import { ProfileCard } from "../../Presentational/ProfileCard";
 import { ContributionsCard } from "../../Presentational/ContributionsCard";
 import { CardInformation } from "../../Presentational/CardInformation";
 
-const ProfileView = props => {
+const ProfileView = ({ user }) => {
   return (
     <View style={styles.profileContainer}>
       <StatusBar backgroundColor="#1A2431" barStyle="light-content" />
-      <CardInformation />
-      <ContributionsCard />
-      <ProfileCard />
+      <CardInformation user={user} />
+      <ContributionsCard user={user} />
+      <ProfileCard user={user} />
     </View>
   );
 };
