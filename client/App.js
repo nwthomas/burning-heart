@@ -12,16 +12,27 @@ import { Header } from "./Components/Presentational/Header";
 import { Navbar } from "./Components/Presentational/Navbar";
 
 const App = _ => {
-  const [user, setUser] = useState({
-    username: ""
-  });
+  const [user, setUser] = useState({});
+  const [donations, setDonations] = useState([]);
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/restricted/accounts/1")
-      .then(res => {
-        setUser(res.data.account);
-      })
-      .catch(err => console.log(err));
+    if (!user.username) {
+      axios
+        .get("http://localhost:8000/api/restricted/accounts/1")
+        .then(res => {
+          setUser(res.data.account);
+        })
+        .catch(err => console.log(err));
+    }
+    if (!donations.length) {
+      axios
+        .get("http://localhost:8000/api/restricted/donations/account/1")
+        .then(res => {
+          setDonations(res.data.donations);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }, []);
   return (
     <NativeRouter>
@@ -30,7 +41,9 @@ const App = _ => {
         <Route
           exact
           path="/"
-          render={props => <HomeView {...props} user={user} />}
+          render={props => (
+            <HomeView {...props} user={user} donations={donations} />
+          )}
         />
         <Route
           exact
@@ -53,7 +66,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     alignItems: "center",
-    backgroundColor: "#ffffff"
+    backgroundColor: "#000000"
   }
 });
 

@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Donation retreival by account ID API route
+// Donation retrieval by account ID API route
 router.get("/account/:id", async (req, res) => {
   try {
     const donations = await Donations.findByAccountId(req.params.id);

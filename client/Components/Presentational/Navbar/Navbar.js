@@ -9,13 +9,13 @@ import profileIcon from "../../../assets/images/profile-icon.png";
 const Navbar = _ => {
   return (
     <View style={styles.container}>
-      <Link underlayColor={styles.linkBackground} to="/search">
+      <Link underlayColor={"#000000"} to="/search">
         <Image style={styles.navbarImg} source={searchIcon} />
       </Link>
-      <Link underlayColor={styles.linkBackground} exact to="/">
+      <Link underlayColor={"#000000"} exact to="/">
         <Image style={styles.navbarImg} source={homeIcon} />
       </Link>
-      <Link underlayColor={styles.linkBackground} to="/profile">
+      <Link underlayColor={"#000000"} to="/profile">
         <Image style={styles.navbarImg} source={profileIcon} />
       </Link>
     </View>
@@ -23,12 +23,9 @@ const Navbar = _ => {
 };
 
 const styles = StyleSheet.create({
-  linkBackground: {
-    backgroundColor: "#ffffff"
-  },
   container: {
     zIndex: 10,
-    height: 80,
+    height: 90,
     paddingTop: 10,
     alignSelf: "stretch",
     position: "absolute",
@@ -39,21 +36,12 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-    borderRadius: 8,
-    backgroundColor: "#ffffff"
+    backgroundColor: "#000000"
   },
   navbarImg: {
     height: 40,
     width: 40,
-    backgroundColor: "#ffffff"
+    backgroundColor: "#000000"
   }
 });
 
