@@ -1,23 +1,26 @@
 import React from "react";
-import styled from "styled-components/native";
+import { View, StatusBar, StyleSheet } from "react-native";
 
 import { ProfileCard } from "../../Presentational/ProfileCard";
 import { ContributionsCard } from "../../Presentational/ContributionsCard";
 import { CardInformation } from "../../Presentational/CardInformation";
 
-const ProfileContainer = styled.View`
-  flex: 1;
-  align-self: stretch;
-`;
-
 const ProfileView = props => {
   return (
-    <ProfileContainer>
+    <View style={styles.profileContainer}>
+      <StatusBar backgroundColor="#1A2431" barStyle="light-content" />
       <CardInformation />
       <ContributionsCard />
       <ProfileCard />
-    </ProfileContainer>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  profileContainer: {
+    flex: 1,
+    alignSelf: "stretch"
+  }
+});
 
 export default ProfileView;
