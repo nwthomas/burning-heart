@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
+require("dotenv").config();
 const Accounts = require("../accounts/accountsModel.js");
 const tokenService = require("../auth/tokenService.js");
 const authConstraints = require("./authConstraints.js"); // Error handling middleware for duplicate usernames and passwords
@@ -8,7 +9,7 @@ const router = express.Router();
 
 // Auth account creation API route
 router.post("/register", authConstraints, async (req, res) => {
-  // Encryption of password
+  // Salt/hash of password
   const hash = bcrypt.hashSync(req.body.password, 14);
   req.body.password = hash;
   try {

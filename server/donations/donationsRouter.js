@@ -29,6 +29,32 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Donationa retrieval by donation ID API route
+router.get("/:id", async (req, res) => {
+  try {
+    const donation = await Donations.findById(req.params.id);
+    if (donation) {
+      res.status(200).json({
+        error: false,
+        message: "The donation was retrieved successfully from the database.",
+        donation
+      });
+    } else {
+      res.status(404).json({
+        error: true,
+        message: "The donation could not be retrieved from the database.",
+        donation: {}
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      error: true,
+      message: "There was an error processing your request.",
+      donation: {}
+    });
+  }
+});
+
 // Donation retrieval by account ID API route
 router.get("/account/:id", async (req, res) => {
   try {

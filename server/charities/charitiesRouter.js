@@ -93,7 +93,6 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const charity = await Charities.update(req.params.id, req.body);
-    console.log(charity);
     if (charity) {
       res.status(200).json({
         error: false,
