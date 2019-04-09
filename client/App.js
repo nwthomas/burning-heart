@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useReducer } from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { NativeRouter, Route, Link, ScrollView } from "react-router-native";
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet } from "react-native";
+import { NativeRouter as Router, Route } from "react-router-native";
 import axios from "react-native-axios";
+import { MyStore } from "./Components/Store/Store";
 
 import { LoginView } from "./Components/Views/LoginView";
 import { HomeView } from "./Components/Views/HomeView";
@@ -11,7 +12,7 @@ import { authenticate } from "./Components/Presentational/authenticate";
 import { Header } from "./Components/Presentational/Header";
 import { Navbar } from "./Components/Presentational/Navbar";
 
-const App = _ => {
+const App = () => {
   const [user, setUser] = useState({});
   const [donations, setDonations] = useState([]);
   useEffect(() => {
@@ -27,6 +28,7 @@ const App = _ => {
       axios
         .get("http://localhost:8000/api/restricted/donations/account/1")
         .then(res => {
+          console.log(res.data.donations);
           setDonations(res.data.donations);
         })
         .catch(err => {
@@ -35,29 +37,31 @@ const App = _ => {
     }
   }, []);
   return (
-    <NativeRouter>
-      <View style={styles.container}>
-        <Header />
-        <Route
-          exact
-          path="/"
-          render={props => (
-            <HomeView {...props} user={user} donations={donations} />
-          )}
-        />
-        <Route
-          exact
-          path="/search"
-          render={props => <SearchView {...props} user={user} />}
-        />
-        <Route
-          exact
-          path="/profile"
-          render={props => <ProfileView {...props} user={user} />}
-        />
-        <Navbar />
-      </View>
-    </NativeRouter>
+    <Router>
+      <MyStore>
+        <View style={styles.container}>
+          <Header />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <HomeView {...props} user={user} donations={donations} />
+            )}
+          />
+          <Route
+            exact
+            path="/search"
+            render={props => <SearchView {...props} user={user} />}
+          />
+          <Route
+            exact
+            path="/profile"
+            render={props => <ProfileView {...props} user={user} />}
+          />
+          <Navbar />
+        </View>
+      </MyStore>
+    </Router>
   );
 };
 
