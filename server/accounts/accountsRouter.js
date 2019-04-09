@@ -57,6 +57,40 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  const { username, password, email, phone } = req.body; // Required and all unique values from client
+  if (!username || !password || !email || !phone) {
+    res.status(406).json({
+      error: true,
+      message: "Please include the required credentials and try again.",
+      user: {}
+    });
+  } else {
+    try {
+      const newUser = await Accounts.insert(req.body);
+      if (newUser) {
+        res.status(200).json({
+          error: false,
+          message: "Your account was created successfully.",
+          user: newUser
+        });
+      } else {
+        res.status(404).json({
+          error: true,
+          message: "There was an error creating your account in the database.",
+          account: {}
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
+        error: true,
+        message: "There was an error completing your request.",
+        account: {}
+      });
+    }
+  }
+});
+
 // Account update by ID API route
 router.put("/:id", async (req, res) => {
   // Conditional encryption of password

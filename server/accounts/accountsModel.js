@@ -49,9 +49,11 @@ function findById(id) {
 }
 
 function insert(creds) {
+  console.log(creds);
   return db("accounts")
     .insert(creds)
     .then(id => {
+      console.log();
       return db("accounts")
         .where({ id: id[0] })
         .select(
@@ -74,7 +76,7 @@ function update(id, changes) {
   return db("accounts")
     .where({ id })
     .update(changes)
-    .then(id => {
+    .then(res => {
       return db("accounts")
         .where({ id })
         .first()

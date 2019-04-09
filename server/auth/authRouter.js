@@ -13,7 +13,6 @@ router.post("/register", authConstraints, async (req, res) => {
   req.body.password = hash;
   try {
     const account = await Accounts.insert(req.body);
-    console.log(account);
     if (account) {
       res.status(200).json({
         error: false,
