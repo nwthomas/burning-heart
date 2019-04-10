@@ -1,15 +1,32 @@
 import React from "react";
+import { View, StyleSheet } from "react-native";
+import { NativeRouter as Router, Route } from "react-router-native";
 import PropTypes from "prop-types";
 
 import { Login } from "../../Presentational/Login";
+import { SignUp } from "../../Presentational/SignUp";
 
-const LoginView = props => {
+const LoginView = ({ setLoggedIn }) => {
   return (
-    <>
-      <Login setLoggedIn={props.setLoggedIn} />
-    </>
+    <Router>
+      <View style={styles.container}>
+        <Route
+          exact
+          path="/"
+          render={props => <Login {...props} setLoggedIn={setLoggedIn} />}
+        />
+        <Route exact path="/signup" render={props => <SignUp {...props} />} />
+      </View>
+    </Router>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignSelf: "stretch"
+  }
+});
 
 LoginView.propTypes = {
   setLoggedIn: PropTypes.func

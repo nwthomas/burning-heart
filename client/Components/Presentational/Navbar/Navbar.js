@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
-import { Link, TouchableHighlight } from "react-router-native";
+import { Link } from "react-router-native";
 
 import searchIcon from "../../../assets/images/search-icon.png";
 import homeIcon from "../../../assets/images/home-icon.png";
