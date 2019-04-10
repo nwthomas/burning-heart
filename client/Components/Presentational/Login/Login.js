@@ -14,11 +14,11 @@ import fireGif from "../../../assets/images/fire.gif";
 const Login = ({ setLoggedIn }) => {
   const [signInSelected, setSignInSelected] = useState(false);
   const [signUpSelected, setSignUpSelected] = useState(false);
-  // const optionalConfigObject = {
-  //   fallbackLabel: "Show Passcode",
-  //   unifiedErrors: false,
-  //   passcodeFallback: true
-  // };
+  const optionalConfigObject = {
+    fallbackLabel: "Show Passcode",
+    unifiedErrors: false,
+    passcodeFallback: true
+  };
   // const handlePress = e => {
   //   e.preventDefault();
   //   TouchID.isSupported(optionalConfigObject)
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
     marginLeft: 5,
-    marginBottom: 200
+    marginBottom: 150
   },
   btnContainer: {
     alignSelf: "stretch",
