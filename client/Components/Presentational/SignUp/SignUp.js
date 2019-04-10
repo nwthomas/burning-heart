@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   },
   signUpFormBox: {
     width: width - 80,
-    height: 250,
+    height: 200,
     paddingTop: 30,
     marginLeft: 40,
     marginRight: 40,

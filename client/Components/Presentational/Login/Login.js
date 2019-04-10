@@ -3,11 +3,13 @@ import {
   Text,
   View,
   StyleSheet,
-  Alert,
+  Image,
   TouchableHighlight
 } from "react-native";
 import { Link } from "react-router-native";
 import TouchID from "react-native-touch-id";
+
+import fireGif from "../../../assets/images/fire.gif";
 
 const Login = ({ setLoggedIn }) => {
   const [signInSelected, setSignInSelected] = useState(false);
@@ -38,6 +40,7 @@ const Login = ({ setLoggedIn }) => {
   };
   return (
     <View style={styles.container}>
+      <Image source={fireGif} style={styles.burningHeartGif} />
       <View style={styles.btnContainer}>
         <TouchableHighlight
           underlayColor={"#0E30F0"}
@@ -60,6 +63,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#ffffff"
+  },
+  burningHeartGif: {
+    height: 150,
+    width: 150,
+    marginLeft: 5,
+    marginBottom: 200
   },
   btnContainer: {
     alignSelf: "stretch",
