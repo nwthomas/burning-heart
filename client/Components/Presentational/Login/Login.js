@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#0E30F0",
     backgroundColor: "#0E30F0",
-    marginBottom: 25
+    marginBottom: 20
   },
   signInBtnSelected: {
     alignSelf: "stretch",
