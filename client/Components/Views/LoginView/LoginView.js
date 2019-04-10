@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { NativeRouter as Router, Route } from "react-router-native";
 import PropTypes from "prop-types";
 
-import { Login } from "../../Presentational/Login";
+import { SignIn } from "../../Presentational/SignIn";
 import { SignUp } from "../../Presentational/SignUp";
 
 const LoginView = ({ setLoggedIn }) => {
@@ -13,7 +13,7 @@ const LoginView = ({ setLoggedIn }) => {
         <Route
           exact
           path="/"
-          render={props => <Login {...props} setLoggedIn={setLoggedIn} />}
+          render={props => <SignIn {...props} setLoggedIn={setLoggedIn} />}
         />
         <Route exact path="/signup" render={props => <SignUp {...props} />} />
       </View>

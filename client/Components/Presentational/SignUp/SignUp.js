@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Text,
   View,
   StyleSheet,
   ScrollView,
   Dimensions,
-  TextInput
+  TextInput,
+  Keyboard
 } from "react-native";
 import { Link } from "react-router-native";
 
 const { width } = Dimensions.get("window"); // Get window dimensions
 
 const SignUp = props => {
+  useEffect(() => {
+    // Finish with focus events
+  }, []);
   return (
     <View style={styles.container}>
       <ScrollView
@@ -21,15 +25,10 @@ const SignUp = props => {
         snapToInterval={width} // Auto snap to center of screen on swipe
         snapToAlignment={"center"} // Snapts boxes to middle of screen
         style={styles.signUpForm}
-        contentInset={{
-          top: 0,
-          left: 40,
-          bottom: 0,
-          right: 40
-        }}
       >
         <View style={styles.signUpFormBox}>
           <TextInput
+            autofocus={true}
             style={styles.input}
             placeholder="Please enter an email"
             name="email"
@@ -43,9 +42,11 @@ const SignUp = props => {
           />
         </View>
         <View style={styles.signUpFormBox}>
+          <Text style={styles.inputTitle}>Please enter a password:</Text>
           <TextInput
+            secureTextEntry={true}
             style={styles.input}
-            placeholder="Please enter a password"
+            placeholder="Password"
             name="password"
           />
         </View>
@@ -106,12 +107,19 @@ const styles = StyleSheet.create({
   },
   signUpFormBox: {
     width: width - 80,
-    height: 200,
-    paddingTop: 30,
+    height: 150,
+    paddingTop: 45,
     marginLeft: 40,
     marginRight: 40,
     borderTopColor: "#4F68F4",
-    borderTopWidth: 1
+    borderTopWidth: 1,
+    borderBottomColor: "#4F68F4",
+    borderBottomWidth: 1
+  },
+  inputTitle: {
+    fontFamily: "Roboto-Medium",
+    fontSize: 16,
+    marginBottom: 20
   },
   input: {
     width: width - 80,

@@ -4,46 +4,69 @@ import {
   View,
   StyleSheet,
   Image,
-  TouchableHighlight
+  TouchableHighlight,
+  Alert
 } from "react-native";
 import { Link } from "react-router-native";
 import TouchID from "react-native-touch-id";
 
 import fireGif from "../../../assets/images/fire.gif";
 
-const Login = ({ setLoggedIn }) => {
+const SignIn = ({ setLoggedIn }) => {
   const [signInSelected, setSignInSelected] = useState(false);
-  const [signUpSelected, setSignUpSelected] = useState(false);
   const optionalConfigObject = {
     fallbackLabel: "Show Passcode",
     unifiedErrors: false,
     passcodeFallback: true
   };
-  // const handlePress = e => {
-  //   e.preventDefault();
-  //   TouchID.isSupported(optionalConfigObject)
-  //     .then(biometryType => {
-  //       if (biometryType === "FACEID") {
-  //         Alert.alert("FaceID is supported.");
-  //       } else {
-  //         Alert.alert("TouchID is supported.");
-  //       }
-  //     })
-  //     .catch(error => {
-  //       Alert.alert("Authentication Failed");
-  //     });
-  // };
+  // Automatically run login on component mount
+  useEffect(() => {
+    runBiometricLogin();
+  }, []);
+  // Biometric login via TouchID package that returns promise
+  const runBiometricLogin = () => {
+    TouchID.isSupported(optionalConfigObject)
+      .then(biometryType => {
+        if (biometryType === "FaceID") {
+          // Case with FaceID
+          TouchID.authenticate("Unlock with your fingerprint")
+            .then(success => {
+              setLoggedIn(true);
+            })
+            .catch(err => {
+              // Edge case fallback for manual log in
+              Alert.alert("Authentication Failed.");
+              setSignInSelected(false);
+            });
+        } else {
+          // Case with TouchID
+          TouchID.authenticate("Unlock with your fingerprint")
+            .then(success => {
+              setLoggedIn(true);
+            })
+            .catch(err => {
+              // Edge case fallback for manual log in
+              Alert.alert("Authentication Failed.");
+              setSignInSelected(false);
+            });
+        }
+      })
+      .catch(err => {
+        // Edge case fallback for manual log in
+        Alert.alert("Authentication Failed.");
+      });
+  };
   const loginApp = e => {
     e.preventDefault();
-    setSignInSelected(true);
-    setLoggedIn(true);
+    setSignInSelected(true); // Change button color
+    runBiometricLogin(); // Begin TouchID/FaceID process
   };
   return (
     <View style={styles.container}>
       <Image source={fireGif} style={styles.burningHeartGif} />
       <View style={styles.btnContainer}>
         <TouchableHighlight
-          underlayColor={"#0E30F0"}
+          underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
           onPress={loginApp}
           style={signInSelected ? styles.signInBtnSelected : styles.signInBtn}
         >
@@ -101,7 +124,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#0E30F070", // Last two numbers indicate opacity
     backgroundColor: "#0E30F070", // Last two numbers indicate opacity
-    marginBottom: 25
+    marginBottom: 20
   },
   signInBtnText: {
     color: "#ffffff",
@@ -119,4 +142,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Login;
+export default SignIn;
