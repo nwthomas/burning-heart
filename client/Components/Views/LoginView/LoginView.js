@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import { SignIn } from "../../Presentational/SignIn";
 import { SignUp } from "../../Presentational/SignUp";
+import { ManualSignIn } from "../../Presentational/ManualSignIn";
 
 const LoginView = ({ setLoggedIn }) => {
   return (
@@ -16,6 +17,11 @@ const LoginView = ({ setLoggedIn }) => {
           render={props => <SignIn {...props} setLoggedIn={setLoggedIn} />}
         />
         <Route exact path="/signup" render={props => <SignUp {...props} />} />
+        <Route
+          exact
+          path="/manual-sign-in"
+          render={props => <ManualSignIn {...props} />}
+        />
       </View>
     </Router>
   );

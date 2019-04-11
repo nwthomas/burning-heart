@@ -25,6 +25,15 @@ const SignUp = props => {
     lastName: "",
     phoneNumber: ""
   });
+  const [focusInput, setFocusInput] = useState({
+    email: true,
+    username: false,
+    password: false,
+    firstName: false,
+    middleName: false,
+    lastName: false,
+    phoneNumber: false
+  });
   const handleChange = e => {
     setFormValues({
       ...formValues,
@@ -122,7 +131,7 @@ const SignUp = props => {
       </ScrollView>
       <View style={styles.btnContainer}>
         <Link to="/" underlayColor={"#0E30F0"} style={styles.cancelBtn}>
-          <Text style={styles.cancelBtnText}>Continue</Text>
+          <Text style={styles.cancelBtnText}>Cancel</Text>
         </Link>
       </View>
       <View style={styles.signupHeader}>

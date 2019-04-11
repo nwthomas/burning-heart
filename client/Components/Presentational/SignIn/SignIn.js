@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Image,
   TouchableHighlight,
-  Alert,
   Vibration
 } from "react-native";
 import { Link } from "react-router-native";
@@ -13,11 +12,13 @@ import TouchID from "react-native-touch-id";
 
 import fireGif from "../../../assets/images/fire.gif";
 
-const SignIn = ({ setLoggedIn }) => {
-  const [signInSelected, setSignInSelected] = useState(false);
+const SignIn = ({ setLoggedIn, history }) => {
+  const [loginSelected, setLoginSelected] = useState(false);
+  const [manualLoginSelected, setManualLoginSelected] = useState(false);
+  const [biometryType, setBiometryType] = useState("");
   const optionalConfigObject = {
     fallbackLabel: "Show Passcode",
-    unifiedErrors: false,
+    unifiedErrors: true,
     passcodeFallback: true
   };
   // Automatically run login on component mount
@@ -30,38 +31,46 @@ const SignIn = ({ setLoggedIn }) => {
       .then(biometryType => {
         if (biometryType === "FaceID") {
           // Case with FaceID
+          setBiometryType(biometryType);
+
           TouchID.authenticate("Unlock with your fingerprint")
             .then(success => {
               setLoggedIn(true);
             })
             .catch(err => {
-              // Edge case fallback for manual log in
-              // Alert.alert("Authentication Failed.", );
-              setSignInSelected(false);
+              setLoginSelected(false);
+              setManualLoginSelected(false);
             });
         } else {
           // Case with TouchID
+          setBiometryType(biometryType);
+
           TouchID.authenticate("Unlock with your fingerprint")
             .then(success => {
               setLoggedIn(true);
             })
             .catch(err => {
-              // Edge case fallback for manual log in
-              // Alert.alert("Authentication Failed.");
-              setSignInSelected(false);
+              setLoginSelected(false);
+              setManualLoginSelected(false);
             });
         }
       })
       .catch(err => {
         // Edge case fallback for manual log in
-        Alert.alert("Authentication Failed.");
+        setLoginSelected(false);
+        setManualLoginSelected(false);
       });
   };
-  const loginApp = e => {
+  const bioLoginApp = e => {
     e.preventDefault();
     Vibration.vibrate(); // Rumble on press
-    setSignInSelected(true); // Change button color
+    setLoginSelected(true); // Change button color
     runBiometricLogin(); // Begin TouchID/FaceID process
+  };
+  const manualLoginApp = e => {
+    e.preventDefault();
+    setManualLoginSelected(true);
+    history.push("/manual-login");
   };
   return (
     <View style={styles.container}>
@@ -69,10 +78,19 @@ const SignIn = ({ setLoggedIn }) => {
       <View style={styles.btnContainer}>
         <TouchableHighlight
           underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
-          onPress={loginApp}
-          style={signInSelected ? styles.signInBtnSelected : styles.signInBtn}
+          onPress={bioLoginApp}
+          style={loginSelected ? styles.loginBtnSelected : styles.loginBtn}
         >
-          <Text style={styles.signInBtnText}>Sign In</Text>
+          <Text style={styles.loginBtnText}>Login With {biometryType}</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
+          onPress={manualLoginApp}
+          style={
+            manualLoginSelected ? styles.loginBtnSelected : styles.loginBtn
+          }
+        >
+          <Text style={styles.loginBtnText}>Login with Passcode</Text>
         </TouchableHighlight>
         <Link to="/signup" style={styles.signUpLink}>
           <Text style={styles.signUpLinkText}>Sign Up</Text>
@@ -104,7 +122,7 @@ const styles = StyleSheet.create({
     right: 0,
     paddingBottom: 60
   },
-  signInBtn: {
+  loginBtn: {
     alignSelf: "stretch",
     justifyContent: "center",
     marginLeft: 40,
@@ -116,7 +134,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0E30F0",
     marginBottom: 20
   },
-  signInBtnSelected: {
+  loginBtnSelected: {
     alignSelf: "stretch",
     justifyContent: "center",
     marginLeft: 40,
@@ -128,7 +146,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0E30F070", // Last two numbers indicate opacity
     marginBottom: 20
   },
-  signInBtnText: {
+  loginBtnText: {
     color: "#ffffff",
     alignSelf: "center",
     fontFamily: "Roboto-Medium",
