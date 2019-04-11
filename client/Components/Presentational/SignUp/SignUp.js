@@ -43,18 +43,16 @@ const SignUp = props => {
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <ScrollView
-        horizontal={true}
         scrollEventThrottle={16} // Sends event feedback back as fast as possible
         decelerationRate={0} // Stops scroll instantly
         snapToInterval={width} // Auto snap to center of screen on swipe
         snapToAlignment={"center"} // Snapts boxes to middle of screen
         style={styles.signUpForm}
-        keyboardDismissMode={"none"}
-        keyboardShouldPersistTaps={"always"}
-        showsHorizontalScrollIndicator={false}
+        keyboardDismissMode={"interactive"}
+        keyboardShouldPersistTaps={"never"}
       >
         <View style={styles.signUpFormBox}>
-          <Text style={styles.inputTitle}>Please enter your email:</Text>
+          <Text style={styles.inputTitle}>Enter your email:</Text>
           <TextInput
             returnKeyType="next"
             autofocus={true}
@@ -65,7 +63,7 @@ const SignUp = props => {
           />
         </View>
         <View style={styles.signUpFormBox}>
-          <Text style={styles.inputTitle}>Please enter your username:</Text>
+          <Text style={styles.inputTitle}>Enter your username:</Text>
           <TextInput
             returnKeyType="next"
             style={styles.input}
@@ -75,7 +73,7 @@ const SignUp = props => {
           />
         </View>
         <View style={styles.signUpFormBox}>
-          <Text style={styles.inputTitle}>Please enter your password:</Text>
+          <Text style={styles.inputTitle}>Enter your password:</Text>
           <TextInput
             returnKeyType="next"
             secureTextEntry={true}
@@ -86,7 +84,7 @@ const SignUp = props => {
           />
         </View>
         <View style={styles.signUpFormBox}>
-          <Text style={styles.inputTitle}>Please enter your first name:</Text>
+          <Text style={styles.inputTitle}>Enter your first name:</Text>
           <TextInput
             returnKeyType="next"
             style={styles.input}
@@ -96,7 +94,7 @@ const SignUp = props => {
           />
         </View>
         <View style={styles.signUpFormBox}>
-          <Text style={styles.inputTitle}>Please enter your middle name:</Text>
+          <Text style={styles.inputTitle}>Enter your middle name:</Text>
           <TextInput
             returnKeyType="next"
             style={styles.input}
@@ -106,9 +104,8 @@ const SignUp = props => {
           />
         </View>
         <View style={styles.signUpFormBox}>
-          <Text style={styles.inputTitle}>Please enter your last name:</Text>
+          <Text style={styles.inputTitle}>Enter your last name:</Text>
           <TextInput
-            returnKeyType="next"
             style={styles.input}
             placeholder="Last name"
             name="lastName"
@@ -116,7 +113,7 @@ const SignUp = props => {
           />
         </View>
         <View style={styles.signUpFormBox}>
-          <Text style={styles.inputTitle}>Please enter your phone number:</Text>
+          <Text style={styles.inputTitle}>Enter your phone number:</Text>
           <TextInput
             returnKeyType="next"
             style={styles.input}
@@ -125,15 +122,12 @@ const SignUp = props => {
             onChange={handleChange}
           />
         </View>
-        <View style={styles.signUpFormBox}>
-          <Text>Submit</Text>
+        <View style={styles.btnContainer}>
+          <Link to="/" underlayColor={"#0E30F0"} style={styles.cancelBtn}>
+            <Text style={styles.cancelBtnText}>Cancel</Text>
+          </Link>
         </View>
       </ScrollView>
-      <View style={styles.btnContainer}>
-        <Link to="/" underlayColor={"#0E30F0"} style={styles.cancelBtn}>
-          <Text style={styles.cancelBtnText}>Cancel</Text>
-        </Link>
-      </View>
       <View style={styles.signupHeader}>
         <Image source={signupPerson} style={styles.signupPerson} />
       </View>
@@ -154,18 +148,21 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
+    marginRight: 40,
+    marginLeft: 40,
     alignSelf: "stretch",
     justifyContent: "flex-end",
     alignContent: "flex-end",
     height: 149,
     zIndex: 10
+    // borderBottomColor: "#4F68F4",
+    // borderBottomWidth: 1
   },
   signupPerson: {
     position: "absolute",
     top: 0,
     right: 0,
-    marginTop: 75,
-    marginRight: 30,
+    marginTop: 60,
     height: 70,
     width: 50
   },
@@ -173,16 +170,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: "stretch",
     marginTop: 150,
+    paddingTop: 20,
     height: 100
   },
   signUpFormBox: {
     width: width - 80,
-    height: 150,
-    paddingTop: 45,
+    height: 110,
     marginLeft: 40,
-    marginRight: 40,
-    borderTopColor: "#4F68F4",
-    borderTopWidth: 1
+    marginRight: 40
   },
   inputTitle: {
     fontFamily: "Roboto-Medium",
@@ -213,7 +208,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#0E30F0",
     backgroundColor: "#0E30F0",
-    marginBottom: 20
+    marginBottom: 50
   },
   cancelBtnSelected: {
     alignSelf: "stretch",

@@ -3,9 +3,9 @@ import { View, StyleSheet } from "react-native";
 import { NativeRouter as Router, Route } from "react-router-native";
 import PropTypes from "prop-types";
 
-import { SignIn } from "../../Presentational/SignIn";
+import { Login } from "../../Presentational/Login";
 import { SignUp } from "../../Presentational/SignUp";
-import { ManualSignIn } from "../../Presentational/ManualSignIn";
+import { ManualLogin } from "../../Presentational/ManualLogin";
 
 const LoginView = ({ setLoggedIn }) => {
   return (
@@ -14,13 +14,13 @@ const LoginView = ({ setLoggedIn }) => {
         <Route
           exact
           path="/"
-          render={props => <SignIn {...props} setLoggedIn={setLoggedIn} />}
+          render={props => <Login {...props} setLoggedIn={setLoggedIn} />}
         />
         <Route exact path="/signup" render={props => <SignUp {...props} />} />
         <Route
           exact
-          path="/manual-sign-in"
-          render={props => <ManualSignIn {...props} />}
+          path="/manual-login"
+          render={props => <ManualLogin {...props} />}
         />
       </View>
     </Router>

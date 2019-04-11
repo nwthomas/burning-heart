@@ -12,7 +12,7 @@ import TouchID from "react-native-touch-id";
 
 import fireGif from "../../../assets/images/fire.gif";
 
-const SignIn = ({ setLoggedIn, history }) => {
+const Login = ({ setLoggedIn, history }) => {
   const [loginSelected, setLoginSelected] = useState(false);
   const [manualLoginSelected, setManualLoginSelected] = useState(false);
   const [biometryType, setBiometryType] = useState("");
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    paddingBottom: 60
+    paddingBottom: 30
   },
   loginBtn: {
     alignSelf: "stretch",
@@ -162,4 +162,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SignIn;
+export default Login;
