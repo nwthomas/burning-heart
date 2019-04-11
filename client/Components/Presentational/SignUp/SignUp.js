@@ -7,6 +7,7 @@ import {
   Dimensions,
   TextInput,
   KeyboardAvoidingView,
+  TouchableHighlight,
   Image
 } from "react-native";
 import { Link } from "react-router-native";
@@ -34,11 +35,16 @@ const SignUp = props => {
     lastName: false,
     phoneNumber: false
   });
-  const handleChange = e => {
+  const handleChange = (name, value) => {
     setFormValues({
       ...formValues,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+  };
+  const createAccount = e => {
+    e.preventDefault();
+    console.log(formValues);
+    // Finish form here
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -58,8 +64,9 @@ const SignUp = props => {
             autofocus={true}
             style={styles.input}
             placeholder="Email"
-            name="email"
-            onChange={handleChange}
+            id="email"
+            value={formValues.email}
+            onChangeText={text => handleChange("email", text)}
           />
         </View>
         <View style={styles.signUpFormBox}>
@@ -68,8 +75,9 @@ const SignUp = props => {
             returnKeyType="next"
             style={styles.input}
             placeholder="Username"
-            name="username"
-            onChange={handleChange}
+            id="username"
+            value={formValues.username}
+            onChangeText={text => handleChange("username", text)}
           />
         </View>
         <View style={styles.signUpFormBox}>
@@ -79,8 +87,9 @@ const SignUp = props => {
             secureTextEntry={true}
             style={styles.input}
             placeholder="Password"
-            name="password"
-            onChange={handleChange}
+            id="password"
+            value={formValues.password}
+            onChangeText={text => handleChange("password", text)}
           />
         </View>
         <View style={styles.signUpFormBox}>
@@ -89,8 +98,9 @@ const SignUp = props => {
             returnKeyType="next"
             style={styles.input}
             placeholder="First name"
-            name="firstName"
-            onChange={handleChange}
+            id="firstName"
+            value={formValues.firstName}
+            onChangeText={text => handleChange("firstName", text)}
           />
         </View>
         <View style={styles.signUpFormBox}>
@@ -99,8 +109,9 @@ const SignUp = props => {
             returnKeyType="next"
             style={styles.input}
             placeholder="Middle name"
-            name="middleName"
-            onChange={handleChange}
+            id="middleName"
+            value={formValues.middleName}
+            onChangeText={text => handleChange("middleName", text)}
           />
         </View>
         <View style={styles.signUpFormBox}>
@@ -108,8 +119,9 @@ const SignUp = props => {
           <TextInput
             style={styles.input}
             placeholder="Last name"
-            name="lastName"
-            onChange={handleChange}
+            id="lastName"
+            value={formValues.lastName}
+            onChangeText={text => handleChange("lastName", text)}
           />
         </View>
         <View style={styles.signUpFormBox}>
@@ -118,17 +130,26 @@ const SignUp = props => {
             returnKeyType="next"
             style={styles.input}
             placeholder="Phone number"
-            name="phoneNumber"
-            onChange={handleChange}
+            id="phoneNumber"
+            value={formValues.phoneNumber}
+            onChangeText={text => handleChange("phoneNumber", text)}
           />
         </View>
         <View style={styles.btnContainer}>
+          <TouchableHighlight
+            underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
+            onPress={createAccount}
+            style={styles.submitBtn}
+          >
+            <Text style={styles.btnText}>Submit</Text>
+          </TouchableHighlight>
           <Link to="/" underlayColor={"#0E30F0"} style={styles.cancelBtn}>
-            <Text style={styles.cancelBtnText}>Cancel</Text>
+            <Text style={styles.btnText}>Cancel</Text>
           </Link>
         </View>
       </ScrollView>
       <View style={styles.signupHeader}>
+        <Text style={styles.signupTitle}>Sign Up</Text>
         <Image source={signupPerson} style={styles.signupPerson} />
       </View>
     </KeyboardAvoidingView>
@@ -158,6 +179,16 @@ const styles = StyleSheet.create({
     // borderBottomColor: "#4F68F4",
     // borderBottomWidth: 1
   },
+  signupTitle: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    height: 70,
+    marginTop: 100,
+    fontFamily: "OpenSans-Bold",
+    fontSize: 28,
+    color: "#4F68F4"
+  },
   signupPerson: {
     position: "absolute",
     top: 0,
@@ -182,7 +213,7 @@ const styles = StyleSheet.create({
   inputTitle: {
     fontFamily: "Roboto-Medium",
     fontSize: 16,
-    marginBottom: 20
+    marginBottom: 10
   },
   input: {
     width: width - 80,
@@ -198,6 +229,18 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     alignContent: "center"
   },
+  submitBtn: {
+    alignSelf: "stretch",
+    justifyContent: "center",
+    marginLeft: 40,
+    marginRight: 40,
+    height: 45,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "#0E30F0",
+    backgroundColor: "#0E30F0",
+    marginBottom: 20
+  },
   cancelBtn: {
     alignSelf: "stretch",
     justifyContent: "center",
@@ -208,7 +251,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#0E30F0",
     backgroundColor: "#0E30F0",
-    marginBottom: 50
+    marginBottom: 60
   },
   cancelBtnSelected: {
     alignSelf: "stretch",
@@ -222,7 +265,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0E30F070", // Last two numbers indicate opacity
     marginBottom: 20
   },
-  cancelBtnText: {
+  btnText: {
     color: "#ffffff",
     alignSelf: "center",
     fontFamily: "Roboto-Medium",
