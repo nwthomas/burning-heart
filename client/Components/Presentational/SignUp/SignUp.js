@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -6,18 +6,33 @@ import {
   ScrollView,
   Dimensions,
   TextInput,
-  Keyboard
+  KeyboardAvoidingView,
+  Image
 } from "react-native";
 import { Link } from "react-router-native";
+
+import signupPerson from "../../../assets/images/signup-person.gif";
 
 const { width } = Dimensions.get("window"); // Get window dimensions
 
 const SignUp = props => {
-  useEffect(() => {
-    // Finish with focus events
-  }, []);
+  const [formValues, setFormValues] = useState({
+    email: "",
+    username: "",
+    password: "",
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    phoneNumber: ""
+  });
+  const handleChange = e => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value
+    });
+  };
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior="padding">
       <ScrollView
         horizontal={true}
         scrollEventThrottle={16} // Sends event feedback back as fast as possible
@@ -25,57 +40,80 @@ const SignUp = props => {
         snapToInterval={width} // Auto snap to center of screen on swipe
         snapToAlignment={"center"} // Snapts boxes to middle of screen
         style={styles.signUpForm}
+        keyboardDismissMode={"none"}
+        keyboardShouldPersistTaps={"always"}
+        showsHorizontalScrollIndicator={false}
       >
         <View style={styles.signUpFormBox}>
+          <Text style={styles.inputTitle}>Please enter your email:</Text>
           <TextInput
+            returnKeyType="next"
             autofocus={true}
             style={styles.input}
-            placeholder="Please enter an email"
+            placeholder="Email"
             name="email"
+            onChange={handleChange}
           />
         </View>
         <View style={styles.signUpFormBox}>
+          <Text style={styles.inputTitle}>Please enter your username:</Text>
           <TextInput
+            returnKeyType="next"
             style={styles.input}
-            placeholder="Please enter a username"
+            placeholder="Username"
             name="username"
+            onChange={handleChange}
           />
         </View>
         <View style={styles.signUpFormBox}>
-          <Text style={styles.inputTitle}>Please enter a password:</Text>
+          <Text style={styles.inputTitle}>Please enter your password:</Text>
           <TextInput
+            returnKeyType="next"
             secureTextEntry={true}
             style={styles.input}
             placeholder="Password"
             name="password"
+            onChange={handleChange}
           />
         </View>
         <View style={styles.signUpFormBox}>
+          <Text style={styles.inputTitle}>Please enter your first name:</Text>
           <TextInput
+            returnKeyType="next"
             style={styles.input}
-            placeholder="Please enter a first name"
+            placeholder="First name"
             name="firstName"
+            onChange={handleChange}
           />
         </View>
         <View style={styles.signUpFormBox}>
+          <Text style={styles.inputTitle}>Please enter your middle name:</Text>
           <TextInput
+            returnKeyType="next"
             style={styles.input}
-            placeholder="Please enter a middle name"
+            placeholder="Middle name"
             name="middleName"
+            onChange={handleChange}
           />
         </View>
         <View style={styles.signUpFormBox}>
+          <Text style={styles.inputTitle}>Please enter your last name:</Text>
           <TextInput
+            returnKeyType="next"
             style={styles.input}
-            placeholder="Please enter a last name"
+            placeholder="Last name"
             name="lastName"
+            onChange={handleChange}
           />
         </View>
         <View style={styles.signUpFormBox}>
+          <Text style={styles.inputTitle}>Please enter your phone number:</Text>
           <TextInput
+            returnKeyType="next"
             style={styles.input}
-            placeholder="Please enter a phone number"
+            placeholder="Phone number"
             name="phoneNumber"
+            onChange={handleChange}
           />
         </View>
         <View style={styles.signUpFormBox}>
@@ -84,10 +122,13 @@ const SignUp = props => {
       </ScrollView>
       <View style={styles.btnContainer}>
         <Link to="/" underlayColor={"#0E30F0"} style={styles.cancelBtn}>
-          <Text style={styles.cancelBtnText}>Cancel</Text>
+          <Text style={styles.cancelBtnText}>Continue</Text>
         </Link>
       </View>
-    </View>
+      <View style={styles.signupHeader}>
+        <Image source={signupPerson} style={styles.signupPerson} />
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -98,6 +139,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "stretch",
     backgroundColor: "#ffffff"
+  },
+  signupHeader: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    alignSelf: "stretch",
+    justifyContent: "flex-end",
+    alignContent: "flex-end",
+    height: 149,
+    zIndex: 10
+  },
+  signupPerson: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    marginTop: 75,
+    marginRight: 30,
+    height: 70,
+    width: 50
   },
   signUpForm: {
     flex: 1,
@@ -112,9 +173,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     marginRight: 40,
     borderTopColor: "#4F68F4",
-    borderTopWidth: 1,
-    borderBottomColor: "#4F68F4",
-    borderBottomWidth: 1
+    borderTopWidth: 1
   },
   inputTitle: {
     fontFamily: "Roboto-Medium",
@@ -124,16 +183,16 @@ const styles = StyleSheet.create({
   input: {
     width: width - 80,
     fontFamily: "Roboto-Medium",
-    fontSize: 16
+    fontSize: 16,
+    borderWidth: 1,
+    borderColor: "#cacacf",
+    borderRadius: 5,
+    height: 45,
+    paddingLeft: 5
   },
   btnContainer: {
     alignSelf: "stretch",
-    alignContent: "center",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    paddingBottom: 60
+    alignContent: "center"
   },
   cancelBtn: {
     alignSelf: "stretch",
@@ -145,7 +204,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#0E30F0",
     backgroundColor: "#0E30F0",
-    marginBottom: 39
+    marginBottom: 20
   },
   cancelBtnSelected: {
     alignSelf: "stretch",
@@ -157,7 +216,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#0E30F070", // Last two numbers indicate opacity
     backgroundColor: "#0E30F070", // Last two numbers indicate opacity
-    marginBottom: 25
+    marginBottom: 20
   },
   cancelBtnText: {
     color: "#ffffff",

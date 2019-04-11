@@ -5,7 +5,8 @@ import {
   StyleSheet,
   Image,
   TouchableHighlight,
-  Alert
+  Alert,
+  Vibration
 } from "react-native";
 import { Link } from "react-router-native";
 import TouchID from "react-native-touch-id";
@@ -35,7 +36,7 @@ const SignIn = ({ setLoggedIn }) => {
             })
             .catch(err => {
               // Edge case fallback for manual log in
-              Alert.alert("Authentication Failed.");
+              // Alert.alert("Authentication Failed.", );
               setSignInSelected(false);
             });
         } else {
@@ -46,7 +47,7 @@ const SignIn = ({ setLoggedIn }) => {
             })
             .catch(err => {
               // Edge case fallback for manual log in
-              Alert.alert("Authentication Failed.");
+              // Alert.alert("Authentication Failed.");
               setSignInSelected(false);
             });
         }
@@ -58,6 +59,7 @@ const SignIn = ({ setLoggedIn }) => {
   };
   const loginApp = e => {
     e.preventDefault();
+    Vibration.vibrate(); // Rumble on press
     setSignInSelected(true); // Change button color
     runBiometricLogin(); // Begin TouchID/FaceID process
   };
