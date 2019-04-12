@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import axios from "axios";
 import {
   Text,
   View,
@@ -29,15 +30,15 @@ const SignUp = props => {
     firstName,
     middleName,
     lastName,
-    phoneNumber
+    phone
   } = signUpForm;
   const handleChange = (name, value) => {
     handleSignUpForm(name, value, dispatch);
   };
-  const createAccount = () => {
-    console.log("Working!");
+  const createAccount = e => {
+    e.preventDefault();
     const userDetails = { ...signUpForm };
-    createAccount(userDetails, dispatch);
+    createAccount(userDetails, dispatch); // Stopped working here... Need to finish working out e.preventDefault() bug
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -123,15 +124,15 @@ const SignUp = props => {
             returnKeyType="next"
             style={styles.input}
             placeholder="Phone number"
-            id="phoneNumber"
-            value={phoneNumber}
-            onChangeText={text => handleChange("phoneNumber", text)}
+            id="phone"
+            value={phone}
+            onChangeText={text => handleChange("phone", text)}
           />
         </View>
         <View style={styles.btnContainer}>
           <TouchableHighlight
             underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
-            onPress={() => createAccount()}
+            onPress={createAccount}
             style={styles.submitBtn}
           >
             <Text style={styles.btnText}>Submit</Text>

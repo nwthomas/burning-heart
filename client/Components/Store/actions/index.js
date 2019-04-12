@@ -36,16 +36,16 @@ export const loginApp = async (username, password, cb) => {
     });
 };
 
-export const createAccount = async (userDetails, cb) => {
-  await cb({ type: CREATE_ACCOUNT_START });
+export const createAccount = (userDetails, cb) => {
+  cb({ type: CREATE_ACCOUNT_START });
   axios
     .post("http://localhost:8000/api/auth/register", userDetails)
     .then(res => {
       console.log(res);
-      // return cb({ type: LOGIN_SUCCESS, payload: res.data });
+      cb({ type: LOGIN_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);
-      // return cb({ type: LOGIN_ERROR, payload: err.message });
+      cb({ type: LOGIN_ERROR, payload: err.message });
     });
 };

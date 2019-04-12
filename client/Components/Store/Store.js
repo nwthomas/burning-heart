@@ -26,7 +26,7 @@ const initialState = {
     firstName: "",
     middleName: "",
     lastName: "",
-    phoneNumber: ""
+    phone: ""
   },
   loginStart: false,
   loginSuccess: false,
@@ -37,7 +37,6 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  console.log(action);
   switch (action.type) {
     case HANDLE_SIGNUP_FORM_CHANGE:
       return {
