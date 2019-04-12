@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { NativeRouter as Router, Route } from "react-router-native";
 import axios from "react-native-axios";
-import { MyStore } from "./Components/Store/Store";
+import { MyStore } from "./Components/store/store";
 
 import { LoginView } from "./Components/Views/LoginView";
 import { HomeView } from "./Components/Views/HomeView";

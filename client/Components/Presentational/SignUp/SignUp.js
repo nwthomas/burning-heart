@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import {
   Text,
   View,
@@ -11,35 +11,26 @@ import {
   Image
 } from "react-native";
 import { Link } from "react-router-native";
-
+import { handleSignUpForm } from "../../store/actions";
+import { Store } from "../../store/store";
 import signupPerson from "../../../assets/images/signup-person.gif";
 
 const { width } = Dimensions.get("window"); // Get window dimensions
 
 const SignUp = props => {
-  const [formValues, setFormValues] = useState({
-    email: "",
-    username: "",
-    password: "",
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    phoneNumber: ""
-  });
-  const [focusInput, setFocusInput] = useState({
-    email: true,
-    username: false,
-    password: false,
-    firstName: false,
-    middleName: false,
-    lastName: false,
-    phoneNumber: false
-  });
+  const { state, dispatch } = useContext(Store);
+  const { signUpForm } = state;
+  const {
+    email,
+    username,
+    password,
+    firstName,
+    middleName,
+    lastName,
+    phoneNumber
+  } = signUpForm;
   const handleChange = (name, value) => {
-    setFormValues({
-      ...formValues,
-      [name]: value
-    });
+    handleSignUpForm(name, value, dispatch);
   };
   const createAccount = e => {
     e.preventDefault();
@@ -51,7 +42,7 @@ const SignUp = props => {
       <ScrollView
         scrollEventThrottle={16} // Sends event feedback back as fast as possible
         decelerationRate={0} // Stops scroll instantly
-        snapToInterval={width} // Auto snap to center of screen on swipe
+        snapToInterval={110} // Auto snap to center of screen on swipe
         snapToAlignment={"center"} // Snapts boxes to middle of screen
         style={styles.signUpForm}
         keyboardDismissMode={"interactive"}
@@ -65,7 +56,7 @@ const SignUp = props => {
             style={styles.input}
             placeholder="Email"
             id="email"
-            value={formValues.email}
+            value={email}
             onChangeText={text => handleChange("email", text)}
           />
         </View>
@@ -76,7 +67,7 @@ const SignUp = props => {
             style={styles.input}
             placeholder="Username"
             id="username"
-            value={formValues.username}
+            value={username}
             onChangeText={text => handleChange("username", text)}
           />
         </View>
@@ -88,7 +79,7 @@ const SignUp = props => {
             style={styles.input}
             placeholder="Password"
             id="password"
-            value={formValues.password}
+            value={password}
             onChangeText={text => handleChange("password", text)}
           />
         </View>
@@ -99,7 +90,7 @@ const SignUp = props => {
             style={styles.input}
             placeholder="First name"
             id="firstName"
-            value={formValues.firstName}
+            value={firstName}
             onChangeText={text => handleChange("firstName", text)}
           />
         </View>
@@ -110,7 +101,7 @@ const SignUp = props => {
             style={styles.input}
             placeholder="Middle name"
             id="middleName"
-            value={formValues.middleName}
+            value={middleName}
             onChangeText={text => handleChange("middleName", text)}
           />
         </View>
@@ -120,7 +111,7 @@ const SignUp = props => {
             style={styles.input}
             placeholder="Last name"
             id="lastName"
-            value={formValues.lastName}
+            value={lastName}
             onChangeText={text => handleChange("lastName", text)}
           />
         </View>
@@ -131,7 +122,7 @@ const SignUp = props => {
             style={styles.input}
             placeholder="Phone number"
             id="phoneNumber"
-            value={formValues.phoneNumber}
+            value={phoneNumber}
             onChangeText={text => handleChange("phoneNumber", text)}
           />
         </View>
@@ -185,7 +176,7 @@ const styles = StyleSheet.create({
     left: 0,
     height: 70,
     marginTop: 100,
-    fontFamily: "OpenSans-Bold",
+    fontFamily: "Roboto-Black",
     fontSize: 28,
     color: "#4F68F4"
   },
@@ -239,7 +230,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#0E30F0",
     backgroundColor: "#0E30F0",
-    marginBottom: 20
+    marginBottom: 20,
+    marginTop: 10
   },
   cancelBtn: {
     alignSelf: "stretch",
