@@ -13,6 +13,8 @@ import {
 import { Link } from "react-router-native";
 import { handleSignUpForm } from "../../store/actions";
 import { Store } from "../../store/store";
+import { createAccount } from "../../store/actions";
+
 import signupPerson from "../../../assets/images/signup-person.gif";
 
 const { width } = Dimensions.get("window"); // Get window dimensions
@@ -32,10 +34,10 @@ const SignUp = props => {
   const handleChange = (name, value) => {
     handleSignUpForm(name, value, dispatch);
   };
-  const createAccount = e => {
-    e.preventDefault();
-    console.log(formValues);
-    // Finish form here
+  const createAccount = () => {
+    console.log("Working!");
+    const userDetails = { ...signUpForm };
+    createAccount(userDetails, dispatch);
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -129,7 +131,7 @@ const SignUp = props => {
         <View style={styles.btnContainer}>
           <TouchableHighlight
             underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
-            onPress={createAccount}
+            onPress={() => createAccount()}
             style={styles.submitBtn}
           >
             <Text style={styles.btnText}>Submit</Text>

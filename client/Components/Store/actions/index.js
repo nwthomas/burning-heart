@@ -1,9 +1,51 @@
-import { HANDLE_SIGNUP_FORM_CHANGE } from "../types/index";
+import axios from "axios";
+import {
+  HANDLE_SIGNUP_FORM_CHANGE,
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  CLOSE_MODAL,
+  CREATE_ACCOUNT_START,
+  CREATE_ACCOUNT_SUCCESS,
+  CREATE_ACCOUNT_ERROR
+} from "../types/index";
 
 export const handleSignUpForm = (name, value, cb) => {
-  const action = cb({
+  return cb({
     type: HANDLE_SIGNUP_FORM_CHANGE,
     payload: { name, value }
   });
-  return action;
+};
+
+export const closeModal = cb => {
+  return cb({ type: CLOSE_MODAL });
+};
+
+export const loginApp = async (username, password, cb) => {
+  await cb({ type: LOGIN_START });
+  const creds = { username, password };
+  axios
+    .post("http://localhost:8000/api/auth/login", creds)
+    .then(res => {
+      console.log(res);
+      return cb({ type: LOGIN_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      return cb({ type: LOGIN_ERROR, payload: err.message });
+    });
+};
+
+export const createAccount = async (userDetails, cb) => {
+  await cb({ type: CREATE_ACCOUNT_START });
+  axios
+    .post("http://localhost:8000/api/auth/register", userDetails)
+    .then(res => {
+      console.log(res);
+      // return cb({ type: LOGIN_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      // return cb({ type: LOGIN_ERROR, payload: err.message });
+    });
 };
