@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable("charities", tbl => {
     tbl.increments("id");
     tbl.string("charityName", 256);
-    tbl.integer("phone").unsigned();
+    tbl.string("phone", 256);
     tbl.string("street1", 256);
     tbl.string("street2", 256);
     tbl.string("city", 256);
