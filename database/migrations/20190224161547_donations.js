@@ -5,14 +5,12 @@ exports.up = function(knex, Promise) {
       .integer("charityId")
       .unsigned()
       .references("id")
-      .inTable("charities")
-      .notNullable();
+      .inTable("charities");
     tbl
       .integer("accountId")
       .unsigned()
       .references("id")
-      .inTable("accounts")
-      .notNullable();
+      .inTable("accounts");
     tbl.integer("amount");
     tbl.timestamps(true, true);
   });
