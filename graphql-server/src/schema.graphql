@@ -1,9 +1,0 @@
-# import * from "./generated/prisma.graphql"
-
-type Mutation {
-  # Finish
-}
-
-type Query {
-  accounts: [Account]!
-}

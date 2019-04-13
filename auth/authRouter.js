@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 require("dotenv").config();
 const Accounts = require("../accounts/accountsModel.js");
-const tokenService = require("../auth/tokenService.js");
+const tokenService = require("./tokenService.js");
 const authConstraints = require("./authConstraints.js"); // Error handling middleware for duplicate usernames and passwords
 
 const router = express.Router();

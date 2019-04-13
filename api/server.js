@@ -13,7 +13,7 @@ configureMiddleware(server);
 // RESTful API routes
 server.use("/api/restricted/charities", restricted, charitiesRouter);
 server.use("/api/restricted/donations", restricted, donationsRouter);
-server.use("/api/restricted/accounts", accountsRouter);
+server.use("/api/restricted/accounts", restricted, accountsRouter);
 server.use("/api/auth", authRouter);
 
 // Single test server / route
