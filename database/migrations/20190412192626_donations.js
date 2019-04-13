@@ -5,12 +5,16 @@ exports.up = function(knex, Promise) {
       .integer("charityId")
       .unsigned()
       .references("id")
-      .inTable("charities");
+      .inTable("charities")
+      .onDelete("CASCADE")
+      .notNullable();
     tbl
       .integer("accountId")
       .unsigned()
       .references("id")
-      .inTable("accounts");
+      .inTable("accounts")
+      .onDelete("CASCADE")
+      .notNullable();
     tbl.integer("amount");
     tbl.timestamps(true, true);
   });
