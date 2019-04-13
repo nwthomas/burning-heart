@@ -6,14 +6,12 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .references("id")
       .inTable("charities")
-      .onDelete("CASCADE")
       .notNullable();
     tbl
       .integer("accountId")
       .unsigned()
       .references("id")
-      .inTable("account")
-      .onDelete("CASCADE")
+      .inTable("accounts")
       .notNullable();
     tbl.integer("amount");
     tbl.timestamps(true, true);
