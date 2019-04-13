@@ -9,14 +9,18 @@ exports.up = function(knex, Promise) {
     tbl.string("email", 128);
     tbl.string("phone", 256);
     tbl.string("type", 128);
-    tbl.integer("charityId").unsigned();
+    tbl
+      .integer("charityId")
+      .unsigned()
+      .references("id")
+      .inTable("charities")
+      .onDelete("CASCADE");
     tbl.string("driversLicense", 128);
     tbl.timestamps(true, true);
     tbl.unique("username", "uq_account_username");
     tbl.unique("phone", "uq_account_phone");
     tbl.unique("email", "uq_account_email");
     tbl.unique("driversLicense", "uq_account_driversLicense");
-    tbl.foreign("charityId").references("charities.id");
   });
 };
 
