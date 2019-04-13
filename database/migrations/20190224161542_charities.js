@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
     tbl.string("street2", 256);
     tbl.string("city", 256);
     tbl.string("state", 128);
-    tbl.integer("zip").unsigned();
+    tbl.string("zip", 128);
     tbl.timestamps(true, true);
     tbl.unique("charityName", "uq_charities_name");
     tbl.unique("phone", "uq_charities_phone");
