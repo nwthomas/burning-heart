@@ -4,14 +4,14 @@ exports.up = function(knex, Promise) {
     tbl
       .integer("charityId")
       .unsigned()
-      .references("id")
+      .references()
       .inTable("charities")
       .onDelete("CASCADE")
       .notNullable();
     tbl
       .integer("accountId")
       .unsigned()
-      .references("id")
+      .references()
       .inTable("accounts")
       .onDelete("CASCADE")
       .notNullable();

@@ -11,10 +11,9 @@ const dbConnection = process.env.DATABASE_URL || {
 
 module.exports = {
   development: {
-    client: "sqlite3",
-    connection: {
-      filename: "./database/burningHeart.db3"
-    },
+    client: "pg",
+    useNullAsDefault: true,
+    connection: dbConnection,
     pool: {
       min: 2,
       max: 10
@@ -25,8 +24,7 @@ module.exports = {
     },
     seeds: {
       directory: "./database/seeds"
-    },
-    useNullAsDefault: true
+    }
   },
   testing: {
     client: "sqlite3",

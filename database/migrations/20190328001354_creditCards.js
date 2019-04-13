@@ -1,10 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable("creditCards", tbl => {
     tbl.increments("id");
-    tbl
-      .integer("cardNumber")
-      .unsigned()
-      .notNullable();
+    tbl.bigInteger("cardNumber").notNullable();
     tbl.string("expDate", 128).notNullable();
     tbl
       .integer("securityCode")
@@ -13,7 +10,7 @@ exports.up = function(knex, Promise) {
     tbl
       .integer("accountId")
       .unsigned()
-      .references("id")
+      .references()
       .inTable("accounts")
       .onDelete("CASCADE")
       .notNullable();
