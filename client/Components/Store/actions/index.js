@@ -37,9 +37,9 @@ export const loginApp = async (username, password, cb) => {
 };
 
 export const createAccount = (userDetails, cb) => {
-  cb({ type: CREATE_ACCOUNT_START });
+  // cb({ type: CREATE_ACCOUNT_START });
   axios
-    .post("http://localhost:8000/api/auth/register", userDetails)
+    .post("https://burning-heart.herokuapp.com/api/auth/register", userDetails)
     .then(res => {
       console.log(res);
       cb({ type: LOGIN_SUCCESS, payload: res.data });
@@ -48,4 +48,5 @@ export const createAccount = (userDetails, cb) => {
       console.log(err);
       cb({ type: LOGIN_ERROR, payload: err.message });
     });
+  return false;
 };

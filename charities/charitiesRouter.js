@@ -66,11 +66,11 @@ router.post("/", async (req, res) => {
   } else {
     try {
       const charity = await Charities.insert(req.body);
-      if (charity) {
+      if (charity.length) {
         res.status(201).json({
           error: false,
           message: "Your charity was created successfully in the database.",
-          charity
+          charity: charity[charity.length - 1]
         });
       } else {
         res.status(404).json({

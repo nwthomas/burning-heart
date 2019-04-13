@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import {
   Text,
@@ -37,8 +37,9 @@ const SignUp = props => {
   };
   const createAccount = e => {
     e.preventDefault();
-    const userDetails = { ...signUpForm };
-    createAccount(userDetails, dispatch); // Stopped working here... Need to finish working out e.preventDefault() bug
+    (async () => {
+      await createAccount({ ...signUpForm }, dispatch);
+    })();
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -246,7 +247,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#0E30F0",
     backgroundColor: "#0E30F0",
-    marginBottom: 60
+    marginBottom: 89
   },
   cancelBtnSelected: {
     alignSelf: "stretch",

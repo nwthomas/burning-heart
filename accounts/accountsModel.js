@@ -48,12 +48,31 @@ function findById(id) {
     );
 }
 
-function insert(creds) {
+function insert(account) {
+  const {
+    username,
+    firstName,
+    middleName,
+    lastName,
+    email,
+    phone,
+    type,
+    charityId
+  } = account;
   return db("accounts")
-    .insert(creds)
+    .insert(account)
     .then(id => {
       return db("accounts")
-        .where({ id: id[0] })
+        .where({
+          username,
+          firstName,
+          middleName,
+          lastName,
+          email,
+          phone,
+          type,
+          charityId
+        })
         .select(
           "id",
           "username",
@@ -66,7 +85,8 @@ function insert(creds) {
           "charityId",
           "created_at",
           "updated_at"
-        );
+        )
+        .first();
     });
 }
 

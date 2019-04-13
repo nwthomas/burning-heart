@@ -119,12 +119,12 @@ router.post("/", async (req, res) => {
     });
   } else {
     try {
-      const donation = await Donations.insert(req.body);
-      if (donation) {
+      const donation = await Donations.insert(req.body); // Returns array
+      if (donation.length) {
         res.status(201).json({
           error: false,
           message: "Your donation was created successfully in the database.",
-          donation
+          donation: donation[donation.length - 1]
         });
       } else {
         res.status(404).json({

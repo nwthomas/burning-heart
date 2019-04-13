@@ -19,12 +19,19 @@ function findById(id) {
 }
 
 function insert(charity) {
+  const { charityName, phone, street1, street2, city, state, zip } = charity;
   return db("charities")
     .insert(charity)
     .then(id => {
-      return db("charities")
-        .where({ id: id[0] })
-        .first();
+      return db("charities").where({
+        charityName,
+        phone,
+        street1,
+        street2,
+        city,
+        state,
+        zip
+      });
     });
 }
 

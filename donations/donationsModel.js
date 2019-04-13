@@ -31,12 +31,11 @@ function findById(id) {
 }
 
 function insert(donation) {
+  const { charityId, accountId, amount } = donation;
   return db("donations")
     .insert(donation)
     .then(id => {
-      return db("donations")
-        .where({ id: id[0] })
-        .first();
+      return db("donations").where({ charityId, accountId, amount });
     });
 }
 
