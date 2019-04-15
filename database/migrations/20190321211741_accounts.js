@@ -15,12 +15,10 @@ exports.up = function(knex, Promise) {
       .references()
       .inTable("charities")
       .onDelete("CASCADE");
-    tbl.string("driversLicense", 128);
     tbl.timestamps(true, true);
     tbl.unique("username", "uq_accounts_username");
     tbl.unique("phone", "uq_accounts_phone");
     tbl.unique("email", "uq_accounts_email");
-    tbl.unique("driversLicense", "uq_accounts_driversLicense");
   });
 };
 

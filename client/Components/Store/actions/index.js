@@ -38,6 +38,7 @@ export const loginApp = async (username, password, cb) => {
 
 export const createAccount = (userDetails, cb) => {
   cb({ type: CREATE_ACCOUNT_START });
+  console.log(userDetails);
   return axios
     .post("https://burning-heart.herokuapp.com/api/auth/register", userDetails)
     .then(res => {

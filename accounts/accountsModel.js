@@ -41,24 +41,13 @@ function findById(id) {
       "lastName",
       "email",
       "phone",
-      "type",
-      "charityId",
       "created_at",
       "updated_at"
     );
 }
 
 function insert(account) {
-  const {
-    username,
-    firstName,
-    middleName,
-    lastName,
-    email,
-    phone,
-    type,
-    charityId
-  } = account;
+  const { username, firstName, middleName, lastName, email, phone } = account;
   return db("accounts")
     .insert(account)
     .then(id => {
@@ -69,9 +58,7 @@ function insert(account) {
           middleName,
           lastName,
           email,
-          phone,
-          type,
-          charityId
+          phone
         })
         .select(
           "id",

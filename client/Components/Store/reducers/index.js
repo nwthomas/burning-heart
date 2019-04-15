@@ -7,7 +7,7 @@ import {
   CREATE_ACCOUNT_SUCCESS,
   CREATE_ACCOUNT_ERROR,
   CLOSE_MODAL
-} from "./types/index";
+} from "../types/index";
 
 export const initialState = {
   user: {},

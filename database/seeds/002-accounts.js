@@ -13,8 +13,7 @@ exports.seed = function(knex, Promise) {
           lastName: "Thomas",
           email: "email@me.com",
           phone: "(707) 493-2054",
-          type: "user",
-          driversLicense: "E87F3SI9K"
+          type: "user"
         },
         {
           username: "admin",
@@ -24,8 +23,7 @@ exports.seed = function(knex, Promise) {
           lastName: "Admin",
           email: "admin@gmail.com",
           phone: "(909) 883-2912",
-          type: "user",
-          driversLicense: "D87F3SI9K"
+          type: "user"
         },
         {
           username: "vero2019",
@@ -35,8 +33,7 @@ exports.seed = function(knex, Promise) {
           lastName: "Smith",
           phone: "(303) 789-2873",
           email: "vero2019@gmail.com",
-          type: "charity",
-          driversLicense: "G87F3SI9K"
+          type: "charity"
         },
         {
           username: "staytay",
@@ -46,8 +43,7 @@ exports.seed = function(knex, Promise) {
           lastName: "Taylor",
           phone: "(510) 894-3782",
           email: "candycane301@gmail.com",
-          type: "charity",
-          driversLicense: "C87F3SI9K"
+          type: "charity"
         }
       ]);
     });
