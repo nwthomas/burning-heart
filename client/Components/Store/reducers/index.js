@@ -10,8 +10,9 @@ import {
 } from "../types/index";
 
 export const initialState = {
-  user: {},
+  account: {},
   donations: [],
+  loggedIn: false,
   signUpForm: {
     email: "",
     username: "",
@@ -21,6 +22,7 @@ export const initialState = {
     lastName: "",
     phone: ""
   },
+  message: "",
   loginStart: false,
   loginSuccess: false,
   loginError: false,
@@ -30,6 +32,7 @@ export const initialState = {
 };
 
 export const reducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
     case HANDLE_SIGNUP_FORM_CHANGE:
       return {
@@ -49,13 +52,16 @@ export const reducer = (state, action) => {
       return {
         ...state,
         loginStart: false,
-        loginSuccess: true
+        loginSuccess: true,
+        account: action.payload.account,
+        message: action.payload.message
       };
     case LOGIN_ERROR:
       return {
         ...state,
         loginStart: false,
-        loginError: true
+        loginError: true,
+        message: action.payload
       };
     case CREATE_ACCOUNT_START:
       return {
@@ -67,13 +73,16 @@ export const reducer = (state, action) => {
       return {
         ...state,
         createAccountStart: false,
-        createAccountSuccess: true
+        createAccountSuccess: true,
+        account: action.payload.account,
+        message: action.payload.message
       };
     case CREATE_ACCOUNT_ERROR:
       return {
         ...state,
         createAccountStart: false,
-        createAccountError: true
+        createAccountError: true,
+        message: action.payload
       };
     case CLOSE_MODAL:
       return {
@@ -81,7 +90,8 @@ export const reducer = (state, action) => {
         createAccountError: false,
         createAccountSuccess: false,
         loginError: false,
-        loginSuccess: false
+        loginSuccess: false,
+        message: ""
       };
     default:
       return state;

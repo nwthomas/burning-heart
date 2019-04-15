@@ -27,26 +27,25 @@ export const loginApp = async (username, password, cb) => {
   axios
     .post("http://localhost:8000/api/auth/login", creds)
     .then(res => {
-      console.log(res);
       return cb({ type: LOGIN_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err);
-      return cb({ type: LOGIN_ERROR, payload: err.message });
+      return cb({ type: LOGIN_ERROR, payload: err.response.data.message });
     });
 };
 
+// Also triggers the loading icon on the signup button when sending to server
 export const createAccount = (userDetails, cb) => {
   cb({ type: CREATE_ACCOUNT_START });
-  console.log(userDetails);
   return axios
     .post("https://burning-heart.herokuapp.com/api/auth/register", userDetails)
     .then(res => {
-      console.log(res);
-      return cb({ type: LOGIN_SUCCESS, payload: res.data });
+      return cb({ type: CREATE_ACCOUNT_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err);
-      return cb({ type: LOGIN_ERROR, payload: err.message });
+      return cb({
+        type: CREATE_ACCOUNT_ERROR,
+        payload: err.response.data.message
+      });
     });
 };

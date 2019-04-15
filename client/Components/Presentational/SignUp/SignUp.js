@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import {
   Text,
   View,
@@ -9,7 +9,7 @@ import {
   KeyboardAvoidingView,
   TouchableHighlight,
   Image,
-  LinearGradient
+  ActivityIndicator
 } from "react-native";
 import { Link } from "react-router-native";
 import { handleSignUpForm } from "../../store/actions";
@@ -17,12 +17,13 @@ import { Store } from "../../store/store";
 import { createAccount } from "../../store/actions";
 
 import signupPerson from "../../../assets/images/signup-person.gif";
+import { SignUpModal } from "../SignUpModal";
 
 const { width } = Dimensions.get("window"); // Get window dimensions
 
 const SignUp = props => {
   const { state, dispatch } = useContext(Store);
-  const { signUpForm } = state;
+  const { signUpForm, createAccountStart } = state;
   const {
     email,
     username,
@@ -36,13 +37,14 @@ const SignUp = props => {
     handleSignUpForm(name, value, dispatch);
   };
   const createUserAccount = e => {
-    console.log(e);
+    if (createAccountStart) return false;
     (async () => {
       await createAccount({ ...signUpForm }, dispatch);
     })();
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <SignUpModal history={props.history} />
       <ScrollView
         scrollEventThrottle={16} // Sends event feedback back as fast as possible
         decelerationRate={0} // Stops scroll instantly
@@ -136,7 +138,11 @@ const SignUp = props => {
             onPress={createUserAccount}
             style={styles.submitBtn}
           >
-            <Text style={styles.btnText}>Submit</Text>
+            {createAccountStart ? (
+              <ActivityIndicator size="small" color="#ffffff" />
+            ) : (
+              <Text style={styles.btnText}>Submit</Text>
+            )}
           </TouchableHighlight>
           <Link to="/" underlayColor={"#0E30F0"} style={styles.cancelBtn}>
             <Text style={styles.btnText}>Cancel</Text>
