@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import {
   Text,
   View,
@@ -9,7 +8,8 @@ import {
   TextInput,
   KeyboardAvoidingView,
   TouchableHighlight,
-  Image
+  Image,
+  LinearGradient
 } from "react-native";
 import { Link } from "react-router-native";
 import { handleSignUpForm } from "../../store/actions";
@@ -35,8 +35,8 @@ const SignUp = props => {
   const handleChange = (name, value) => {
     handleSignUpForm(name, value, dispatch);
   };
-  const createAccount = e => {
-    e.preventDefault();
+  const createUserAccount = e => {
+    console.log(e);
     (async () => {
       await createAccount({ ...signUpForm }, dispatch);
     })();
@@ -133,7 +133,7 @@ const SignUp = props => {
         <View style={styles.btnContainer}>
           <TouchableHighlight
             underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
-            onPress={createAccount}
+            onPress={createUserAccount}
             style={styles.submitBtn}
           >
             <Text style={styles.btnText}>Submit</Text>

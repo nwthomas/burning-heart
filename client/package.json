@@ -15,7 +15,6 @@
     "axios": "^0.18.0",
     "react": "16.8.3",
     "react-native": "0.59.0-rc.3",
-    "react-native-axios": "^0.17.1",
     "react-native-touch-id": "^4.4.1",
     "react-router-native": "^4.3.0",
     "styled-components": "^4.2.0"
