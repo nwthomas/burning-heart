@@ -12,12 +12,12 @@ const HomeView = props => {
 
   useEffect(() => {
     console.log(donations, charities);
-    // Get data on home page load for speed of user flow later if not already accessed
 
     let token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoyLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTU1NDQ0ODU3LCJleHAiOjE1NTU1MzEyNTd9.z8xmaIeUMsaAhuGfbYbwOTCoah0hFq6KrBGDYVmJcwU";
     let username = "admin";
 
+    // Get data on home page load for speed of user flow later if not already accessed
     if (!donations.length) {
       fetchAccountDonations(account.username, token, dispatch);
     }
