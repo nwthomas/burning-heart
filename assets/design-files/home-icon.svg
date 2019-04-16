@@ -2,8 +2,8 @@
 
 <style>
 	.home {
-		fill: #7a7a7a;
+		fill: #3c54f0;
 	}
 </style>
 
-<path d="M208 448V320h96v128h97.6V256H464L256 64 48 256h62.4v192z"/></svg>
+<path class="home" d="M208 448V320h96v128h97.6V256H464L256 64 48 256h62.4v192z"/></svg>

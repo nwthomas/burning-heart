@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native run-ios",
-    "test": "jest"
+    "test": "react-scripts test --verbose"
   },
   "rnpm": {
     "assets": [
@@ -13,10 +13,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "jest-dom": "^3.1.3",
     "react": "16.8.3",
     "react-native": "0.59.0-rc.3",
     "react-native-touch-id": "^4.4.1",
     "react-router-native": "^4.3.0",
+    "react-scripts": "^2.1.8",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {

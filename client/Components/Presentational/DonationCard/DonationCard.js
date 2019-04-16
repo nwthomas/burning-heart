@@ -26,9 +26,6 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     fontSize: 20,
     fontFamily: "Roboto-Medium"
-  },
-  donations: {
-    // finish
   }
 });
 

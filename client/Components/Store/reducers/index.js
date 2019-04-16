@@ -8,12 +8,21 @@ import {
   CREATE_ACCOUNT_ERROR,
   CLOSE_MODAL,
   HANDLE_LOGIN_FORM_CHANGE,
-  SET_BIOMETRY_TYPE
+  SET_BIOMETRY_TYPE,
+  FETCH_CHARITIES_START,
+  FETCH_CHARITIES_SUCCESS,
+  FETCH_CHARITIES_ERROR,
+  FETCH_USER_DONATIONS_START,
+  FETCH_USER_DONATIONS_SUCCESS,
+  FETCH_USER_DONATIONS_ERROR
 } from "../types/index";
 
 export const initialState = {
   account: {},
-  donations: [],
+  charities: [], // Duplicated state for search replacement
+  shownCharities: [],
+  donations: [], // Duplicate state for search replacement
+  shownDonations: [],
   loggedIn: true,
   biometryType: "",
   token: null,
@@ -36,7 +45,13 @@ export const initialState = {
   loginError: false,
   createAccountStart: false,
   createAccountSuccess: false,
-  createAccountError: false
+  createAccountError: false,
+  getCharitiesStart: false,
+  getCharitiesSuccess: false,
+  getCharitiesError: false,
+  getUserDonationsStart: false,
+  getUserDonationsSuccess: false,
+  getUserDonationsError: false
 };
 
 export const reducer = (state, action) => {
@@ -127,7 +142,52 @@ export const reducer = (state, action) => {
         createAccountSuccess: false,
         loginError: false,
         loginSuccess: false,
+        getCharitiesError: false,
+        getCharitiesSuccess: false,
         message: ""
+      };
+    case FETCH_CHARITIES_START:
+      return {
+        ...state,
+        getCharitiesStart: true,
+        getCharitiesError: false
+      };
+    case FETCH_CHARITIES_SUCCESS:
+      return {
+        ...state,
+        getCharitiesStart: false,
+        getCharitiesSuccess: true,
+        message: action.payload.message,
+        charities: action.payload.charities,
+        shownCharities: action.payload.charities
+      };
+    case FETCH_CHARITIES_ERROR:
+      return {
+        ...state,
+        getCharitiesStart: false,
+        getCharitiesError: true,
+        message: action.payload
+      };
+    case FETCH_USER_DONATIONS_START:
+      return {
+        ...state,
+        getUserDonationsStart: true,
+        getUserDonationsError: false
+      };
+    case FETCH_USER_DONATIONS_SUCCESS:
+      return {
+        ...state,
+        donations: action.payload.donations,
+        shownDonations: action.payload.donations,
+        getUserDonationsStart: false,
+        getUserDonationsSuccess: true
+      };
+    case FETCH_USER_DONATIONS_ERROR:
+      return {
+        ...state,
+        getUserDonationsStart: false,
+        getUserDonationsError: true,
+        message: action.payload
       };
     default:
       return state;

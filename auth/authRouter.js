@@ -17,13 +17,13 @@ router.post("/register", authConstraints, async (req, res) => {
     if (account) {
       res.status(200).json({
         error: false,
-        message: "Your account was created successfully in the database.",
+        message: "Your account was created successfully.",
         account
       });
     } else {
       res.status(404).json({
         error: true,
-        message: "Your account could not be created in the database.",
+        message: "Your account could not be created.",
         account: {}
       });
     }
