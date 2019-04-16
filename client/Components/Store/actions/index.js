@@ -8,8 +8,17 @@ import {
   CREATE_ACCOUNT_START,
   CREATE_ACCOUNT_SUCCESS,
   CREATE_ACCOUNT_ERROR,
-  HANDLE_LOGIN_FORM_CHANGE
+  HANDLE_LOGIN_FORM_CHANGE,
+  SET_BIOMETRY_TYPE
 } from "../types/index";
+
+// Sets either FaceID/TouchID/other
+export const setBiometryType = (biometryType, cb) => {
+  return cb({
+    type: SET_BIOMETRY_TYPE,
+    payload: biometryType
+  });
+};
 
 // Signup form controlled input action creator
 export const handleSignUpForm = (name, value, cb) => {
@@ -33,11 +42,11 @@ export const closeModal = cb => {
 };
 
 // Login application action creator
-export const loginApp = async (username, password, cb) => {
-  await cb({ type: LOGIN_START });
+export const loginApp = (username, password, cb) => {
+  cb({ type: LOGIN_START });
   const creds = { username, password };
   axios
-    .post("http://localhost:8000/api/auth/login", creds)
+    .post("https://burning-heart.herokuapp.com/api/auth/login", creds)
     .then(res => {
       return cb({ type: LOGIN_SUCCESS, payload: res.data });
     })

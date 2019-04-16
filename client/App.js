@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
-import { NativeRouter as Router, Route } from "react-router-native";
+import { Route } from "react-router-native";
 import axios from "axios";
-import { MyStore } from "./Components/store/store";
 
 import { LoginView } from "./Components/Views/LoginView";
 import { HomeView } from "./Components/Views/HomeView";
@@ -37,31 +36,27 @@ const App = () => {
     }
   }, []);
   return (
-    <Router>
-      <MyStore>
-        <View style={styles.container}>
-          <Header />
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <HomeView {...props} user={user} donations={donations} />
-            )}
-          />
-          <Route
-            exact
-            path="/search"
-            render={props => <SearchView {...props} user={user} />}
-          />
-          <Route
-            exact
-            path="/profile"
-            render={props => <ProfileView {...props} user={user} />}
-          />
-          <Navbar />
-        </View>
-      </MyStore>
-    </Router>
+    <View style={styles.container}>
+      <Header />
+      <Route
+        exact
+        path="/"
+        render={props => (
+          <HomeView {...props} user={user} donations={donations} />
+        )}
+      />
+      <Route
+        exact
+        path="/search"
+        render={props => <SearchView {...props} user={user} />}
+      />
+      <Route
+        exact
+        path="/profile"
+        render={props => <ProfileView {...props} user={user} />}
+      />
+      <Navbar />
+    </View>
   );
 };
 

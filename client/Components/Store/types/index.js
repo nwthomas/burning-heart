@@ -1,3 +1,6 @@
+//============================================ Biometry type Types
+export const SET_BIOMETRY_TYPE = "SET_BIOMETRY_TYPE";
+
 //============================================ Sign Up Form Types
 export const HANDLE_SIGNUP_FORM_CHANGE = "HANDLE_SIGNUP_FORM_CHANGE";
 export const CREATE_ACCOUNT_START = "CREATE_ACCOUNT_START";

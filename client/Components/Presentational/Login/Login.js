@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Text,
   View,
@@ -9,18 +9,25 @@ import {
 } from "react-native";
 import { Link } from "react-router-native";
 import TouchID from "react-native-touch-id";
+import { Store } from "../../store/store";
+import { setBiometryType, loginApp } from "../../store/actions";
 
 import fireGif from "../../../assets/images/fire.gif";
 
+// Configuration object for TouchID package
+const optionalConfigObject = {
+  fallbackLabel: "Show Passcode",
+  unifiedErrors: true,
+  passcodeFallback: true
+};
+
 const Login = ({ setLoggedIn, history }) => {
-  const [loginSelected, setLoginSelected] = useState(false);
-  const [manualLoginSelected, setManualLoginSelected] = useState(false);
-  const [biometryType, setBiometryType] = useState("");
-  const optionalConfigObject = {
-    fallbackLabel: "Show Passcode",
-    unifiedErrors: true,
-    passcodeFallback: true
-  };
+  const { state, dispatch } = useContext(Store);
+  const { biometryType } = state;
+
+  const [loginSelected, setLoginSelected] = useState(false); // Login state to control button presses
+  const [manualLoginSelected, setManualLoginSelected] = useState(false); // Local state to control button presses
+
   // Automatically run login on component mount
   useEffect(() => {
     runBiometricLogin();
@@ -28,14 +35,18 @@ const Login = ({ setLoggedIn, history }) => {
   // Biometric login via TouchID package that returns promise
   const runBiometricLogin = () => {
     TouchID.isSupported(optionalConfigObject)
-      .then(biometryType => {
+      .then(bioType => {
+        if (!biometryType) {
+          // Initial setting of biometry type
+          setBiometryType(bioType, dispatch);
+        }
+
         if (biometryType === "FaceID") {
           // Case with FaceID
-          setBiometryType(biometryType);
 
-          TouchID.authenticate("Unlock with your fingerprint")
+          TouchID.authenticate("Unlock with your face")
             .then(success => {
-              setLoggedIn(true);
+              loginApp("admin", "password", dispatch);
             })
             .catch(err => {
               setLoginSelected(false);
@@ -43,11 +54,10 @@ const Login = ({ setLoggedIn, history }) => {
             });
         } else {
           // Case with TouchID
-          setBiometryType(biometryType);
 
           TouchID.authenticate("Unlock with your fingerprint")
             .then(success => {
-              setLoggedIn(true);
+              loginApp("admin", "password", dispatch);
             })
             .catch(err => {
               setLoginSelected(false);

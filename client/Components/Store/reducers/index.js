@@ -7,13 +7,15 @@ import {
   CREATE_ACCOUNT_SUCCESS,
   CREATE_ACCOUNT_ERROR,
   CLOSE_MODAL,
-  HANDLE_LOGIN_FORM_CHANGE
+  HANDLE_LOGIN_FORM_CHANGE,
+  SET_BIOMETRY_TYPE
 } from "../types/index";
 
 export const initialState = {
   account: {},
   donations: [],
   loggedIn: false,
+  biometryType: "",
   signUpForm: {
     email: "",
     username: "",
@@ -39,6 +41,11 @@ export const initialState = {
 export const reducer = (state, action) => {
   console.log(action);
   switch (action.type) {
+    case SET_BIOMETRY_TYPE: // For FaceID/TouchID
+      return {
+        ...state,
+        biometryType: action.payload
+      };
     case HANDLE_SIGNUP_FORM_CHANGE:
       return {
         ...state,
@@ -66,8 +73,13 @@ export const reducer = (state, action) => {
         ...state,
         loginStart: false,
         loginSuccess: true,
+        loggedIn: true,
         account: action.payload.account,
-        message: action.payload.message
+        message: action.payload.message,
+        loginForm: {
+          username: "",
+          password: ""
+        }
       };
     case LOGIN_ERROR:
       return {
