@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     paddingTop: 30,
     paddingBottom: 30,
-    borderBottomColor: "#0E30F0",
+    borderBottomColor: "#cacacf",
     borderBottomWidth: 1
   },
   charityCardText: {

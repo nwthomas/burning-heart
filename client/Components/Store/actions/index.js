@@ -15,7 +15,9 @@ import {
   FETCH_CHARITIES_ERROR,
   FETCH_USER_DONATIONS_START,
   FETCH_USER_DONATIONS_SUCCESS,
-  FETCH_USER_DONATIONS_ERROR
+  FETCH_USER_DONATIONS_ERROR,
+  UPDATE_SHOWN_CHARITY_LIST,
+  RESET_SHOWN_CHARITY_LIST
 } from "../types/index";
 
 // Sets either FaceID/TouchID/other
@@ -40,6 +42,31 @@ export const handleLoginForm = (name, value, cb) => {
     type: HANDLE_LOGIN_FORM_CHANGE,
     payload: { name, value }
   });
+};
+
+// Charity list search action creator
+export const searchCharities = (input, charities, cb) => {
+  // Updates shownCharities without mutating original charity list held in state
+  if (!input) {
+    cb({
+      type: RESET_SHOWN_CHARITY_LIST,
+      payload: {
+        shownCharities: charities,
+        charitySearchInput: input
+      }
+    });
+  } else {
+    const newShownCharityList = charities.filter(charity => {
+      return charity.charityName.toLowerCase().includes(input.toLowerCase());
+    });
+    cb({
+      type: UPDATE_SHOWN_CHARITY_LIST,
+      payload: {
+        shownCharities: newShownCharityList,
+        charitySearchInput: input
+      }
+    });
+  }
 };
 
 // Close modal action creator

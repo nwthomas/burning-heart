@@ -14,7 +14,9 @@ import {
   FETCH_CHARITIES_ERROR,
   FETCH_USER_DONATIONS_START,
   FETCH_USER_DONATIONS_SUCCESS,
-  FETCH_USER_DONATIONS_ERROR
+  FETCH_USER_DONATIONS_ERROR,
+  UPDATE_SHOWN_CHARITY_LIST,
+  RESET_SHOWN_CHARITY_LIST
 } from "../types/index";
 
 export const initialState = {
@@ -39,6 +41,7 @@ export const initialState = {
     username: "",
     password: ""
   },
+  charitySearchInput: "",
   message: "",
   loginStart: false,
   loginSuccess: false,
@@ -145,6 +148,18 @@ export const reducer = (state, action) => {
         getCharitiesError: false,
         getCharitiesSuccess: false,
         message: ""
+      };
+    case UPDATE_SHOWN_CHARITY_LIST:
+      return {
+        ...state,
+        shownCharities: action.payload.shownCharities,
+        charitySearchInput: action.payload.charitySearchInput
+      };
+    case RESET_SHOWN_CHARITY_LIST:
+      return {
+        ...state,
+        shownCharities: action.payload.shownCharities,
+        charitySearchInput: action.payload.charitySearchInput
       };
     case FETCH_CHARITIES_START:
       return {

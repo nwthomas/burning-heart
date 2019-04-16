@@ -1,21 +1,44 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  Dimensions,
+  TextInput
+} from "react-native";
 import { Store } from "../../store/store";
+import { searchCharities } from "../../store/actions/index";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
 import { CharityCard } from "../../Presentational/CharityCard";
 
+const { width } = Dimensions.get("window"); // Get window dimensions
+
 const SearchView = props => {
   const { state, dispatch } = useContext(Store);
-  const { charities } = state;
+  const { charities, shownCharities, charitySearchInput } = state;
+
+  const handleChange = value => {
+    searchCharities(value, charities, dispatch); // Updates charity list shown on screen
+  };
   return (
     <View style={styles.searchContainer}>
       <View style={styles.loginHeader}>
-        <Text style={styles.loginTitle}>Select a Charity</Text>
+        <Text style={styles.loginTitle}>Select Charity</Text>
         <Image source={boomBoxPerson} style={styles.loginPerson} />
       </View>
       <ScrollView style={styles.charityList}>
-        {charities.map((charity, index) => {
+        <TextInput
+          returnKeyType="done"
+          style={styles.input}
+          placeholder="Search for a charity"
+          id="charitySearchInput"
+          value={charitySearchInput}
+          onChangeText={text => handleChange(text)}
+        />
+        {shownCharities.map((charity, index) => {
           return <CharityCard charity={charity} key={index} />;
         })}
       </ScrollView>
@@ -64,6 +87,17 @@ const styles = StyleSheet.create({
     marginBottom: 100,
     paddingLeft: 40,
     paddingRight: 40
+  },
+  input: {
+    marginTop: 10,
+    width: width - 80,
+    fontFamily: "Roboto-Medium",
+    fontSize: 16,
+    borderWidth: 1,
+    borderColor: "#cacacf",
+    borderRadius: 5,
+    height: 45,
+    paddingLeft: 5
   }
 });
 
