@@ -11,16 +11,16 @@ import {
   ActivityIndicator
 } from "react-native";
 import { Store } from "../../store/store";
-import { handleLoginForm } from "../../store/actions";
+import { handleLoginForm, loginApp } from "../../store/actions";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
-import { loginApp } from "../../store/actions";
+import { LoginModal } from "../LoginModal";
 
 const { width } = Dimensions.get("window"); // Get window dimensions
 
 const ManualLogin = props => {
   const { state, dispatch } = useContext(Store);
-  const { loginForm, loginStart } = state;
+  const { loginForm, loginStart, loginSuccess, loginError } = state;
   const { username, password } = loginForm;
   const handleChange = (name, value) => {
     handleLoginForm(name, value, dispatch);
@@ -36,6 +36,7 @@ const ManualLogin = props => {
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <LoginModal history={props.history} />
       <View style={styles.loginForm}>
         <View style={styles.loginBox}>
           <Text style={styles.inputTitle}>Enter your username:</Text>

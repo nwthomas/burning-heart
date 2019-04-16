@@ -66,14 +66,14 @@ router.post("/login", async (req, res) => {
     } else {
       res.status(404).json({
         error: true,
-        message: "The user could not be logged in.",
+        message: "You could not be logged in.",
         account: {}
       });
     }
   } catch (error) {
     res.status(500).json({
       error: true,
-      message: "There was an error logging in the user.",
+      message: "There was an error logging you in.",
       account: {}
     });
   }

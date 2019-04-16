@@ -18,7 +18,7 @@ const SignUpModal = props => {
   const { loginStart, loginSuccess, loginError, message } = state;
   const goToLogin = e => {
     e.preventDefault();
-    if (createAccountSuccess) props.history.push("/manual-login");
+    if (loginSuccess) props.history.push("/");
     closeModal(dispatch);
   };
   return (

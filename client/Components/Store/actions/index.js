@@ -48,12 +48,7 @@ export const loginApp = (username, password, cb) => {
   axios
     .post("https://burning-heart.herokuapp.com/api/auth/login", creds)
     .then(res => {
-      console.log(res);
-      if (res.data.error) {
-        return cb({ type: LOGIN_ERROR, payload: res.data.message });
-      } else {
-        return cb({ type: LOGIN_SUCCESS, payload: res.data });
-      }
+      return cb({ type: LOGIN_SUCCESS, payload: res.data });
     })
     .catch(err => {
       return cb({ type: LOGIN_ERROR, payload: err.response.data.message });
@@ -66,11 +61,7 @@ export const createAccount = (userDetails, cb) => {
   return axios
     .post("https://burning-heart.herokuapp.com/api/auth/register", userDetails)
     .then(res => {
-      if (res.data.error) {
-        return cb({ type: CREATE_ACCOUNT_ERROR, payload: res.data.message });
-      } else {
-        return cb({ type: CREATE_ACCOUNT_SUCCESS, payload: res.data });
-      }
+      return cb({ type: CREATE_ACCOUNT_SUCCESS, payload: res.data });
     })
     .catch(err => {
       return cb({
