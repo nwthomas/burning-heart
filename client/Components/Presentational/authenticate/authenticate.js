@@ -7,7 +7,6 @@ const authenticate = App => LoginView => {
   return _ => {
     const { state } = useContext(Store);
     const { loggedIn } = state;
-    console.log(loggedIn);
     return (
       // Authenticate hinges on boolean flag hook "loggedIn"
       <>{loggedIn ? <App /> : <LoginView />}</>

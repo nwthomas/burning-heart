@@ -14,27 +14,6 @@ import { Navbar } from "./Components/Presentational/Navbar";
 const App = () => {
   const [user, setUser] = useState({});
   const [donations, setDonations] = useState([]);
-  useEffect(() => {
-    if (!user.username) {
-      axios
-        .get("http://localhost:8000/api/restricted/accounts/1")
-        .then(res => {
-          setUser(res.data.account);
-        })
-        .catch(err => console.log(err));
-    }
-    if (!donations.length) {
-      axios
-        .get("http://localhost:8000/api/restricted/donations/account/1")
-        .then(res => {
-          console.log(res.data.donations);
-          setDonations(res.data.donations);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-  }, []);
   return (
     <View style={styles.container}>
       <Header />

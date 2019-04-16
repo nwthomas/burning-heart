@@ -6,21 +6,33 @@ import {
   StyleSheet,
   Dimensions,
   TextInput,
-  Image
+  Image,
+  TouchableHighlight,
+  ActivityIndicator
 } from "react-native";
 import { Store } from "../../store/store";
 import { handleLoginForm } from "../../store/actions";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
+import { loginApp } from "../../store/actions";
 
 const { width } = Dimensions.get("window"); // Get window dimensions
 
 const ManualLogin = props => {
   const { state, dispatch } = useContext(Store);
-  const { loginForm } = state;
+  const { loginForm, loginStart } = state;
   const { username, password } = loginForm;
   const handleChange = (name, value) => {
     handleLoginForm(name, value, dispatch);
+  };
+  const manualLoginApp = e => {
+    e.preventDefault();
+    if (loginStart) return false;
+    loginApp(username, password, dispatch);
+  };
+  const cancelLogin = e => {
+    e.preventDefault();
+    props.history.push("/");
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -48,6 +60,24 @@ const ManualLogin = props => {
             onChangeText={text => handleChange("password", text)}
           />
         </View>
+        <TouchableHighlight
+          underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
+          onPress={manualLoginApp}
+          style={styles.loginBtn}
+        >
+          {loginStart ? (
+            <ActivityIndicator size="small" color="#ffffff" />
+          ) : (
+            <Text style={styles.loginBtnText}>Login</Text>
+          )}
+        </TouchableHighlight>
+        <TouchableHighlight
+          underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
+          onPress={cancelLogin}
+          style={styles.loginBtn}
+        >
+          <Text style={styles.loginBtnText}>Cancel</Text>
+        </TouchableHighlight>
       </View>
       <View style={styles.loginHeader}>
         <Text style={styles.loginTitle}>Login</Text>
@@ -124,7 +154,7 @@ const styles = StyleSheet.create({
     height: 45,
     paddingLeft: 5
   },
-  loginFormBtn: {
+  loginBtn: {
     alignSelf: "stretch",
     justifyContent: "center",
     marginLeft: 40,
@@ -134,10 +164,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#0E30F0",
     backgroundColor: "#0E30F0",
-    marginBottom: 20,
-    marginTop: 10
+    marginBottom: 20
   },
-  btnText: {
+  loginBtnText: {
     color: "#ffffff",
     alignSelf: "center",
     fontFamily: "Roboto-Medium",

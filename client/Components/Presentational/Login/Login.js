@@ -43,7 +43,6 @@ const Login = ({ setLoggedIn, history }) => {
 
         if (biometryType === "FaceID") {
           // Case with FaceID
-
           TouchID.authenticate("Unlock with your face")
             .then(success => {
               loginApp("admin", "password", dispatch);
@@ -60,8 +59,8 @@ const Login = ({ setLoggedIn, history }) => {
               loginApp("admin", "password", dispatch);
             })
             .catch(err => {
-              setLoginSelected(false);
-              setManualLoginSelected(false);
+              setLoginSelected(false); // Local state to control button presses
+              setManualLoginSelected(false); // Local state to control button presses
             });
         }
       })
