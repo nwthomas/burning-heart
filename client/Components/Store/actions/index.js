@@ -134,7 +134,17 @@ export const fetchCharityList = (token, cb) => {
       reqOptions
     )
     .then(res => {
-      return cb({ type: FETCH_CHARITIES_SUCCESS, payload: res.data });
+      console.log(res.data);
+      const sortedCharities = res.data.charities.sort(function(a, b) {
+        if (a.charityName > b.charityName) return 1;
+        if (a.charityName < b.charityName) return -1;
+        return 0;
+      });
+      const sortedCharityRes = {
+        ...res.data,
+        charities: sortedCharities
+      };
+      return cb({ type: FETCH_CHARITIES_SUCCESS, payload: sortedCharityRes });
     })
     .catch(err => {
       return cb({

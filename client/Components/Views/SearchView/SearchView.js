@@ -38,9 +38,15 @@ const SearchView = props => {
           value={charitySearchInput}
           onChangeText={text => handleChange(text)}
         />
-        {shownCharities.map((charity, index) => {
-          return <CharityCard charity={charity} key={index} />;
-        })}
+        {shownCharities.length ? (
+          shownCharities.map((charity, index) => (
+            <CharityCard charity={charity} key={index} />
+          ))
+        ) : (
+          <Text style={styles.noCharities}>
+            {charities.length ? "No charities found" : "Something went wrong"}
+          </Text>
+        )}
       </ScrollView>
     </View>
   );
@@ -98,6 +104,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 45,
     paddingLeft: 5
+  },
+  noCharities: {
+    marginTop: 30,
+    fontFamily: "Roboto-Medium",
+    fontSize: 16,
+    color: "#cacacf"
   }
 });
 
