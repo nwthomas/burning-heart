@@ -1,19 +1,8 @@
 import React from "react";
 import { View, StatusBar, StyleSheet } from "react-native";
 
-import { ProfileCard } from "../../Presentational/ProfileCard";
-import { ContributionsCard } from "../../Presentational/ContributionsCard";
-import { CardInformation } from "../../Presentational/CardInformation";
-
 const ProfileView = ({ user }) => {
-  return (
-    <View style={styles.profileContainer}>
-      <StatusBar backgroundColor="#1A2431" barStyle="light-content" />
-      <CardInformation user={user} />
-      <ContributionsCard user={user} />
-      <ProfileCard user={user} />
-    </View>
-  );
+  return <View style={styles.profileContainer} />;
 };
 
 const styles = StyleSheet.create({

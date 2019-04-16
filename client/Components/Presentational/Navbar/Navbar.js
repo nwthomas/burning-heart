@@ -3,20 +3,32 @@ import { StyleSheet, View, Image } from "react-native";
 import { Link } from "react-router-native";
 
 import searchIcon from "../../../assets/images/search-icon.png";
+import searchIconSelected from "../../../assets/images/search-icon-selected.png";
 import homeIcon from "../../../assets/images/home-icon.png";
+import homeIconSelected from "../../../assets/images/home-icon-selected.png";
 import profileIcon from "../../../assets/images/profile-icon.png";
+import profileIconSelected from "../../../assets/images/profile-icon-selected.png";
 
-const Navbar = _ => {
+const Navbar = ({ history }) => {
   return (
     <View style={styles.container}>
-      <Link underlayColor={"#E9EEEF"} to="/search">
-        <Image style={styles.navbarImg} source={searchIcon} />
+      <Link underlayColor={"#ffffff"} to="/search">
+        <Image
+          style={styles.navbarImg}
+          source={history === "/search" ? searchIconSelected : searchIcon}
+        />
       </Link>
-      <Link underlayColor={"#E9EEEF"} exact to="/">
-        <Image style={styles.navbarImg} source={homeIcon} />
+      <Link underlayColor={"#ffffff"} exact to="/">
+        <Image
+          style={styles.navbarImg}
+          source={history === "/" ? homeIconSelected : homeIcon}
+        />
       </Link>
-      <Link underlayColor={"#E9EEEF"} to="/profile">
-        <Image style={styles.navbarImg} source={profileIcon} />
+      <Link underlayColor={"#ffffff"} to="/profile">
+        <Image
+          style={styles.navbarImg}
+          source={history === "/profile" ? profileIconSelected : profileIcon}
+        />
       </Link>
     </View>
   );
@@ -36,12 +48,12 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "#E9EEEF"
+    backgroundColor: "#ffffff"
   },
   navbarImg: {
     height: 40,
     width: 40,
-    backgroundColor: "#E9EEEF"
+    backgroundColor: "#ffffff"
   }
 });
 

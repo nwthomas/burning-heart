@@ -1,22 +1,22 @@
 import React from "react";
-import styled from "styled-components/native";
+import { StyleSheet, ScrollView, Text } from "react-native";
 
-import { DonationHeader } from "../../Presentational/DonationHeader";
-import { DonationCard } from "../../Presentational/DonationCard";
-
-const Container = styled.ScrollView`
-  flex: 1;
-  margin-top: 70;
-  align-self: stretch;
-`;
-
-const HomeView = ({ user, donations }) => {
+const HomeView = props => {
   return (
-    <Container>
-      <DonationHeader user={user} />
-    </Container>
+    <ScrollView style={styles.container}>
+      <Text>Dude.</Text>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignSelf: "stretch",
+    alignContent: "center",
+    marginTop: 150
+  }
+});
 
 HomeView.defaultProps = {
   user: {}

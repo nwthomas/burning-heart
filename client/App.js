@@ -11,7 +11,7 @@ import { authenticate } from "./Components/Presentational/authenticate";
 import { Header } from "./Components/Presentational/Header";
 import { Navbar } from "./Components/Presentational/Navbar";
 
-const App = () => {
+const App = props => {
   const [user, setUser] = useState({});
   const [donations, setDonations] = useState([]);
   return (
@@ -34,7 +34,7 @@ const App = () => {
         path="/profile"
         render={props => <ProfileView {...props} user={user} />}
       />
-      <Navbar />
+      <Navbar history={props.history} />
     </View>
   );
 };
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     alignItems: "center",
-    backgroundColor: "#E9EEEF"
+    backgroundColor: "#ffffff"
   }
 });
 

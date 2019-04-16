@@ -14,8 +14,9 @@ import {
 export const initialState = {
   account: {},
   donations: [],
-  loggedIn: false,
+  loggedIn: true,
   biometryType: "",
+  token: null,
   signUpForm: {
     email: "",
     username: "",
@@ -79,7 +80,8 @@ export const reducer = (state, action) => {
         loginForm: {
           username: "",
           password: ""
-        }
+        },
+        token: action.payload.token
       };
     case LOGIN_ERROR:
       return {
