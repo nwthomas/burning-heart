@@ -7,9 +7,11 @@ import {
   CLOSE_MODAL,
   CREATE_ACCOUNT_START,
   CREATE_ACCOUNT_SUCCESS,
-  CREATE_ACCOUNT_ERROR
+  CREATE_ACCOUNT_ERROR,
+  HANDLE_LOGIN_FORM_CHANGE
 } from "../types/index";
 
+// Signup form controlled input action creator
 export const handleSignUpForm = (name, value, cb) => {
   return cb({
     type: HANDLE_SIGNUP_FORM_CHANGE,
@@ -17,10 +19,20 @@ export const handleSignUpForm = (name, value, cb) => {
   });
 };
 
+// Login form controlled input action creator
+export const handleLoginForm = (name, value, cb) => {
+  return cb({
+    type: HANDLE_LOGIN_FORM_CHANGE,
+    payload: { name, value }
+  });
+};
+
+// Close modal action creator
 export const closeModal = cb => {
   return cb({ type: CLOSE_MODAL });
 };
 
+// Login application action creator
 export const loginApp = async (username, password, cb) => {
   await cb({ type: LOGIN_START });
   const creds = { username, password };

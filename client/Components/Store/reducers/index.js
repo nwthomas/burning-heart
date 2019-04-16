@@ -6,7 +6,8 @@ import {
   CREATE_ACCOUNT_START,
   CREATE_ACCOUNT_SUCCESS,
   CREATE_ACCOUNT_ERROR,
-  CLOSE_MODAL
+  CLOSE_MODAL,
+  HANDLE_LOGIN_FORM_CHANGE
 } from "../types/index";
 
 export const initialState = {
@@ -21,6 +22,10 @@ export const initialState = {
     middleName: "",
     lastName: "",
     phone: ""
+  },
+  loginForm: {
+    username: "",
+    password: ""
   },
   message: "",
   loginStart: false,
@@ -39,6 +44,14 @@ export const reducer = (state, action) => {
         ...state,
         signUpForm: {
           ...state.signUpForm,
+          [action.payload.name]: action.payload.value
+        }
+      };
+    case HANDLE_LOGIN_FORM_CHANGE:
+      return {
+        ...state,
+        loginForm: {
+          ...state.loginForm,
           [action.payload.name]: action.payload.value
         }
       };
@@ -75,7 +88,16 @@ export const reducer = (state, action) => {
         createAccountStart: false,
         createAccountSuccess: true,
         account: action.payload.account,
-        message: action.payload.message
+        message: action.payload.message,
+        signUpForm: {
+          email: "",
+          username: "",
+          password: "",
+          firstName: "",
+          middleName: "",
+          lastName: "",
+          phone: ""
+        }
       };
     case CREATE_ACCOUNT_ERROR:
       return {
