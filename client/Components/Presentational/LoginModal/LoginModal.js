@@ -18,7 +18,6 @@ const SignUpModal = props => {
   const { loginStart, loginSuccess, loginError, message } = state;
   const goToLogin = e => {
     e.preventDefault();
-    if (loginSuccess) props.history.push("/");
     closeModal(dispatch);
   };
   return (

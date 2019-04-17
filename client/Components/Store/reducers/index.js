@@ -16,7 +16,10 @@ import {
   FETCH_USER_DONATIONS_SUCCESS,
   FETCH_USER_DONATIONS_ERROR,
   UPDATE_SHOWN_CHARITY_LIST,
-  RESET_SHOWN_CHARITY_LIST
+  RESET_SHOWN_CHARITY_LIST,
+  GO_HOME,
+  GO_SEARCH,
+  GO_PROFILE
 } from "../types/index";
 
 export const initialState = {
@@ -43,6 +46,9 @@ export const initialState = {
   },
   charitySearchInput: "",
   message: "",
+  homeViewSelected: true,
+  searchViewSelected: false,
+  profileViewSelected: false,
   loginStart: false,
   loginSuccess: false,
   loginError: false,
@@ -204,6 +210,27 @@ export const reducer = (state, action) => {
         getUserDonationsStart: false,
         getUserDonationsError: true,
         message: action.payload
+      };
+    case GO_HOME: // Navigation logic
+      return {
+        ...state,
+        homeViewSelected: true,
+        searchViewSelected: false,
+        profileViewSelected: false
+      };
+    case GO_SEARCH: // Navigation logic
+      return {
+        ...state,
+        homeViewSelected: false,
+        searchViewSelected: true,
+        profileViewSelected: false
+      };
+    case GO_PROFILE: // Navigation logic
+      return {
+        ...state,
+        homeViewSelected: false,
+        searchViewSelected: false,
+        profileViewSelected: true
       };
     default:
       return state;

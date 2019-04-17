@@ -17,8 +17,21 @@ import {
   FETCH_USER_DONATIONS_SUCCESS,
   FETCH_USER_DONATIONS_ERROR,
   UPDATE_SHOWN_CHARITY_LIST,
-  RESET_SHOWN_CHARITY_LIST
+  RESET_SHOWN_CHARITY_LIST,
+  GO_HOME,
+  GO_SEARCH,
+  GO_PROFILE
 } from "../types/index";
+
+export const navigateApp = (page, cb) => {
+  if (page === "home") {
+    cb({ type: GO_HOME });
+  } else if (page === "search") {
+    cb({ type: GO_SEARCH });
+  } else {
+    cb({ type: GO_PROFILE });
+  }
+};
 
 // Sets either FaceID/TouchID/other
 export const setBiometryType = (biometryType, cb) => {

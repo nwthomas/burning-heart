@@ -9,7 +9,10 @@ import {
   TextInput
 } from "react-native";
 import { Store } from "../../store/store";
-import { searchCharities } from "../../store/actions/index";
+import {
+  searchCharities,
+  selectCharityProfile
+} from "../../store/actions/index";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
 import { CharityCard } from "../../Presentational/CharityCard";
@@ -19,13 +22,6 @@ const { width } = Dimensions.get("window"); // Get window dimensions
 const SearchView = props => {
   const { state, dispatch } = useContext(Store);
   const { charities, shownCharities, charitySearchInput } = state;
-
-  const handleChange = value => {
-    searchCharities(value, charities, dispatch); // Updates charity list shown on screen
-  };
-  const selectCharity = id => {
-    // Finish
-  };
   return (
     <View style={styles.searchContainer}>
       <View style={styles.searchHeader}>
@@ -37,7 +33,7 @@ const SearchView = props => {
           autoFocus={true}
           returnKeyType="done"
           style={styles.input}
-          placeholder="Search for a charity"
+          placeholder="Search for charity"
           id="charitySearchInput"
           value={charitySearchInput}
           onChangeText={text => handleChange(text)}

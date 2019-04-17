@@ -29,3 +29,8 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 
 //============================================================= Miscellaneous Business Logic Types
 export const CLOSE_MODAL = "CLOSE_MODAL";
+
+//============================================================= Navigation Login Types
+export const GO_HOME = "GO_HOME";
+export const GO_PROFILE = "GO_PROFILE";
+export const GO_SEARCH = "GO_SEARCH";

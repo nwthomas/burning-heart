@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Route } from "react-router-native";
 
@@ -11,27 +11,15 @@ import { Header } from "./Components/Presentational/Header";
 import { Navbar } from "./Components/Presentational/Navbar";
 
 const App = props => {
-  const [user, setUser] = useState({});
-  const [donations, setDonations] = useState([]);
   return (
     <View style={styles.container}>
       <Header />
-      <Route
-        exact
-        path="/"
-        render={props => (
-          <HomeView {...props} user={user} donations={donations} />
-        )}
-      />
-      <Route
-        exact
-        path="/search"
-        render={props => <SearchView {...props} user={user} />}
-      />
+      <Route exact path="/" render={props => <HomeView {...props} />} />
+      <Route exact path="/search" render={props => <SearchView {...props} />} />
       <Route
         exact
         path="/profile"
-        render={props => <ProfileView {...props} user={user} />}
+        render={props => <ProfileView {...props} />}
       />
       <Navbar history={props.history} />
     </View>

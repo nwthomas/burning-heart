@@ -1,9 +1,14 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import { selectCharityProfile } from "../../store/actions/index";
 
 const CharityCard = ({ charity }) => {
+  const selectCharity = index => {
+    console.log("Working!");
+    // selectCharityProfile(charityName, charities, dispatch);
+  };
   return (
-    <View style={styles.cardContainer}>
+    <View onPress={selectCharity} style={styles.cardContainer}>
       <Text style={styles.charityCardText}>{charity.charityName}</Text>
     </View>
   );

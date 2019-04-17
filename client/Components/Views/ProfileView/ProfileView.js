@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { View, ScrollView, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Store } from "../../store/store";
 
 const ProfileView = props => {
@@ -7,7 +7,7 @@ const ProfileView = props => {
   const { account } = state;
   return (
     <View style={styles.profileContainer}>
-      <ScrollView />
+      <Text style={styles.marginTop}>Dude.</Text>
     </View>
   );
 };
@@ -17,9 +17,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: "stretch"
   },
-  charityList: {
-    flex: 1,
-    alignSelf: "stretch"
+  text: {
+    marginTop: 150
   }
 });
 

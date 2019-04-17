@@ -1,5 +1,12 @@
 import React, { useEffect, useContext } from "react";
-import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  Image,
+  ActivityIndicator
+} from "react-native";
 import { Store } from "../../store/store";
 import {
   fetchCharityList,
@@ -12,11 +19,11 @@ import { DonationCard } from "../../Presentational/DonationCard";
 const HomeView = props => {
   const { state, dispatch } = useContext(Store);
   const { donations, charities, token, account } = state;
-  const { firstName, lastName } = account;
+  const { firstName } = account;
   useEffect(() => {
-    let token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoyLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTU1NDQ0ODU3LCJleHAiOjE1NTU1MzEyNTd9.z8xmaIeUMsaAhuGfbYbwOTCoah0hFq6KrBGDYVmJcwU";
-    let username = "admin";
+    // let token =
+    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoyLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTU1NDQ0ODU3LCJleHAiOjE1NTU1MzEyNTd9.z8xmaIeUMsaAhuGfbYbwOTCoah0hFq6KrBGDYVmJcwU";
+    // let username = "admin";
 
     // Get data on home page load for speed of user flow later if not already accessed
     if (!donations.length) {
@@ -41,9 +48,17 @@ const HomeView = props => {
             ? `Afternoon, ${firstName}! Here are your donations:`
             : `Evening, ${firstName}! Here are your donations:`}
         </Text>
-        {donations.map((donation, index) => {
-          return <DonationCard donation={donation} key={index} />;
-        })}
+        {donations.length ? (
+          donations.map((donation, index) => {
+            return <DonationCard donation={donation} key={index} />;
+          })
+        ) : (
+          <ActivityIndicator
+            style={styles.loadingIcon}
+            size="large"
+            color="#4F68F4"
+          />
+        )}
       </ScrollView>
     </View>
   );
@@ -95,6 +110,9 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto-Medium",
     fontSize: 20,
     marginTop: 10
+  },
+  loadingIcon: {
+    marginTop: 50
   }
 });
 

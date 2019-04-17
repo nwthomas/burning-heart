@@ -25,8 +25,21 @@ function find() {
   );
 }
 
-function findWithPassword() {
-  return db("accounts");
+function findWithPassword(username) {
+  return db("accounts")
+    .where({ username })
+    .first()
+    .select(
+      "id",
+      "username",
+      "firstName",
+      "middleName",
+      "lastName",
+      "email",
+      "phone",
+      "created_at",
+      "updated_at"
+    );
 }
 
 function findById(id) {
