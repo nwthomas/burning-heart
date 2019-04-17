@@ -26,20 +26,7 @@ function find() {
 }
 
 function findWithPassword(username) {
-  return db("accounts")
-    .where({ username })
-    .first()
-    .select(
-      "id",
-      "username",
-      "firstName",
-      "middleName",
-      "lastName",
-      "email",
-      "phone",
-      "created_at",
-      "updated_at"
-    );
+  return db("accounts");
 }
 
 function findById(id) {

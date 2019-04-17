@@ -49,6 +49,7 @@ router.post("/login", async (req, res) => {
         error: false,
         message: "You were logged in successfully.",
         account: {
+          id: account.id,
           username: account.username,
           firstName: account.firstName,
           middleName: account.middleName,
