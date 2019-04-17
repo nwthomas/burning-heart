@@ -118,12 +118,12 @@ export const createAccount = (userDetails, cb) => {
 };
 
 // Retrieve complete list of donations for a given user account
-export const fetchAccountDonations = (username, token, cb) => {
+export const fetchAccountDonations = (id, token, cb) => {
   cb({ type: FETCH_USER_DONATIONS_START });
   const reqOptions = { headers: { authorization: token } };
   return axios
     .get(
-      "https://burning-heart.herokuapp.com/api/restricted/donations/account/1",
+      `https://burning-heart.herokuapp.com/api/restricted/donations/account/${id}`,
       reqOptions
     )
     .then(res => {

@@ -27,7 +27,7 @@ const HomeView = props => {
 
     // Get data on home page load for speed of user flow later if not already accessed
     if (!donations.length) {
-      fetchAccountDonations(account.username, token, dispatch);
+      fetchAccountDonations(account.id, token, dispatch);
     }
     if (!charities.length) {
       fetchCharityList(token, dispatch);

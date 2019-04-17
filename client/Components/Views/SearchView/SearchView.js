@@ -22,6 +22,10 @@ const { width } = Dimensions.get("window"); // Get window dimensions
 const SearchView = props => {
   const { state, dispatch } = useContext(Store);
   const { charities, shownCharities, charitySearchInput } = state;
+
+  const handleChange = value => {
+    searchCharities(value, charities, dispatch); // Updates charity list shown on screen
+  };
   return (
     <View style={styles.searchContainer}>
       <View style={styles.searchHeader}>
