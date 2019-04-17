@@ -23,14 +23,18 @@ const SearchView = props => {
   const handleChange = value => {
     searchCharities(value, charities, dispatch); // Updates charity list shown on screen
   };
+  const selectCharity = id => {
+    // Finish
+  };
   return (
     <View style={styles.searchContainer}>
-      <View style={styles.loginHeader}>
-        <Text style={styles.loginTitle}>Select Charity</Text>
-        <Image source={boomBoxPerson} style={styles.loginPerson} />
+      <View style={styles.searchHeader}>
+        <Text style={styles.searchTitle}>Make Donation</Text>
+        <Image source={boomBoxPerson} style={styles.searchPerson} />
       </View>
       <ScrollView style={styles.charityList}>
         <TextInput
+          autoFocus={true}
           returnKeyType="done"
           style={styles.input}
           placeholder="Search for a charity"
@@ -57,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: "stretch"
   },
-  loginHeader: {
+  searchHeader: {
     position: "absolute",
     top: 0,
     left: 0,
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
     height: 149,
     zIndex: 10
   },
-  loginTitle: {
+  searchTitle: {
     position: "absolute",
     top: 0,
     left: 0,
@@ -80,7 +84,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     color: "#4F68F4"
   },
-  loginPerson: {
+  searchPerson: {
     position: "absolute",
     top: 0,
     right: 0,

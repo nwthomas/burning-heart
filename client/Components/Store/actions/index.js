@@ -134,7 +134,6 @@ export const fetchCharityList = (token, cb) => {
       reqOptions
     )
     .then(res => {
-      console.log(res.data);
       const sortedCharities = res.data.charities.sort(function(a, b) {
         if (a.charityName > b.charityName) return 1;
         if (a.charityName < b.charityName) return -1;

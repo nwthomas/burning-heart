@@ -25,7 +25,7 @@ export const initialState = {
   shownCharities: [],
   donations: [], // Duplicate state for search replacement
   shownDonations: [],
-  loggedIn: true,
+  loggedIn: false,
   biometryType: "",
   token: null,
   signUpForm: {
@@ -88,6 +88,7 @@ export const reducer = (state, action) => {
         loginStart: true
       };
     case LOGIN_SUCCESS:
+      console.log(action);
       return {
         ...state,
         loginStart: false,
