@@ -1,9 +1,15 @@
 import React, { Component } from "react";
+import "./Components/styles/App.scss";
+import { Router } from "react-router";
 
-class App extends Component {
-  render() {
-    return <div className="App" />;
-  }
-}
+import { Navbar } from "./Components/Navbar";
+
+const App = props => {
+  return (
+    <div className="App">
+      <Navbar />
+    </div>
+  );
+};
 
 export default App;
