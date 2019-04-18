@@ -94,7 +94,6 @@ export const reducer = (state, action) => {
         loginStart: true
       };
     case LOGIN_SUCCESS:
-      console.log(action);
       return {
         ...state,
         loginStart: false,

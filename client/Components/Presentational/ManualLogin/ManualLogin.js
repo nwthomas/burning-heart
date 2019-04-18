@@ -20,15 +20,16 @@ const { width } = Dimensions.get("window"); // Get window dimensions
 
 const ManualLogin = props => {
   const { state, dispatch } = useContext(Store);
-  const { loginForm, loginStart, loginSuccess, loginError } = state;
+  const { loginForm, loginStart } = state;
   const { username, password } = loginForm;
+  console.log(username);
   const handleChange = (name, value) => {
     handleLoginForm(name, value, dispatch);
   };
   const manualLoginApp = e => {
     e.preventDefault();
     if (loginStart) return false;
-    loginApp(username, password, dispatch);
+    loginApp(username, password, props.history, dispatch);
   };
   const cancelLogin = e => {
     e.preventDefault();

@@ -23,7 +23,7 @@ const SignUpModal = props => {
   } = state;
   const goToLogin = e => {
     e.preventDefault();
-    if (createAccountSuccess) props.history.push("/manual-login");
+    if (createAccountSuccess) props.history.push("/home-login");
     closeModal(dispatch);
   };
   return (

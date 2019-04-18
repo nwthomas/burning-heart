@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { Route } from "react-router-native";
 
@@ -11,6 +11,9 @@ import { Header } from "./Components/Presentational/Header";
 import { Navbar } from "./Components/Presentational/Navbar";
 
 const App = props => {
+  useEffect(() => {
+    // props.history.push("/");
+  }, []);
   return (
     <View style={styles.container}>
       <Header />

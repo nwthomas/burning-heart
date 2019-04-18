@@ -29,9 +29,9 @@ const Login = ({ setLoggedIn, history }) => {
   const [manualLoginSelected, setManualLoginSelected] = useState(false); // Local state to control button presses
 
   // Automatically run login on component mount
-  useEffect(() => {
-    runBiometricLogin();
-  }, []);
+  // useEffect(() => {
+  //   runBiometricLogin();
+  // }, []);
   // Biometric login via TouchID package that returns promise
   const runBiometricLogin = () => {
     TouchID.isSupported(optionalConfigObject)
