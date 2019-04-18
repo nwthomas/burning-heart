@@ -11,7 +11,7 @@ import {
   ActivityIndicator
 } from "react-native";
 import { Store } from "../../store/store";
-import { handleLoginForm, loginApp } from "../../store/actions";
+import { handleLoginForm, manualLoginApp } from "../../store/actions";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
 import { LoginModal } from "../LoginModal";
@@ -29,7 +29,7 @@ const ManualLogin = props => {
   const manualLoginApp = e => {
     e.preventDefault();
     if (loginStart) return false;
-    loginApp(username, password, props.history, dispatch);
+    manualLoginApp(username, password, props.history, dispatch);
   };
   const cancelLogin = e => {
     e.preventDefault();

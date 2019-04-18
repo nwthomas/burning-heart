@@ -41,13 +41,15 @@ const HomeView = props => {
         <Image source={boomBoxPerson} style={styles.homePerson} />
       </View>
       <ScrollView style={styles.homeScrollContainer}>
-        <Text style={styles.welcomeText}>
-          {hours < 12
-            ? `Morning, ${firstName}! Here are your donations:`
-            : hours < 19
-            ? `Afternoon, ${firstName}! Here are your donations:`
-            : `Evening, ${firstName}! Here are your donations:`}
-        </Text>
+        <View style={styles.welcomeTextBorder}>
+          <Text style={styles.welcomeText}>
+            {hours < 12
+              ? `Morning, ${firstName}! Here are your donations:`
+              : hours < 19
+              ? `Afternoon, ${firstName}! Here are your donations:`
+              : `Evening, ${firstName}! Here are your donations:`}
+          </Text>
+        </View>
         {donations.length ? (
           donations.map((donation, index) => {
             return <DonationCard donation={donation} key={index} />;
@@ -109,7 +111,13 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontFamily: "Roboto-Medium",
     fontSize: 20,
-    marginTop: 10
+    marginTop: 10,
+    lineHeight: 30,
+    paddingBottom: 30
+  },
+  welcomeTextBorder: {
+    borderBottomColor: "#cacacf",
+    borderBottomWidth: 1
   },
   loadingIcon: {
     marginTop: 50

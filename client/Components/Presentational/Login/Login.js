@@ -13,6 +13,7 @@ import { Store } from "../../store/store";
 import { setBiometryType, loginApp } from "../../store/actions";
 
 import fireGif from "../../../assets/images/fire.gif";
+import { LoginModal } from "../LoginModal";
 
 // Configuration object for TouchID package
 const optionalConfigObject = {
@@ -21,17 +22,13 @@ const optionalConfigObject = {
   passcodeFallback: true
 };
 
-const Login = ({ setLoggedIn, history }) => {
+const Login = ({ history }) => {
   const { state, dispatch } = useContext(Store);
   const { biometryType } = state;
 
   const [loginSelected, setLoginSelected] = useState(false); // Login state to control button presses
   const [manualLoginSelected, setManualLoginSelected] = useState(false); // Local state to control button presses
 
-  // Automatically run login on component mount
-  // useEffect(() => {
-  //   runBiometricLogin();
-  // }, []);
   // Biometric login via TouchID package that returns promise
   const runBiometricLogin = () => {
     TouchID.isSupported(optionalConfigObject)
@@ -83,6 +80,7 @@ const Login = ({ setLoggedIn, history }) => {
   };
   return (
     <View style={styles.container}>
+      <LoginModal history={history} />
       <Image source={fireGif} style={styles.burningHeartGif} />
       <View style={styles.btnContainer}>
         <TouchableHighlight
