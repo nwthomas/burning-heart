@@ -40,7 +40,6 @@ const Login = ({ history }) => {
 
   // Biometric login via TouchID package that returns promise
   const runBiometricLogin = () => {
-    console.log("Working!");
     TouchID.isSupported(optionalConfigObject)
       .then(bioType => {
         if (biometryType === "FaceID") {

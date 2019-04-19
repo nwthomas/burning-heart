@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "react-native run-ios",
-    "test": "NODE_ENV=test jest --no-cache"
+    "test": "NODE_ENV=test jest --no-cache",
+    "testy": "react-scripts test"
   },
   "rnpm": {
     "assets": [
@@ -32,9 +33,9 @@
   },
   "jest": {
     "preset": "react-native",
-    "verbose": "true",
-    "transformIgnorePatterns": [
-      "<rootDir>/LoginModal"
+    "plugins": [
+      "transform-class-properties",
+      "syntax-class-properties"
     ]
   }
 }

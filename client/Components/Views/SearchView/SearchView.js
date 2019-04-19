@@ -9,17 +9,14 @@ import {
   TextInput
 } from "react-native";
 import { Store } from "../../store/store";
-import {
-  searchCharities,
-  selectCharityProfile
-} from "../../store/actions/index";
+import { searchCharities } from "../../store/actions/index";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
 import { CharityCard } from "../../Presentational/CharityCard";
 
 const { width } = Dimensions.get("window"); // Get window dimensions
 
-const SearchView = props => {
+const SearchView = ({ history }) => {
   const { state, dispatch } = useContext(Store);
   const { charities, shownCharities, charitySearchInput } = state;
 
@@ -44,7 +41,7 @@ const SearchView = props => {
         />
         {shownCharities.length ? (
           shownCharities.map((charity, index) => (
-            <CharityCard charity={charity} key={index} />
+            <CharityCard history={history} charity={charity} key={index} />
           ))
         ) : (
           <Text style={styles.noCharities}>

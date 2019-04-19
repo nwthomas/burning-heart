@@ -28,7 +28,7 @@ export const initialState = {
   shownCharities: [],
   donations: [], // Duplicate state for search replacement
   shownDonations: [],
-  loggedIn: true,
+  loggedIn: false,
   biometryType: "",
   token: null,
   signUpForm: {

@@ -1,5 +1,12 @@
 import React, { useContext } from "react";
-import { View, ScrollView, Text, StyleSheet, Image } from "react-native";
+import {
+  View,
+  ScrollView,
+  Text,
+  StyleSheet,
+  Image,
+  ActivityIndicator
+} from "react-native";
 import { Store } from "../../store/store";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
@@ -13,21 +20,53 @@ const ProfileView = props => {
     }, 0) / 100
   ).toFixed(2);
   return (
-    <ScrollView style={styles.accountContainer}>
+    <View style={styles.accountContainer}>
       <View style={styles.accountHeader}>
         <Text style={styles.accountTitle}>Account</Text>
         <Image source={boomBoxPerson} style={styles.accountPerson} />
       </View>
-      <View style={styles.accountWelcomeSummary}>
-        <Text style={styles.accountSummaryText}>
-          {donations.length
-            ? `${
-                account.firstName
-              }, you've donated $${totalDonations} to charities so far this year.`
-            : `${account.firstName}, make your first donation today!`}
-        </Text>
-      </View>
-    </ScrollView>
+      <ScrollView style={styles.accountWelcomeSummary}>
+        <View style={styles.accountSummaryBox}>
+          <Text style={styles.accountSummaryText}>
+            {donations.length
+              ? `${
+                  account.firstName
+                }, you've donated $${totalDonations} to charities so far this year.`
+              : `${account.firstName}, make your first donation today!`}
+          </Text>
+        </View>
+        <View style={styles.profileInfo}>
+          <Text style={styles.profileInfoText}>
+            <Text style={styles.profileInfoTextBold}>Username:</Text>{" "}
+            {account.username}
+          </Text>
+          <Text style={styles.profileInfoText}>
+            <Text style={styles.profileInfoTextBold}>First name:</Text>{" "}
+            {account.firstName}
+          </Text>
+          <Text style={styles.profileInfoText}>
+            <Text style={styles.profileInfoTextBold}>Middle name:</Text>{" "}
+            {account.middleName}
+          </Text>
+          <Text style={styles.profileInfoText}>
+            <Text style={styles.profileInfoTextBold}>Last name:</Text>{" "}
+            {account.lastName}
+          </Text>
+          <Text style={styles.profileInfoText}>
+            <Text style={styles.profileInfoTextBold}>First name:</Text>{" "}
+            {account.firstName}
+          </Text>
+          <Text style={styles.profileInfoText}>
+            <Text style={styles.profileInfoTextBold}>Email:</Text>{" "}
+            {account.email}
+          </Text>
+          <Text style={styles.profileInfoText}>
+            <Text style={styles.profileInfoTextBold}>Phone:</Text>{" "}
+            {account.phone}
+          </Text>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -78,6 +117,32 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto-Medium",
     fontSize: 20,
     lineHeight: 30
+  },
+  accountSummaryBox: {
+    paddingBottom: 30,
+    borderBottomWidth: 1,
+    borderBottomColor: "#cacacf"
+  },
+  profileInfo: {
+    paddingTop: 30,
+    borderBottomWidth: 1,
+    borderBottomColor: "#cacacf",
+    fontFamily: "Roboto-Medium",
+    fontSize: 16
+  },
+  profileInfoTitle: {
+    fontFamily: "Roboto-Medium",
+    fontSize: 2,
+    marginBottom: 30
+  },
+  profileInfoText: {
+    fontFamily: "Roboto-Medium",
+    fontSize: 16,
+    marginBottom: 30
+  },
+  profileInfoTextBold: {
+    fontFamily: "Roboto-BoldItalic",
+    fontSize: 16
   }
 });
 

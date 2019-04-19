@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Route } from "react-router-native";
 
@@ -7,22 +7,23 @@ import { HomeView } from "./Components/Views/HomeView";
 import { SearchView } from "./Components/Views/SearchView";
 import { ProfileView } from "./Components/Views/ProfileView";
 import { authenticate } from "./Components/Presentational/authenticate";
-import { Header } from "./Components/Presentational/Header";
 import { Navbar } from "./Components/Presentational/Navbar";
+import { CharityProfile } from "./Components/Presentational/CharityProfile";
 
 const App = props => {
-  useEffect(() => {
-    // props.history.push("/");
-  }, []);
   return (
     <View style={styles.container}>
-      <Header />
       <Route exact path="/" render={props => <HomeView {...props} />} />
       <Route exact path="/search" render={props => <SearchView {...props} />} />
       <Route
         exact
         path="/profile"
         render={props => <ProfileView {...props} />}
+      />
+      <Route
+        exact
+        path="/search/profile/:id"
+        render={props => <CharityProfile {...props} />}
       />
       <Navbar history={props.history} />
     </View>
