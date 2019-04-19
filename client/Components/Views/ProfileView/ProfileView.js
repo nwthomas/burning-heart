@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, ScrollView, Text, StyleSheet, Image } from "react-native";
 import { Store } from "../../store/store";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
@@ -13,7 +13,7 @@ const ProfileView = props => {
     }, 0) / 100
   ).toFixed(2);
   return (
-    <View style={styles.accountContainer}>
+    <ScrollView style={styles.accountContainer}>
       <View style={styles.accountHeader}>
         <Text style={styles.accountTitle}>Account</Text>
         <Image source={boomBoxPerson} style={styles.accountPerson} />
@@ -24,10 +24,10 @@ const ProfileView = props => {
             ? `${
                 account.firstName
               }, you've donated $${totalDonations} to charities so far this year.`
-            : `${acount.firstName}, make your first donation today!`}
+            : `${account.firstName}, make your first donation today!`}
         </Text>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

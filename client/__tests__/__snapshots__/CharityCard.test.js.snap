@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CharityCard /> should match the snapshot of the tree 1`] = `
+<View
+  onPress={[Function]}
+  style={
+    Object {
+      "alignSelf": "stretch",
+      "borderBottomColor": "#cacacf",
+      "borderBottomWidth": 1,
+      "paddingBottom": 30,
+      "paddingTop": 30,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontFamily": "Roboto-Medium",
+        "fontSize": 16,
+      }
+    }
+  >
+    name
+  </Text>
+</View>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CharityProfile /> should match the snapshot of the tree 1`] = `
+<View>
+  <Text>
+     textInComponent 
+  </Text>
+</View>
+`;

@@ -29,15 +29,20 @@ const Login = ({ history }) => {
   const [loginSelected, setLoginSelected] = useState(false); // Login state to control button presses
   const [manualLoginSelected, setManualLoginSelected] = useState(false); // Local state to control button presses
 
+  useEffect(() => {
+    TouchID.isSupported(optionalConfigObject).then(bioType => {
+      if (!biometryType) {
+        // Initial setting of biometry type
+        setBiometryType(bioType, dispatch);
+      }
+    });
+  }, []);
+
   // Biometric login via TouchID package that returns promise
   const runBiometricLogin = () => {
+    console.log("Working!");
     TouchID.isSupported(optionalConfigObject)
       .then(bioType => {
-        if (!biometryType) {
-          // Initial setting of biometry type
-          setBiometryType(bioType, dispatch);
-        }
-
         if (biometryType === "FaceID") {
           // Case with FaceID
           TouchID.authenticate("Unlock with your face")

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native run-ios",
-    "test": "react-scripts test --verbose"
+    "test": "NODE_ENV=test jest --no-cache"
   },
   "rnpm": {
     "assets": [
@@ -24,13 +24,17 @@
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/runtime": "^7.3.4",
-    "babel-jest": "^24.1.0",
+    "babel-jest": "^24.7.1",
     "jest": "^24.1.0",
     "metro-react-native-babel-preset": "^0.53.0",
     "react-test-renderer": "16.8.3",
     "react-testing-library": "^6.1.2"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "verbose": "true",
+    "transformIgnorePatterns": [
+      "<rootDir>/LoginModal"
+    ]
   }
 }

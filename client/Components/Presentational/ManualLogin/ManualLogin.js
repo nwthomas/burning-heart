@@ -26,7 +26,7 @@ const ManualLogin = props => {
   const handleChange = (name, value) => {
     handleLoginForm(name, value, dispatch);
   };
-  const manualLoginApp = e => {
+  const handleLoginApp = e => {
     e.preventDefault();
     if (loginStart) return false;
     manualLoginApp(username, password, props.history, dispatch);
@@ -64,7 +64,7 @@ const ManualLogin = props => {
         </View>
         <TouchableHighlight
           underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
-          onPress={manualLoginApp}
+          onPress={handleLoginApp}
           style={styles.loginBtn}
         >
           {loginStart ? (

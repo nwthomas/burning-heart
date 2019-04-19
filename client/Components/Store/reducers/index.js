@@ -28,7 +28,7 @@ export const initialState = {
   shownCharities: [],
   donations: [], // Duplicate state for search replacement
   shownDonations: [],
-  loggedIn: false,
+  loggedIn: true,
   biometryType: "",
   token: null,
   signUpForm: {
@@ -64,6 +64,7 @@ export const initialState = {
 };
 
 export const reducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
     case SET_BIOMETRY_TYPE: // For FaceID/TouchID
       return {

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DonationCard /> should match the snapshot of the tree 1`] = `
+<View
+  style={
+    Object {
+      "alignSelf": "stretch",
+      "borderBottomColor": "#cacacf",
+      "borderBottomWidth": 1,
+      "paddingBottom": 30,
+      "paddingTop": 30,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontFamily": "Roboto-Medium",
+        "fontSize": 16,
+      }
+    }
+  >
+    name
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontFamily": "Roboto-Medium",
+        "fontSize": 14,
+        "marginTop": 5,
+      }
+    }
+  >
+    $0.10
+  </Text>
+</View>
+`;
