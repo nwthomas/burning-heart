@@ -8,8 +8,12 @@ import {
   CREATE_ACCOUNT_START,
   CREATE_ACCOUNT_SUCCESS,
   CREATE_ACCOUNT_ERROR,
+  UPDATE_ACCOUNT_START,
+  UPDATE_ACCOUNT_SUCCESS,
+  UPDATE_ACCOUNT_ERROR,
   HANDLE_LOGIN_FORM_CHANGE,
   HANDLE_DONATION_FORM_CHANGE,
+  HANDLE_UPDATE_FORM_CHANGE,
   SET_BIOMETRY_TYPE,
   FETCH_CHARITIES_START,
   FETCH_CHARITIES_SUCCESS,
@@ -62,6 +66,13 @@ export const updateDonationForm = (name, value, cb) => {
 export const handleLoginForm = (name, value, cb) => {
   return cb({
     type: HANDLE_LOGIN_FORM_CHANGE,
+    payload: { name, value }
+  });
+};
+
+export const handleUpdateForm = (name, value, cb) => {
+  return cb({
+    type: HANDLE_UPDATE_FORM_CHANGE,
     payload: { name, value }
   });
 };
@@ -136,6 +147,27 @@ export const createAccount = (userDetails, cb) => {
     .catch(err => {
       return cb({
         type: CREATE_ACCOUNT_ERROR,
+        payload: err.response.data.message
+      });
+    });
+};
+
+// Update account for user action creator
+export const updateUserAccount = (userDetails, id, token, cb) => {
+  cb({ type: UPDATE_ACCOUNT_START });
+  const reqOptions = { headers: { authorization: token } };
+  return axios
+    .put(
+      `https://burning-heart.herokuapp.com/api/restricted/accounts/${id}`,
+      userDetails,
+      reqOptions
+    )
+    .then(res => {
+      return cb({ type: UPDATE_ACCOUNT_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      return cb({
+        type: UPDATE_ACCOUNT_ERROR,
         payload: err.response.data.message
       });
     });

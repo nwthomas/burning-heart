@@ -10,6 +10,7 @@ import { authenticate } from "./Components/Presentational/authenticate";
 import { Navbar } from "./Components/Presentational/Navbar";
 import { CharityProfile } from "./Components/Presentational/CharityProfile";
 import { DonationForm } from "./Components/Presentational/DonationForm";
+import { ProfileUpdate } from "./Components/Presentational/ProfileUpdate";
 
 const App = props => {
   return (
@@ -20,6 +21,11 @@ const App = props => {
         exact
         path="/profile"
         render={props => <ProfileView {...props} />}
+      />
+      <Route
+        exact
+        path="/profile/update"
+        render={props => <ProfileUpdate {...props} />}
       />
       <Route
         exact

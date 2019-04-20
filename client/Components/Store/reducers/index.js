@@ -6,12 +6,16 @@ import {
   CREATE_ACCOUNT_START,
   CREATE_ACCOUNT_SUCCESS,
   CREATE_ACCOUNT_ERROR,
+  UPDATE_ACCOUNT_START,
+  UPDATE_ACCOUNT_SUCCESS,
+  UPDATE_ACCOUNT_ERROR,
   MAKE_DONATION_START,
   MAKE_DONATION_SUCCESS,
   MAKE_DONATION_ERROR,
   CLOSE_MODAL,
   HANDLE_LOGIN_FORM_CHANGE,
   HANDLE_DONATION_FORM_CHANGE,
+  HANDLE_UPDATE_FORM_CHANGE,
   SET_BIOMETRY_TYPE,
   FETCH_CHARITIES_START,
   FETCH_CHARITIES_SUCCESS,
@@ -28,6 +32,7 @@ import {
 
 export const initialState = {
   account: {},
+  updateAccount: {},
   charities: [], // Duplicated state for search replacement
   shownCharities: [],
   donations: [], // Duplicate state for search replacement
@@ -74,7 +79,10 @@ export const initialState = {
   getUserDonationsError: false,
   makeDonationStart: false,
   makeDonationSuccess: false,
-  makeDonationError: false
+  makeDonationError: false,
+  updateAccountStart: false,
+  updateAccountSuccess: false,
+  updateAccountError: false
 };
 
 export const reducer = (state, action) => {
@@ -114,6 +122,7 @@ export const reducer = (state, action) => {
         loginSuccess: true,
         loggedIn: true,
         account: action.payload.account,
+        updateAccount: action.payload.account,
         message: action.payload.message,
         loginForm: {
           username: "",
@@ -156,6 +165,27 @@ export const reducer = (state, action) => {
         ...state,
         createAccountStart: false,
         createAccountError: true,
+        message: action.payload
+      };
+    case UPDATE_ACCOUNT_START:
+      return {
+        ...state,
+        updateAccountStart: true,
+        updateAccountError: false
+      };
+    case UPDATE_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        updateAccountSuccess: true,
+        updateAccountStart: false,
+        account: action.payload.account,
+        message: action.payload.message
+      };
+    case UPDATE_ACCOUNT_ERROR:
+      return {
+        ...state,
+        updateAccountStart: false,
+        updateAccountError: true,
         message: action.payload
       };
     case CLOSE_MODAL:
@@ -250,6 +280,14 @@ export const reducer = (state, action) => {
         ...state,
         donation: {
           ...state.donation,
+          [action.payload.name]: action.payload.value
+        }
+      };
+    case HANDLE_UPDATE_FORM_CHANGE:
+      return {
+        ...state,
+        updateAccount: {
+          ...state.updateAccount,
           [action.payload.name]: action.payload.value
         }
       };

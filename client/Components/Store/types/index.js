@@ -19,9 +19,15 @@ export const MAKE_DONATION_ERROR = "MAKE_DONATION_ERROR";
 
 //============================================================= Sign Up Form Types
 export const HANDLE_SIGNUP_FORM_CHANGE = "HANDLE_SIGNUP_FORM_CHANGE";
+
+//============================================================= Account Types
 export const CREATE_ACCOUNT_START = "CREATE_ACCOUNT_START";
 export const CREATE_ACCOUNT_SUCCESS = "CREATE_ACCOUNT_SUCCESS";
 export const CREATE_ACCOUNT_ERROR = "CREATE_ACCOUNT_ERROR";
+export const UPDATE_ACCOUNT_START = "UPDATE_ACCOUNT_START";
+export const UPDATE_ACCOUNT_SUCCESS = "UPDATE_ACCOUNT_SUCCESS";
+export const UPDATE_ACCOUNT_ERROR = "UPDATE_ACCOUNT_ERROR";
+export const HANDLE_UPDATE_FORM_CHANGE = "HANDLE_UPDATE_FORM_CHANGE";
 
 //============================================================= Login Form Types
 export const HANDLE_LOGIN_FORM_CHANGE = "HANDLE_LOGIN_FORM_CHANGE";

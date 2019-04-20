@@ -8,6 +8,7 @@ import {
   ActivityIndicator
 } from "react-native";
 import { Store } from "../../store/store";
+import { Link } from "react-router-native";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
 
@@ -47,6 +48,9 @@ const ProfileView = props => {
         <Text style={styles.profileText}>{account.email}</Text>
         <Text style={styles.profileSubHeader}>Phone Number</Text>
         <Text style={styles.profileText}>{account.phone}</Text>
+        <Link to="/profile/update" style={styles.updateBtn}>
+          <Text style={styles.updateBtnText}>Update Account</Text>
+        </Link>
       </ScrollView>
     </View>
   );
@@ -90,8 +94,8 @@ const styles = StyleSheet.create({
   },
   accountWelcomeSummary: {
     marginTop: 150,
-    marginRight: 40,
-    marginLeft: 40,
+    paddingRight: 40,
+    paddingLeft: 40,
     paddingBottom: 30
   },
   accountSummaryText: {
@@ -135,6 +139,22 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     fontSize: 16,
     marginBottom: 20
+  },
+  updateBtn: {
+    alignSelf: "stretch",
+    justifyContent: "center",
+    height: 45,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "#0E30F0",
+    backgroundColor: "#0E30F0",
+    marginBottom: 150
+  },
+  updateBtnText: {
+    color: "#ffffff",
+    alignSelf: "center",
+    fontFamily: "Roboto-Medium",
+    fontSize: 16
   }
 });
 
