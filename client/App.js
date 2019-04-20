@@ -9,6 +9,7 @@ import { ProfileView } from "./Components/Views/ProfileView";
 import { authenticate } from "./Components/Presentational/authenticate";
 import { Navbar } from "./Components/Presentational/Navbar";
 import { CharityProfile } from "./Components/Presentational/CharityProfile";
+import { DonationForm } from "./Components/Presentational/DonationForm";
 
 const App = props => {
   return (
@@ -24,6 +25,11 @@ const App = props => {
         exact
         path="/search/profile/:id"
         render={props => <CharityProfile {...props} />}
+      />
+      <Route
+        exact
+        path="/search/profile/:id/donate"
+        render={props => <DonationForm {...props} />}
       />
       <Navbar history={props.history} />
     </View>

@@ -9,6 +9,7 @@ import {
   CREATE_ACCOUNT_SUCCESS,
   CREATE_ACCOUNT_ERROR,
   HANDLE_LOGIN_FORM_CHANGE,
+  HANDLE_DONATION_FORM_CHANGE,
   SET_BIOMETRY_TYPE,
   FETCH_CHARITIES_START,
   FETCH_CHARITIES_SUCCESS,
@@ -45,6 +46,14 @@ export const setBiometryType = (biometryType, cb) => {
 export const handleSignUpForm = (name, value, cb) => {
   return cb({
     type: HANDLE_SIGNUP_FORM_CHANGE,
+    payload: { name, value }
+  });
+};
+
+// Donation form controlled input action creator
+export const updateDonationForm = (name, value, cb) => {
+  return cb({
+    type: HANDLE_DONATION_FORM_CHANGE,
     payload: { name, value }
   });
 };

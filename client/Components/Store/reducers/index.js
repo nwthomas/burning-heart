@@ -8,6 +8,7 @@ import {
   CREATE_ACCOUNT_ERROR,
   CLOSE_MODAL,
   HANDLE_LOGIN_FORM_CHANGE,
+  HANDLE_DONATION_FORM_CHANGE,
   SET_BIOMETRY_TYPE,
   FETCH_CHARITIES_START,
   FETCH_CHARITIES_SUCCESS,
@@ -43,6 +44,12 @@ export const initialState = {
   loginForm: {
     username: "",
     password: ""
+  },
+  donation: {
+    amount: "",
+    creditCard: "",
+    expDate: "",
+    securityCode: ""
   },
   charitySearchInput: "",
   message: "",
@@ -230,6 +237,14 @@ export const reducer = (state, action) => {
         homeViewSelected: false,
         searchViewSelected: false,
         profileViewSelected: true
+      };
+    case HANDLE_DONATION_FORM_CHANGE:
+      return {
+        ...state,
+        donation: {
+          ...state.donation,
+          [action.payload.name]: action.payload.value
+        }
       };
     default:
       return state;

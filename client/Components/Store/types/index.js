@@ -19,6 +19,9 @@ export const CREATE_ACCOUNT_START = "CREATE_ACCOUNT_START";
 export const CREATE_ACCOUNT_SUCCESS = "CREATE_ACCOUNT_SUCCESS";
 export const CREATE_ACCOUNT_ERROR = "CREATE_ACCOUNT_ERROR";
 
+//============================================================= Donation Form Types
+export const HANDLE_DONATION_FORM_CHANGE = "HANDLE_DONATION_FORM_CHANGE";
+
 //============================================================= Login Form Types
 export const HANDLE_LOGIN_FORM_CHANGE = "HANDLE_LOGIN_FORM_CHANGE";
 
