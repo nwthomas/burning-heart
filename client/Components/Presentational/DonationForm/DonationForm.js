@@ -6,21 +6,32 @@ import {
   Image,
   TextInput,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  TouchableHighlight
 } from "react-native";
 import { Store } from "../../store/store";
+import { Link } from "react-router-native";
 import { updateDonationForm } from "../../store/actions";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
 
 const { width } = Dimensions.get("window");
 
-const DonationForm = props => {
+const DonationForm = ({ history, match }) => {
   const { state, dispatch } = useContext(Store);
-  const { donation } = state;
+  const {
+    donation,
+    makeDonationStart,
+    makeDonationSuccess,
+    makeDonationError
+  } = state;
   const { amount, creditCard, expDate, securityCode } = donation;
   const handleChange = (name, value) => {
     updateDonationForm(name, value, dispatch);
+  };
+  const submitPayment = e => {
+    e.preventDefault();
+    // Finish out with action creator and reducer on Stripe implementation
   };
   return (
     <View style={styles.donationFormContainer}>
@@ -73,6 +84,22 @@ const DonationForm = props => {
             value={securityCode}
             onChangeText={text => handleChange("securityCode", text)}
           />
+        </View>
+        <View style={styles.btnContainer}>
+          <TouchableHighlight
+            underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
+            onPress={submitPayment}
+            style={styles.submitBtn}
+          >
+            {makeDonationStart ? (
+              <ActivityIndicator size="small" color="#ffffff" />
+            ) : (
+              <Text style={styles.btnText}>Make Payment</Text>
+            )}
+          </TouchableHighlight>
+          <Link to="/search" underlayColor={"#0E30F0"} style={styles.cancelBtn}>
+            <Text style={styles.btnText}>Cancel</Text>
+          </Link>
         </View>
       </ScrollView>
     </View>
@@ -139,6 +166,47 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 45,
     paddingLeft: 5
+  },
+  btnContainer: {
+    alignSelf: "stretch",
+    alignContent: "center"
+  },
+  submitBtn: {
+    alignSelf: "stretch",
+    justifyContent: "center",
+    height: 45,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "#0E30F0",
+    backgroundColor: "#0E30F0",
+    marginBottom: 20,
+    marginTop: 10
+  },
+  cancelBtn: {
+    alignSelf: "stretch",
+    justifyContent: "center",
+    height: 45,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "#0E30F0",
+    backgroundColor: "#0E30F0",
+    marginBottom: 89
+  },
+  cancelBtnSelected: {
+    alignSelf: "stretch",
+    justifyContent: "center",
+    height: 45,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "#0E30F070", // Last two numbers indicate opacity
+    backgroundColor: "#0E30F070", // Last two numbers indicate opacity
+    marginBottom: 20
+  },
+  btnText: {
+    color: "#ffffff",
+    alignSelf: "center",
+    fontFamily: "Roboto-Medium",
+    fontSize: 16
   }
 });
 

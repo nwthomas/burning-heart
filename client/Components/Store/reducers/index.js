@@ -6,6 +6,9 @@ import {
   CREATE_ACCOUNT_START,
   CREATE_ACCOUNT_SUCCESS,
   CREATE_ACCOUNT_ERROR,
+  MAKE_DONATION_START,
+  MAKE_DONATION_SUCCESS,
+  MAKE_DONATION_ERROR,
   CLOSE_MODAL,
   HANDLE_LOGIN_FORM_CHANGE,
   HANDLE_DONATION_FORM_CHANGE,
@@ -51,6 +54,7 @@ export const initialState = {
     expDate: "",
     securityCode: ""
   },
+  newPassword: "",
   charitySearchInput: "",
   message: "",
   homeViewSelected: true,
@@ -67,7 +71,10 @@ export const initialState = {
   getCharitiesError: false,
   getUserDonationsStart: false,
   getUserDonationsSuccess: false,
-  getUserDonationsError: false
+  getUserDonationsError: false,
+  makeDonationStart: false,
+  makeDonationSuccess: false,
+  makeDonationError: false
 };
 
 export const reducer = (state, action) => {

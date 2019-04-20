@@ -35,36 +35,18 @@ const ProfileView = props => {
               : `${account.firstName}, make your first donation today!`}
           </Text>
         </View>
-        <View style={styles.profileInfo}>
-          <Text style={styles.profileInfoText}>
-            <Text style={styles.profileInfoTextBold}>Username:</Text>{" "}
-            {account.username}
-          </Text>
-          <Text style={styles.profileInfoText}>
-            <Text style={styles.profileInfoTextBold}>First name:</Text>{" "}
-            {account.firstName}
-          </Text>
-          <Text style={styles.profileInfoText}>
-            <Text style={styles.profileInfoTextBold}>Middle name:</Text>{" "}
-            {account.middleName}
-          </Text>
-          <Text style={styles.profileInfoText}>
-            <Text style={styles.profileInfoTextBold}>Last name:</Text>{" "}
-            {account.lastName}
-          </Text>
-          <Text style={styles.profileInfoText}>
-            <Text style={styles.profileInfoTextBold}>First name:</Text>{" "}
-            {account.firstName}
-          </Text>
-          <Text style={styles.profileInfoText}>
-            <Text style={styles.profileInfoTextBold}>Email:</Text>{" "}
-            {account.email}
-          </Text>
-          <Text style={styles.profileInfoText}>
-            <Text style={styles.profileInfoTextBold}>Phone:</Text>{" "}
-            {account.phone}
-          </Text>
-        </View>
+        <Text style={styles.profileSubHeader}>Username</Text>
+        <Text style={styles.profileText}>{account.username}</Text>
+        <Text style={styles.profileSubHeader}>First Name</Text>
+        <Text style={styles.profileText}>{account.firstName}</Text>
+        <Text style={styles.profileSubHeader}>Middle Name</Text>
+        <Text style={styles.profileText}>{account.middleName}</Text>
+        <Text style={styles.profileSubHeader}>Last Name</Text>
+        <Text style={styles.profileText}>{account.lastName}</Text>
+        <Text style={styles.profileSubHeader}>Email</Text>
+        <Text style={styles.profileText}>{account.email}</Text>
+        <Text style={styles.profileSubHeader}>Phone Number</Text>
+        <Text style={styles.profileText}>{account.phone}</Text>
       </ScrollView>
     </View>
   );
@@ -119,9 +101,7 @@ const styles = StyleSheet.create({
     lineHeight: 30
   },
   accountSummaryBox: {
-    paddingBottom: 30,
-    borderBottomWidth: 1,
-    borderBottomColor: "#cacacf"
+    paddingBottom: 30
   },
   profileInfo: {
     paddingTop: 30,
@@ -143,6 +123,18 @@ const styles = StyleSheet.create({
   profileInfoTextBold: {
     fontFamily: "Roboto-BoldItalic",
     fontSize: 16
+  },
+  profileSubHeader: {
+    color: "#4F68F4",
+    fontFamily: "Roboto-Medium",
+    fontSize: 16,
+    marginBottom: 10
+  },
+  profileText: {
+    fontFamily: "Roboto-Medium",
+    lineHeight: 30,
+    fontSize: 16,
+    marginBottom: 20
   }
 });
 
