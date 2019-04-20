@@ -16,19 +16,13 @@ import { Store } from "../../store/store";
 import { updateUserAccount, handleUpdateForm } from "../../store/actions";
 
 import updatePerson from "../../../assets/images/signup-person.gif"; // Replace
+import { UpdateAccountModal, AccountUpdateModal } from "../AccountUpdateModal";
 
 const { width } = Dimensions.get("window");
 
-const ProfileUpdate = props => {
+const ProfileUpdate = ({ history }) => {
   const { state, dispatch } = useContext(Store);
-  const {
-    updateAccount,
-    newPassword,
-    token,
-    updateAccountStart,
-    updateAccountSuccess,
-    updateAccountError
-  } = state;
+  const { updateAccount, newPassword, token, updateAccountStart } = state;
   const {
     id,
     email,
@@ -47,6 +41,7 @@ const ProfileUpdate = props => {
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <AccountUpdateModal history={history} />
       <ScrollView
         scrollEventThrottle={16} // Sends event feedback back as fast as possible
         decelerationRate={0} // Stops scroll instantly
@@ -156,7 +151,7 @@ const ProfileUpdate = props => {
         </View>
       </ScrollView>
       <View style={styles.updateHeader}>
-        <Text style={styles.updateTitle}>Sign Up</Text>
+        <Text style={styles.updateTitle}>Update Account</Text>
         <Image source={updatePerson} style={styles.updatePerson} />
       </View>
     </KeyboardAvoidingView>

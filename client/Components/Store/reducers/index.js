@@ -197,6 +197,8 @@ export const reducer = (state, action) => {
         loginSuccess: false,
         getCharitiesError: false,
         getCharitiesSuccess: false,
+        updateAccountSuccess: false,
+        updateAccountError: false,
         message: ""
       };
     case UPDATE_SHOWN_CHARITY_LIST:
