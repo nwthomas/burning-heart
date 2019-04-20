@@ -26,7 +26,7 @@ const SearchView = ({ history }) => {
   return (
     <View style={styles.searchContainer}>
       <View style={styles.searchHeader}>
-        <Text style={styles.searchTitle}>Make Donation</Text>
+        <Text style={styles.searchTitle}>Select Charity</Text>
         <Image source={boomBoxPerson} style={styles.searchPerson} />
       </View>
       <ScrollView style={styles.charityList}>

@@ -28,7 +28,9 @@ const styles = StyleSheet.create({
   input: {
     paddingBottom: 20,
     borderColor: "black",
-    borderWidth: 1
+    borderWidth: 1,
+    marginRight: 10,
+    marginLeft: 10
   }
 });
 
