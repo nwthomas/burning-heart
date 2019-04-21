@@ -7,6 +7,10 @@
   justify-content: center;
   align-items: center;
 
+  @media #{$tablet} {
+    height: 60px;
+  }
+
   .cta__banner__text {
     color: white;
     font-size: 1.4rem;
