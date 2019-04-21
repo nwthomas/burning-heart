@@ -39,9 +39,9 @@ export default class LandingPage extends Component {
             <div className="demo__content">
               <h2 className="demo__header">A new way to give.</h2>
               <p className="demo__text">
-                People are busy. It's hard to make time to help others. Burning
-                Heart makes it easy by putting the power of micro-donations in
-                the palm of your hand.
+                People are busy. We get it. It's hard to make time to help
+                others. Burning Heart makes it easy by putting the power of
+                micro-donations in the palm of your hand.
               </p>
             </div>
             <div className="iphone__picture">
@@ -50,6 +50,19 @@ export default class LandingPage extends Component {
             </div>
           </div>
         </section>
+        <footer className="footer__content">
+          <div className="logo__address">
+            <div className="footer__logo-name">
+              <h2>Burning Heart</h2>
+            </div>
+            <address>
+              <p>1 (800) 843-2910</p>
+              <p>1400 Oakwood Avenue</p>
+              <p>San Francisco, CA</p>
+              <p>94574</p>
+            </address>
+          </div>
+        </footer>
       </>
     );
   }

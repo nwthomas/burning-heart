@@ -127,7 +127,7 @@
     }
 
     .iphone__picture {
-      width: 250px;
+      width: 280px;
       margin: 100px 15% 0 0;
       position: relative;
       display: flex;
@@ -137,6 +137,39 @@
       .fire-gif {
         width: 35%;
         position: absolute;
+      }
+    }
+  }
+}
+
+.footer__content {
+  background-image: linear-gradient(to right, #f7f8f9, #e9eeef);
+  width: 100%;
+  max-width: 1600px;
+  padding: 50px 3% 0;
+  margin: 100px auto 0;
+  height: 400px;
+
+  .logo__address {
+    .footer__logo-name {
+      height: 70px;
+      width: 320px;
+      background: black;
+
+      h2 {
+        line-height: 70px;
+        width: 100%;
+        text-align: center;
+        font-size: 3.8rem;
+        font-weight: 700;
+        color: white;
+        margin-top: 32px;
+      }
+    }
+
+    address {
+      p {
+        margin-top: 20px;
       }
     }
   }
