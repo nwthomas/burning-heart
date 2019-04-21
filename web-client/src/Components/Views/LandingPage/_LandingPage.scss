@@ -1,6 +1,8 @@
 .landing-page__header {
   width: 100%;
   position: relative;
+  margin: 0 auto;
+  max-width: 1600px;
 
   .landing-page__header__bg {
     position: absolute;
@@ -97,6 +99,8 @@
 
 .middle__content {
   width: 100%;
+  margin: 0 auto;
+  max-width: 1600px;
 
   .demo__information {
     width: 100%;
