@@ -5,7 +5,7 @@ const CtaBanner = () => {
     <div className="cta__banner">
       <p className="cta__banner__text">
         Burning Heart is a micro-donation application for people who like to
-        give.{" "}
+        give what they can when they can.{" "}
         <a className="cta__banner__link" href="#">
           Sign up here.
         </a>

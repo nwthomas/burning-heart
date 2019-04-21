@@ -5,12 +5,12 @@ import { Route } from "react-router";
 
 import { authenticate } from "./Components/Container/authenticate"; // HOC
 import { LoginView } from "./Components/Views/LoginView";
-import { HomeView } from "./Components/Views/HomeView";
+import { LandingPage } from "./Components/Views/LandingPage";
 
 const App = props => {
   return (
     <div className="App">
-      <HomeView />
+      <LandingPage />
     </div>
   );
 };
