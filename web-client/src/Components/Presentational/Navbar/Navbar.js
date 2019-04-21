@@ -1,9 +1,11 @@
 import React from "react";
 
+import NavbarMain from "./NavbarMain";
+
 const Navbar = () => {
   return (
     <div className="navbar-container">
-      <div />
+      <NavbarMain />
     </div>
   );
 };

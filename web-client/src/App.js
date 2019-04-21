@@ -1,15 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
+import axios from "axios";
 import "./Components/styles/App.scss";
 import { Route } from "react-router";
 
 import { authenticate } from "./Components/Container/authenticate"; // HOC
 import { LoginView } from "./Components/Views/LoginView";
-import { Navbar } from "./Components/Presentational/Navbar";
+import { HomeView } from "./Components/Views/HomeView";
 
 const App = props => {
   return (
     <div className="App">
-      <Navbar />
+      <HomeView />
     </div>
   );
 };

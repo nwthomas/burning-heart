@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const authenticate = App => LoginView => {
   return class extends Component {
     render() {
-      return this.props.loggedIn ? <App /> : <LoginView />;
+      return !this.props.loggedIn ? <App /> : <LoginView />;
     }
   };
 };
