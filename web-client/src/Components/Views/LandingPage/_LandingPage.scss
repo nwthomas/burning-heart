@@ -146,9 +146,11 @@
   background-image: linear-gradient(to right, #f7f8f9, #e9eeef);
   width: 100%;
   max-width: 1600px;
-  padding: 50px 3% 0;
+  padding: 82px 3% 0;
   margin: 100px auto 0;
-  height: 400px;
+  height: 370px;
+  display: flex;
+  justify-content: space-between;
 
   .logo__address {
     .footer__logo-name {
@@ -163,13 +165,29 @@
         font-size: 3.8rem;
         font-weight: 700;
         color: white;
-        margin-top: 32px;
       }
     }
 
     address {
       p {
+        font-weight: 700;
         margin-top: 20px;
+      }
+    }
+  }
+
+  .footer__social__links {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+
+    .social__link {
+      width: 50px;
+      height: auto;
+      margin-left: 5%;
+
+      &:hover {
+        opacity: 0.7;
       }
     }
   }

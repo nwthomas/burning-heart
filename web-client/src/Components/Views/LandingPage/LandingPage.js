@@ -5,6 +5,10 @@ import { CtaBanner } from "../../Presentational/CtaBanner";
 import volcanoPicture from "../../../images/landing-page-image.webp";
 import fireGif from "../../../images/fire.gif";
 import blankIphone from "../../../images/blank-iphone.webp";
+import facebookLogo from "../../../images/facebook.svg";
+import instagramLogo from "../../../images/instagram.svg";
+import twitterLogo from "../../../images/twitter.svg";
+import linkedInLogo from "../../../images/linkedin.svg";
 
 export default class LandingPage extends Component {
   render() {
@@ -61,6 +65,28 @@ export default class LandingPage extends Component {
               <p>San Francisco, CA</p>
               <p>94574</p>
             </address>
+          </div>
+          <div className="footer__social__links">
+            <div className="social__link">
+              <a href="https://www.facebook.com/nwthomas">
+                <img src={facebookLogo} alt="Facebook logo" />
+              </a>
+            </div>
+            <div className="social__link">
+              <a href="https://www.instagram.com/nwthomas/">
+                <img src={instagramLogo} alt="Instagram logo" />
+              </a>
+            </div>
+            <div className="social__link">
+              <a href="https://twitter.com/nwthomas_">
+                <img src={twitterLogo} alt="Twitter logo" />
+              </a>
+            </div>
+            <div className="social__link">
+              <a href="https://www.linkedin.com/in/nwthomas-profile/">
+                <img src={linkedInLogo} alt="LinkedIn logo" />
+              </a>
+            </div>
           </div>
         </footer>
       </>
