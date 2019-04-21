@@ -66,26 +66,34 @@ export default class LandingPage extends Component {
               <p>94574</p>
             </address>
           </div>
-          <div className="footer__social__links">
-            <div className="social__link">
-              <a href="https://www.facebook.com/nwthomas">
-                <img src={facebookLogo} alt="Facebook logo" />
-              </a>
-            </div>
-            <div className="social__link">
-              <a href="https://www.instagram.com/nwthomas/">
-                <img src={instagramLogo} alt="Instagram logo" />
-              </a>
-            </div>
-            <div className="social__link">
-              <a href="https://twitter.com/nwthomas_">
-                <img src={twitterLogo} alt="Twitter logo" />
-              </a>
-            </div>
-            <div className="social__link">
-              <a href="https://www.linkedin.com/in/nwthomas-profile/">
-                <img src={linkedInLogo} alt="LinkedIn logo" />
-              </a>
+          <div className="footer__social__navbar">
+            <nav className="footer__navbar__links">
+              <a href="#">Home</a>
+              <a href="#">About</a>
+              <a href="#">Login</a>
+              <a href="#">Sign Up</a>
+            </nav>
+            <div className="footer__social__links">
+              <div className="social__link">
+                <a href="https://www.facebook.com/nwthomas">
+                  <img src={facebookLogo} alt="Facebook logo" />
+                </a>
+              </div>
+              <div className="social__link">
+                <a href="https://www.instagram.com/nwthomas/">
+                  <img src={instagramLogo} alt="Instagram logo" />
+                </a>
+              </div>
+              <div className="social__link">
+                <a href="https://twitter.com/nwthomas_">
+                  <img src={twitterLogo} alt="Twitter logo" />
+                </a>
+              </div>
+              <div className="social__link">
+                <a href="https://www.linkedin.com/in/nwthomas-profile/">
+                  <img src={linkedInLogo} alt="LinkedIn logo" />
+                </a>
+              </div>
             </div>
           </div>
         </footer>
