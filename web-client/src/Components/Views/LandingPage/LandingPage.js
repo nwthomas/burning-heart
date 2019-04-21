@@ -39,6 +39,7 @@ export default class LandingPage extends Component {
           </div>
         </header>
         <section className="middle__content">
+          <div className="mobile__bg" />
           <div className="demo__information">
             <div className="demo__content">
               <h2 className="demo__header">A new way to give.</h2>
