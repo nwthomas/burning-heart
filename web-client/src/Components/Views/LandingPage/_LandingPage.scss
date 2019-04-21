@@ -3,12 +3,13 @@
   position: relative;
 
   .landing-page__header__bg {
-    position: fixed;
+    position: absolute;
     z-index: -1;
     top: 0;
     right: 0;
     width: 60%;
-    height: 900px;
+    height: 70vw;
+    max-height: 950px;
     background-image: linear-gradient(to right, #3955f2, #5d73f4);
   }
 
@@ -28,6 +29,7 @@
 
     .navbar__links {
       width: 55%;
+      max-width: 1000px;
       display: flex;
       justify-content: flex-end;
       margin-top: 52px;
@@ -82,11 +84,55 @@
         font-weight: 700;
         font-size: 1.6rem;
         border: 1px solid #ffb2b3;
+        cursor: pointer;
 
         &:hover {
           color: #ffb2b3;
           background: white;
         }
+      }
+    }
+  }
+}
+
+.middle__content {
+  width: 100%;
+
+  .demo__information {
+    width: 100%;
+    padding: 0 3%;
+    display: flex;
+    justify-content: space-between;
+
+    .demo__content {
+      margin-top: 240px;
+      width: 45%;
+      font-weight: 700;
+      color: #ffb2b3;
+
+      .demo__header {
+        font-size: 5rem;
+      }
+
+      .demo__text {
+        line-height: 1.5;
+        margin-top: 50px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.4rem;
+      }
+    }
+
+    .iphone__picture {
+      width: 250px;
+      margin: 100px 15% 0 0;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .fire-gif {
+        width: 35%;
+        position: absolute;
       }
     }
   }

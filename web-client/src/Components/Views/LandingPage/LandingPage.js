@@ -4,6 +4,7 @@ import { CtaBanner } from "../../Presentational/CtaBanner";
 
 import volcanoPicture from "../../../images/landing-page-image.webp";
 import fireGif from "../../../images/fire.gif";
+import blankIphone from "../../../images/blank-iphone.webp";
 
 export default class LandingPage extends Component {
   render() {
@@ -27,12 +28,28 @@ export default class LandingPage extends Component {
             </div>
             <div className="header__content">
               <h2>For Those Who Like to Give</h2>
-              <p>Burning Heart lets you give what you want, when you want. </p>
-              <p>Do what feels good. Give.</p>
+              <p>Burning Heart lets you donate what you want, when you want.</p>
+              <p>Do what feels good. Do what makes you happy. Give.</p>
               <button className="header__button">Download</button>
             </div>
           </div>
         </header>
+        <section className="middle__content">
+          <div className="demo__information">
+            <div className="demo__content">
+              <h2 className="demo__header">A new way to give.</h2>
+              <p className="demo__text">
+                People are busy. It's hard to make time to help others. Burning
+                Heart makes it easy by putting the power of micro-donations in
+                the palm of your hand.
+              </p>
+            </div>
+            <div className="iphone__picture">
+              <img src={blankIphone} alt="iPhone demo of Burning Heart" />
+              <img className="fire-gif" src={fireGif} alt="Fire logo" />
+            </div>
+          </div>
+        </section>
       </>
     );
   }
