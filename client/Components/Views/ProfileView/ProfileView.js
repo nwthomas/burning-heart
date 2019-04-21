@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#0E30F0",
     backgroundColor: "#0E30F0",
+    marginTop: 10,
     marginBottom: 150
   },
   updateBtnText: {

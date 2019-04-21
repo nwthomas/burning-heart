@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./Components/styles/App.scss";
-import { Router } from "react-router";
+import { Route } from "react-router";
 
-import { Navbar } from "./Components/Navbar";
+import { authenticate } from "./Components/Container/authenticate"; // HOC
+import { LoginView } from "./Components/Views/LoginView";
+import { Navbar } from "./Components/Presentational/Navbar";
 
 const App = props => {
   return (
@@ -12,4 +14,4 @@ const App = props => {
   );
 };
 
-export default App;
+export default authenticate(App)(LoginView);
