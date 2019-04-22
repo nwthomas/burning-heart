@@ -15,7 +15,7 @@
     background-image: linear-gradient(to right, #3955f2, #5d73f4);
 
     @media #{$desktop} {
-      height: 87vw;
+      height: 90vw;
     }
 
     @media #{$tablet} {
@@ -253,6 +253,11 @@
       width: 320px;
       background: black;
 
+      @media #{$tablet} {
+        width: 260px;
+        height: 60px;
+      }
+
       h2 {
         line-height: 70px;
         width: 100%;
@@ -260,6 +265,11 @@
         font-size: 3.8rem;
         font-weight: 700;
         color: white;
+
+        @media #{$tablet} {
+          font-size: 3rem;
+          line-height: 60px;
+        }
       }
     }
 
@@ -278,11 +288,22 @@
     align-items: flex-end;
     width: 55%;
 
+    @media #{$tablet} {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
     .footer__navbar__links {
       display: flex;
       justify-content: flex-end;
       width: 100%;
       max-width: 600px;
+
+      @media #{$tablet} {
+        max-width: 800px;
+        flex-direction: column;
+        margin-top: 80px;
+      }
 
       a {
         text-align: right;
@@ -290,6 +311,12 @@
         color: black;
         font-size: 1.6rem;
         font-weight: 700;
+
+        @media #{$tablet} {
+          width: 70px;
+          text-align: left;
+          margin: 0 15% 20px;
+        }
       }
     }
 
@@ -299,10 +326,23 @@
       width: 100%;
       margin-top: 120px;
 
+      @media #{$tablet} {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+        margin-top: 0;
+        width: 25%;
+      }
+
       .social__link {
         width: 50px;
         height: auto;
         margin: 20px 0 0 6%;
+
+        @media #{$tablet} {
+          margin: 0 0 8px;
+          width: 40px;
+        }
 
         &:hover {
           opacity: 0.7;
