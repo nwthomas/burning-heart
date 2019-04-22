@@ -21,6 +21,7 @@
     @media #{$tablet} {
       height: 105vw;
       width: 100%;
+      min-height: 750px;
     }
   }
 
@@ -89,7 +90,7 @@
       max-width: 40%;
 
       @media #{$tablet} {
-        max-width: 70%;
+        max-width: 80%;
       }
 
       h2 {

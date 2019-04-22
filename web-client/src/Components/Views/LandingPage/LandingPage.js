@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 import { CtaBanner } from "../../Presentational/CtaBanner";
 
-import volcanoPicture from "../../../images/landing-page-image.webp";
+import volcanoPicture from "../../../images/landing-page-image.jpg";
 import fireGif from "../../../images/fire.gif";
-import blankIphone from "../../../images/blank-iphone.webp";
+import blankIphone from "../../../images/blank-iphone.png";
 import facebookLogo from "../../../images/facebook.svg";
 import instagramLogo from "../../../images/instagram.svg";
 import twitterLogo from "../../../images/twitter.svg";
