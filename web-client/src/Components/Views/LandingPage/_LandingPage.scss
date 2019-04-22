@@ -23,6 +23,11 @@
       width: 100%;
       min-height: 750px;
     }
+
+    @media #{$mobile} {
+      height: 105vw;
+      min-height: 650px;
+    }
   }
 
   .header__navbar {
@@ -31,6 +36,10 @@
     padding: 0 3%;
     display: flex;
     justify-content: space-between;
+
+    @media #{$mobile} {
+      flex-direction: column;
+    }
 
     .burning-heart__name {
       font-size: 3.8rem;
@@ -42,6 +51,10 @@
         font-size: 3rem;
         margin-top: 40px;
       }
+
+      @media #{$mobile} {
+        font-size: 2.4rem;
+      }
     }
 
     .navbar__links {
@@ -50,6 +63,10 @@
       display: flex;
       justify-content: flex-end;
       margin-top: 52px;
+
+      @media #{$mobile} {
+        display: none;
+      }
 
       a {
         width: 20%;
@@ -60,6 +77,10 @@
 
         @media #{$desktop} {
           width: 30%;
+        }
+
+        @media #{$mobile} {
+          text-align: left;
         }
       }
     }
@@ -83,6 +104,10 @@
         width: 70%;
         align-self: flex-end;
       }
+
+      @media #{$mobile} {
+        width: 90%;
+      }
     }
 
     .header__content {
@@ -93,6 +118,10 @@
         max-width: 80%;
       }
 
+      @media #{$tablet} {
+        margin-top: 50px;
+      }
+
       h2 {
         font-size: 5rem;
         color: white;
@@ -100,6 +129,10 @@
 
         @media #{$desktop} {
           font-size: 4rem;
+        }
+
+        @media #{$mobile} {
+          font-size: 3rem;
         }
       }
 
@@ -114,6 +147,10 @@
         @media #{$max-desktop} {
           margin-top: 30px;
           font-size: 2rem;
+        }
+
+        @media #{$mobile} {
+          font-size: 1.6rem;
         }
       }
 
@@ -193,6 +230,10 @@
         @media #{$tablet} {
           text-align: center;
         }
+
+        @media #{$mobile} {
+          font-size: 3rem;
+        }
       }
 
       .demo__text {
@@ -209,6 +250,10 @@
         @media #{$tablet} {
           text-align: center;
           padding: 0 5%;
+        }
+
+        @media #{$mobile} {
+          font-size: 1.6rem;
         }
       }
     }
@@ -241,11 +286,19 @@
   background-image: linear-gradient(to right, #f7f8f9, #e9eeef);
   width: 100%;
   max-width: 1600px;
-  padding: 82px 3% 0;
+  padding: 82px 3% 62px;
   margin: 0 auto 0;
-  height: 370px;
   display: flex;
   justify-content: space-between;
+
+  @media #{$tablet} {
+    flex-direction: row;
+  }
+
+  @media #{$mobile} {
+    flex-direction: column;
+    padding-bottom: 72px;
+  }
 
   .logo__address {
     .footer__logo-name {
@@ -256,6 +309,10 @@
       @media #{$tablet} {
         width: 260px;
         height: 60px;
+      }
+
+      @media #{$mobile} {
+        margin-bottom: 50px;
       }
 
       h2 {
@@ -293,6 +350,11 @@
       align-items: flex-start;
     }
 
+    @media #{$mobile} {
+      flex-direction: column;
+      width: 100%;
+    }
+
     .footer__navbar__links {
       display: flex;
       justify-content: flex-end;
@@ -303,6 +365,10 @@
         max-width: 800px;
         flex-direction: column;
         margin-top: 80px;
+      }
+
+      @media #{$mobile} {
+        margin-top: 50px;
       }
 
       a {
@@ -316,6 +382,10 @@
           width: 70px;
           text-align: left;
           margin: 0 15% 20px;
+        }
+
+        @media #{$mobile} {
+          margin: 0 0 20px;
         }
       }
     }
@@ -334,6 +404,11 @@
         width: 25%;
       }
 
+      @media #{$mobile} {
+        flex-direction: row;
+        width: 100%;
+      }
+
       .social__link {
         width: 50px;
         height: auto;
@@ -342,6 +417,10 @@
         @media #{$tablet} {
           margin: 0 0 8px;
           width: 40px;
+        }
+
+        @media #{$mobile} {
+          margin: 30px 5% 0 0;
         }
 
         &:hover {
