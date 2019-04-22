@@ -108,6 +108,9 @@
         }
       }
     }
+
+    .navbar__links--open {
+    }
   }
 
   .header__navbar--open {
@@ -116,6 +119,8 @@
     padding-top: 28px;
     background: black;
     align-items: flex-start;
+    position: fixed;
+    z-index: 50;
   }
 
   .header__banner {

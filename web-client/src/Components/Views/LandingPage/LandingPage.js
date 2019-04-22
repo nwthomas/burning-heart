@@ -48,7 +48,11 @@ class LandingPage extends Component {
     }));
     const body = document.querySelector("body");
     body.classList.toggle("stopScroll");
-    console.log("Working!");
+    if (!this.state.navbarOpen) {
+      return (document.ontouchmove = e => e.preventDefault());
+    } else {
+      return (document.ontouchmove = e => true);
+    }
   };
   render() {
     return (
