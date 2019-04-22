@@ -37,11 +37,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 
     @media #{$mobile} {
       flex-direction: row;
       align-content: flex-start;
+      flex-wrap: wrap;
     }
 
     .burning-heart__name {
