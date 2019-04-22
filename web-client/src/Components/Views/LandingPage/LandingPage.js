@@ -22,25 +22,6 @@ class LandingPage extends Component {
   componentWillUnmount() {
     document.removeEventListener("scroll", this.scrollChange);
   }
-  scrollChange = () => {
-    const isTop = window.scrollY > 60;
-    if (isTop && !this.state.isTop) {
-      this.setState(
-        {
-          isTop: true
-        },
-        () => console.log(this.state)
-      );
-    }
-    if (!isTop && this.state.isTop) {
-      this.setState(
-        {
-          isTop: false
-        },
-        () => console.log(this.state)
-      );
-    }
-  };
   handleNavbar = e => {
     e.preventDefault();
     this.setState(prevState => ({
@@ -89,7 +70,13 @@ class LandingPage extends Component {
                 alt="Navbar__menu__icon"
               />
             </div>
-            <div className="navbar__links">
+            <div
+              className={
+                this.state.navbarOpen
+                  ? "navbar__links navbar__links--open"
+                  : "navbar__links"
+              }
+            >
               <a href="#">Home</a>
               <a href="#">About</a>
               <a href="#">Login</a>
