@@ -1,8 +1,4 @@
-import {
-  VARIABLE_NAMES_STARTED,
-  VARIABLE_NAMES_SUCCESS,
-  VARIABLE_NAMES_ERROR
-} from "../types"; // Import of variable names so that you can use them/reduce errors
+import { VARIABLE_NAMES_STARTED } from "../types"; // Import of variable names so that you can use them/reduce errors
 
 // Sets initial state for the application
 const initialState = {

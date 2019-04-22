@@ -9,16 +9,82 @@ import facebookLogo from "../../../images/facebook.svg";
 import instagramLogo from "../../../images/instagram.svg";
 import twitterLogo from "../../../images/twitter.svg";
 import linkedInLogo from "../../../images/linkedin.svg";
+import closeNavbarIcon from "../../../images/menu-icon-close.svg";
+import openNavbarIcon from "../../../images/menu-icon-open.svg";
 
-export default class LandingPage extends Component {
+class LandingPage extends Component {
+  state = {
+    navbarOpen: false
+  };
+  componentDidMount() {
+    document.addEventListener("scroll", this.scrollChange);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("scroll", this.scrollChange);
+  }
+  scrollChange = () => {
+    const isTop = window.scrollY > 60;
+    if (isTop && !this.state.isTop) {
+      this.setState(
+        {
+          isTop: true
+        },
+        () => console.log(this.state)
+      );
+    }
+    if (!isTop && this.state.isTop) {
+      this.setState(
+        {
+          isTop: false
+        },
+        () => console.log(this.state)
+      );
+    }
+  };
+  handleNavbar = e => {
+    e.preventDefault();
+    this.setState(prevState => ({
+      navbarOpen: !prevState.navbarOpen
+    }));
+    const body = document.querySelector("body");
+    body.classList.toggle("stopScroll");
+    console.log("Working!");
+  };
   render() {
     return (
       <>
         <CtaBanner />
         <header className="landing-page__header">
           <div className="landing-page__header__bg" />
-          <nav className="header__navbar">
-            <h1 className="burning-heart__name">Burning Heart</h1>
+          <nav
+            className={
+              this.state.navbarOpen
+                ? "header__navbar header__navbar--open"
+                : "header__navbar"
+            }
+          >
+            <h1
+              className={
+                this.state.navbarOpen
+                  ? "burning-heart__name burning-heart__name--open"
+                  : "burning-heart__name"
+              }
+            >
+              Burning Heart
+            </h1>
+            <div
+              onClick={this.handleNavbar}
+              className={
+                this.state.navbarOpen
+                  ? "navbar__hamburger navbar__hamburger--open"
+                  : "navbar__hamburger"
+              }
+            >
+              <img
+                src={this.state.navbarOpen ? closeNavbarIcon : openNavbarIcon}
+                alt="Navbar__menu__icon"
+              />
+            </div>
             <div className="navbar__links">
               <a href="#">Home</a>
               <a href="#">About</a>
@@ -102,3 +168,5 @@ export default class LandingPage extends Component {
     );
   }
 }
+
+export default LandingPage;
