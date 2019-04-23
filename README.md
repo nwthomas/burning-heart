@@ -1,6 +1,8 @@
-<h1 align="center"><img src="./assets/readme-images/readme-header.png" alt="Burning Heart repo banner" /></h1>
-<h4 align="center">A charitable micro-donation mobile and web app for people who like to give</h4>
+<h1 align="center"><img src="./assets/readme-images/readme-header-image.png" alt="Burning Heart repo banner" /></h1>
+<h4 align="center">A micro-donation mobile and web app for people who like to give what they can, when they can.</h4>
 <br>
+
+![Burning Heart web client screenshot](./assets/readme-images/site-preview.png)
 
 # What is Burning Heart?
 
@@ -21,7 +23,7 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
 
 ## Getting Started
 
-(NOTE: `Burning Heart` is currently iOS-only. There are plans to create a web application, but you will need a Mac computer with XCode installed to turn the mobile `Burning Heart` client on. If you don't have one, I've prepared a `Snack` example link for you up above in the Github header for this repo.)
+(NOTE: `Burning Heart` is currently iOS-only. There are plans to create a web application, but you will need a Mac computer with XCode installed to turn the mobile `Burning Heart` client on.)
 
 - Fork and clone (or just clone) this repository to your local machine
 - Use the command `yarn` inside both the root directory and the client directories to install dependencies for the server and client, respectively

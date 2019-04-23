@@ -11,6 +11,7 @@ import { Store } from "../../store/store";
 import { Link } from "react-router-native";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
+import { PieChart } from "../../Presentational/PieChart";
 
 const ProfileView = props => {
   const { state, dispatch } = useContext(Store);
@@ -35,6 +36,7 @@ const ProfileView = props => {
                 }, you've donated $${totalDonations} to charities so far this year.`
               : `${account.firstName}, make your first donation today!`}
           </Text>
+          <PieChart style={styles.pieChart} />
         </View>
         <Text style={styles.profileSubHeader}>Username</Text>
         <Text style={styles.profileText}>{account.username}</Text>
@@ -105,7 +107,11 @@ const styles = StyleSheet.create({
     lineHeight: 30
   },
   accountSummaryBox: {
-    paddingBottom: 30
+    paddingBottom: 30,
+    alignItems: "center"
+  },
+  pieChart: {
+    alignSelf: "center"
   },
   profileInfo: {
     paddingTop: 30,
