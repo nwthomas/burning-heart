@@ -21,7 +21,6 @@
     "react-native-touch-id": "^4.4.1",
     "react-router-native": "^4.3.0",
     "react-scripts": "^2.1.8",
-    "styled-components": "^4.2.0",
     "victory-native": "^32.0.2"
   },
   "devDependencies": {

@@ -37,21 +37,58 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
 
 ## TECH STACK
 
-- [React Native](https://facebook.github.io/react-native/)
-- [React Router Native](https://reacttraining.com/react-router/native/guides/quick-start)
-- [React Hooks](https://reactjs.org/docs/hooks-intro.html)
-- [Context API](https://reactjs.org/docs/context.html)
-- [Styled Components](https://www.styled-components.com/)
-- [Axios](https://www.npmjs.com/package/axios)
-- [Express](https://expressjs.com/)
-- [Knex](https://knexjs.org/)
-- [SQLite3](https://www.sqlite.org/index.html)
-- [CORS](https://github.com/expressjs/cors)
-- [Helmet](https://helmetjs.github.io/)
-- [Morgan](https://www.npmjs.com/package/morgan)
-- [JSON Web Token](https://github.com/auth0/node-jsonwebtoken)
-- [Bcrypt.js](https://www.npmjs.com/package/bcryptjs)
-- [Stripe API](https://stripe.com/docs/api)
+### MOBILE CLIENT DEPENDENCIES
+
+- `Production:`
+  - [React](https://reactjs.org/)
+  - [React Native](https://facebook.github.io/react-native/)
+  - [React Router Native](https://reacttraining.com/react-router/native/guides/quick-start)
+  - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+  - [Context API](https://reactjs.org/docs/context.html)
+  - [React Native TouchID](https://github.com/naoufal/react-native-touch-id)
+  - [React Native SVG](https://github.com/react-native-community/react-native-svg)
+  - [Axios](https://www.npmjs.com/package/axios)
+  - [Victory](https://formidable.com/open-source/victory/docs/victory-line/)
+- `Development`:
+  - [Jest](https://jestjs.io/)
+  - [React Test Renderer](https://reactjs.org/docs/test-renderer.html)
+
+### WEB CLIENT DEPENDENCIES
+
+- `Production:`
+  - [React](https://reactjs.org/)
+  - [React Router](https://reacttraining.com/react-router/)
+  - [Redux](https://redux.js.org/)
+  - [React Redux](https://react-redux.js.org/)
+  - [Redux Logger](https://github.com/LogRocket/redux-logger)
+  - [Redux Thunk](https://github.com/reduxjs/redux-thunk)
+  - [React Router](https://github.com/ReactTraining/react-router)
+  - [React Router DOM](https://www.npmjs.com/package/react-router-dom)
+  - [Node Sass](https://www.npmjs.com/package/node-sass)
+  - [NProgress](https://ricostacruz.com/nprogress/)
+- `Development:`
+  - [Jest](https://jestjs.io/)
+  - [React Test Renderer](https://reactjs.org/docs/test-renderer.html)
+  - [React Testing Library](https://github.com/kentcdodds/react-testing-library)
+
+### SERVER AND DATABASE DEPENDENCIES
+
+- `Production:`
+  - [Axios](https://www.npmjs.com/package/axios)
+  - [Express](https://expressjs.com/)
+  - [Knex](https://knexjs.org/)
+  - [Postgres](https://www.postgresql.org/)
+  - [CORS](https://github.com/expressjs/cors)
+  - [Helmet](https://helmetjs.github.io/)
+  - [Morgan](https://www.npmjs.com/package/morgan)
+  - [JSON Web Token](https://github.com/auth0/node-jsonwebtoken)
+  - [Bcrypt.js](https://www.npmjs.com/package/bcryptjs)
+  - [Stripe API](https://stripe.com/docs/api)
+- `Development:`
+  - [Jest](https://jestjs.io/)
+  - [Nodemon](https://nodemon.io/)
+  - [Supertest](https://www.npmjs.com/package/supertest)
+  - [Cross-Env](https://github.com/kentcdodds/cross-env)
 
 ## SERVER DOCUMENTATION
 
@@ -108,6 +145,11 @@ Checkout this project's [DB Designer](https://www.dbdesigner.net/designer/schema
 
 ```
   username: "admin"
+  password: "password"
+```
+
+```
+  username: "nwthomas"
   password: "password"
 ```
 
