@@ -10,7 +10,8 @@ import {
 import { Store } from "../../store/store";
 import {
   fetchCharityList,
-  fetchAccountDonations
+  fetchAccountDonations,
+  fetchDonationGraphData
 } from "../../store/actions/index";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
@@ -18,7 +19,14 @@ import { DonationCard } from "../../Presentational/DonationCard";
 
 const HomeView = props => {
   const { state, dispatch } = useContext(Store);
-  const { donations, charities, token, account, getUserDonationsStart } = state;
+  const {
+    donations,
+    charities,
+    token,
+    account,
+    getUserDonationsStart,
+    donationsGraphData
+  } = state;
   const { firstName } = account;
   useEffect(() => {
     // let token =
@@ -31,6 +39,9 @@ const HomeView = props => {
     }
     if (!charities.length) {
       fetchCharityList(token, dispatch);
+    }
+    if (!donationsGraphData.length) {
+      fetchDonationGraphData(account.id, token, dispatch);
     }
   }, []);
   const hours = new Date().getHours();

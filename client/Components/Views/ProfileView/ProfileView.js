@@ -4,7 +4,7 @@ import { Store } from "../../store/store";
 import { Link } from "react-router-native";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
-import { PieChart } from "../../Presentational/PieChart";
+import { LineChart } from "../../Presentational/LineChart";
 
 const ProfileView = props => {
   const { state, dispatch } = useContext(Store);
@@ -32,7 +32,7 @@ const ProfileView = props => {
         </View>
         <Text style={styles.header}>Yearly Donations</Text>
         <View style={styles.graphBox}>
-          <PieChart />
+          <LineChart />
         </View>
         <View style={styles.profileHeaderBox}>
           <Text style={styles.header}>Profile Details</Text>

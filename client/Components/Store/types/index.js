@@ -29,6 +29,11 @@ export const UPDATE_ACCOUNT_SUCCESS = "UPDATE_ACCOUNT_SUCCESS";
 export const UPDATE_ACCOUNT_ERROR = "UPDATE_ACCOUNT_ERROR";
 export const HANDLE_UPDATE_FORM_CHANGE = "HANDLE_UPDATE_FORM_CHANGE";
 
+//============================================================= Data Graph Types
+export const FETCH_GRAPH_DONATIONS_START = "FETCH_GRAPH_DONATIONS_START";
+export const FETCH_GRAPH_DONATIONS_SUCCESS = "FETCH_GRAPH_DONATIONS_SUCCESS";
+export const FETCH_GRAPH_DONATIONS_ERROR = "FETCH_GRAPH_DONATIONS_ERROR";
+
 //============================================================= Login Form Types
 export const HANDLE_LOGIN_FORM_CHANGE = "HANDLE_LOGIN_FORM_CHANGE";
 

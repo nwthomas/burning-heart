@@ -21,6 +21,9 @@ import {
   FETCH_USER_DONATIONS_START,
   FETCH_USER_DONATIONS_SUCCESS,
   FETCH_USER_DONATIONS_ERROR,
+  FETCH_GRAPH_DONATIONS_START,
+  FETCH_GRAPH_DONATIONS_SUCCESS,
+  FETCH_GRAPH_DONATIONS_ERROR,
   UPDATE_SHOWN_CHARITY_LIST,
   RESET_SHOWN_CHARITY_LIST,
   GO_HOME,
@@ -217,6 +220,25 @@ export const fetchCharityList = (token, cb) => {
     .catch(err => {
       return cb({
         type: FETCH_CHARITIES_ERROR,
+        payload: err.response.data.message
+      });
+    });
+};
+
+export const fetchDonationGraphData = (userId, token, cb) => {
+  cb({ type: FETCH_GRAPH_DONATIONS_START });
+  const reqOptions = { headers: { authorization: token } };
+  return axios
+    .get(
+      `https://burning-heart.herokuapp.com/api/restricted/data/donations/${userId}`,
+      reqOptions
+    )
+    .then(res => {
+      return cb({ type: FETCH_GRAPH_DONATIONS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      return cb({
+        type: FETCH_GRAPH_DONATIONS_ERROR,
         payload: err.response.data.message
       });
     });

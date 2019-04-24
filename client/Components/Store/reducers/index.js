@@ -25,6 +25,9 @@ import {
   FETCH_USER_DONATIONS_ERROR,
   UPDATE_SHOWN_CHARITY_LIST,
   RESET_SHOWN_CHARITY_LIST,
+  FETCH_GRAPH_DONATIONS_START,
+  FETCH_GRAPH_DONATIONS_SUCCESS,
+  FETCH_GRAPH_DONATIONS_ERROR,
   GO_HOME,
   GO_SEARCH,
   GO_PROFILE
@@ -37,6 +40,7 @@ export const initialState = {
   shownCharities: [],
   donations: [], // Duplicate state for search replacement
   shownDonations: [],
+  donationsGraphData: [],
   loggedIn: false,
   biometryType: "",
   token: null,
@@ -82,7 +86,10 @@ export const initialState = {
   makeDonationError: false,
   updateAccountStart: false,
   updateAccountSuccess: false,
-  updateAccountError: false
+  updateAccountError: false,
+  getDonationsGraphDataStart: false,
+  getDonationsGraphDataSuccess: false,
+  getDonationsGraphDataError: false
 };
 
 export const reducer = (state, action) => {
@@ -292,6 +299,26 @@ export const reducer = (state, action) => {
           ...state.updateAccount,
           [action.payload.name]: action.payload.value
         }
+      };
+    case FETCH_GRAPH_DONATIONS_START:
+      return {
+        ...state,
+        getDonationsGraphDataStart: true,
+        getDonationsGraphDataError: false
+      };
+    case FETCH_GRAPH_DONATIONS_SUCCESS:
+      return {
+        ...state,
+        getDonationsGraphDataStart: false,
+        getDonationsGraphDataSuccess: true,
+        donationsGraphData: action.payload.donations
+      };
+    case FETCH_GRAPH_DONATIONS_ERROR:
+      return {
+        ...state,
+        getDonationsGraphDataStart: false,
+        getDonationsGraphDataError: true,
+        message: action.payload.message
       };
     default:
       return state;

@@ -1,26 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Dimensions } from "react-native";
+import { Store } from "../../store/store";
 
 import { VictoryLine, VictoryChart, VictoryTheme } from "victory-native";
 
 const { width } = Dimensions.get("window");
 
-const dummyData = [
-  { x: "Jan", y: 1 },
-  { x: "Feb", y: 2 },
-  { x: "Mar", y: 2 },
-  { x: "Apr", y: 5 },
-  { x: "May", y: 3 },
-  { x: "June", y: 1 },
-  { x: "July", y: 0 },
-  { x: "Aug", y: 6 },
-  { x: "Sept", y: 3 },
-  { x: "Oct", y: 2 },
-  { x: "Nov", y: 1 },
-  { x: "Dec", y: 7 }
-];
-
-const PieChart = props => {
+const LineChart = props => {
+  const { state } = useContext(Store);
+  const { donationsGraphData } = state;
   return (
     <VictoryChart
       title="Yearly Donations"
@@ -32,7 +20,7 @@ const PieChart = props => {
       }}
     >
       <VictoryLine
-        data={dummyData}
+        data={donationsGraphData}
         style={{
           data: { stroke: "#ffb2b3" },
           parent: { border: "1px solid #cacacf", fontSize: 12 }
@@ -47,4 +35,4 @@ const PieChart = props => {
   );
 };
 
-export default PieChart;
+export default LineChart;
