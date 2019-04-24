@@ -18,7 +18,14 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
   - [Schemas and Data Modeling](#schemas-and-data-modeling)
   - [Test Accounts](#test-accounts)
   - [Summary Table of API Endpoints](#summary-table-of-api-endpoints)
-  - [API Endpoints Descriptions](#api-endpoints-descriptions)
+  - [Authentication Endpoints](#auth-endpoints)
+  - [Accounts Endpoints](#accounts-endpoints)
+  - [Charities Endpoints](#charities-endpoints)
+  - [Donations Endpoints](#donations-endpoints)
+  - [Data Endpoints](#data-endpoints)
+    - [Auth Endpoints](#auth-endpoints)
+      - [Register a New Account](#register)
+      - [Login an Existing Account](#login)
 - [Project Management](#project-management)
 - [Author](#author)
 - [Acknowledgements](#acknowledgements)
@@ -66,6 +73,7 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
   - [React Router DOM](https://www.npmjs.com/package/react-router-dom)
   - [Node Sass](https://www.npmjs.com/package/node-sass)
   - [NProgress](https://ricostacruz.com/nprogress/)
+  - [Axios](https://www.npmjs.com/package/axios)
 - `Development:`
   - [Jest](https://jestjs.io/)
   - [React Test Renderer](https://reactjs.org/docs/test-renderer.html)
@@ -74,7 +82,6 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
 ### SERVER AND DATABASE DEPENDENCIES
 
 - `Production:`
-  - [Axios](https://www.npmjs.com/package/axios)
   - [Express](https://expressjs.com/)
   - [Knex](https://knexjs.org/)
   - [Postgres](https://www.postgresql.org/)
@@ -84,6 +91,7 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
   - [JSON Web Token](https://github.com/auth0/node-jsonwebtoken)
   - [Bcrypt.js](https://www.npmjs.com/package/bcryptjs)
   - [Stripe API](https://stripe.com/docs/api)
+    - [Axios](https://www.npmjs.com/package/axios)
 - `Development:`
   - [Jest](https://jestjs.io/)
   - [Nodemon](https://nodemon.io/)
@@ -177,7 +185,211 @@ Checkout this project's [DB Designer](https://www.dbdesigner.net/designer/schema
 | donations | DELETE | /api/restricted/donations/:id         | Removes a `donation` form the database using the `id` sent in the URL parameters of the response.                                                                                                    |
 | data      | GET    | /api/restricted/data/donations/:id    | Retrieves an array of `month` objects specifying the `x` and `y` properties for the `account` profile specified by the `id` in the request parameters and returns it in the response.                |
 
-### API ENDPOINTS
+### AUTH ENDPOINTS
+
+#### **Register** - _Registers a user_
+
+_Method Url:_ `/api/auth/register`
+
+_HTTP method:_ **[POST]**
+
+#### Headers
+
+| name           | type   | required | description              |
+| -------------- | ------ | -------- | ------------------------ |
+| `Content-Type` | String | Yes      | Must be application/json |
+
+#### Body
+
+| name        | type    | required | description    |
+| ----------- | ------- | -------- | -------------- |
+| `username`  | String  | Yes      | Must be unique |
+| `password`  | String  | Yes      |                |
+| `firstName` | String  | Yes      |                |
+| `lastName`  | String  | Yes      |                |
+| `lastName`  | String  | Yes      |                |
+| `email`     | String  | Yes      | Must be unique |
+| `phone`     | String  | Yes      |                |
+| `type`      | String  | No       |                |
+| `charityId` | Integer | No       |                |
+
+_Example:_
+
+```
+{
+  "username": "thedude",
+  "password": "password",
+  "firstName": "Nathan",
+  "middleName": "Benjamin",
+  "lastName": "Thomas",
+  "email": "nate@gmail.com",
+  "phone": "(908) 574-3592",
+  "type": "user",
+  "charityId": 1
+}
+```
+
+#### Response
+
+##### 200 (OK)
+
+> If you successfully register a user, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
+```
+{
+  "error": false,
+  "message": "Your account was created successfully.",
+  "account": {
+    "id": 1,
+    "username": "thedude",
+    "firstName": "Nathan",
+    "middleName": "Benjamin",
+    "lastName": "Thomas",
+    "email": "nate@gmail.com",
+    "phone": "(908) 574-3592",
+    "type": "user",
+    "charityId": 1,
+    "created_at": "2019-04-24T21:20:15.034Z",
+    "updated_at": "2019-04-24T21:20:15.034Z"
+  }
+}
+```
+
+##### 406 (Not Acceptable)
+
+> If you are missing a username, password, first name, middle name, last name, or email, or phone for registration, the endpoint will return an HTTP response with a status code `406` and a body as below.
+
+```
+{
+  "error": true,
+  "account": {},
+  "message": "Please include the required credentials and try again."
+}
+```
+
+##### 409 (Conflict)
+
+> If the submitted username or email is a duplicate of what is already in the database, the endpoint will return an HTTP response with a status code `40` and a body as below.
+
+```
+{
+  "error": true,
+  "usernameError": <true/false depending on if username is duplicate>,
+  "emailError": <true/false depending on if email is duplicate",
+  "message": "Sorry, that <username and/or email> already exists."
+}
+```
+
+##### 404 (Bad Request)
+
+> If you send in invalid fields, the endpoint will return an HTTP response with a status code `404` and a body as below.
+
+```
+{
+  "error": true,
+  "account": {},
+  "message": "Your account could not be created."
+}
+```
+
+##### 500 (Internal Server Error)
+
+> If there is a server or database error, the endpoint will return an HTTP response with a status code `500` and a body as below.
+
+```
+{
+  "error": true,
+  "account": {},
+  "message": "There was an error processing your request."
+}
+```
+
+#### **Login** - _Logs in a user_
+
+_Method Url:_ `/api/auth/login`
+
+_HTTP method:_ **[POST]**
+
+#### Headers
+
+| name           | type   | required | description              |
+| -------------- | ------ | -------- | ------------------------ |
+| `Content-Type` | String | Yes      | Must be application/json |
+
+#### Body
+
+| name       | type   | required | description    |
+| ---------- | ------ | -------- | -------------- |
+| `username` | String | Yes      | Must be unique |
+| `password` | String | Yes      |                |
+
+_Example:_
+
+```
+{
+  "username": "admin",
+  "password": "password"
+}
+```
+
+#### Response
+
+##### 200 (OK)
+
+> If you successfully register a user, the endpoint will return an HTTP response with a status code `200` and a body as below.
+
+```
+{
+  "error": false,
+  "message": "You were logged in successfully.",
+  "account": {
+    "id": 1,
+    "username": "thedude",
+    "firstName": "Nathan",
+    "middleName": "Benjamin",
+    "lastName": "Thomas",
+    "email": "nate@gmail.com",
+    "phone": "(908) 574-3592",
+    "type": "user",
+    "charityId": null,
+    "created_at": "2019-04-24T21:20:15.034Z",
+    "updated_at": "2019-04-24T21:20:15.034Z"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIs4nR5cCI6IkpXVCJ9.eyJzdWJqZWN0ojoyLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTU2MTQ1MTE1LCJleHAiOjE1NTYyMzE1MTV9,vmwmkl7xJVoobsQ1QLSfTQenoFfy_QwGzZcgJ3p9sLI"
+}
+```
+
+##### 404 (Not Found)
+
+> If you send in a username or password that does not match one in the database or the passwords do not patch, the endpoint will return an HTTP response with a status code `404` and a body as below.
+
+```
+{
+  "error": true,
+  "message": "You could not be logged in."
+  "account": {}
+}
+```
+
+##### 500 (Bad Request)
+
+> If you send in invalid fields, the endpoint will return an HTTP response with a status code `500` and a body as below.
+
+```
+{
+  "error": true,
+  "user": {},
+  "message": "There was a problem with your request."
+}
+```
+
+### ACCOUNTS ENDPOINTS
+
+### CHARITIES ENDPOINTS
+
+### DONATIONS ENDPOINTS
+
+### DATA ENDPOINTS
 
 ## PROJECT MANAGEMENT
 
