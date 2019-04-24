@@ -1,5 +1,7 @@
 const express = require("express");
 const Donations = require("./donationsModel.js");
+require("dotenv").config();
+const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 
 const router = express.Router();
 
@@ -10,13 +12,13 @@ router.get("/", async (req, res) => {
     if (donations.length) {
       res.status(200).json({
         error: false,
-        message: "The donations were retrieved successfully from the database.",
+        message: "Your donations were retrieved successfully.",
         donations
       });
     } else {
       res.status(404).json({
         error: true,
-        message: "The donations could not be retrieved from the database.",
+        message: "You don't have any donations.",
         donations: []
       });
     }
@@ -36,13 +38,13 @@ router.get("/:id", async (req, res) => {
     if (donation) {
       res.status(200).json({
         error: false,
-        message: "The donation was retrieved successfully from the database.",
+        message: "Your donation was retrieved successfully.",
         donation
       });
     } else {
       res.status(404).json({
         error: true,
-        message: "The donation could not be retrieved from the database.",
+        message: "Your donation could not be found.",
         donation: {}
       });
     }
@@ -62,13 +64,13 @@ router.get("/account/:id", async (req, res) => {
     if (donations.length) {
       res.status(200).json({
         error: false,
-        message: "The donations were retrieved successfully from the database.",
+        message: "Your donations were retrieved successfully.",
         donations
       });
     } else {
       res.status(404).json({
         error: true,
-        message: "The donations could not be retrieved from the database.",
+        message: "You don't have any donations.",
         donations: []
       });
     }
@@ -88,13 +90,13 @@ router.get("/charity/:id", async (req, res) => {
     if (donations.length) {
       res.status(200).json({
         error: false,
-        message: "The donations were retrieved successfully from the database.",
+        message: "Your donations were retrieved successfully.",
         donations
       });
     } else {
       res.status(404).json({
         error: true,
-        message: "The donations could not be retrieved from the database.",
+        message: "Your donations could not be found.",
         donations: []
       });
     }
@@ -123,13 +125,13 @@ router.post("/", async (req, res) => {
       if (donation.length) {
         res.status(201).json({
           error: false,
-          message: "Your donation was created successfully in the database.",
+          message: "Your donation was created successfully.",
           donation: donation[donation.length - 1]
         });
       } else {
         res.status(404).json({
           error: true,
-          message: "Your donation could not be created in the database.",
+          message: "Your donation could not be created.",
           donation: {}
         });
       }
@@ -150,13 +152,13 @@ router.put("/:id", async (req, res) => {
     if (updatedDonation) {
       res.status(200).json({
         error: false,
-        message: "Your donation was updated successfully in the database.",
+        message: "Your donation was updated successfully.",
         donation: updatedDonation
       });
     } else {
       res.status(404).json({
         error: true,
-        message: "Your donation could not be updated in the database.",
+        message: "Your donation could not be updated.",
         donation: {}
       });
     }
@@ -176,13 +178,13 @@ router.delete("/:id", async (req, res) => {
     if (deleted) {
       res.status(200).json({
         error: false,
-        message: "Your donation was deleted successfully from the database.",
+        message: "Your donation was deleted successfully.",
         numDeleted: deleted
       });
     } else {
       res.status(404).json({
         error: true,
-        message: "Your donation could not be deleted in the database.",
+        message: "Your donation could not be deleted.",
         numDeleted: 0
       });
     }

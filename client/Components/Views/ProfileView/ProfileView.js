@@ -1,12 +1,5 @@
 import React, { useContext } from "react";
-import {
-  View,
-  ScrollView,
-  Text,
-  StyleSheet,
-  Image,
-  ActivityIndicator
-} from "react-native";
+import { View, ScrollView, Text, StyleSheet, Image } from "react-native";
 import { Store } from "../../store/store";
 import { Link } from "react-router-native";
 
@@ -36,7 +29,13 @@ const ProfileView = props => {
                 }, you've donated $${totalDonations} to charities so far this year.`
               : `${account.firstName}, make your first donation today!`}
           </Text>
-          <PieChart style={styles.pieChart} />
+        </View>
+        <Text style={styles.header}>Yearly Donations</Text>
+        <View style={styles.graphBox}>
+          <PieChart />
+        </View>
+        <View style={styles.profileHeaderBox}>
+          <Text style={styles.header}>Profile Details</Text>
         </View>
         <Text style={styles.profileSubHeader}>Username</Text>
         <Text style={styles.profileText}>{account.username}</Text>
@@ -108,10 +107,31 @@ const styles = StyleSheet.create({
   },
   accountSummaryBox: {
     paddingBottom: 30,
-    alignItems: "center"
+    marginBottom: 30,
+    alignItems: "center",
+    borderBottomColor: "#cacacf",
+    borderBottomWidth: 1
   },
-  pieChart: {
-    alignSelf: "center"
+  header: {
+    color: "#4F68F4",
+    fontFamily: "Roboto-Medium",
+    marginTop: 10,
+    fontSize: 20
+  },
+  profileHeader: {
+    color: "#4F68F4",
+    fontFamily: "Roboto-Medium",
+    fontSize: 20
+  },
+  profileHeaderBox: {
+    marginBottom: 30
+  },
+  graphBox: {
+    alignItems: "center",
+    paddingBottom: 30,
+    borderBottomColor: "#cacacf",
+    borderBottomWidth: 1,
+    marginBottom: 30
   },
   profileInfo: {
     paddingTop: 30,
@@ -135,7 +155,7 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   profileSubHeader: {
-    color: "#4F68F4",
+    color: "#ffb2b3",
     fontFamily: "Roboto-Medium",
     fontSize: 16,
     marginBottom: 10

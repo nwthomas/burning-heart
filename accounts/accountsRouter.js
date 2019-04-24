@@ -11,13 +11,13 @@ router.get("/", async (req, res) => {
     if (accounts.length) {
       res.status(200).json({
         error: false,
-        message: "The accounts were retrieved successfully from the database.",
+        message: "The accounts were retrieved successfully.",
         accounts
       });
     } else {
       res.status(404).json({
         error: true,
-        message: "The accounts could not be retrieved from the database.",
+        message: "Your account could not be retrieved.",
         accounts: []
       });
     }
@@ -37,14 +37,13 @@ router.get("/:id", async (req, res) => {
     if (account) {
       res.status(200).json({
         error: false,
-        message: "Your account was retrieved successfully from the database.",
+        message: "Your account was retrieved successfully.",
         account
       });
     } else {
       res.status(404).json({
         error: true,
-        message:
-          "There was an error retrieving your account from the database.",
+        message: "There was an error retrieving your account..",
         account: {}
       });
     }
@@ -103,13 +102,13 @@ router.put("/:id", async (req, res) => {
     if (account) {
       res.status(200).json({
         error: false,
-        message: "Your account was updated successfully in the database.",
+        message: "Your account was updated successfully.",
         account
       });
     } else {
       res.status(404).json({
         error: true,
-        message: "There was an error updating your account in the database.",
+        message: "There was an error updating your account.",
         account: {}
       });
     }
@@ -135,7 +134,7 @@ router.delete("/:id", async (req, res) => {
     } else {
       res.status(404).json({
         error: true,
-        message: "There was an error deleting your account in the database.",
+        message: "There was an error deleting your account.",
         numDeleted: 0
       });
     }

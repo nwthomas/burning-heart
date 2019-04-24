@@ -5,6 +5,7 @@ const authRouter = require("../auth/authRouter.js");
 const charitiesRouter = require("../charities/charitiesRouter.js");
 const donationsRouter = require("../donations/donationsRouter.js");
 const accountsRouter = require("../accounts/accountsRouter.js");
+const dataRouter = require("../data/dataRouter.js");
 const server = express();
 
 // Pass server through general middleware configurations
@@ -14,6 +15,7 @@ configureMiddleware(server);
 server.use("/api/restricted/charities", restricted, charitiesRouter);
 server.use("/api/restricted/donations", restricted, donationsRouter);
 server.use("/api/restricted/accounts", restricted, accountsRouter);
+server.use("/api/restricted/data", restricted, dataRouter);
 server.use("/api/auth", authRouter);
 
 // Single test server / route
