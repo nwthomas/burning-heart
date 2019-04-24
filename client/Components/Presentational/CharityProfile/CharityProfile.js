@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     left: 0,
     height: 70,
     marginTop: 100,
-    fontFamily: "Roboto-Black",
+    fontFamily: "Montserrat-Bold",
     fontSize: 28,
     color: "#4F68F4"
   },
@@ -88,12 +88,12 @@ const styles = StyleSheet.create({
   },
   donateSubHeader: {
     color: "#4F68F4",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Bold",
     fontSize: 16,
     marginBottom: 10
   },
   donateText: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     lineHeight: 30,
     fontSize: 16,
     marginBottom: 20
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   donateBtnText: {
     color: "#ffffff",
     alignSelf: "center",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Medium",
     fontSize: 16
   }
 });

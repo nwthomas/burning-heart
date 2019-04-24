@@ -62,6 +62,8 @@ const ManualLogin = props => {
             onChangeText={text => handleChange("password", text)}
           />
         </View>
+      </View>
+      <View style={styles.btnContainer}>
         <TouchableHighlight
           underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
           onPress={handleLoginApp}
@@ -116,7 +118,7 @@ const styles = StyleSheet.create({
     left: 0,
     height: 70,
     marginTop: 100,
-    fontFamily: "Roboto-Black",
+    fontFamily: "Montserrat-Bold",
     fontSize: 28,
     color: "#4F68F4"
   },
@@ -142,13 +144,13 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   inputTitle: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Bold",
     fontSize: 16,
     marginBottom: 10
   },
   input: {
     width: width - 80,
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     fontSize: 16,
     borderWidth: 1,
     borderColor: "#cacacf",
@@ -171,8 +173,15 @@ const styles = StyleSheet.create({
   loginBtnText: {
     color: "#ffffff",
     alignSelf: "center",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     fontSize: 16
+  },
+  btnContainer: {
+    alignSelf: "stretch",
+    position: "absolute",
+    width: width,
+    marginBottom: 52,
+    bottom: 0
   }
 });
 

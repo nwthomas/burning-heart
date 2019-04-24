@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   modalText: {
     alignSelf: "center",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Bold",
     fontSize: 20,
     textAlign: "center",
     marginLeft: 40,
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   btnText: {
     color: "#ffffff",
     alignSelf: "center",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     fontSize: 16
   }
 });

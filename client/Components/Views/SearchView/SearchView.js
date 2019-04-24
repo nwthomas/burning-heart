@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     left: 0,
     height: 70,
     marginTop: 100,
-    fontFamily: "Roboto-Black",
+    fontFamily: "Montserrat-Bold",
     fontSize: 28,
     color: "#4F68F4"
   },
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   input: {
     marginTop: 10,
     width: width - 80,
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     fontSize: 16,
     borderWidth: 1,
     borderColor: "#cacacf",
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   noCharities: {
     marginTop: 30,
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     fontSize: 16,
     color: "#cacacf"
   }

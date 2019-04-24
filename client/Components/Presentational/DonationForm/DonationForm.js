@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     left: 0,
     height: 70,
     marginTop: 100,
-    fontFamily: "Roboto-Black",
+    fontFamily: "Montserrat-Bold",
     fontSize: 28,
     color: "#4F68F4"
   },
@@ -153,13 +153,13 @@ const styles = StyleSheet.create({
     height: 110
   },
   inputTitle: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Bold",
     fontSize: 16,
     marginBottom: 10
   },
   input: {
     width: width - 80,
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     fontSize: 16,
     borderWidth: 1,
     borderColor: "#cacacf",
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
   btnText: {
     color: "#ffffff",
     alignSelf: "center",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Bold",
     fontSize: 16
   }
 });

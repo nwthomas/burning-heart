@@ -18,14 +18,14 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingBottom: 30,
     borderBottomColor: "#cacacf",
-    borderBottomWidth: 1
+    borderBottomWidth: 3
   },
   donationCardText: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Medium",
     fontSize: 16
   },
   donationAmount: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Italic",
     fontSize: 14,
     marginTop: 5
   }

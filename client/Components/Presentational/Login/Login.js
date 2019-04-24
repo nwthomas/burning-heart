@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   loginBtnText: {
     color: "#ffffff",
     alignSelf: "center",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     fontSize: 16
   },
   signUpLink: {
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   },
   signUpLinkText: {
     color: "#000000",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     fontSize: 16
   }
 });

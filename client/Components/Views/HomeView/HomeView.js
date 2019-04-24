@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     left: 0,
     height: 70,
     marginTop: 100,
-    fontFamily: "Roboto-Black",
+    fontFamily: "Montserrat-Bold",
     fontSize: 28,
     color: "#4F68F4"
   },
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     paddingRight: 40
   },
   welcomeText: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Bold",
     fontSize: 20,
     marginTop: 10,
     lineHeight: 30,
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   },
   welcomeTextBorder: {
     borderBottomColor: "#cacacf",
-    borderBottomWidth: 1
+    borderBottomWidth: 3
   },
   loadingIcon: {
     marginTop: 50

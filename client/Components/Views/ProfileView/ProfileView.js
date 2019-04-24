@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     left: 0,
     height: 70,
     marginTop: 100,
-    fontFamily: "Roboto-Black",
+    fontFamily: "Montserrat-Bold",
     fontSize: 28,
     color: "#4F68F4"
   },
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
   accountSummaryText: {
     marginTop: 10,
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Bold",
     fontSize: 20,
     lineHeight: 30
   },
@@ -114,13 +114,13 @@ const styles = StyleSheet.create({
   },
   header: {
     color: "#4F68F4",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Bold",
     marginTop: 10,
     fontSize: 20
   },
   profileHeader: {
     color: "#4F68F4",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Bold",
     fontSize: 20
   },
   profileHeaderBox: {
@@ -141,12 +141,12 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   profileInfoTitle: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Bold",
     fontSize: 2,
     marginBottom: 30
   },
   profileInfoText: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     fontSize: 16,
     marginBottom: 30
   },
@@ -156,12 +156,12 @@ const styles = StyleSheet.create({
   },
   profileSubHeader: {
     color: "#ffb2b3",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Bold",
     fontSize: 16,
     marginBottom: 10
   },
   profileText: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     lineHeight: 30,
     fontSize: 16,
     marginBottom: 20
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   updateBtnText: {
     color: "#ffffff",
     alignSelf: "center",
-    fontFamily: "Roboto-Medium",
+    fontFamily: "OpenSans-Regular",
     fontSize: 16
   }
 });

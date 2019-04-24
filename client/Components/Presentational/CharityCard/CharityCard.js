@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingBottom: 30,
     borderBottomColor: "#cacacf",
-    borderBottomWidth: 1
+    borderBottomWidth: 3
   },
   charityCardText: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Montserrat-Medium",
     fontSize: 16
   }
 });
