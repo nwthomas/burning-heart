@@ -4,24 +4,26 @@
 
 ![Burning Heart web client screenshot](./assets/readme-images/site-preview.png)
 
-# What is Burning Heart?
+# WHAT IS BURNING HEART?
 
 Too often in today's world, people desire to do the right thing but lack the time and resources necessary to feel like they're actually making a difference. It can be costly both in effort and money to feel like you have provided impact to those around you.
 
 With `Burning Heart`, a micro-donation mobile application, the power to make quick, small donations to the charity of your choice is now in your hands. Written intentionally with both efficiency and simplicity of use in mind, users can instantly make a difference with small payments over time to not-for-profits around the world. Please enjoy this `Burning Heart`, and let yours give where it wants.
 
-## Table of Contents
+## TABLE OF CONTENTS
 
 - [Getting Started](#getting-started)
-- [Built With](#built-with)
+- [Tech Stack](#tech-stack)
 - [Server Documentation](#server-documentation)
   - [Schemas and Data Modeling](#schemas-and-data-modeling)
-  - [API Endpoints](#api-points-and-data-modeling)
+  - [Test Accounts](#test-accounts)
+  - [Summary Table of API Endpoints](#summary-table-of-api-endpoints)
+  - [API Endpoints Descriptions](#api-endpoints-descriptions)
 - [Project Management](#project-management)
 - [Author](#author)
 - [Acknowledgements](#acknowledgements)
 
-## Getting Started
+## GETTING STARTED
 
 (NOTE: `Burning Heart` is currently iOS-only. There are plans to create a web application, but you will need a Mac computer with XCode installed to turn the mobile `Burning Heart` client on.)
 
@@ -33,7 +35,7 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
 - Open the debugging pane your local browser by going to the XCode Simulator and using `command + D` to open dev tools
 - Enjoy!
 
-## Built With
+## TECH STACK
 
 - [React Native](https://facebook.github.io/react-native/)
 - [React Router Native](https://reacttraining.com/react-router/native/guides/quick-start)
@@ -51,9 +53,9 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
 - [Bcrypt.js](https://www.npmjs.com/package/bcryptjs)
 - [Stripe API](https://stripe.com/docs/api)
 
-## Server Documentation
+## SERVER DOCUMENTATION
 
-### Schemas and Data Modeling
+### SCHEMAS AND DATA MODELING
 
 Checkout this project's [DB Designer](https://www.dbdesigner.net/designer/schema/235466) modeling link for a visual representation of how this project's tables work.
 
@@ -64,39 +66,17 @@ Checkout this project's [DB Designer](https://www.dbdesigner.net/designer/schema
   "id": 2,                                  // Integer (primary key provided by server and autoincrements)
   "username": "admin",                      // String, required
   "password": "password",                   // String, required
-  "email": "email@gmail.com"                // String, required
+  "firstName": "Nathan",                    // String
+  "middleName": "Benjamin",                 // String
+  "lastName": "Thomas",                     // String
+  "email": "email@gmail.com"                // String, required,
+  "phone": "(708) 432-1234"                 // String
+  "type": "user"                            // String
+  "charityId": 1                            // Integer, foreign key to charity table if user is associated
 }
 ```
 
-`Users`
-
-```
-{
-  "id": 1,                                  // Integer (primary key provided by server and autoincrements)
-  "accountId": 3,                           // Integer, required (foreign key constraint linked to id column on accounts table)
-  "firstName": "Nathan",                    // String, required
-  "middleName": "Middle",                   // String, required
-  "lastName": "Thomas",                     // String, required
-  "phone": 7078881298                       // Integer, required
-}
-```
-
-`Charity Contact`
-
-```
-{
-  "id": 6,                                  // Integer (primary key provided by server and autoincrements)
-  "charityId": 1,                           // Integer, required (foreign key constraint to id column on charity table)
-  "accountId": 2,                           // Integer, required (foreign key constraint to id column on accounts table)
-  "firstName": "Jordan",                    // String, required
-  "middleName": "Middle",                   // String, required
-  "lastName": "Reichert",                   // String, required
-  "phone": 7078881298,                      // Integer, required
-  "driversLicense": "D45HC34F9"             // String, required
-}
-```
-
-`Charity`
+`Charities`
 
 ```
 {
@@ -118,21 +98,54 @@ Checkout this project's [DB Designer](https://www.dbdesigner.net/designer/schema
   "id": 1,                                  // Integer (primary key provided by server and autoincrements)
   "charityId": 4,                           // Integer, required (foreign key constraint to id column on charity table)
   "userId": 1,                              // Integer, required (foreign key constraint to id column on user table)
-  "amount": 5.46                            // Integer (float), required
+  "amount": 546                             // Integer, required
 }
 ```
 
-### API Endpoints
+### TEST USER ACCOUNTS
 
-## Project Management
+`Accounts`
+
+```
+  username: "admin"
+  password: "password"
+```
+
+### SUMMARY TABLE OF API ENDPOINTS
+
+| Router    | Method | Endpoint                              | Description                                                                                                                                                                                          |
+| --------- | ------ | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| auth      | POST   | /api/auth/register                    | Creates a new `account` profile using the information sent inside the `body` of the request and returns a message along with the new `account` and a JSON Web Token in the `body` of the response.   |
+| auth      | POST   | /api/auth/login                       | Uses the credentials sent inside the `body` to authenticate the account. On successful login, returns a message with the `account` profile and a JSON Web Token token in the `body` of the response. |
+| accounts  | GET    | /api/restricted/accounts              | Retrieves an array of `account` objects and returns a message with the array in the `body` of the response.                                                                                          |
+| accounts  | GET    | /api/restricted/accounts/:id          | Retrieves a single `account` object and returns a message with the object inside the `body` of the response.                                                                                         |
+| accounts  | PUT    | /api/restricted/accounts/:id          | Updates an `account` in the database using the information sent inside the `body` of the request and returns a message with the updated `account` profile.                                           |
+| accounts  | DELETE | /api/restricted/accounts/:id          | Removes an `account` from the database using the `id` sent in the URL parameters of the response.                                                                                                    |
+| charities | GET    | /api/restricted/charities             | Retrieves an array of `charities` objects and returns a message with the array in the `body` of the response.                                                                                        |
+| charities | GET    | /api/restricted/charities/:id         | Retrieves a single `account` object and returns a message with the object inside the `body` of the response.                                                                                         |
+| charities | POST   | /api/restricted/charities             | Creates a new `charity` in the database using the information sent inside the `body` of the request and returns a message along with the new `charity` profile.                                      |
+| charities | PUT    | /api/restricted/charities/:id         | Updates a `charity` in the database using the information send inside the `body` of the request and returns a message with the updated `charity` profile.                                            |
+| charities | DELETE | /api/restricted/charities/:id         | Removes a `charity` from the database using the `id` sent in the URL parameters of the response.                                                                                                     |
+| donations | GET    | /api/restricted/donations             | Retrieves an array of `donations` objects and returns a message with the object inside the `body` of the response.                                                                                   |
+| donations | GET    | /api/restricted/donations/:id         | Retrieves a single `donation` object and returns a message with the object inside the `body` of the response.                                                                                        |
+| donations | GET    | /api/restricted/donations/account/:id | Retrieves an array of `donations` objects for a specified `account` by `id` and returns a message with the array inside the `body` of the response.                                                  |
+| donations | GET    | /api/restricted/donations/charity/:id | Retrieves an array of `donations` objects for a specified `charity` by `id` and returns a message with the array inside the `body` of the response.                                                  |
+| donations | POST   | /api/restricted/donations             | Creates a new `donation` in the database using the information sent inside the `body` of the request and returns a message along with the new `charity` profile.                                     |
+| donations | PUT    | /api/restricted/donations/:id         | Updates a `donation` in the database using the information sent inside the `body` of the request and returns a new message with the updated `donation`.                                              |
+| donations | DELETE | /api/restricted/donations/:id         | Removes a `donation` form the database using the `id` sent in the URL parameters of the response.                                                                                                    |
+| data      | GET    | /api/restricted/data/donations/:id    | Retrieves an array of `month` objects specifying the `x` and `y` properties for the `account` profile specified by the `id` in the request parameters and returns it in the response.                |
+
+### API ENDPOINTS
+
+## PROJECT MANAGEMENT
 
 - You can view the [Trello Board](https://trello.com/b/YWsebwOT/burning-heart) for this project to review past checkpoints and current aspects of the project timeline
 
-## Author
+## AUTHOR
 
 - [Nathan Thomas](https://github.com/nwthomas)
 
-## Acknowledgements
+## ACKNOWLEDGEMENTS
 
 - Thanks to my family and close friends for always teaching me the value of giving back to others. I wouldn't have thought of this project idea if it weren't for you.
 - Thanks to [Lambda School](https://lambdaschool.com/) for the phenomenal education I've received. You are the reason I can execute with code when I have an idea instead of stumbling around in the dark.

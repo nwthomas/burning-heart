@@ -1,12 +1,12 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable("accounts", tbl => {
     tbl.increments("id");
-    tbl.string("username", 128);
-    tbl.string("password", 255);
+    tbl.string("username", 128).notNullable();
+    tbl.string("password", 255).notNullable();
     tbl.string("firstName", 256);
     tbl.string("middleName", 256);
     tbl.string("lastName", 256);
-    tbl.string("email", 128);
+    tbl.string("email", 128).notNullable();
     tbl.string("phone", 256);
     tbl.string("type", 128);
     tbl

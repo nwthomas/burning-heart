@@ -15,7 +15,7 @@ exports.up = function(knex, Promise) {
       .inTable("accounts")
       .onDelete("CASCADE")
       .notNullable();
-    tbl.integer("amount");
+    tbl.integer("amount").notNullable();
     tbl.timestamps(true, true);
   });
 };

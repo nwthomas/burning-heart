@@ -1,6 +1,6 @@
 const express = require("express");
 const Donations = require("../donations/donationsModel.js");
-const { makeGraphData } = require("./middelware.js");
+const { makeGraphData } = require("./middleware.js");
 
 const router = express.Router();
 
