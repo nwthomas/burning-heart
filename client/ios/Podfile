@@ -1,0 +1,7 @@
+# Use iOS 9 and above
+platform :ios, '9.0'
+
+target 'client' do
+  pod 'Stripe', '~> 14.0.0'
+  inherit! :search_paths
+end

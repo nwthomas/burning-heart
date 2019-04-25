@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { Store } from "../../store/store";
 import { Link } from "react-router-native";
-import { updateDonationForm } from "../../store/actions";
+import { updateDonationForm, makeDonation } from "../../store/actions";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
 
@@ -23,15 +23,16 @@ const DonationForm = ({ history, match }) => {
     donation,
     makeDonationStart,
     makeDonationSuccess,
-    makeDonationError
+    makeDonationError,
+    token
   } = state;
-  const { amount, creditCard, expDate, securityCode } = donation;
+  const { amount, creditCard, expMonth, expYear, securityCode } = donation;
   const handleChange = (name, value) => {
     updateDonationForm(name, value, dispatch);
   };
   const submitPayment = e => {
     e.preventDefault();
-    // Finish
+    makeDonation(donation, token, dispatch);
   };
   return (
     <View style={styles.donationFormContainer}>
@@ -64,14 +65,25 @@ const DonationForm = ({ history, match }) => {
           />
         </View>
         <View style={styles.donationFormBox}>
-          <Text style={styles.inputTitle}>Expiration date:</Text>
+          <Text style={styles.inputTitle}>Expiration Month:</Text>
           <TextInput
             returnKeyType="done"
             style={styles.input}
-            placeholder="Expiration date"
-            id="expDate"
-            value={expDate}
-            onChangeText={text => handleChange("expDate", text)}
+            placeholder="Expiration month"
+            id="expMonth"
+            value={expMonth}
+            onChangeText={text => handleChange("expMonth", text)}
+          />
+        </View>
+        <View style={styles.donationFormBox}>
+          <Text style={styles.inputTitle}>Expiration Year:</Text>
+          <TextInput
+            returnKeyType="done"
+            style={styles.input}
+            placeholder="Expiration year"
+            id="expYear"
+            value={expYear}
+            onChangeText={text => handleChange("expYear", text)}
           />
         </View>
         <View style={styles.donationFormBox}>

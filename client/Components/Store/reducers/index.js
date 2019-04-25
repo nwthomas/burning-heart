@@ -60,7 +60,8 @@ export const initialState = {
   donation: {
     amount: "",
     creditCard: "",
-    expDate: "",
+    expMonth: "",
+    expYear: "",
     securityCode: ""
   },
   newPassword: "",

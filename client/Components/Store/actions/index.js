@@ -34,7 +34,7 @@ import {
   GO_PROFILE
 } from "../types/index";
 
-import createCardToken from "./stripeTokenCreator";
+import { makeToken } from "./stripeTokenCreator";
 
 export const navigateApp = (page, cb) => {
   if (page === "home") {
@@ -247,4 +247,20 @@ export const fetchDonationGraphData = (userId, token, cb) => {
         payload: err.response.data.message
       });
     });
+};
+
+export const makeDonation = async (donation, token, cb) => {
+  cb({ type: MAKE_DONATION_START });
+  const { amount, creditCard, expMonth, expYear, securityCode } = donation;
+  const cardToken = await makeToken(
+    creditCard,
+    Number(expMonth),
+    Number(expYear),
+    securityCode
+  );
+  if (cardToken) {
+    console.log(cardToken);
+  } else {
+    console.log(cardToken);
+  }
 };
