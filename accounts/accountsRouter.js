@@ -1,8 +1,28 @@
 const express = require("express");
 const Accounts = require("./accountsModel.js");
 const bcrypt = require("bcryptjs");
+require("dotenv").config();
+const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 
 const router = express();
+
+const createStripeCustomer = email => {
+  stripe.customer.create(
+    {
+      description: `Customer for ${email}`
+    },
+    function(err, customer) {
+      if (err) {
+        return {
+          error: true,
+          message: "There was an error processing your request"
+        };
+      } else {
+        return { error: false, customerToken: customer.id };
+      }
+    }
+  );
+};
 
 // Accounts retrieval API route
 router.get("/", async (req, res) => {
@@ -67,11 +87,14 @@ router.post("/", async (req, res) => {
   } else {
     try {
       const newUser = await Accounts.insert(req.body);
+      const stripeAcct = createStripeCustomer(email);
+      console.log(stripeAcct);
       if (newUser) {
         res.status(200).json({
           error: false,
           message: "Your account was created successfully.",
-          user: newUser
+          user: newUser,
+          stripe: stripeAcct
         });
       } else {
         res.status(404).json({

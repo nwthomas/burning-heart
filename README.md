@@ -18,14 +18,13 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
   - [Schemas and Data Modeling](#schemas-and-data-modeling)
   - [Test Accounts](#test-accounts)
   - [Summary Table of API Endpoints](#summary-table-of-api-endpoints)
-  - [Authentication Endpoints](#auth-endpoints)
-  - [Accounts Endpoints](#accounts-endpoints)
-  - [Charities Endpoints](#charities-endpoints)
-  - [Donations Endpoints](#donations-endpoints)
-  - [Data Endpoints](#data-endpoints)
-    - [Auth Endpoints](#auth-endpoints)
-      - [Register a New Account](#register)
-      - [Login an Existing Account](#login)
+    - [Authentication Endpoints](#auth-endpoints)
+      - [Register a New Account](#register-registers-an-account)
+      - [Login an Existing Account](#login-logs-in-an-account)
+    - [Accounts Endpoints](#accounts-endpoints)
+    - [Charities Endpoints](#charities-endpoints)
+    - [Donations Endpoints](#donations-endpoints)
+    - [Data Endpoints](#data-endpoints)
 - [Project Management](#project-management)
 - [Author](#author)
 - [Acknowledgements](#acknowledgements)
@@ -187,7 +186,7 @@ Checkout this project's [DB Designer](https://www.dbdesigner.net/designer/schema
 
 ### AUTH ENDPOINTS
 
-#### **Register** - _Registers a user_
+#### **Register** - _Registers an account_
 
 _Method Url:_ `/api/auth/register`
 
@@ -233,7 +232,7 @@ _Example:_
 
 ##### 200 (OK)
 
-> If you successfully register a user, the endpoint will return an HTTP response with a status code `200` and a body as below.
+> If you successfully register an account, the endpoint will return an HTTP response with a status code `200` and a body as below.
 
 ```
 {
@@ -304,7 +303,7 @@ _Example:_
 }
 ```
 
-#### **Login** - _Logs in a user_
+#### **Login** - _Logs in an account_
 
 _Method Url:_ `/api/auth/login`
 
@@ -336,7 +335,7 @@ _Example:_
 
 ##### 200 (OK)
 
-> If you successfully register a user, the endpoint will return an HTTP response with a status code `200` and a body as below.
+> If you successfully register an account, the endpoint will return an HTTP response with a status code `200` and a body as below.
 
 ```
 {

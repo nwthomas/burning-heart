@@ -31,7 +31,7 @@ const DonationForm = ({ history, match }) => {
   };
   const submitPayment = e => {
     e.preventDefault();
-    // Finish out with action creator and reducer on Stripe implementation
+    // Finish
   };
   return (
     <View style={styles.donationFormContainer}>

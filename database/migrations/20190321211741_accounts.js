@@ -16,6 +16,7 @@ exports.up = function(knex, Promise) {
       .inTable("charities")
       .onDelete("CASCADE");
     tbl.timestamps(true, true);
+    tbl.string("stripeToken", 256);
     tbl.unique("username", "uq_accounts_username");
     tbl.unique("phone", "uq_accounts_phone");
     tbl.unique("email", "uq_accounts_email");

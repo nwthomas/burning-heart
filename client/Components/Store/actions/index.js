@@ -26,10 +26,15 @@ import {
   FETCH_GRAPH_DONATIONS_ERROR,
   UPDATE_SHOWN_CHARITY_LIST,
   RESET_SHOWN_CHARITY_LIST,
+  MAKE_DONATION_START,
+  MAKE_DONATION_SUCCESS,
+  MAKE_DONATION_ERROR,
   GO_HOME,
   GO_SEARCH,
   GO_PROFILE
 } from "../types/index";
+
+import createCardToken from "./stripeTokenCreator";
 
 export const navigateApp = (page, cb) => {
   if (page === "home") {
