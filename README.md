@@ -55,6 +55,7 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
   - [React Native SVG](https://github.com/react-native-community/react-native-svg)
   - [Axios](https://www.npmjs.com/package/axios)
   - [Victory](https://formidable.com/open-source/victory/docs/victory-line/)
+  - [Tipsi-Stripe](https://tipsi.github.io/tipsi-stripe/)
 - `Development`:
   - [Jest](https://jestjs.io/)
   - [React Test Renderer](https://reactjs.org/docs/test-renderer.html)

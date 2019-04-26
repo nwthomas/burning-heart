@@ -14,28 +14,24 @@ import { Link } from "react-router-native";
 import { updateDonationForm, makeDonation } from "../../store/actions";
 
 import boomBoxPerson from "../../../assets/images/boom-box-person.gif";
+import { DonationFormModal } from "../../Presentational/DonationFormModal";
 
 const { width } = Dimensions.get("window");
 
 const DonationForm = ({ history, match }) => {
   const { state, dispatch } = useContext(Store);
-  const {
-    donation,
-    makeDonationStart,
-    makeDonationSuccess,
-    makeDonationError,
-    token
-  } = state;
+  const { donation, makeDonationStart, token } = state;
   const { amount, creditCard, expMonth, expYear, securityCode } = donation;
   const handleChange = (name, value) => {
     updateDonationForm(name, value, dispatch);
   };
   const submitPayment = e => {
     e.preventDefault();
-    makeDonation(donation, token, dispatch);
+    makeDonation(donation, match.params.id, token, dispatch);
   };
   return (
     <View style={styles.donationFormContainer}>
+      <DonationFormModal history={history} />
       <View style={styles.donateHeader}>
         <Text style={styles.donateTitle}>Make Donation</Text>
         <Image source={boomBoxPerson} style={styles.donatePerson} />
@@ -100,7 +96,7 @@ const DonationForm = ({ history, match }) => {
         <View style={styles.btnContainer}>
           <TouchableHighlight
             underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
-            onPress={submitPayment}
+            onPress={() => submitPayment()}
             style={styles.submitBtn}
           >
             {makeDonationStart ? (

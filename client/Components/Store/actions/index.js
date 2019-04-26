@@ -249,18 +249,37 @@ export const fetchDonationGraphData = (userId, token, cb) => {
     });
 };
 
-export const makeDonation = async (donation, token, cb) => {
+export const makeDonation = async (donation, charityId, token, cb) => {
   cb({ type: MAKE_DONATION_START });
-  const { amount, creditCard, expMonth, expYear, securityCode } = donation;
+  const { creditCard, expMonth, expYear, securityCode } = donation;
+  const reqOptions = { headers: { authorization: token } };
   const cardToken = await makeToken(
-    creditCard,
-    Number(expMonth),
-    Number(expYear),
-    securityCode
+    creditCard, // Must be string
+    Number(expMonth), // Must be number
+    Number(expYear), // Must be number
+    securityCode // Must be string
   );
-  if (cardToken) {
-    console.log(cardToken);
+  if (cardToken.tokenId) {
+    const donationData = { donation, stripeData: cardToken, charityId };
+    return axios
+      .post(
+        "http://localhost:7000/api/restricted/donations",
+        donationData,
+        reqOptions
+      )
+      .then(res => {
+        return cb({ type: MAKE_DONATION_SUCCESS, payload: res.data });
+      })
+      .catch(err => {
+        return cb({
+          type: MAKE_DONATION_ERROR,
+          payload: err.response.data.message
+        });
+      });
   } else {
-    console.log(cardToken);
+    return cb({
+      type: MAKE_DONATION_ERROR,
+      payload: "Please enter valid card information and try again."
+    });
   }
 };

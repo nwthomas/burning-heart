@@ -131,7 +131,7 @@ export const reducer = (state, action) => {
         loggedIn: true,
         account: action.payload.account,
         updateAccount: action.payload.account,
-        message: action.payload.message,
+        message: "",
         loginForm: {
           username: "",
           password: ""
@@ -207,7 +207,9 @@ export const reducer = (state, action) => {
         getCharitiesSuccess: false,
         updateAccountSuccess: false,
         updateAccountError: false,
-        message: ""
+        message: "",
+        makeDonationSuccess: false,
+        makeDonationError: false
       };
     case UPDATE_SHOWN_CHARITY_LIST:
       return {
@@ -232,7 +234,6 @@ export const reducer = (state, action) => {
         ...state,
         getCharitiesStart: false,
         getCharitiesSuccess: true,
-        message: action.payload.message,
         charities: action.payload.charities,
         shownCharities: action.payload.charities
       };
@@ -240,8 +241,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         getCharitiesStart: false,
-        getCharitiesError: true,
-        message: action.payload
+        getCharitiesError: true
       };
     case FETCH_USER_DONATIONS_START:
       return {
@@ -261,8 +261,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         getUserDonationsStart: false,
-        getUserDonationsError: true,
-        message: action.payload
+        getUserDonationsError: true
       };
     case GO_HOME: // Navigation logic
       return {
