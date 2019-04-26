@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CtaBanner = () => {
   return (
@@ -6,9 +7,9 @@ const CtaBanner = () => {
       <p className="cta__banner__text">
         Burning Heart is a donation app for people who like to give what they
         can, when they can.{" "}
-        <a className="cta__banner__link" href="#">
+        <Link className="cta__banner__link" to="/signup">
           Sign up here.
-        </a>
+        </Link>
       </p>
     </div>
   );

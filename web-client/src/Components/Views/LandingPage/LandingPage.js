@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 import { CtaBanner } from "../../Presentational/CtaBanner";
 
@@ -77,10 +78,10 @@ class LandingPage extends Component {
                   : "navbar__links"
               }
             >
-              <a href="#">Home</a>
-              <a href="#">About</a>
-              <a href="#">Login</a>
-              <a href="#">Sign Up</a>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/about">About</NavLink>
+              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/signup">Sign Up</NavLink>
             </div>
           </nav>
           <div className="header__banner">
@@ -126,10 +127,10 @@ class LandingPage extends Component {
           </div>
           <div className="footer__social__navbar">
             <nav className="footer__navbar__links">
-              <a href="#">Home</a>
-              <a href="#">About</a>
-              <a href="#">Login</a>
-              <a href="#">Sign Up</a>
+              <Link to="/">Home</Link>
+              <Link to="/about">About</Link>
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Sign Up</Link>
             </nav>
             <div className="footer__social__links">
               <div className="social__link">

@@ -1,4 +1,5 @@
 import React from "react";
+import { Route } from "react-router";
 import "./Components/styles/App.scss";
 
 import { authenticate } from "./Components/Container/authenticate"; // HOC
@@ -8,7 +9,7 @@ import { LandingPage } from "./Components/Views/LandingPage";
 const App = props => {
   return (
     <div className="App">
-      <LandingPage />
+      <Route exact path="/" component={LandingPage} />
     </div>
   );
 };
