@@ -35,7 +35,16 @@ import {
 
 export const initialState = {
   account: {},
-  updateAccount: {},
+  updateAccount: {
+    email: "",
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    password: "",
+    lastName: "",
+    phone: "",
+    username: ""
+  },
   charities: [], // Duplicated state for search replacement
   shownCharities: [],
   donations: [], // Duplicate state for search replacement
@@ -337,7 +346,14 @@ export const reducer = (state, action) => {
         makeDonationSuccess: true,
         message: action.payload.message,
         shownDonations: updatedDonations,
-        donations: updatedDonations
+        donations: updatedDonations,
+        donation: {
+          amount: "",
+          creditCard: "",
+          expMonth: "",
+          expYear: "",
+          securityCode: ""
+        }
       };
     case MAKE_DONATION_ERROR:
       return {

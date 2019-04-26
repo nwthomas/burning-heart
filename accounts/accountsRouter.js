@@ -120,6 +120,7 @@ router.put("/:id", async (req, res) => {
     const hash = bcrypt.hashSync(req.body.password, 14); // Must be the same as account creation
     req.body.password = hash;
   }
+  console.log(req.body);
   try {
     const account = await Accounts.update(req.params.id, req.body);
     if (account) {

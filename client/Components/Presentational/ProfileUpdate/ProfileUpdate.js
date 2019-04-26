@@ -16,25 +16,25 @@ import { Store } from "../../store/store";
 import { updateUserAccount, handleUpdateForm } from "../../store/actions";
 
 import updatePerson from "../../../assets/images/signup-person.gif"; // Replace
-import { UpdateAccountModal, AccountUpdateModal } from "../AccountUpdateModal";
+import { AccountUpdateModal } from "../AccountUpdateModal";
 
 const { width } = Dimensions.get("window");
 
 const ProfileUpdate = ({ history }) => {
   const { state, dispatch } = useContext(Store);
-  const { updateAccount, newPassword, token, updateAccountStart } = state;
+  const { updateAccount, token, updateAccountStart, account } = state;
   const {
-    id,
     email,
     firstName,
     middleName,
+    password,
     lastName,
     phone,
     username
   } = updateAccount;
   const handleUpdateAccount = e => {
     e.preventDefault();
-    updateUserAccount(updateAccount, id, token, dispatch);
+    updateUserAccount(updateAccount, account.id, token, dispatch);
   };
   const handleChange = (name, value) => {
     handleUpdateForm(name, value, dispatch);
@@ -80,9 +80,9 @@ const ProfileUpdate = ({ history }) => {
             returnKeyType="done"
             secureTextEntry={true}
             style={styles.input}
-            placeholder="Password"
+            placeholder="New password"
             id="password"
-            value={newPassword}
+            value={password}
             onChangeText={text => handleChange("password", text)}
           />
         </View>
