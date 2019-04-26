@@ -249,7 +249,13 @@ export const fetchDonationGraphData = (userId, token, cb) => {
     });
 };
 
-export const makeDonation = async (donation, charityId, token, cb) => {
+export const makeDonation = async (
+  donation,
+  charityId,
+  accountId,
+  token,
+  cb
+) => {
   cb({ type: MAKE_DONATION_START });
   const { creditCard, expMonth, expYear, securityCode } = donation;
   const reqOptions = { headers: { authorization: token } };
@@ -259,8 +265,14 @@ export const makeDonation = async (donation, charityId, token, cb) => {
     Number(expYear), // Must be number
     securityCode // Must be string
   );
+
   if (cardToken.tokenId) {
-    const donationData = { donation, stripeData: cardToken, charityId };
+    const donationData = {
+      donation,
+      stripeData: cardToken,
+      charityId: Number(charityId), // Must be number
+      accountId
+    };
     return axios
       .post(
         "http://localhost:7000/api/restricted/donations",

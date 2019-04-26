@@ -1,7 +1,8 @@
 const express = require("express");
 const Donations = require("./donationsModel.js");
-require("dotenv").config();
-const stripe = require("stripe")(process.env.STRIPE_API_KEY);
+const Charities = require("../charities/charitiesModel.js");
+
+const makeStripePayment = require("./middleware.js");
 
 const router = express.Router();
 
@@ -111,39 +112,75 @@ router.get("/charity/:id", async (req, res) => {
 
 // Donation creation API route
 router.post("/", async (req, res) => {
-  console.log(req.body);
-  // const { charityId, accountId, amount } = req.body;
-  // if (!charityId || !accountId || !amount) {
-  //   res.status(400).json({
-  //     error: true,
-  //     message:
-  //       "Please include the required donation information and try again.",
-  //     donation: {}
-  //   });
-  // } else {
-  //   try {
-  //     const donation = await Donations.insert(req.body); // Returns array
-  //     if (donation.length) {
-  //       res.status(201).json({
-  //         error: false,
-  //         message: "Your donation was created successfully.",
-  //         donation: donation[donation.length - 1]
-  //       });
-  //     } else {
-  //       res.status(404).json({
-  //         error: true,
-  //         message: "Your donation could not be created.",
-  //         donation: {}
-  //       });
-  //     }
-  //   } catch (error) {
-  //     res.status(500).json({
-  //       error: true,
-  //       message: "There was an error processing your request.",
-  //       donation: {}
-  //     });
-  //   }
-  // }
+  const { charityId, accountId, donation, stripeData } = req.body;
+  if (!charityId || !accountId || !donation || !stripeData) {
+    return res.status(400).json({
+      error: true,
+      message:
+        "Please include the required donation information and try again.",
+      donation: {}
+    });
+  }
+  try {
+    const charity = await Charities.find()
+      .where({ id: charityId })
+      .first();
+    if (charity) {
+      const payment = await makeStripePayment(
+        Number(donation.amount),
+        stripeData.tokenId,
+        charity.stripeToken
+      );
+      if (payment.status === "succeeded") {
+        const donationObj = {
+          amount: donation.amount,
+          charityId: charityId,
+          accountId: accountId
+        };
+        console.log(donationObj);
+        try {
+          const donation = await Donations.insert(donationObj); // Returns array
+          if (donation.length) {
+            res.status(201).json({
+              error: false,
+              message: "Your donation was created successfully.",
+              donation: donation[donation.length - 1]
+            });
+          } else {
+            res.status(404).json({
+              error: true,
+              message: "Your donation could not be created.",
+              donation: {}
+            });
+          }
+        } catch (error) {
+          res.status(500).json({
+            error: true,
+            message: "There was an error processing your request.",
+            donation: {}
+          });
+        }
+      } else {
+        res.status(500).json({
+          error: true,
+          message: "There was an error processing your request.",
+          donation: {}
+        });
+      }
+    } else {
+      res.status(500).json({
+        error: true,
+        message: "There was an error processing your request.",
+        donation: {}
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      error: true,
+      message: "There was an error processing your request.",
+      donation: {}
+    });
+  }
 });
 
 // Donation update by ID API route

@@ -317,8 +317,28 @@ export const reducer = (state, action) => {
       return {
         ...state,
         getDonationsGraphDataStart: false,
-        getDonationsGraphDataError: true,
-        message: action.payload.message
+        getDonationsGraphDataError: true
+      };
+    case MAKE_DONATION_START:
+      return {
+        ...state,
+        makeDonationStart: true,
+        makeDonationError: false
+      };
+    case MAKE_DONATION_SUCCESS:
+      return {
+        ...state,
+        makeDonationStart: false,
+        makeDonationSuccess: true,
+        message: action.payload.message,
+        donations: [...state.donations, action.payload.donation]
+      };
+    case MAKE_DONATION_ERROR:
+      return {
+        ...state,
+        makeDonationStart: false,
+        makeDonationError: true,
+        message: action.payload
       };
     default:
       return state;

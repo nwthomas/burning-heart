@@ -11,5 +11,12 @@ export const makeToken = async (number, expMonth, expYear, cvc) => {
     expYear, // Number
     cvc // String
   };
-  return await stripe.createTokenWithCard(params);
+  return await stripe
+    .createTokenWithCard(params)
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      return { tokenId: false };
+    });
 };

@@ -7,7 +7,8 @@ import {
   TextInput,
   StyleSheet,
   Dimensions,
-  TouchableHighlight
+  TouchableHighlight,
+  ActivityIndicator
 } from "react-native";
 import { Store } from "../../store/store";
 import { Link } from "react-router-native";
@@ -20,14 +21,15 @@ const { width } = Dimensions.get("window");
 
 const DonationForm = ({ history, match }) => {
   const { state, dispatch } = useContext(Store);
-  const { donation, makeDonationStart, token } = state;
+  const { donation, makeDonationStart, token, account } = state;
   const { amount, creditCard, expMonth, expYear, securityCode } = donation;
+  const { id } = account;
   const handleChange = (name, value) => {
     updateDonationForm(name, value, dispatch);
   };
   const submitPayment = e => {
     e.preventDefault();
-    makeDonation(donation, match.params.id, token, dispatch);
+    makeDonation(donation, match.params.id, id, token, dispatch);
   };
   return (
     <View style={styles.donationFormContainer}>
@@ -96,7 +98,7 @@ const DonationForm = ({ history, match }) => {
         <View style={styles.btnContainer}>
           <TouchableHighlight
             underlayColor={"#0E30F050"} // Last two numbers indicate opacity of color
-            onPress={() => submitPayment()}
+            onPress={submitPayment}
             style={styles.submitBtn}
           >
             {makeDonationStart ? (

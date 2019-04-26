@@ -21,10 +21,9 @@ const DonationFormModal = props => {
     makeDonationSuccess,
     message
   } = state;
-  console.log(state);
   const goToSearch = e => {
     e.preventDefault();
-    if (makeDonationsSuccess) props.history.push("/search");
+    if (makeDonationSuccess) props.history.push("/search");
     closeModal(dispatch);
   };
   return (

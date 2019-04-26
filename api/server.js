@@ -26,7 +26,6 @@ const createStripeCustomer = email => {
           message: "There was an error processing your request"
         };
       } else {
-        console.log(customer);
         return { error: false, customerToken: customer.id };
       }
     }
