@@ -137,7 +137,6 @@ router.post("/", async (req, res) => {
           charityId: charityId,
           accountId: accountId
         };
-        console.log(donationObj);
         try {
           const donation = await Donations.insert(donationObj); // Returns array
           if (donation.length) {

@@ -275,7 +275,7 @@ export const makeDonation = async (
     };
     return axios
       .post(
-        "http://localhost:7000/api/restricted/donations",
+        "https://burning-heart.herokuapp.com/api/restricted/donations",
         donationData,
         reqOptions
       )

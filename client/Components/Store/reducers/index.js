@@ -250,10 +250,11 @@ export const reducer = (state, action) => {
         getUserDonationsError: false
       };
     case FETCH_USER_DONATIONS_SUCCESS:
+      const donations = action.payload.donations.reverse();
       return {
         ...state,
-        donations: action.payload.donations,
-        shownDonations: action.payload.donations,
+        donations,
+        shownDonations: donations,
         getUserDonationsStart: false,
         getUserDonationsSuccess: true
       };
@@ -326,12 +327,17 @@ export const reducer = (state, action) => {
         makeDonationError: false
       };
     case MAKE_DONATION_SUCCESS:
+      const updatedDonations = [
+        ...state.donations,
+        action.payload.donation
+      ].reverse();
       return {
         ...state,
         makeDonationStart: false,
         makeDonationSuccess: true,
         message: action.payload.message,
-        donations: [...state.donations, action.payload.donation]
+        shownDonations: updatedDonations,
+        donations: updatedDonations
       };
     case MAKE_DONATION_ERROR:
       return {

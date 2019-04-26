@@ -63,7 +63,7 @@ const HomeView = props => {
                   : `Evening, ${firstName}! Here are your donations:`}
               </Text>
             </View>
-            {donations.reverse().map((donation, index) => {
+            {donations.map((donation, index) => {
               return <DonationCard donation={donation} key={index} />;
             })}
           </>
