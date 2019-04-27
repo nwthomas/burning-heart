@@ -9,6 +9,7 @@ import {
   ActivityIndicator
 } from "react-native";
 import { Store } from "../../store/store";
+import { GO_HOME } from "../../store/types";
 import { closeModal } from "../../store/actions";
 
 const { width, height } = Dimensions.get("window"); // Get window dimensions
@@ -23,7 +24,8 @@ const DonationFormModal = props => {
   } = state;
   const goToSearch = e => {
     e.preventDefault();
-    if (makeDonationSuccess) props.history.push("/search");
+    if (makeDonationSuccess) props.history.push("/");
+    dispatch({ type: GO_HOME });
     closeModal(dispatch);
   };
   return (

@@ -19,13 +19,17 @@ p {
 a {
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
 
   &:hover {
     text-decoration: underline;
   }
 }
+input,
+select,
 button {
   font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
 }
 img {
   width: 100%;

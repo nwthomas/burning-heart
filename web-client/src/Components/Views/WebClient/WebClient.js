@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class LoginView extends Component {
+export class WebClient extends Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ export class LoginView extends Component {
   }
 }
 
-export default LoginView;
+export default WebClient;

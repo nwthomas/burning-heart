@@ -68,7 +68,7 @@ class LandingPage extends Component {
             >
               <img
                 src={this.state.navbarOpen ? closeNavbarIcon : openNavbarIcon}
-                alt="Navbar__menu__icon"
+                alt="navbar__menu__icon"
               />
             </div>
             <div
