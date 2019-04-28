@@ -7,7 +7,9 @@ import LoadingAnimation from "./LoadingAnimation";
 const SignUpAccountModal = props => {
   const handleButton = e => {
     e.preventDefault();
-    if (props.createAccountSuccess) {
+    if (props.createAccountStart) {
+      return false;
+    } else if (props.createAccountSuccess) {
       props.closeSignUpModal();
       return props.history.push("/login");
     } else {
@@ -22,7 +24,11 @@ const SignUpAccountModal = props => {
           {props.createAccountStart ? "Sending..." : props.message}
         </h2>
         <button className="modal__button" onClick={handleButton}>
-          {props.creatAccountStart ? <LoadingAnimation /> : "Okay"}
+          {props.createAccountStart ? (
+            <LoadingAnimation className="loading__animation" />
+          ) : (
+            "Okay"
+          )}
         </button>
       </div>
     </div>
