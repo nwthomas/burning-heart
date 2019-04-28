@@ -4,11 +4,12 @@ import { connect } from "react-redux";
 import { Navbar } from "../../Presentational/Navbar";
 import InitialSignup from "./InitialSignup";
 import DonorSignup from "./DonorSignup";
-import { SignUpModal } from "../../Presentational/SignUpModal";
+import { SignUpAccountModal } from "../../Presentational/SignUpAccountModal";
 
-const SignUpForm = ({ history, formPage, accountType }) => {
+const SignUpForm = ({ history, formPage, accountType, modalOpen }) => {
   return (
     <>
+      {modalOpen && <SignUpAccountModal history={history} />}
       <Navbar />
       <div className="form-page__container">
         {(function() {
@@ -33,7 +34,8 @@ const SignUpForm = ({ history, formPage, accountType }) => {
 
 const mapStateToProps = state => ({
   formPage: state.signupReducer.formPage,
-  accountType: state.signupReducer.accountType
+  accountType: state.signupReducer.accountType,
+  modalOpen: state.signupReducer.modalOpen
 });
 
 export default connect(

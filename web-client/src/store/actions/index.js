@@ -6,7 +6,8 @@ import {
   UPDATE_DONOR_FORM,
   CREATE_NEW_ACCOUNT_START,
   CREATE_NEW_ACCOUNT_SUCCESS,
-  CREATE_NEW_ACCOUNT_ERROR
+  CREATE_NEW_ACCOUNT_ERROR,
+  CLOSE_SIGNUP_MODAL
 } from "../types";
 
 //============================================================== Signup Action Creators
@@ -47,5 +48,11 @@ export const nextSignupPage = () => {
 export const previousSignupPage = () => {
   return {
     type: MOVE_SIGNUP_FORM_BACKWARD
+  };
+};
+
+export const closeSignUpModal = () => {
+  return {
+    type: CLOSE_SIGNUP_MODAL
   };
 };
