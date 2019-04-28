@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Navbar } from "../../Presentational/Navbar";
 import InitialSignup from "./InitialSignup";
 import DonorSignup from "./DonorSignup";
+import { SignUpModal } from "../../Presentational/SignUpModal";
 
 const SignUpForm = ({ history, formPage, accountType }) => {
   return (

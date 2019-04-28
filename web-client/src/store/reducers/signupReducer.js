@@ -20,7 +20,8 @@ const initialState = {
   },
   charityAccount: {
     stuff: ""
-  }
+  },
+  modalOpen: false
 };
 
 export const signupReducer = (state = initialState, action) => {

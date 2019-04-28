@@ -5,7 +5,7 @@ const Navbar = props => {
   return (
     <div className="navbar__container">
       <div className="navbar__main">
-        <p className="burning-heart__name">Burning Heart</p>
+        <h1 className="burning-heart__name">Burning Heart</h1>
         <nav className="navbar__nav-links">
           <NavLink exact to="/">
             Home

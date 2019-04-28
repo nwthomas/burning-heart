@@ -14,7 +14,7 @@ export const createDonorAccount = userDetails => dispatch => {
   dispatch({ type: CREATE_NEW_ACCOUNT_START });
   console.log(userDetails);
   axios
-    .post("http://localhost:7000/api/auth/register", userDetails)
+    .post("https://burning-heart.herokuapp.com/api/auth/register", userDetails)
     .then(res => {
       console.log(res.data);
       dispatch({ type: CREATE_NEW_ACCOUNT_SUCCESS, payload: res.data });
