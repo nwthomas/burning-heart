@@ -1,29 +1,51 @@
-import axios from "axios"; // Make sure to install dependencies
+import axios from "axios";
 import {
-  VARIABLE_NAMES_STARTED,
-  VARIABLE_NAMES_SUCCESS,
-  VARIABLE_NAMES_ERROR
-} from "../types"; // Import variable names to avoid spelling errors
+  MOVE_SIGNUP_FORM_FORWARD,
+  MOVE_SIGNUP_FORM_BACKWARD,
+  UPDATE_SIGNUP_FORM,
+  UPDATE_DONOR_FORM,
+  CREATE_NEW_ACCOUNT_START,
+  CREATE_NEW_ACCOUNT_SUCCESS,
+  CREATE_NEW_ACCOUNT_ERROR
+} from "../types";
 
-// Action creator function that uses thunk
-export const axiosActionCreator = _ => dispatch => {
-  dispatch({ type: VARIABLE_NAMES_STARTED }); // Initial dispatch
+//============================================================== Signup Action Creators
+export const createDonorAccount = userDetails => dispatch => {
+  dispatch({ type: CREATE_NEW_ACCOUNT_START });
+  console.log(userDetails);
   axios
-    .get("insert url")
+    .post("http://localhost:7000/api/auth/register", userDetails)
     .then(res => {
-      dispatch({ type: VARIABLE_NAMES_SUCCESS, payload: res.data }); // Success dispatch
+      console.log(res.data);
+      dispatch({ type: CREATE_NEW_ACCOUNT_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: VARIABLE_NAMES_ERROR, payload: err.data }); // Error dispatch
+      dispatch({ type: CREATE_NEW_ACCOUNT_ERROR, payload: err });
     });
 };
 
-// Action creator for basic operations
-export const basicActionCreator = () => {
+export const handleSignupFormChanges = (name, value) => {
   return {
-    type: VARIABLE_NAMES_SUCCESS,
-    payload: {
-      whatever: "whatever you want"
-    }
+    type: UPDATE_SIGNUP_FORM,
+    payload: { name, value }
+  };
+};
+
+export const handleDonorFormChanges = (name, value) => {
+  return {
+    type: UPDATE_DONOR_FORM,
+    payload: { name, value }
+  };
+};
+
+export const nextSignupPage = () => {
+  return {
+    type: MOVE_SIGNUP_FORM_FORWARD
+  };
+};
+
+export const previousSignupPage = () => {
+  return {
+    type: MOVE_SIGNUP_FORM_BACKWARD
   };
 };

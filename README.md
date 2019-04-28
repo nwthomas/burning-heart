@@ -91,7 +91,7 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
   - [JSON Web Token](https://github.com/auth0/node-jsonwebtoken)
   - [Bcrypt.js](https://www.npmjs.com/package/bcryptjs)
   - [Stripe API](https://stripe.com/docs/api)
-    - [Axios](https://www.npmjs.com/package/axios)
+  - [Axios](https://www.npmjs.com/package/axios)
 - `Development:`
   - [Jest](https://jestjs.io/)
   - [Nodemon](https://nodemon.io/)

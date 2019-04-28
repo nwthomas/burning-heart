@@ -10,6 +10,7 @@ const router = express.Router();
 // Auth account creation API route
 router.post("/register", authConstraints, async (req, res) => {
   // Salt/hash of password
+  console.log(req.body);
   const hash = bcrypt.hashSync(req.body.password, 14);
   req.body.password = hash;
   try {

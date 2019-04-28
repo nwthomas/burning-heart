@@ -43,7 +43,8 @@
       .signup__button {
         height: 50px;
         width: 48%;
-        background-image: linear-gradient(to right, #3955f2, #5d73f4);
+        background: #ffb2b3;
+        border: 1px solid #ffb2b3;
         border-radius: 50px;
         margin-top: 10px;
         color: white;
@@ -51,9 +52,9 @@
         cursor: pointer;
 
         &:hover {
-          color: #3955f2;
+          color: #ffb2b3;
           background: white;
-          border: 1px solid #3955f2;
+          border: 1px solid #ffb2b3;
         }
       }
     }
