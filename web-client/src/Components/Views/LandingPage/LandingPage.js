@@ -49,15 +49,16 @@ class LandingPage extends Component {
                 : "header__navbar"
             }
           >
-            <h1
+            <Link
               className={
                 this.state.navbarOpen
                   ? "burning-heart__name burning-heart__name--open"
                   : "burning-heart__name"
               }
+              to="/"
             >
               Burning Heart
-            </h1>
+            </Link>
             <div
               onClick={this.handleNavbar}
               className={
@@ -80,7 +81,7 @@ class LandingPage extends Component {
             >
               <NavLink to="/">Home</NavLink>
               <NavLink to="/about">About</NavLink>
-              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/home">Login</NavLink>
               <NavLink to="/signup">Sign Up</NavLink>
             </div>
           </nav>

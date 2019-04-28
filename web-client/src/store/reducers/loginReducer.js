@@ -1,14 +1,23 @@
-import { LOGIN_APP, LOGOUT_APP, UPDATE_LOGIN_FORM } from "../types";
+import {
+  LOGIN_APP_START,
+  LOGIN_APP_SUCCESS,
+  LOGIN_APP_ERROR,
+  LOGOUT_APP,
+  UPDATE_LOGIN_FORM
+} from "../types";
 
 const initialState = {
   loggedIn: false,
   username: "",
-  password: ""
+  password: "",
+  loginStart: false,
+  loginSuccess: false,
+  loginError: false
 };
 
 export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_APP:
+    case LOGIN_APP_START:
       return {
         ...state,
         loggedIn: true

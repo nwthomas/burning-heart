@@ -1,20 +1,22 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+import { connect } from "react-redux";
 
-const authenticate = App => LoginView => {
-  return class extends Component {
-    render() {
-      return !this.props.loggedIn ? <App /> : <LoginView />;
-    }
-  };
+import { HomeView } from "../../Views/HomeView";
+import { LoginForm } from "../../Container/LoginForm";
+
+const authenticate = ({ history, loggedIn }) => {
+  return loggedIn ? (
+    <HomeView history={history} />
+  ) : (
+    <LoginForm history={history} />
+  );
 };
 
-authenticate.propTypes = {
-  loggedIn: PropTypes.bool
-};
+const mapStateToProps = state => ({
+  loggedIn: state.loginReducer.loggedIn
+});
 
-authenticate.defaultProps = {
-  loggedIn: true
-};
-
-export default authenticate;
+export default connect(
+  mapStateToProps,
+  {}
+)(authenticate);

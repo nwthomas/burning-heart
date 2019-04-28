@@ -12,6 +12,8 @@ export const UPDATE_DONOR_FORM = "UPDATE_DONOR_FORM";
 export const CLOSE_SIGNUP_MODAL = "CLOSE_SIGNUP_MODAL";
 
 // =========================================================== Login Form Types
-export const LOGIN_APP = "LOGIN_APP";
+export const LOGIN_APP_START = "LOGIN_APP_START";
+export const LOGIN_APP_SUCCESS = "LOGIN_APP_SUCCESS";
+export const LOGIN_APP_ERROR = "LOGIN_APP_ERROR";
 export const LOGOUT_APP = "LOGOUT_APP";
 export const UPDATE_LOGIN_FORM = "UPDATE_LOGIN_FORM";

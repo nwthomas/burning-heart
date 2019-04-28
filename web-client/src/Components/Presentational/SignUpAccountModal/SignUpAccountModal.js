@@ -1,35 +1,37 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { closeSignUpModal } from "../../../store/actions";
 
 import LoadingAnimation from "./LoadingAnimation";
 
-const SignUpAccountModal = props => {
-  const handleButton = e => {
+class SignUpAccountModal extends Component {
+  handleButton = e => {
     e.preventDefault();
-    if (props.createAccountStart) {
+    if (this.props.createAccountStart) {
       return false;
-    } else if (props.createAccountSuccess) {
-      props.closeSignUpModal();
-      return props.history.push("/login");
+    } else if (this.props.createAccountSuccess) {
+      this.props.closeSignUpModal();
+      return this.props.history.push("/home");
     } else {
-      props.closeSignUpModal();
+      this.props.closeSignUpModal();
     }
   };
 
-  return (
-    <div className="signup-modal__container">
-      <div className="modal__box">
-        <h2 className="modal__title">
-          {props.createAccountStart ? "Sending..." : props.message}
-        </h2>
-        <button className="modal__button" onClick={handleButton}>
-          {props.createAccountStart ? <LoadingAnimation /> : "Okay"}
-        </button>
+  render() {
+    return (
+      <div className="signup-modal__container">
+        <div className="modal__box">
+          <h2 className="modal__title">
+            {this.props.createAccountStart ? "Sending" : this.props.message}
+          </h2>
+          <button className="modal__button" onClick={this.handleButton}>
+            {this.props.createAccountStart ? <LoadingAnimation /> : "Okay"}
+          </button>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   createAccountStart: state.signupReducer.createAccountStart,

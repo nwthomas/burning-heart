@@ -1,12 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-
 import { Navbar } from "../../Presentational/Navbar";
 import InitialSignup from "./InitialSignup";
 import DonorSignup from "./DonorSignup";
 import { SignUpAccountModal } from "../../Presentational/SignUpAccountModal";
 
-const SignUpForm = ({ history, formPage, accountType, modalOpen }) => {
+const SignUpForm = ({ history, modalOpen, formPage, accountType }) => {
   return (
     <>
       {modalOpen && <SignUpAccountModal history={history} />}
