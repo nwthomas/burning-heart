@@ -7,7 +7,10 @@ import {
   CREATE_NEW_ACCOUNT_START,
   CREATE_NEW_ACCOUNT_SUCCESS,
   CREATE_NEW_ACCOUNT_ERROR,
-  CLOSE_SIGNUP_MODAL
+  CLOSE_SIGNUP_MODAL,
+  UPDATE_LOGIN_FORM,
+  LOGOUT_APP,
+  LOGIN_APP
 } from "../types";
 
 //============================================================== Signup Action Creators
@@ -54,5 +57,13 @@ export const previousSignupPage = () => {
 export const closeSignUpModal = () => {
   return {
     type: CLOSE_SIGNUP_MODAL
+  };
+};
+
+//============================================================== Login Action Creators
+export const handleLoginForm = (name, value) => {
+  return {
+    type: UPDATE_LOGIN_FORM,
+    payload: { name, value }
   };
 };

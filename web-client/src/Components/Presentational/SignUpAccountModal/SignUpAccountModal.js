@@ -24,11 +24,7 @@ const SignUpAccountModal = props => {
           {props.createAccountStart ? "Sending..." : props.message}
         </h2>
         <button className="modal__button" onClick={handleButton}>
-          {props.createAccountStart ? (
-            <LoadingAnimation className="loading__animation" />
-          ) : (
-            "Okay"
-          )}
+          {props.createAccountStart ? <LoadingAnimation /> : "Okay"}
         </button>
       </div>
     </div>
