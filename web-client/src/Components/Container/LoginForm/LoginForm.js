@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { handleLoginForm } from "../../../store/actions";
+import { handleLoginForm, loginAccount } from "../../../store/actions";
 
 class LoginForm extends Component {
   componentDidMount() {
@@ -20,15 +20,16 @@ class LoginForm extends Component {
         username: this.props.username,
         password: this.props.password
       };
+      console.log("form", creds);
       this.props.loginAccount(creds);
     } else {
-      // Finish
+      // Finish for charity login
     }
   };
   render() {
     return (
       <div className="login-form__container">
-        <form className="login-form">
+        <form className="login-form" onSubmit={this.loginApp}>
           <h2 className="login-form__header">Login</h2>
           <input
             className="login__input"
@@ -45,7 +46,7 @@ class LoginForm extends Component {
             className="login__input"
             required
             type="password"
-            placeholder="New password"
+            placeholder="Password"
             id="password"
             autoComplete="off"
             name="password"
@@ -87,11 +88,12 @@ class LoginForm extends Component {
 const mapStateToProps = state => ({
   username: state.loginReducer.username,
   password: state.loginReducer.password,
-  type: state.loginReducer.acountType
+  type: state.loginReducer.accountType
 });
 
 const mapActionsToProps = {
-  handleLoginForm
+  handleLoginForm,
+  loginAccount
 };
 
 export default connect(

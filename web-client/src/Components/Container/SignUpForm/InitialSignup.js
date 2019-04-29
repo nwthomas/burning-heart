@@ -24,7 +24,7 @@ const InitialSignup = props => {
         className="signup__input"
         required
         type="text"
-        placeholder="Username"
+        placeholder="New username"
         id="username"
         autoComplete="off"
         name="username"

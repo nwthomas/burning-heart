@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Navbar } from "../../Presentational/Navbar";
 import InitialSignup from "./InitialSignup";
 import DonorSignup from "./DonorSignup";
-import { SignUpAccountModal } from "../../Presentational/SignUpAccountModal";
+import { SignUpAccountModal } from "../../Presentational/Modals";
 
 const SignUpForm = ({ history, modalOpen, formPage, accountType }) => {
   return (

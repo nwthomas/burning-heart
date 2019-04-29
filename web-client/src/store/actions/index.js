@@ -11,7 +11,8 @@ import {
   UPDATE_LOGIN_FORM,
   LOGIN_APP_START,
   LOGIN_APP_SUCCESS,
-  LOGIN_APP_ERROR
+  LOGIN_APP_ERROR,
+  CLOSE_LOGIN_MODAL
 } from "../types";
 
 //============================================================== Signup Action Creators
@@ -62,7 +63,7 @@ export const closeSignUpModal = () => {
 };
 
 //============================================================== Login Action Creators
-export const loginApp = creds => dispatch => {
+export const loginAccount = creds => dispatch => {
   dispatch({ type: LOGIN_APP_START });
   axios
     .post("https://burning-heart.herokuapp.com/api/auth/login", creds)
@@ -78,5 +79,11 @@ export const handleLoginForm = (name, value) => {
   return {
     type: UPDATE_LOGIN_FORM,
     payload: { name, value }
+  };
+};
+
+export const closeLoginModal = () => {
+  return {
+    type: CLOSE_LOGIN_MODAL
   };
 };

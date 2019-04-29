@@ -19,7 +19,7 @@ class SignUpAccountModal extends Component {
 
   render() {
     return (
-      <div className="signup-modal__container">
+      <div className="modal__container">
         <div className="modal__box">
           <h2 className="modal__title">
             {this.props.createAccountStart ? "Sending" : this.props.message}

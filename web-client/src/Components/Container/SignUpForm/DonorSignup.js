@@ -65,7 +65,7 @@ const DonorSignup = props => {
         className="signup__input"
         required
         type="text"
-        placeholder="email"
+        placeholder="Email"
         id="email"
         autoComplete="off"
         name="email"
@@ -76,7 +76,7 @@ const DonorSignup = props => {
         className="signup__input"
         required
         type="text"
-        placeholder="phone"
+        placeholder="Phone"
         id="phone"
         autoComplete="off"
         name="phone"
