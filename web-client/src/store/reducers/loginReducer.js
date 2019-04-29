@@ -1,4 +1,3 @@
-import decode from "jwt-decode";
 import {
   LOGIN_APP_START,
   LOGIN_APP_SUCCESS,
@@ -8,32 +7,7 @@ import {
   CLOSE_LOGIN_MODAL,
   EXPIRED_CREDENTIALS
 } from "../types";
-
-const getLoginStatus = () => {
-  // Pull current token out of storage if it exists
-  const token = localStorage.getItem("bhToken");
-  let decodedToken = "";
-
-  // Get currentDate and slice off last 3 numbers to match JWT token format
-  const currentDate = Number(
-    Date.now()
-      .toString()
-      .split("")
-      .splice(0, 10)
-      .join("")
-  );
-
-  // Decode JWT token if it exists
-  if (token) {
-    decodedToken = decode(token);
-  }
-
-  // Compare current token expiration date to current date/time minus one hour
-  const loggedInStatus = decodedToken.exp > currentDate - 86400 / 24;
-
-  // Return logged in status
-  return loggedInStatus;
-};
+import { getLoginStatus } from "./getLoginStatus";
 
 const initialState = {
   loggedIn: getLoginStatus(),
@@ -79,6 +53,7 @@ export const loginReducer = (state = initialState, action) => {
         message: action.payload.response.data.message
       };
     case LOGOUT_APP:
+      console.log("Working!");
       return {
         ...state,
         loggedIn: false

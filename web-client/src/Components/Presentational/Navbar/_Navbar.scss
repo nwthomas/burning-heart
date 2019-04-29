@@ -41,7 +41,7 @@
       margin-right: 3%;
       padding-bottom: 23px;
 
-      a {
+      .navbar__link {
         width: 20%;
         text-align: right;
         color: black;
@@ -54,6 +54,14 @@
 
         @media #{$mobile} {
           text-align: left;
+        }
+      }
+
+      .logout {
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
         }
       }
 
