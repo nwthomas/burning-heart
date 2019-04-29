@@ -9,12 +9,6 @@ exports.up = function(knex, Promise) {
     tbl.string("email", 128).notNullable();
     tbl.string("phone", 256);
     tbl.string("type", 128);
-    tbl
-      .integer("charityId")
-      .unsigned()
-      .references()
-      .inTable("charities")
-      .onDelete("CASCADE");
     tbl.timestamps(true, true);
     tbl.string("stripeToken", 256);
     tbl.unique("username", "uq_accounts_username");

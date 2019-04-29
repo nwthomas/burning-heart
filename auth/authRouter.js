@@ -58,7 +58,6 @@ router.post("/login", async (req, res) => {
           email: account.email,
           phone: account.phone,
           type: account.type,
-          charityId: account.charityId,
           driversLicense: account.driversLicense,
           created_at: account.created_at,
           updated_at: account.updated_at

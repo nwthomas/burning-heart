@@ -111,13 +111,12 @@ Checkout this project's [DB Designer](https://www.dbdesigner.net/designer/schema
   "id": 2,                                  // Integer (primary key provided by server and autoincrements)
   "username": "admin",                      // String, required
   "password": "password",                   // String, required
-  "firstName": "Nathan",                    // String
-  "middleName": "Benjamin",                 // String
-  "lastName": "Thomas",                     // String
-  "email": "email@gmail.com"                // String, required,
-  "phone": "(708) 432-1234"                 // String
-  "type": "user"                            // String
-  "charityId": 1                            // Integer, foreign key to charity table if user is associated
+  "firstName": "Nathan",                    // String, required
+  "middleName": "Benjamin",                 // String, required
+  "lastName": "Thomas",                     // String, required
+  "email": "email@gmail.com"                // String, required
+  "phone": "(708) 432-1234"                 // String, required
+  "type": "user"                            // String, required
 }
 ```
 

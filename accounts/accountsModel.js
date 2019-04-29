@@ -19,7 +19,6 @@ function find() {
     "email",
     "phone",
     "type",
-    "charityId",
     "created_at",
     "updated_at"
   );
@@ -69,7 +68,6 @@ function insert(account) {
           "email",
           "phone",
           "type",
-          "charityId",
           "created_at",
           "updated_at"
         )
@@ -94,7 +92,6 @@ function update(id, changes) {
           "email",
           "phone",
           "type",
-          "charityId",
           "created_at",
           "updated_at"
         );
