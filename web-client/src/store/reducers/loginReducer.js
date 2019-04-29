@@ -5,7 +5,8 @@ import {
   LOGIN_APP_ERROR,
   LOGOUT_APP,
   UPDATE_LOGIN_FORM,
-  CLOSE_LOGIN_MODAL
+  CLOSE_LOGIN_MODAL,
+  EXPIRED_CREDENTIALS
 } from "../types";
 
 const getLoginStatus = () => {
@@ -93,7 +94,15 @@ export const loginReducer = (state = initialState, action) => {
         loginSuccess: false,
         loginError: false,
         message: "",
-        modalOpen: false
+        modalOpen: false,
+        expiredCredentials: false
+      };
+    case EXPIRED_CREDENTIALS:
+      return {
+        ...state,
+        modalOpen: true,
+        message: action.payload.response.data.message,
+        expiredCredentials: true
       };
     default:
       return state;

@@ -12,8 +12,12 @@ import {
   LOGIN_APP_START,
   LOGIN_APP_SUCCESS,
   LOGIN_APP_ERROR,
-  CLOSE_LOGIN_MODAL
+  CLOSE_LOGIN_MODAL,
+  LOGOUT_APP,
+  EXPIRED_CREDENTIALS
 } from "../types";
+
+const restrictedError = "Not authorized. Please try logging in again.";
 
 //============================================================== Signup Action Creators
 export const createDonorAccount = userDetails => dispatch => {
@@ -71,7 +75,11 @@ export const loginAccount = creds => dispatch => {
       dispatch({ type: LOGIN_APP_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: LOGIN_APP_ERROR, payload: err });
+      if (err.response.data.message === restrictedError) {
+        dispatch({ type: EXPIRED_CREDENTIALS, payload: err }); // Move later for other API calls... Not relevant here, but preserving code
+      } else {
+        dispatch({ type: LOGIN_APP_ERROR, payload: err });
+      }
     });
 };
 
@@ -85,5 +93,11 @@ export const handleLoginForm = (name, value) => {
 export const closeLoginModal = () => {
   return {
     type: CLOSE_LOGIN_MODAL
+  };
+};
+
+export const logoutApp = () => {
+  return {
+    type: LOGOUT_APP
   };
 };
