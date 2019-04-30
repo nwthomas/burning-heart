@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { logoutApp } from "../../../store/actions";
 
 import { CtaBanner } from "../../Presentational/CtaBanner";
 
@@ -35,6 +37,11 @@ class LandingPage extends Component {
     } else {
       return (document.ontouchmove = e => true);
     }
+  };
+  logout = e => {
+    e.preventDefault();
+    this.props.logoutApp();
+    localStorage.removeItem("bhToken");
   };
   render() {
     return (
@@ -79,10 +86,24 @@ class LandingPage extends Component {
                   : "navbar__links"
               }
             >
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/about">About</NavLink>
-              <NavLink to="/home">Login</NavLink>
-              <NavLink to="/signup">Sign Up</NavLink>
+              <NavLink className="navbar__link" to="/">
+                Home
+              </NavLink>
+              <NavLink className="navbar__link" to="/about">
+                About
+              </NavLink>
+              <NavLink className="navbar__link" to="/home">
+                {this.props.loggedIn ? "Account" : "Login"}
+              </NavLink>
+              {this.props.loggedIn ? (
+                <p onClick={this.logout} className="navbar__link logout">
+                  Logout
+                </p>
+              ) : (
+                <NavLink className="navbar__link" to="/signup">
+                  Sign Up
+                </NavLink>
+              )}
             </div>
           </nav>
           <div className="header__banner">
@@ -162,4 +183,15 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage;
+const mapStateToProps = state => ({
+  loggedIn: state.loginReducer.loggedIn
+});
+
+const mapActionsToProps = {
+  logoutApp
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(LandingPage);

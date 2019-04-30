@@ -7,6 +7,7 @@ const Navbar = props => {
   const logout = e => {
     e.preventDefault();
     props.logoutApp();
+    localStorage.removeItem("bhToken");
     props.history.push("/home/login");
   };
   return (
