@@ -9,8 +9,10 @@ import {
 } from "../types";
 import { getLoginStatus } from "./getLoginStatus";
 
+const loggedIn = getLoginStatus();
+
 const initialState = {
-  loggedIn: getLoginStatus(),
+  loggedIn: loggedIn,
   username: "",
   password: "",
   loginStart: false,
@@ -24,6 +26,7 @@ const initialState = {
 };
 
 export const loginReducer = (state = initialState, action) => {
+  console.log("Working!");
   switch (action.type) {
     case LOGIN_APP_START:
       return {
@@ -53,7 +56,6 @@ export const loginReducer = (state = initialState, action) => {
         message: action.payload.response.data.message
       };
     case LOGOUT_APP:
-      console.log("Working!");
       return {
         ...state,
         loggedIn: false

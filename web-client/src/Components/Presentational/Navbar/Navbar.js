@@ -6,7 +6,8 @@ import { logoutApp } from "../../../store/actions";
 const Navbar = props => {
   const logout = e => {
     e.preventDefault();
-    logoutApp();
+    props.logoutApp();
+    props.history.push("/home/login");
   };
   return (
     <div className="navbar__container">

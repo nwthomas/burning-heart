@@ -12,7 +12,7 @@ export class WebClient extends Component {
     return (
       <>
         {this.props.modalOpen && <LoginModal history={this.props.history} />}
-        <Navbar />
+        <Navbar history={this.props.history} />
         <DisplayedComponent history={this.props.history} />
       </>
     );
