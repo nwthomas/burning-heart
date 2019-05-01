@@ -26,6 +26,7 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
     - [Donations Endpoints](#donations-endpoints)
     - [Data Endpoints](#data-endpoints)
 - [Project Management](#project-management)
+- [Marketing Plan](#marketing-plan)
 - [Author](#author)
 - [Acknowledgements](#acknowledgements)
 
@@ -393,6 +394,10 @@ _Example:_
 ## PROJECT MANAGEMENT
 
 - You can view the [Trello Board](https://trello.com/b/YWsebwOT/burning-heart) for this project to review past checkpoints and current aspects of the project timeline
+
+## MARKETING PLAN
+
+- You can view the [marketing plan](https://docs.google.com/document/d/1mPc1YiQQKjE39tRgbLVfITX5Var6t_l52Sq-sgTXEfA/edit?usp=sharing) for Burning Heart. This plan includes target demographics, target market, message summary, call to action, and the project planned rollout for the marketing campaign.
 
 ## AUTHOR
 

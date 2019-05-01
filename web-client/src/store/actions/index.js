@@ -1,4 +1,5 @@
 import axios from "axios";
+import decode from "jwt-decode";
 import {
   MOVE_SIGNUP_FORM_FORWARD,
   MOVE_SIGNUP_FORM_BACKWARD,
@@ -14,7 +15,10 @@ import {
   LOGIN_APP_ERROR,
   CLOSE_LOGIN_MODAL,
   LOGOUT_APP,
-  EXPIRED_CREDENTIALS
+  EXPIRED_CREDENTIALS,
+  LOGIN_TOKEN_START,
+  LOGIN_TOKEN_SUCCESS,
+  LOGIN_TOKEN_ERROR
 } from "../types";
 
 const restrictedError = "Not authorized. Please try logging in again.";
@@ -81,6 +85,41 @@ export const loginAccount = creds => dispatch => {
         dispatch({ type: LOGIN_APP_ERROR, payload: err });
       }
     });
+};
+
+export const loginWithToken = _ => dispatch => {
+  console.log("Working!");
+  dispatch({ type: LOGIN_TOKEN_START });
+  const token = localStorage.getItem("bhToken");
+  let decodedToken = "";
+
+  if (token) {
+    decodedToken = decode(token);
+  }
+
+  console.log(decodedToken);
+
+  const reqOptions = {
+    headers: { authorization: token }
+  };
+
+  if (decodedToken.type === "donor") {
+    axios
+      .get(
+        `https://burning-heart.herokuapp.com/api/restricted/accounts/${
+          decodedToken.subject
+        }`,
+        reqOptions
+      )
+      .then(res => {
+        dispatch({ type: LOGIN_TOKEN_SUCCESS, payload: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: LOGIN_TOKEN_ERROR, payload: err });
+      });
+  } else {
+    // Finish
+  }
 };
 
 export const handleLoginForm = (name, value) => {

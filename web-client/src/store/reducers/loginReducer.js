@@ -5,14 +5,14 @@ import {
   LOGOUT_APP,
   UPDATE_LOGIN_FORM,
   CLOSE_LOGIN_MODAL,
-  EXPIRED_CREDENTIALS
+  EXPIRED_CREDENTIALS,
+  LOGIN_TOKEN_SUCCESS,
+  LOGIN_TOKEN_ERROR
 } from "../types";
 import { getLoginStatus } from "./getLoginStatus";
 
-const loggedIn = getLoginStatus();
-
 const initialState = {
-  loggedIn: loggedIn,
+  loggedIn: getLoginStatus(),
   username: "",
   password: "",
   loginStart: false,
@@ -26,7 +26,6 @@ const initialState = {
 };
 
 export const loginReducer = (state = initialState, action) => {
-  console.log("Working!");
   switch (action.type) {
     case LOGIN_APP_START:
       return {
@@ -80,6 +79,17 @@ export const loginReducer = (state = initialState, action) => {
         modalOpen: true,
         message: action.payload.response.data.message,
         expiredCredentials: true
+      };
+    case LOGIN_TOKEN_SUCCESS:
+      return {
+        ...state,
+        account: action.payload.account
+      };
+    case LOGIN_TOKEN_ERROR:
+      localStorage.removeItem("bhToken");
+      return {
+        ...state,
+        loggedIn: false
       };
     default:
       return state;

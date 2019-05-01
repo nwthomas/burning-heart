@@ -20,9 +20,9 @@ const Navbar = props => {
           <NavLink className="navbar__link" exact to="/">
             Home
           </NavLink>
-          <NavLink className="navbar__link" to="/about">
+          {/* <NavLink className="navbar__link" to="/about">
             About
-          </NavLink>
+          </NavLink> */}
           <NavLink className="navbar__link" to="/home">
             {props.loggedIn ? "Account" : "Login"}
           </NavLink>

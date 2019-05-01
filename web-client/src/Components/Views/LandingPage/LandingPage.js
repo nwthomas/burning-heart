@@ -89,9 +89,9 @@ class LandingPage extends Component {
               <NavLink className="navbar__link" to="/">
                 Home
               </NavLink>
-              <NavLink className="navbar__link" to="/about">
+              {/* <NavLink className="navbar__link" to="/about">
                 About
-              </NavLink>
+              </NavLink> */}
               <NavLink className="navbar__link" to="/home">
                 {this.props.loggedIn ? "Account" : "Login"}
               </NavLink>
