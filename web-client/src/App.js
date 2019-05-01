@@ -15,6 +15,9 @@ class App extends Component {
       this.props.loginWithToken();
     }
   }
+  componentDidUpdate() {
+    // Finish
+  }
   render() {
     return (
       <div className="App">

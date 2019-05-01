@@ -1,0 +1,18 @@
+.donor-dashboard__container {
+  width: 100%;
+  padding: 10vh 3%;
+  display: flex;
+  justify-content: space-between;
+
+  .donor__charities {
+    width: 48%;
+    height: 500px;
+    @include drop-shadow();
+  }
+
+  .donor__account {
+    width: 48%;
+    height: 500px;
+    @include drop-shadow();
+  }
+}

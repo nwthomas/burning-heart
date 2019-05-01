@@ -18,7 +18,10 @@ import {
   EXPIRED_CREDENTIALS,
   LOGIN_TOKEN_START,
   LOGIN_TOKEN_SUCCESS,
-  LOGIN_TOKEN_ERROR
+  LOGIN_TOKEN_ERROR,
+  FETCH_USER_DONATIONS_START,
+  FETCH_USER_DONATIONS_SUCCESS,
+  FETCH_USER_DONATIONS_ERROR
 } from "../types";
 
 const restrictedError = "Not authorized. Please try logging in again.";
@@ -139,4 +142,10 @@ export const logoutApp = () => {
   return {
     type: LOGOUT_APP
   };
+};
+
+//============================================================== Donor Account Action Creators
+
+export const fetchAccountDonations = creds => dispatch => {
+  dispatch({ type: FETCH_USER_DONATIONS_START });
 };
