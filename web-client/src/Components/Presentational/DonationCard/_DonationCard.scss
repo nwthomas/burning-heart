@@ -1,0 +1,17 @@
+.donation__card {
+  width: 90%;
+  border-bottom: 2px solid #cacacf;
+  height: 100px;
+  margin: 0 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .donation__title {
+    margin-bottom: 10px;
+  }
+}
+
+.donation__card:last-of-type {
+  border-bottom: 0;
+}

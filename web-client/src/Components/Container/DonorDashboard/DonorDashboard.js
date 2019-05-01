@@ -8,6 +8,7 @@ import {
 } from "../../../store/actions";
 
 import { DonationCard } from "../../Presentational/DonationCard";
+import { CharityCard } from "../../Presentational/CharityCard";
 
 class DonorDashboard extends Component {
   componentDidMount() {
@@ -31,14 +32,22 @@ class DonorDashboard extends Component {
         <section className="donations__charities">
           <div className="donor__select__buttons">
             <button
-              className="donor__button"
+              className={
+                this.props.selectDonations
+                  ? "donor__button donor__button--open"
+                  : "donor__button"
+              }
               type="button"
               onClick={this.selectDonations}
             >
               Past Donations
             </button>
             <button
-              className="donor__button"
+              className={
+                this.props.selectCharities
+                  ? "donor__button donor__button--open"
+                  : "donor__button"
+              }
               type="button"
               onClick={this.selectCharities}
             >
@@ -46,8 +55,12 @@ class DonorDashboard extends Component {
             </button>
           </div>
           {this.props.selectDonations &&
-            this.props.donations.map((donation, index) => {
-              return <DonationCard key={index} donation={donation} />;
+            this.props.donations.map(donation => {
+              return <DonationCard key={donation.id} donation={donation} />;
+            })}
+          {this.props.selectCharities &&
+            this.props.charities.map(charity => {
+              return <CharityCard key={charity.id} charity={charity} />;
             })}
         </section>
         <section className="donor__account">

@@ -185,7 +185,16 @@ export const fetchCharities = _ => dispatch => {
       reqOptions
     )
     .then(res => {
-      dispatch({ type: FETCH_CHARITIES_SUCCESS, payload: res.data });
+      const sortedCharities = res.data.charities.sort(function(a, b) {
+        if (a.charityName > b.charityName) return 1;
+        if (a.charityName < b.charityName) return -1;
+        return 0;
+      });
+      const sortedCharityRes = {
+        ...res.data,
+        charities: sortedCharities
+      };
+      dispatch({ type: FETCH_CHARITIES_SUCCESS, payload: sortedCharityRes });
     })
     .catch(err => {
       dispatch({ type: FETCH_CHARITIES_ERROR, payload: err });
