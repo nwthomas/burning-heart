@@ -192,10 +192,10 @@ export const fetchCharities = _ => dispatch => {
     });
 };
 
-export const selectDonations = () => {
+export const selectDonationsList = () => {
   return { type: SELECT_DONATIONS };
 };
 
-export const selectCharities = () => {
+export const selectCharitiesList = () => {
   return { type: SELECT_CHARITIES };
 };

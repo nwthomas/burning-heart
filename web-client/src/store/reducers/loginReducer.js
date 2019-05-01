@@ -57,7 +57,10 @@ export const loginReducer = (state = initialState, action) => {
     case LOGOUT_APP:
       return {
         ...state,
-        loggedIn: false
+        loggedIn: false,
+        token: "",
+        account: {},
+        accountType: ""
       };
     case UPDATE_LOGIN_FORM:
       return {

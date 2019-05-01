@@ -21,7 +21,6 @@ class App extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.account !== this.props.account && this.props.loggedIn) {
-      console.log("Working!");
       if (!this.props.donations.length) this.props.fetchAccountDonations();
       if (!this.props.charities.length) this.props.fetchCharities();
     }

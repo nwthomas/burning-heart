@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchCharities, fetchAccountDonations } from "../../../store/actions";
+import {
+  fetchCharities,
+  fetchAccountDonations,
+  selectDonationsList,
+  selectCharitiesList
+} from "../../../store/actions";
+
+import { DonationCard } from "../../Presentational/DonationCard";
 
 class DonorDashboard extends Component {
   componentDidMount() {
@@ -10,16 +17,18 @@ class DonorDashboard extends Component {
 
   selectDonations = e => {
     e.preventDefault();
+    this.props.selectDonationsList();
   };
 
   selectCharities = e => {
     e.preventDefault();
+    this.props.selectCharitiesList();
   };
 
   render() {
     return (
       <div className="donor-dashboard__container">
-        <section className="donor__charities">
+        <section className="donations__charities">
           <div className="donor__select__buttons">
             <button
               className="donor__button"
@@ -36,6 +45,10 @@ class DonorDashboard extends Component {
               Donate to Charity
             </button>
           </div>
+          {this.props.selectDonations &&
+            this.props.donations.map((donation, index) => {
+              return <DonationCard key={index} donation={donation} />;
+            })}
         </section>
         <section className="donor__account">
           <h2>Account</h2>
@@ -58,7 +71,9 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
   fetchCharities,
-  fetchAccountDonations
+  fetchAccountDonations,
+  selectDonationsList,
+  selectCharitiesList
 };
 
 export default connect(
