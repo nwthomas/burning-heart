@@ -31,7 +31,6 @@ function findById(id) {
 }
 
 function insert(donation) {
-  console.log(donation);
   const { charityId, accountId, amount } = donation;
   return db("donations")
     .insert(donation)

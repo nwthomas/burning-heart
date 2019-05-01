@@ -21,7 +21,12 @@ import {
   LOGIN_TOKEN_ERROR,
   FETCH_USER_DONATIONS_START,
   FETCH_USER_DONATIONS_SUCCESS,
-  FETCH_USER_DONATIONS_ERROR
+  FETCH_USER_DONATIONS_ERROR,
+  FETCH_CHARITIES_START,
+  FETCH_CHARITIES_SUCCESS,
+  FETCH_CHARITIES_ERROR,
+  SELECT_DONATIONS,
+  SELECT_CHARITIES
 } from "../types";
 
 const restrictedError = "Not authorized. Please try logging in again.";
@@ -91,7 +96,6 @@ export const loginAccount = creds => dispatch => {
 };
 
 export const loginWithToken = _ => dispatch => {
-  console.log("Working!");
   dispatch({ type: LOGIN_TOKEN_START });
   const token = localStorage.getItem("bhToken");
   let decodedToken = "";
@@ -99,8 +103,6 @@ export const loginWithToken = _ => dispatch => {
   if (token) {
     decodedToken = decode(token);
   }
-
-  console.log(decodedToken);
 
   const reqOptions = {
     headers: { authorization: token }
@@ -146,6 +148,54 @@ export const logoutApp = () => {
 
 //============================================================== Donor Account Action Creators
 
-export const fetchAccountDonations = creds => dispatch => {
+export const fetchAccountDonations = _ => dispatch => {
   dispatch({ type: FETCH_USER_DONATIONS_START });
+  const token = localStorage.getItem("bhToken");
+  let decodedToken = "";
+  if (token) {
+    decodedToken = decode(token);
+  }
+  const reqOptions = {
+    headers: { authorization: token }
+  };
+  axios
+    .get(
+      `https://burning-heart.herokuapp.com/api/restricted/donations/account/${
+        decodedToken.subject
+      }`,
+      reqOptions
+    )
+    .then(res => {
+      dispatch({ type: FETCH_USER_DONATIONS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: FETCH_USER_DONATIONS_ERROR, payload: err });
+    });
+};
+
+export const fetchCharities = _ => dispatch => {
+  dispatch({ type: FETCH_CHARITIES_START });
+  const token = localStorage.getItem("bhToken");
+  const reqOptions = {
+    headers: { authorization: token }
+  };
+  axios
+    .get(
+      "https://burning-heart.herokuapp.com/api/restricted/charities",
+      reqOptions
+    )
+    .then(res => {
+      dispatch({ type: FETCH_CHARITIES_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: FETCH_CHARITIES_ERROR, payload: err });
+    });
+};
+
+export const selectDonations = () => {
+  return { type: SELECT_DONATIONS };
+};
+
+export const selectCharities = () => {
+  return { type: SELECT_CHARITIES };
 };

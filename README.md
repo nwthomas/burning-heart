@@ -19,8 +19,6 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
   - [Test Accounts](#test-accounts)
   - [Summary Table of API Endpoints](#summary-table-of-api-endpoints)
     - [Authentication Endpoints](#auth-endpoints)
-      - [Register a New Account](#register-registers-an-account)
-      - [Login an Existing Account](#login-logs-in-an-account)
     - [Accounts Endpoints](#accounts-endpoints)
     - [Charities Endpoints](#charities-endpoints)
     - [Donations Endpoints](#donations-endpoints)
