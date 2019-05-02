@@ -49,9 +49,9 @@
 
       @include loading-animation();
     }
-  }
-}
 
-.card__element {
-  width: 50%;
+    .donation__button {
+      margin-top: 20px;
+    }
+  }
 }

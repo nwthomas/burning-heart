@@ -16,8 +16,13 @@ class StripePaymentElement extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <CardElement className="card__element" />
-        <button type="submit">Submit Donation</button>
+        <div className="modal__box">
+          <h1 className="modal__title">Donate to XYZ</h1>
+          <CardElement className="card__element" />
+          <button className="modal__button donation__button" type="submit">
+            Submit Donation
+          </button>
+        </div>
       </form>
     );
   }

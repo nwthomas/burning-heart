@@ -1,3 +1,7 @@
+.card__element {
+  width: 50%;
+}
+
 .StripeElement {
   box-sizing: border-box;
 
@@ -5,7 +9,7 @@
 
   padding: 10px 12px;
 
-  border: 1px solid transparent;
+  border: 1px solid #cacacf;
   border-radius: 4px;
   background-color: white;
 
