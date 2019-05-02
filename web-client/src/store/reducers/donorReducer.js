@@ -6,12 +6,16 @@ import {
   FETCH_CHARITIES_SUCCESS,
   FETCH_CHARITIES_ERROR,
   SELECT_DONATIONS,
-  SELECT_CHARITIES
+  SELECT_CHARITIES,
+  CARD_PAYMENT_START,
+  CARD_PAYMENT_SUCCESS,
+  CARD_PAYMENT_ERROR
 } from "../types";
 
 const initialState = {
   donations: [],
   charities: [],
+  showPaymentModal: false,
   selectCharities: false,
   selectDonations: true,
   fetchDonationsStart: false,

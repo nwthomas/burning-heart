@@ -3,7 +3,7 @@
   width: 100%;
   height: 100vh;
   background: white;
-  z-index: 30;
+  z-index: 50;
 
   .modal__box {
     margin: 15vh auto 0;
@@ -50,4 +50,8 @@
       @include loading-animation();
     }
   }
+}
+
+.card__element {
+  width: 50%;
 }

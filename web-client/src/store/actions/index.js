@@ -26,7 +26,10 @@ import {
   FETCH_CHARITIES_SUCCESS,
   FETCH_CHARITIES_ERROR,
   SELECT_DONATIONS,
-  SELECT_CHARITIES
+  SELECT_CHARITIES,
+  CARD_PAYMENT_START,
+  CARD_PAYMENT_SUCCESS,
+  CARD_PAYMENT_ERROR
 } from "../types";
 
 const restrictedError = "Not authorized. Please try logging in again.";
@@ -199,6 +202,10 @@ export const fetchCharities = _ => dispatch => {
     .catch(err => {
       dispatch({ type: FETCH_CHARITIES_ERROR, payload: err });
     });
+};
+
+export const makePayment = cardDetails => dispatch => {
+  dispatch({ type: CARD_PAYMENT_START });
 };
 
 export const selectDonationsList = () => {
