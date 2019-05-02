@@ -40,7 +40,26 @@
 
   .donor__account {
     width: 48%;
-    max-height: 200px;
+    max-height: 500px;
     @include drop-shadow();
+    padding: 30px 3% 0;
+
+    .donor__account__title {
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .donor__account__summary {
+      margin-bottom: 40px;
+    }
+
+    .donor__details--emphasis {
+      font-weight: 700;
+      margin-bottom: 40px;
+
+      .donor__details {
+        font-weight: 500;
+      }
+    }
   }
 }

@@ -27,6 +27,8 @@ class DonorDashboard extends Component {
   };
 
   render() {
+    const hours = new Date().getHours();
+    const account = this.props.account;
     return (
       <div className="donor-dashboard__container">
         <section className="donations__charities">
@@ -64,9 +66,40 @@ class DonorDashboard extends Component {
             })}
         </section>
         <section className="donor__account">
-          <h2>Account</h2>
-          <p>
-            Welcome {this.props.account.firstName}. Here are your donations:
+          <h2 className="donor__account__title">Account</h2>
+          <p className="donor__account__summary">
+            {hours < 12
+              ? `Good morning, ${
+                  account.firstName
+                }! Here's your account details:`
+              : hours < 19
+              ? `Good afternoon, ${
+                  account.firstName
+                }! Here's your account details:`
+              : `Good evening, ${
+                  account.firstName
+                }! Here's your account details:`}
+          </p>
+          <p className="donor__details--emphasis">
+            Username: <span className="donor__details">{account.username}</span>
+          </p>
+          <p className="donor__details--emphasis">
+            First Name:{" "}
+            <span className="donor__details">{account.firstName}</span>
+          </p>
+          <p className="donor__details--emphasis">
+            Middle Name:{" "}
+            <span className="donor__details">{account.middleName}</span>
+          </p>
+          <p className="donor__details--emphasis">
+            Last Name:{" "}
+            <span className="donor__details">{account.lastName}</span>
+          </p>
+          <p className="donor__details--emphasis">
+            Email: <span className="donor__details">{account.email}</span>
+          </p>
+          <p className="donor__details--emphasis">
+            Phone: <span className="donor__details">{account.phone}</span>
           </p>
         </section>
       </div>
@@ -97,10 +130,6 @@ export default connect(
 /*
 
 Next steps:
-
-1. Finish call on login and on refresh for charities/donations
-
-2. Build out display cards for charities and donations
 
 3. Build payment process for individual charity
 
