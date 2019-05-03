@@ -12,7 +12,8 @@ import {
   CARD_PAYMENT_SUCCESS,
   CARD_PAYMENT_ERROR,
   CLOSE_PAYMENT_MODAL,
-  HANDLE_PAYMENT_FORM
+  HANDLE_PAYMENT_FORM,
+  HANDLE_CARD_TOKEN_ERROR
 } from "../types";
 
 const initialState = {
@@ -127,6 +128,12 @@ export const donorReducer = (state = initialState, action) => {
         ...state,
         makePaymentStart: false,
         makePaymentError: true
+      };
+    case HANDLE_CARD_TOKEN_ERROR:
+      console.log(action.payload);
+      return {
+        ...state
+        // message: action.payload.response.data.message
       };
     default:
       return state;

@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import {
   closePaymentModal,
   handlePaymentForm,
-  makePayment
+  makePayment,
+  handleCardTokenError
 } from "../../../store/actions";
 
 import StripePaymentElement from "./StripePaymentElement";
@@ -22,6 +23,7 @@ const PaymentModal = props => {
           makePayment={props.makePayment}
           amount={props.amount}
           account={props.account}
+          handleCardTokenError={props.handleCardTokenError}
         />
       </Elements>
     </div>
@@ -38,7 +40,8 @@ const mapStateToProps = state => ({
 const mapActionsToProps = {
   closePaymentModal,
   handlePaymentForm,
-  makePayment
+  makePayment,
+  handleCardTokenError
 };
 
 export default connect(

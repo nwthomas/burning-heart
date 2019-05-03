@@ -17,7 +17,8 @@ function find() {
 function findByAccountId(accountId) {
   return db("donations")
     .where({ accountId })
-    .innerJoin("charities", "donations.charityId", "charities.id");
+    .innerJoin("charities", "donations.charityId", "charities.id")
+    .select("donations.id", "charityId", "accountId", "amount", "charityName");
 }
 
 function findByCharityId(charityId) {
@@ -37,7 +38,14 @@ function insert(donation) {
     .then(id => {
       return db("donations")
         .where({ charityId, accountId, amount })
-        .innerJoin("charities", "donations.charityId", "charities.id");
+        .innerJoin("charities", "donations.charityId", "charities.id")
+        .select(
+          "donations.id",
+          "charityId",
+          "accountId",
+          "amount",
+          "charityName"
+        );
     });
 }
 

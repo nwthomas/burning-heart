@@ -32,7 +32,8 @@ import {
   CARD_PAYMENT_SUCCESS,
   CARD_PAYMENT_ERROR,
   CLOSE_PAYMENT_MODAL,
-  HANDLE_PAYMENT_FORM
+  HANDLE_PAYMENT_FORM,
+  HANDLE_CARD_TOKEN_ERROR
 } from "../types";
 
 const restrictedError = "Not authorized. Please try logging in again.";
@@ -40,11 +41,9 @@ const restrictedError = "Not authorized. Please try logging in again.";
 //============================================================== Signup Action Creators
 export const createDonorAccount = userDetails => dispatch => {
   dispatch({ type: CREATE_NEW_ACCOUNT_START });
-  console.log(userDetails);
   axios
     .post("https://burning-heart.herokuapp.com/api/auth/register", userDetails)
     .then(res => {
-      console.log(res.data);
       dispatch({ type: CREATE_NEW_ACCOUNT_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -237,6 +236,14 @@ export const makePayment = (
         payload: err
       });
     });
+};
+
+export const handleCardTokenError = err => {
+  console.log(err);
+  return {
+    type: HANDLE_CARD_TOKEN_ERROR,
+    payload: err
+  };
 };
 
 export const closePaymentModal = () => {

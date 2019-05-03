@@ -32,7 +32,7 @@ class StripePaymentElement extends Component {
         );
       })
       .catch(err => {
-        // Finish later
+        this.props.handleCardTokenError(err);
       });
   };
   handleChange = e => {
