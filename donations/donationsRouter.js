@@ -62,7 +62,6 @@ router.get("/:id", async (req, res) => {
 router.get("/account/:id", async (req, res) => {
   try {
     const donations = await Donations.findByAccountId(req.params.id);
-    console.log(donations);
     if (donations.length) {
       res.status(200).json({
         error: false,

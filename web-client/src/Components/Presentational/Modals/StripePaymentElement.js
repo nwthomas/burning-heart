@@ -24,6 +24,7 @@ class StripePaymentElement extends Component {
     this.props.stripe
       .createToken({ type: "card", name: "Nathan Thomas" })
       .then(res => {
+        console.log(res);
         this.props.makePayment(
           Number(this.props.amount), // Number, donation amount
           res, // Card token object

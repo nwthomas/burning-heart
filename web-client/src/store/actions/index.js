@@ -223,7 +223,7 @@ export const makePayment = (
   const reqOptions = { headers: { authorization: token } };
   return axios
     .post(
-      "http://localhost:7000/api/restricted/donations",
+      "https://burning-heart.herokuapp.com/api/restricted/donations",
       donationData,
       reqOptions
     )
@@ -239,7 +239,6 @@ export const makePayment = (
 };
 
 export const handleCardTokenError = err => {
-  console.log(err);
   return {
     type: HANDLE_CARD_TOKEN_ERROR,
     payload: err

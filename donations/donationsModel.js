@@ -18,7 +18,15 @@ function findByAccountId(accountId) {
   return db("donations")
     .where({ accountId })
     .innerJoin("charities", "donations.charityId", "charities.id")
-    .select("donations.id", "charityId", "accountId", "amount", "charityName");
+    .select(
+      "donations.id",
+      "charityId",
+      "accountId",
+      "amount",
+      "charityName",
+      "donations.created_at",
+      "donations.updated_at"
+    );
 }
 
 function findByCharityId(charityId) {
