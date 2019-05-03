@@ -207,8 +207,36 @@ export const fetchCharities = _ => dispatch => {
     });
 };
 
-export const makePayment = cardDetails => dispatch => {
+export const makePayment = (
+  amount,
+  cardToken,
+  charityId,
+  accountId
+) => dispatch => {
   dispatch({ type: CARD_PAYMENT_START });
+  const donationData = {
+    donation: { amount },
+    stripeData: { tokenId: cardToken.token.id },
+    charityId: Number(charityId),
+    accountId
+  };
+  const token = localStorage.getItem("bhToken");
+  const reqOptions = { headers: { authorization: token } };
+  return axios
+    .post(
+      "http://localhost:7000/api/restricted/donations",
+      donationData,
+      reqOptions
+    )
+    .then(res => {
+      dispatch({ type: CARD_PAYMENT_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({
+        type: CARD_PAYMENT_ERROR,
+        payload: err
+      });
+    });
 };
 
 export const closePaymentModal = () => {

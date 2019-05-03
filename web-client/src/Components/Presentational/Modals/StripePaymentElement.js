@@ -24,10 +24,15 @@ class StripePaymentElement extends Component {
     this.props.stripe
       .createToken({ type: "card", name: "Nathan Thomas" })
       .then(res => {
-        console.log(res);
+        this.props.makePayment(
+          Number(this.props.amount), // Number, donation amount
+          res, // Card token object
+          this.props.selectedCharity, // Number id of charity
+          this.props.account.id // User account id
+        );
       })
       .catch(err => {
-        console.log("Working!");
+        // Finish later
       });
   };
   handleChange = e => {
@@ -40,6 +45,7 @@ class StripePaymentElement extends Component {
     this.props.closePaymentModal();
   };
   render() {
+    console.log(this.props.account);
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="modal__box">
@@ -54,7 +60,7 @@ class StripePaymentElement extends Component {
             onChange={this.handleChange}
           />
           <CardElement className="card__element" />
-          <div className="payment__buttons">
+          <div className="modal__buttons">
             <button className="modal__button donation__button" type="submit">
               Submit Donation
             </button>

@@ -17,6 +17,16 @@ class SignUpAccountModal extends Component {
     }
   };
 
+  componentDidMount() {
+    const body = document.querySelector("body");
+    body.classList.toggle("stopScroll");
+  }
+
+  componentWillUnmount() {
+    const body = document.querySelector("body");
+    body.classList.toggle("stopScroll");
+  }
+
   render() {
     return (
       <div className="modal__container">
@@ -24,9 +34,11 @@ class SignUpAccountModal extends Component {
           <h2 className="modal__title">
             {this.props.createAccountStart ? "Sending" : this.props.message}
           </h2>
-          <button className="modal__button" onClick={this.handleButton}>
-            {this.props.createAccountStart ? <LoadingAnimation /> : "Okay"}
-          </button>
+          <div className="modal__buttons modal__buttons--center">
+            <button className="modal__button" onClick={this.handleButton}>
+              {this.props.createAccountStart ? <LoadingAnimation /> : "Okay"}
+            </button>
+          </div>
         </div>
       </div>
     );

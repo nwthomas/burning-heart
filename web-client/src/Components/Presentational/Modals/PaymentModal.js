@@ -1,7 +1,11 @@
 import React from "react";
 import { Elements } from "react-stripe-elements";
 import { connect } from "react-redux";
-import { closePaymentModal, handlePaymentForm } from "../../../store/actions";
+import {
+  closePaymentModal,
+  handlePaymentForm,
+  makePayment
+} from "../../../store/actions";
 
 import StripePaymentElement from "./StripePaymentElement";
 
@@ -15,6 +19,9 @@ const PaymentModal = props => {
           donationAmount={props.donationAmount}
           closePaymentModal={props.closePaymentModal}
           handlePaymentForm={props.handlePaymentForm}
+          makePayment={props.makePayment}
+          amount={props.amount}
+          account={props.account}
         />
       </Elements>
     </div>
@@ -24,12 +31,14 @@ const PaymentModal = props => {
 const mapStateToProps = state => ({
   charities: state.donorReducer.charities,
   selectedCharity: state.donorReducer.selectedCharity,
-  donationAmount: state.donorReducer.donationAmount
+  amount: state.donorReducer.amount,
+  account: state.loginReducer.account
 });
 
 const mapActionsToProps = {
   closePaymentModal,
-  handlePaymentForm
+  handlePaymentForm,
+  makePayment
 };
 
 export default connect(

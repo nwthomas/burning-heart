@@ -70,6 +70,7 @@ With `Burning Heart`, a micro-donation mobile application, the power to make qui
   - [Redux Thunk](https://github.com/reduxjs/redux-thunk)
   - [React Router](https://github.com/ReactTraining/react-router)
   - [React Router DOM](https://www.npmjs.com/package/react-router-dom)
+  - [React Stripe Elements](https://github.com/stripe/react-stripe-elements)
   - [Node Sass](https://www.npmjs.com/package/node-sass)
   - [NProgress](https://ricostacruz.com/nprogress/)
   - [Axios](https://www.npmjs.com/package/axios)

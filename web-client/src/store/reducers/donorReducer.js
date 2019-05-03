@@ -20,6 +20,8 @@ const initialState = {
   charities: [],
   selectedCharity: "",
   amount: "",
+  message: "",
+  paymentError: false,
   showPaymentModal: false,
   selectCharities: false,
   selectDonations: true,
@@ -28,7 +30,10 @@ const initialState = {
   fetchDonationsError: false,
   fetchCharitiesStart: false,
   fetchCharitiesSuccess: false,
-  fetchCharitiesError: false
+  fetchCharitiesError: false,
+  makePaymentStart: false,
+  makePaymentSuccess: false,
+  makePaymentError: false
 };
 
 export const donorReducer = (state = initialState, action) => {
@@ -40,11 +45,12 @@ export const donorReducer = (state = initialState, action) => {
         fetchDonationsStart: true
       };
     case FETCH_USER_DONATIONS_SUCCESS:
+      const donationsArr = action.payload.donations;
       return {
         ...state,
         fetchDonationsStart: false,
         fetchDonationsSuccess: true,
-        donations: action.payload.donations
+        donations: donationsArr.reverse()
       };
     case FETCH_USER_DONATIONS_ERROR:
       return {
@@ -95,12 +101,32 @@ export const donorReducer = (state = initialState, action) => {
       return {
         ...state,
         showPaymentModal: false,
-        donationAmount: ""
+        amount: ""
       };
     case HANDLE_PAYMENT_FORM:
       return {
         ...state,
         [action.payload.name]: action.payload.value
+      };
+    case CARD_PAYMENT_START:
+      return {
+        ...state,
+        makePaymentError: false,
+        makePaymentStart: true,
+        message: ""
+      };
+    case CARD_PAYMENT_SUCCESS:
+      return {
+        ...state,
+        makePaymentStart: false,
+        makePaymentSuccess: true,
+        donations: [action.payload.donation, ...state.donations]
+      };
+    case CARD_PAYMENT_ERROR:
+      return {
+        ...state,
+        makePaymentStart: false,
+        makePaymentError: true
       };
     default:
       return state;

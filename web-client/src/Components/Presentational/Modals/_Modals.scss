@@ -33,7 +33,7 @@
       background-color: white;
     }
 
-    .payment__buttons {
+    .modal__buttons {
       width: 70%;
       display: flex;
       justify-content: space-between;
@@ -64,6 +64,10 @@
 
         @include loading-animation();
       }
+    }
+
+    .modal__buttons--center {
+      justify-content: center;
     }
 
     .donation__button {
