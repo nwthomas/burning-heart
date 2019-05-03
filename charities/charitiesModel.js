@@ -9,22 +9,55 @@ module.exports = {
 };
 
 function find() {
-  return db("charities");
+  return db("charities").select(
+    "id",
+    "charityName",
+    "phone",
+    "stree1",
+    "street2",
+    "city",
+    "state",
+    "zip",
+    "created_at",
+    "updated_at"
+  );
 }
 
 function findById(id) {
   return db("charities")
     .where({ id })
-    .first();
+    .first()
+    .select(
+      "id",
+      "charityName",
+      "phone",
+      "stree1",
+      "street2",
+      "city",
+      "state",
+      "zip",
+      "created_at",
+      "updated_at"
+    );
 }
 
 function insert(charity) {
-  const { charityName, phone, street1, street2, city, state, zip } = charity;
+  const {
+    charityName,
+    username,
+    phone,
+    street1,
+    street2,
+    city,
+    state,
+    zip
+  } = charity;
   return db("charities")
     .insert(charity)
     .then(id => {
       return db("charities").where({
         charityName,
+        username,
         phone,
         street1,
         street2,
@@ -42,7 +75,20 @@ function update(id, changes) {
     .then(updated => {
       return db("charities")
         .where({ id })
-        .first();
+        .first()
+        .select(
+          "id",
+          "charityName",
+          "username",
+          "phone",
+          "stree1",
+          "street2",
+          "city",
+          "state",
+          "zip",
+          "created_at",
+          "updated_at"
+        );
     });
 }
 
