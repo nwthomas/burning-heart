@@ -1,4 +1,5 @@
 const faker = require("faker");
+const bcrypt = require("bcryptjs");
 
 exports.seed = function(knex, Promise) {
   return knex("charities")
@@ -7,6 +8,8 @@ exports.seed = function(knex, Promise) {
       return knex("charities").insert([
         {
           charityName: "Wounded Warriors",
+          username: "woundedwarriors",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -17,6 +20,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Bill & Melinda Gates Foundation",
+          username: "billyboy",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -27,6 +32,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "United Way Worldwide",
+          username: "unitedway",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -37,6 +44,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Feeding America",
+          username: "feedingamerica",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -47,6 +56,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Americares Foundation",
+          username: "americares",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -57,6 +68,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Task Force for GLobal Health",
+          username: "globalhealth",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -67,6 +80,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Salvation Army",
+          username: "salvationarmy",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -77,6 +92,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "St. Jude Children's Research Hospital",
+          username: "stjude",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -87,6 +104,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Habitat for Humanity",
+          username: "habitrap",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -97,6 +116,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "YMCA of the USA",
+          username: "ymcababy",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -107,6 +128,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Food for the Poor",
+          username: "foodforeveryone",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -117,6 +140,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Goodwill Industries International",
+          username: "goodwillforall",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -127,6 +152,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Samaritan's Purse",
+          username: "goodsamaritan",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -137,6 +164,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Lutheran Services in America",
+          username: "lutheranservices",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -146,6 +175,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "American Cancer Society",
+          username: "getridofcancer",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -156,6 +187,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "World Vision",
+          username: "worldvision",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -166,6 +199,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "American National Red Cross",
+          username: "americannational",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -176,6 +211,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "American Heart Association",
+          username: "heartyhealth",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -186,6 +223,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Planned Parenthood Federation of America",
+          username: "plannedparenthood",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -195,6 +234,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Doctor's Without Borders",
+          username: "nobordersdoctores",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -205,6 +246,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Museum of Modern Art",
+          username: "funkyart",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -215,6 +258,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "American Civil Liberties Union and Foundation",
+          username: "civilliberties",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -225,6 +270,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "World Wildlife Fund",
+          username: "worldwildlife",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -235,6 +282,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Humane Society of the United States",
+          username: "bhumane",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -245,6 +294,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Scholarship America",
+          username: "scholarshipamerica",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -255,6 +306,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Mount Sinai Health Systems",
+          username: "mountsinai",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -265,6 +318,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Save the Children Federation",
+          username: "childrenfeds",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -275,6 +330,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Mayo Clinic",
+          username: "mayoonthat",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -285,6 +342,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Feed the Children",
+          username: "feedchildren",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -295,6 +354,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Make-A-Wish Foundation of America",
+          username: "makeawishforme",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -305,6 +366,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "Rotary Foundation of Rotary International",
+          username: "rotaterotate",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),
@@ -315,6 +378,8 @@ exports.seed = function(knex, Promise) {
         },
         {
           charityName: "American Kidney Fund",
+          username: "kidneysRcool",
+          password: bcrypt.hashSync("password", 14),
           phone: faker.fake("{{phone.phoneNumber}}"),
           street1: faker.fake("{{address.streetAddress}}"),
           street2: faker.fake("{{address.secondaryAddress}}"),

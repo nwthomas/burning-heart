@@ -13,7 +13,8 @@ import {
   CARD_PAYMENT_ERROR,
   CLOSE_PAYMENT_MODAL,
   HANDLE_PAYMENT_FORM,
-  HANDLE_CARD_TOKEN_ERROR
+  HANDLE_CARD_TOKEN_ERROR,
+  LOGOUT_APP
 } from "../types";
 
 const initialState = {
@@ -102,7 +103,8 @@ export const donorReducer = (state = initialState, action) => {
       return {
         ...state,
         showPaymentModal: false,
-        amount: ""
+        amount: "",
+        selectedCharity: ""
       };
     case HANDLE_PAYMENT_FORM:
       return {
@@ -134,6 +136,12 @@ export const donorReducer = (state = initialState, action) => {
       return {
         ...state
         // message: action.payload.response.data.message
+      };
+    case LOGOUT_APP:
+      return {
+        ...state,
+        donations: [],
+        charities: []
       };
     default:
       return state;

@@ -2,13 +2,14 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 require("dotenv").config();
 const Accounts = require("../accounts/accountsModel.js");
+const Charities = require("../charities/charitiesModel.js");
 const tokenService = require("./tokenService.js");
 const authConstraints = require("./authConstraints.js"); // Error handling middleware for duplicate usernames and passwords
 
 const router = express.Router();
 
 // Auth account creation API route
-router.post("/register", authConstraints, async (req, res) => {
+router.post("/register-account", authConstraints, async (req, res) => {
   // Salt/hash of password
   console.log(req.body);
   const hash = bcrypt.hashSync(req.body.password, 14);
@@ -33,6 +34,36 @@ router.post("/register", authConstraints, async (req, res) => {
       error: true,
       message: "There was an error processing your request.",
       account: {}
+    });
+  }
+});
+
+// Auth charity creation API route
+router.post("/register-charity", async (req, res) => {
+  // Salt/hash of password
+  console.log(req.body);
+  const hash = bcrypt.hashSync(req.body.password, 14);
+  req.body.password = hash;
+  try {
+    const charity = await Charities.insert(req.body);
+    if (charity) {
+      res.status(200).json({
+        error: false,
+        message: "Your charity was created successfully.",
+        charity
+      });
+    } else {
+      res.status(404).json({
+        error: true,
+        message: "Your charity could not be created.",
+        charity: {}
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      error: true,
+      message: "There was an error processing your request.",
+      charity: {}
     });
   }
 });

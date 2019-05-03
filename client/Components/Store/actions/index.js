@@ -148,7 +148,10 @@ export const manualLoginApp = (username, password, history, cb) => {
 export const createAccount = (userDetails, cb) => {
   cb({ type: CREATE_ACCOUNT_START });
   return axios
-    .post("https://burning-heart.herokuapp.com/api/auth/register", userDetails)
+    .post(
+      "https://burning-heart.herokuapp.com/api/auth/register-account",
+      userDetails
+    )
     .then(res => {
       return cb({ type: CREATE_ACCOUNT_SUCCESS, payload: res.data });
     })
