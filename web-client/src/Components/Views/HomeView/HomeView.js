@@ -10,10 +10,12 @@ const type = "donor";
 class HomeView extends Component {
   render() {
     return (
-      <>
-        {!this.props.showPaymentModal && <PaymentModal />}
+      <div className="home-view__container">
+        {this.props.showPaymentModal && (
+          <PaymentModal history={this.props.history} />
+        )}
         {type === "donor" ? <DonorDashboard /> : <CharityDashboard />}
-      </>
+      </div>
     );
   }
 }

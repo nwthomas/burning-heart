@@ -38,6 +38,7 @@ img {
 .container {
   width: 100%;
   position: relative;
+  background: #f8f8f8;
 }
 .stopScroll {
   overflow: hidden;
@@ -45,4 +46,9 @@ img {
 .loading__animation {
   width: 25px;
   height: 25px;
+}
+.home-view__container {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f8f8;
 }

@@ -7,14 +7,19 @@ import {
   FETCH_CHARITIES_ERROR,
   SELECT_DONATIONS,
   SELECT_CHARITIES,
+  SELECT_CHARITY,
   CARD_PAYMENT_START,
   CARD_PAYMENT_SUCCESS,
-  CARD_PAYMENT_ERROR
+  CARD_PAYMENT_ERROR,
+  CLOSE_PAYMENT_MODAL,
+  HANDLE_PAYMENT_FORM
 } from "../types";
 
 const initialState = {
   donations: [],
   charities: [],
+  selectedCharity: "",
+  amount: "",
   showPaymentModal: false,
   selectCharities: false,
   selectDonations: true,
@@ -74,11 +79,28 @@ export const donorReducer = (state = initialState, action) => {
         selectCharities: true,
         selectDonations: false
       };
+    case SELECT_CHARITY:
+      return {
+        ...state,
+        selectedCharity: action.payload,
+        showPaymentModal: true
+      };
     case SELECT_DONATIONS:
       return {
         ...state,
         selectDonations: true,
         selectCharities: false
+      };
+    case CLOSE_PAYMENT_MODAL:
+      return {
+        ...state,
+        showPaymentModal: false,
+        donationAmount: ""
+      };
+    case HANDLE_PAYMENT_FORM:
+      return {
+        ...state,
+        [action.payload.name]: action.payload.value
       };
     default:
       return state;
