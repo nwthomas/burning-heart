@@ -15,7 +15,7 @@ import {
 import { getLoginStatus } from "./getLoginStatus";
 
 const initialState = {
-  loggedIn: getLoginStatus(),
+  loggedIn: getLoginStatus().loggedInStatus,
   username: "",
   password: "",
   loginStart: false,
@@ -26,8 +26,10 @@ const initialState = {
   account: {},
   charity: {},
   token: "",
-  accountType: ""
+  accountType: getLoginStatus().type
 };
+
+console.log(getLoginStatus());
 
 export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -69,10 +71,12 @@ export const loginReducer = (state = initialState, action) => {
     case LOGIN_CHARITY_START:
       return {
         ...state,
+        modalOpen: true,
         loginStart: true,
         loginError: false
       };
     case LOGIN_CHARITY_SUCCESS:
+      localStorage.setItem("bhToken", action.payload.token);
       return {
         ...state,
         loginStart: false,
@@ -83,6 +87,13 @@ export const loginReducer = (state = initialState, action) => {
         password: "",
         charity: action.payload.charity,
         token: action.payload.token
+      };
+    case LOGIN_CHARITY_ERROR:
+      return {
+        ...state,
+        loginStart: false,
+        loginError: true,
+        message: action.payload.response.data.message
       };
     case UPDATE_LOGIN_FORM:
       return {

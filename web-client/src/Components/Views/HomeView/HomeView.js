@@ -5,8 +5,6 @@ import { CharityDashboard } from "../../Container/CharityDashboard";
 import { DonorDashboard } from "../../Container/DonorDashboard";
 import { PaymentModal } from "../../Presentational/Modals";
 
-const type = "donor";
-
 class HomeView extends Component {
   render() {
     return (
@@ -14,7 +12,11 @@ class HomeView extends Component {
         {this.props.showPaymentModal && (
           <PaymentModal history={this.props.history} />
         )}
-        {type === "donor" ? <DonorDashboard /> : <CharityDashboard />}
+        {this.props.type === "donor" ? (
+          <DonorDashboard />
+        ) : (
+          <CharityDashboard />
+        )}
       </div>
     );
   }

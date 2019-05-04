@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { handleLoginForm, loginAccount } from "../../../store/actions";
+import {
+  handleLoginForm,
+  loginAccount,
+  loginCharity
+} from "../../../store/actions";
 
 class LoginForm extends Component {
   componentDidMount() {
@@ -15,15 +19,14 @@ class LoginForm extends Component {
   };
   loginApp = e => {
     e.preventDefault();
+    const creds = {
+      username: this.props.username,
+      password: this.props.password
+    };
     if (this.props.type === "donor") {
-      const creds = {
-        username: this.props.username,
-        password: this.props.password
-      };
-      console.log("form", creds);
       this.props.loginAccount(creds);
     } else {
-      // Finish for charity login
+      this.props.loginCharity(creds);
     }
   };
   render() {
@@ -93,7 +96,8 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
   handleLoginForm,
-  loginAccount
+  loginAccount,
+  loginCharity
 };
 
 export default connect(

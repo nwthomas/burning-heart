@@ -11,7 +11,7 @@ function generateTokenAccount(account) {
   const payload = {
     subject: account.id,
     username: account.username,
-    type: account.type
+    type: account.type ? account.type : "charity"
     // Include other data as is needed
   };
 
