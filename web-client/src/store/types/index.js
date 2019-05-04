@@ -9,6 +9,7 @@ export const CREATE_NEW_CHARITY_SUCCESS = "CREATE_NEW_CHARITY_SUCCESS";
 export const CREATE_NEW_CHARITY_ERROR = "CREATE_NEW_CHARITY_ERROR";
 export const UPDATE_SIGNUP_FORM = "UPDATE_SIGNUP_FORM";
 export const UPDATE_DONOR_FORM = "UPDATE_DONOR_FORM";
+export const UPDATE_CHARITY_FORM = "UPDATE_CHARITY_FORM";
 export const CLOSE_SIGNUP_MODAL = "CLOSE_SIGNUP_MODAL";
 
 // =========================================================== Login Form Types

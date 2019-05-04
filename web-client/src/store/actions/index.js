@@ -5,6 +5,7 @@ import {
   MOVE_SIGNUP_FORM_BACKWARD,
   UPDATE_SIGNUP_FORM,
   UPDATE_DONOR_FORM,
+  UPDATE_CHARITY_FORM,
   CREATE_NEW_ACCOUNT_START,
   CREATE_NEW_ACCOUNT_SUCCESS,
   CREATE_NEW_ACCOUNT_ERROR,
@@ -73,6 +74,13 @@ export const handleSignupFormChanges = (name, value) => {
 export const handleDonorFormChanges = (name, value) => {
   return {
     type: UPDATE_DONOR_FORM,
+    payload: { name, value }
+  };
+};
+
+export const handleCharityFormChanges = (name, value) => {
+  return {
+    type: UPDATE_CHARITY_FORM,
     payload: { name, value }
   };
 };

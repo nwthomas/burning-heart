@@ -3,6 +3,7 @@ import {
   MOVE_SIGNUP_FORM_BACKWARD,
   UPDATE_SIGNUP_FORM,
   UPDATE_DONOR_FORM,
+  UPDATE_CHARITY_FORM,
   CREATE_NEW_ACCOUNT_START,
   CREATE_NEW_ACCOUNT_SUCCESS,
   CREATE_NEW_ACCOUNT_ERROR,
@@ -26,7 +27,13 @@ const initialState = {
     phone: ""
   },
   charityAccount: {
-    stuff: ""
+    charityName: "",
+    phone: "",
+    street1: "",
+    street2: "",
+    city: "",
+    state: "",
+    zip: ""
   },
   modalOpen: false,
   createAccountStart: false,
@@ -59,6 +66,14 @@ export const signupReducer = (state = initialState, action) => {
         ...state,
         donorAccount: {
           ...state.donorAccount,
+          [action.payload.name]: action.payload.value
+        }
+      };
+    case UPDATE_CHARITY_FORM:
+      return {
+        ...state,
+        charityAccount: {
+          ...state.charityAccount,
           [action.payload.name]: action.payload.value
         }
       };
