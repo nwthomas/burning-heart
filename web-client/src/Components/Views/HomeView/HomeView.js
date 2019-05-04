@@ -24,7 +24,7 @@ class HomeView extends Component {
 
 const mapStateToProps = state => ({
   loggedIn: state.loginReducer.loggedIn,
-  type: state.loginReducer.account,
+  type: state.loginReducer.accountType,
   showPaymentModal: state.donorReducer.showPaymentModal
 });
 

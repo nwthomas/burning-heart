@@ -1,7 +1,8 @@
 import {
   FETCH_CHARITY_DONATIONS_START,
   FETCH_CHARITY_DONATIONS_SUCCESS,
-  FETCH_CHARITY_DONATIONS_ERROR
+  FETCH_CHARITY_DONATIONS_ERROR,
+  LOGOUT_APP
 } from "../types";
 
 const initialState = {
@@ -32,6 +33,11 @@ export const charityReducer = (state = initialState, action) => {
         ...state,
         fetchCharityDonationsStart: false,
         fetchCharityDonationsError: true
+      };
+    case LOGOUT_APP:
+      return {
+        ...state,
+        charityDonations: []
       };
     default:
       return state;

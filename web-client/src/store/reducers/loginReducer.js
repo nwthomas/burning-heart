@@ -68,6 +68,7 @@ export const loginReducer = (state = initialState, action) => {
         loggedIn: false,
         token: "",
         account: {},
+        charity: {},
         accountType: ""
       };
     case LOGIN_CHARITY_START:
