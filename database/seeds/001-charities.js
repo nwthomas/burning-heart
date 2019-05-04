@@ -16,6 +16,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -28,6 +29,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -40,6 +42,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -52,6 +55,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -64,6 +68,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -76,6 +81,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -88,6 +94,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -100,6 +107,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -112,6 +120,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -124,6 +133,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -136,6 +146,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -148,6 +159,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -160,6 +172,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -171,7 +184,9 @@ exports.seed = function(knex, Promise) {
           street2: faker.fake("{{address.secondaryAddress}}"),
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
-          zip: faker.fake("{{address.zipCode}}")
+          zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
+          stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
           charityName: "American Cancer Society",
@@ -183,6 +198,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -195,6 +211,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -207,6 +224,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -219,6 +237,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -230,7 +249,9 @@ exports.seed = function(knex, Promise) {
           street2: faker.fake("{{address.secondaryAddress}}"),
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
-          zip: faker.fake("{{address.zipCode}}")
+          zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
+          stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
           charityName: "Doctor's Without Borders",
@@ -242,6 +263,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -254,6 +276,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -266,6 +289,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -278,6 +302,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -290,6 +315,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -302,6 +328,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -314,6 +341,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -326,6 +354,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -338,6 +367,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -350,6 +380,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -362,6 +393,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -374,6 +406,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         },
         {
@@ -386,6 +419,7 @@ exports.seed = function(knex, Promise) {
           city: faker.fake("{{address.city}}"),
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
+          type: "charity",
           stripeToken: "acct_1ESzrJKy7Q37pCw1"
         }
       ]);

@@ -14,8 +14,10 @@ import {
 } from "../types";
 import { getLoginStatus } from "./getLoginStatus";
 
+const decoded = getLoginStatus();
+
 const initialState = {
-  loggedIn: getLoginStatus().loggedInStatus,
+  loggedIn: decoded.loggedInStatus,
   username: "",
   password: "",
   loginStart: false,
@@ -26,10 +28,8 @@ const initialState = {
   account: {},
   charity: {},
   token: "",
-  accountType: getLoginStatus().type
+  accountType: decoded.decodedToken.type
 };
-
-console.log(getLoginStatus());
 
 export const loginReducer = (state = initialState, action) => {
   switch (action.type) {

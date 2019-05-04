@@ -19,10 +19,9 @@ export const getLoginStatus = () => {
     decodedToken = decode(token);
   }
 
-  console.log(decodedToken);
   // Compare current token expiration date to current date/time minus one hour
   const loggedInStatus = decodedToken.exp > currentDate - 86400 / 24;
 
   // Return logged in status
-  return { loggedInStatus, type: token ? token.type : false };
+  return { decodedToken, loggedInStatus };
 };

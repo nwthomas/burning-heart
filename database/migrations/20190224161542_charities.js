@@ -10,6 +10,7 @@ exports.up = function(knex, Promise) {
     tbl.string("city", 256);
     tbl.string("state", 128);
     tbl.string("zip", 128);
+    tbl.string("type", 128);
     tbl.string("stripeToken", 256);
     tbl.timestamps(true, true);
     tbl.unique("username", "uq_charities_username");
