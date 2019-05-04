@@ -31,6 +31,7 @@ router.get("/", async (req, res) => {
 
 // Charities retrieval by ID API route
 router.get("/:id", async (req, res) => {
+  console.log(req.body);
   try {
     const charity = await Charities.findById(req.params.id);
     if (charity) {

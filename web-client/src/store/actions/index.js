@@ -22,9 +22,15 @@ import {
   LOGIN_TOKEN_START,
   LOGIN_TOKEN_SUCCESS,
   LOGIN_TOKEN_ERROR,
+  LOGIN_TOKEN_CHARITY_START,
+  LOGIN_TOKEN_CHARITY_SUCCESS,
+  LOGIN_TOKEN_CHARITY_ERROR,
   FETCH_USER_DONATIONS_START,
   FETCH_USER_DONATIONS_SUCCESS,
   FETCH_USER_DONATIONS_ERROR,
+  FETCH_CHARITY_DONATIONS_START,
+  FETCH_CHARITY_DONATIONS_SUCCESS,
+  FETCH_CHARITY_DONATIONS_ERROR,
   FETCH_CHARITIES_START,
   FETCH_CHARITIES_SUCCESS,
   FETCH_CHARITIES_ERROR,
@@ -135,23 +141,47 @@ export const loginWithToken = _ => dispatch => {
     headers: { authorization: token }
   };
 
-  if (decodedToken.type === "donor") {
-    axios
-      .get(
-        `https://burning-heart.herokuapp.com/api/restricted/accounts/${
-          decodedToken.subject
-        }`,
-        reqOptions
-      )
-      .then(res => {
-        dispatch({ type: LOGIN_TOKEN_SUCCESS, payload: res.data });
-      })
-      .catch(err => {
-        dispatch({ type: LOGIN_TOKEN_ERROR, payload: err });
-      });
-  } else {
-    // Finish
+  axios
+    .get(
+      `https://burning-heart.herokuapp.com/api/restricted/accounts/${
+        decodedToken.subject
+      }`,
+      reqOptions
+    )
+    .then(res => {
+      dispatch({ type: LOGIN_TOKEN_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: LOGIN_TOKEN_ERROR, payload: err });
+    });
+};
+
+export const loginWithTokenCharity = _ => dispatch => {
+  dispatch({ type: LOGIN_TOKEN_CHARITY_START });
+  const token = localStorage.getItem("bhToken");
+  let decodedToken = "";
+
+  if (token) {
+    decodedToken = decode(token);
   }
+
+  const reqOptions = {
+    headers: { authorization: token }
+  };
+
+  axios
+    .get(
+      `https://burning-heart.herokuapp.com/api/restricted/charities/${
+        decodedToken.subject
+      }`,
+      reqOptions
+    )
+    .then(res => {
+      dispatch({ type: LOGIN_TOKEN_CHARITY_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: LOGIN_TOKEN_CHARITY_ERROR, payload: err });
+    });
 };
 
 export const handleLoginForm = (name, value) => {
@@ -197,6 +227,31 @@ export const fetchAccountDonations = _ => dispatch => {
     })
     .catch(err => {
       dispatch({ type: FETCH_USER_DONATIONS_ERROR, payload: err });
+    });
+};
+
+export const fetchCharityDonations = _ => dispatch => {
+  dispatch({ type: FETCH_CHARITY_DONATIONS_START });
+  const token = localStorage.getItem("bhToken");
+  let decodedToken = "";
+  if (token) {
+    decodedToken = decode(token);
+  }
+  const reqOptions = {
+    headers: { authorization: token }
+  };
+  axios
+    .get(
+      `https://burning-heart.herokuapp.com/api/restricted/donations/charity/${
+        decodedToken.subject
+      }`,
+      reqOptions
+    )
+    .then(res => {
+      dispatch({ type: FETCH_CHARITY_DONATIONS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: FETCH_CHARITY_DONATIONS_ERROR, payload: err });
     });
 };
 

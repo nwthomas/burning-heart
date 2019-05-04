@@ -8,6 +8,8 @@ import {
   EXPIRED_CREDENTIALS,
   LOGIN_TOKEN_SUCCESS,
   LOGIN_TOKEN_ERROR,
+  LOGIN_TOKEN_CHARITY_SUCCESS,
+  LOGIN_TOKEN_CHARITY_ERROR,
   LOGIN_CHARITY_START,
   LOGIN_CHARITY_SUCCESS,
   LOGIN_CHARITY_ERROR
@@ -126,6 +128,16 @@ export const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         loggedIn: false
+      };
+    case LOGIN_TOKEN_CHARITY_SUCCESS:
+      return {
+        ...state,
+        charity: action.payload.charity
+      };
+    case LOGIN_TOKEN_CHARITY_ERROR:
+      return {
+        ...state,
+        charity: action.payload.response.data.message
       };
     default:
       return state;
