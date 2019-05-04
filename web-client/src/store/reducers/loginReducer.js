@@ -7,7 +7,10 @@ import {
   CLOSE_LOGIN_MODAL,
   EXPIRED_CREDENTIALS,
   LOGIN_TOKEN_SUCCESS,
-  LOGIN_TOKEN_ERROR
+  LOGIN_TOKEN_ERROR,
+  LOGIN_CHARITY_START,
+  LOGIN_CHARITY_SUCCESS,
+  LOGIN_CHARITY_ERROR
 } from "../types";
 import { getLoginStatus } from "./getLoginStatus";
 
@@ -21,6 +24,7 @@ const initialState = {
   message: "",
   modalOpen: false,
   account: {},
+  charity: {},
   token: "",
   accountType: ""
 };
@@ -61,6 +65,24 @@ export const loginReducer = (state = initialState, action) => {
         token: "",
         account: {},
         accountType: ""
+      };
+    case LOGIN_CHARITY_START:
+      return {
+        ...state,
+        loginStart: true,
+        loginError: false
+      };
+    case LOGIN_CHARITY_SUCCESS:
+      return {
+        ...state,
+        loginStart: false,
+        loginSuccess: true,
+        loggedIn: true,
+        message: action.payload.message,
+        username: "",
+        password: "",
+        charity: action.payload.charity,
+        token: action.payload.token
       };
     case UPDATE_LOGIN_FORM:
       return {

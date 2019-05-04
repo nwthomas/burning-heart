@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import { Navbar } from "../../Presentational/Navbar";
 import InitialSignup from "./InitialSignup";
 import DonorSignup from "./DonorSignup";
 import { SignUpAccountModal } from "../../Presentational/Modals";
+import CharitySignup from "./CharitySignup";
 
 const SignUpForm = ({ history, modalOpen, formPage, accountType }) => {
   return (
@@ -19,7 +21,7 @@ const SignUpForm = ({ history, modalOpen, formPage, accountType }) => {
               if (accountType === "donor") {
                 return <DonorSignup history={history} />;
               } else {
-                return alert("that doesn't work");
+                return <CharitySignup history={history} />;
               }
             }
             default:

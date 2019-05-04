@@ -13,6 +13,9 @@ import {
   LOGIN_APP_START,
   LOGIN_APP_SUCCESS,
   LOGIN_APP_ERROR,
+  LOGIN_CHARITY_START,
+  LOGIN_CHARITY_SUCCESS,
+  LOGIN_CHARITY_ERROR,
   CLOSE_LOGIN_MODAL,
   LOGOUT_APP,
   EXPIRED_CREDENTIALS,
@@ -90,7 +93,7 @@ export const closeSignUpModal = () => {
 export const loginAccount = creds => dispatch => {
   dispatch({ type: LOGIN_APP_START });
   axios
-    .post("https://burning-heart.herokuapp.com/api/auth/login", creds)
+    .post("https://burning-heart.herokuapp.com/api/auth/login-account", creds)
     .then(res => {
       dispatch({ type: LOGIN_APP_SUCCESS, payload: res.data });
     })
@@ -99,6 +102,22 @@ export const loginAccount = creds => dispatch => {
         dispatch({ type: EXPIRED_CREDENTIALS, payload: err }); // Move later for other API calls... Not relevant here, but preserving code
       } else {
         dispatch({ type: LOGIN_APP_ERROR, payload: err });
+      }
+    });
+};
+
+export const loginCharity = creds => dispatch => {
+  dispatch({ type: LOGIN_CHARITY_START });
+  axios
+    .post("https://burning-heart.herokuapp.com/api/auth/login-charity", creds)
+    .then(res => {
+      dispatch({ type: LOGIN_CHARITY_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      if (err.response.data.message === restrictedError) {
+        dispatch({ type: EXPIRED_CREDENTIALS, payload: err }); // Move later for other API calls... Not relevant here, but preserving code
+      } else {
+        dispatch({ type: LOGIN_CHARITY_ERROR, payload: err });
       }
     });
 };

@@ -12,6 +12,7 @@ exports.up = function(knex, Promise) {
     tbl.string("zip", 128);
     tbl.string("stripeToken", 256);
     tbl.timestamps(true, true);
+    tbl.unique("username", "uq_charities_username");
     tbl.unique("charityName", "uq_charities_name");
     tbl.unique("phone", "uq_charities_phone");
   });

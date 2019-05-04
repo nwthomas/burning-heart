@@ -54,21 +54,21 @@ server.use("/api/auth", authRouter);
 
 // Single test server / route
 server.get("/", async (request, res) => {
-  // let account = await stripe.accounts.create({
-  //   country: "US",
-  //   type: "custom",
-  //   email: "email@me.com",
-  //   business_type: "company",
-  //   default_currency: "usd",
-  //   external_account: {
-  //     object: "bank_account",
-  //     country: "US",
-  //     currency: "usd",
-  //     routing_number: "110000000",
-  //     account_number: "000123456789"
-  //   },
-  //   requested_capabilities: ["card_payments"]
-  // });
+  let account = await stripe.accounts.create({
+    country: "US",
+    type: "custom",
+    email: "email@me.com",
+    business_type: "company",
+    default_currency: "usd",
+    external_account: {
+      object: "bank_account",
+      country: "US",
+      currency: "usd",
+      routing_number: "110000000",
+      account_number: "000123456789"
+    },
+    requested_capabilities: ["card_payments"]
+  });
 
   // await stripe.accounts.update("acct_1ESzrJKy7Q37pCw1", {
   //   tos_acceptance: {
@@ -76,21 +76,6 @@ server.get("/", async (request, res) => {
   //     ip: request.connection.remoteAddress // Assumes you're not using a proxy
   //   }
   // });
-
-  await stripe.charges
-    .create(
-      {
-        amount: 1000,
-        currency: "usd",
-        source: "tok_visa"
-      },
-      {
-        stripe_account: "acct_1ESzrJKy7Q37pCw1"
-      }
-    )
-    .then(function(charge) {
-      console.log(charge);
-    });
 
   res.send("The Burning Server is up and running! 🔥");
 });

@@ -120,7 +120,7 @@ export const loginApp = (username, password, cb) => {
   cb({ type: LOGIN_START });
   const creds = { username, password };
   axios
-    .post("https://burning-heart.herokuapp.com/api/auth/login", creds)
+    .post("https://burning-heart.herokuapp.com/api/auth/login-account", creds)
     .then(res => {
       return cb({ type: LOGIN_SUCCESS, payload: res.data });
     })
@@ -134,7 +134,7 @@ export const manualLoginApp = (username, password, history, cb) => {
   cb({ type: LOGIN_START });
   const creds = { username, password };
   axios
-    .post("https://burning-heart.herokuapp.com/api/auth/login", creds)
+    .post("https://burning-heart.herokuapp.com/api/auth/login-account", creds)
     .then(res => {
       history.push("/");
       return cb({ type: LOGIN_SUCCESS, payload: res.data });

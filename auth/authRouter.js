@@ -69,14 +69,14 @@ router.post("/register-charity", async (req, res) => {
 });
 
 // Auth account login API route
-router.post("/login", async (req, res) => {
+router.post("/login-account", async (req, res) => {
   let creds = req.body;
   try {
     const account = await Accounts.findWithPassword()
       .where({ username: creds.username })
       .first();
     if (account && bcrypt.compareSync(creds.password, account.password)) {
-      const token = tokenService.generateToken(account);
+      const token = tokenService.generateTokenAccount(account);
       res.status(200).json({
         error: false,
         message: "You were logged in successfully.",
@@ -111,6 +111,50 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Logout process is destroying token on front-end
+// Auth charity login API route
+router.post("/login-charity", async (req, res) => {
+  let creds = req.body;
+  console.log(creds);
+  try {
+    const charity = await Charities.findWithPassword()
+      .where({ username: creds.username })
+      .first();
+    console.log(charity);
+    if (charity && bcrypt.compareSync(creds.password, charity.password)) {
+      console.log("Working!");
+      const token = tokenService.generateTokenCharity(charity);
+      res.status(200).json({
+        error: false,
+        message: "You were logged in successfully",
+        charity: {
+          id: charity.id,
+          username: charity.username,
+          charityName: charity.charityName,
+          phone: charity.phone,
+          street1: charity.street1,
+          street2: charity.street2,
+          city: charity.city,
+          state: charity.state,
+          zip: charity.zip,
+          created_at: charity.created_at,
+          updated_at: charity.updated_at
+        },
+        token
+      });
+    } else {
+      res.status(404).json({
+        error: true,
+        message: "You could not be logged in.",
+        charity: {}
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      error: true,
+      message: "There was an error logging you in.",
+      charity: {}
+    });
+  }
+});
 
 module.exports = router;

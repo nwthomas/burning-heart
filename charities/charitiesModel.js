@@ -2,6 +2,7 @@ const db = require("../database/dbConfig.js");
 
 module.exports = {
   find,
+  findWithPassword,
   findById,
   insert,
   remove,
@@ -23,12 +24,17 @@ function find() {
   );
 }
 
+function findWithPassword() {
+  return db("charities");
+}
+
 function findById(id) {
   return db("charities")
     .where({ id })
     .first()
     .select(
       "id",
+      "username",
       "charityName",
       "phone",
       "street1",
