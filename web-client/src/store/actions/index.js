@@ -154,6 +154,7 @@ export const loginCharity = creds => dispatch => {
       dispatch({ type: LOGIN_CHARITY_SUCCESS, payload: res.data });
     })
     .catch(err => {
+      console.log(err);
       if (err.response.data.message === restrictedError) {
         dispatch({ type: EXPIRED_CREDENTIALS, payload: err }); // Move later for other API calls... Not relevant here, but preserving code
       } else {

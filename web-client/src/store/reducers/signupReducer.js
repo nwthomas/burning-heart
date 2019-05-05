@@ -165,7 +165,29 @@ export const signupReducer = (state = initialState, action) => {
         ...state,
         createCharityStart: false,
         createCharitySuccess: true,
-        message: action.payload.message
+        message: action.payload.message,
+        charityAccount: {
+          country: "US",
+          type: "custom",
+          business_type: "company",
+          default_currency: "usd",
+          requested_capabilities: ["card_payments"],
+          email: "",
+          charityName: "",
+          phone: "",
+          street1: "",
+          city: "",
+          state: "",
+          zip: "",
+          tax_id: "",
+          mcc: "8398",
+          url: "",
+          object: "bank_account",
+          country: "US",
+          currency: "usd",
+          routing_number: "",
+          account_number: ""
+        }
       };
     case CREATE_NEW_CHARITY_ERROR:
       return {

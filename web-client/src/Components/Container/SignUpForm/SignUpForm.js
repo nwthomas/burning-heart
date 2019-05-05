@@ -6,8 +6,6 @@ import InitialSignup from "./InitialSignup";
 import DonorSignup from "./DonorSignup";
 import { SignUpAccountModal } from "../../Presentational/Modals";
 import CharitySignup from "./CharitySignup";
-import CharityOwnerSignup from "./CharityOwnerSignup";
-import CharityOwnerVerification from "./CharityOwnerVerification";
 
 const SignUpForm = ({ history, modalOpen, formPage, accountType }) => {
   return (
@@ -26,10 +24,6 @@ const SignUpForm = ({ history, modalOpen, formPage, accountType }) => {
                 return <CharitySignup history={history} />;
               }
             }
-            case 3:
-              return <CharityOwnerSignup history={history} />;
-            case 4:
-              return <CharityOwnerVerification history={history} />;
             default:
               return <InitialSignup history={history} />;
           }

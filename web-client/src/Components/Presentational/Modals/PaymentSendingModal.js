@@ -5,6 +5,10 @@ import { closePaymentModal } from "../../../store/actions";
 import LoadingAnimation from "./LoadingAnimation";
 
 const PaymentSendingModal = props => {
+  (function() {
+    window.scrollTo(0, 0);
+  })();
+
   const handleButton = e => {
     e.preventDefault();
     if (props.loginStart) {

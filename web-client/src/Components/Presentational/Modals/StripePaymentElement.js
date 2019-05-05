@@ -6,6 +6,7 @@ class StripePaymentElement extends Component {
     selected: {}
   };
   componentDidMount() {
+    window.scrollTo(0, 0);
     const body = document.querySelector("body");
     body.classList.toggle("stopScroll");
     const selected = this.props.charities.filter(charity => {

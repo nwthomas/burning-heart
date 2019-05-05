@@ -18,6 +18,7 @@ class LoginModal extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const body = document.querySelector("body");
     body.classList.toggle("stopScroll");
   }

@@ -13,9 +13,9 @@ class HomeView extends Component {
           <PaymentModal history={this.props.history} />
         )}
         {this.props.type === "donor" ? (
-          <DonorDashboard />
+          <DonorDashboard history={this.props.history} />
         ) : (
-          <CharityDashboard />
+          <CharityDashboard history={this.props.history} />
         )}
       </div>
     );
