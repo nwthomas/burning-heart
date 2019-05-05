@@ -53,7 +53,6 @@ const initialState = {
     mcc: "8398", // Preset
     url: "", // done
     object: "bank_account", // External acct obj
-    country: "US", // External acct obj
     currency: "usd", // External acct obj
     routing_number: "", // done
     account_number: "" // done
@@ -200,7 +199,6 @@ export const signupReducer = (state = initialState, action) => {
           mcc: "8398",
           url: "",
           object: "bank_account",
-          country: "US",
           currency: "usd",
           routing_number: "",
           account_number: ""
@@ -256,7 +254,7 @@ export const signupReducer = (state = initialState, action) => {
         createOwnerError: true,
         message: action.payload.response.data.message
       };
-    case SIGN_TOS_ERROR:
+    case SIGN_TOS_START:
       return {
         ...state,
         signTOSError: false,

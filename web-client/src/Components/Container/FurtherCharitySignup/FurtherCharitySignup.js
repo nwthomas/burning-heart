@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { startAddingOwner, startSigningTOS } from "../../../store/actions";
+import { startAddingOwner, signStripeTOS } from "../../../store/actions";
 
 import { CharityOwnerSignup } from "../SignUpForm";
 import { CharityOwnerVerification } from "../SignUpForm";
@@ -13,7 +13,7 @@ class FurtherCharitySignup extends Component {
 
   signTerms = e => {
     e.preventDefault();
-    this.props.startSigningTOS();
+    this.props.signStripeTOS();
   };
 
   render() {
@@ -43,13 +43,24 @@ class FurtherCharitySignup extends Component {
                 </button>
               )}
               {!this.props.charity.termsAccepted && (
-                <button
-                  className="additional-steps__button"
-                  type="button"
-                  onClick={this.signTerms}
-                >
-                  Sign Terms of Service
-                </button>
+                <>
+                  <button
+                    className="additional-steps__button"
+                    type="button"
+                    onClick={this.signTerms}
+                  >
+                    Sign Stripe Agreement
+                  </button>
+                  <p className="legal__footnote">
+                    By registering your account, you agree to the{" "}
+                    <a
+                      className="stripe__link"
+                      href="https://stripe.com/connect-account/legal"
+                    >
+                      Stripe Connected Account Agreement.
+                    </a>
+                  </p>
+                </>
               )}
             </div>
           </div>
@@ -67,7 +78,7 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
   startAddingOwner,
-  startSigningTOS
+  signStripeTOS
 };
 
 export default connect(

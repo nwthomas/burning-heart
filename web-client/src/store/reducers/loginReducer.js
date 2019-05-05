@@ -12,7 +12,9 @@ import {
   LOGIN_TOKEN_CHARITY_ERROR,
   LOGIN_CHARITY_START,
   LOGIN_CHARITY_SUCCESS,
-  LOGIN_CHARITY_ERROR
+  LOGIN_CHARITY_ERROR,
+  REGISTER_OWNER_SUCCESS,
+  SIGN_TOS_SUCCESS
 } from "../types";
 import { getLoginStatus } from "./getLoginStatus";
 
@@ -138,7 +140,17 @@ export const loginReducer = (state = initialState, action) => {
     case LOGIN_TOKEN_CHARITY_ERROR:
       return {
         ...state,
-        charity: action.payload.response.data.message
+        loggedIn: false
+      };
+    case REGISTER_OWNER_SUCCESS:
+      return {
+        ...state,
+        charity: action.payload.charity
+      };
+    case SIGN_TOS_SUCCESS:
+      return {
+        ...state,
+        charity: action.payload.charity
       };
     default:
       return state;

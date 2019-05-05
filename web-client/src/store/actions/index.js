@@ -61,8 +61,8 @@ import {
 
 const restrictedError = "Not authorized. Please try logging in again.";
 
-const baseUrl = "https://burning-heart.herokuapp.com";
-// const baseUrl = "http://localhost:7000";
+// const baseUrl = "https://burning-heart.herokuapp.com";
+const baseUrl = "http://localhost:7000";
 
 //============================================================== Signup Action Creators
 export const createDonorAccount = userDetails => dispatch => {
@@ -119,6 +119,36 @@ export const createCharityOwner = (ownerDetails, charityId) => dispatch => {
     })
     .catch(err => {
       dispatch({ type: REGISTER_OWNER_ERROR, payload: err });
+    });
+};
+
+export const signStripeTOS = _ => dispatch => {
+  dispatch({ type: SIGN_TOS_START });
+
+  const token = localStorage.getItem("bhToken");
+  console.log(token);
+  let decodedToken = "";
+
+  if (token) {
+    decodedToken = decode(token);
+  }
+
+  const reqOptions = {
+    headers: { authorization: token }
+  };
+
+  console.log(reqOptions);
+  axios
+    .post(
+      `${baseUrl}/api/restricted/charities/tos/${decodedToken.subject}`,
+      {},
+      reqOptions
+    )
+    .then(res => {
+      dispatch({ type: SIGN_TOS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: SIGN_TOS_ERROR, payload: err });
     });
 };
 

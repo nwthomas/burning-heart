@@ -1,6 +1,6 @@
 const express = require("express");
 const Charities = require("./charitiesModel.js");
-const { makeStripeOwner } = require("./stripeAccountMiddleware.js");
+const { makeStripeOwner, signTOS } = require("./stripeAccountMiddleware.js");
 
 const router = express.Router();
 
@@ -97,18 +97,18 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Charity create legal owner API route
 router.post("/create-owner/:id", async (req, res) => {
-  const charity = await Charities.findByIdWithToken(req.body.charityId);
+  const charity = await Charities.findByIdWithToken(req.params.id);
   if (charity) {
     try {
       const ownerStripeRegistration = await makeStripeOwner(
         req.body.ownerDetails,
         charity.stripeToken
       );
-
+      console.log(ownerStripeRegistration);
       if (ownerStripeRegistration) {
-        const updatedCharity = await Charity.update(req.params.id, {
-          ...charity,
+        const updatedCharity = await Charities.update(req.params.id, {
           ownerAdded: true
         });
         if (updatedCharity) {
@@ -128,22 +128,68 @@ router.post("/create-owner/:id", async (req, res) => {
       } else {
         res.status(500).json({
           error: true,
-          message:
-            "There was an error updating your account. Please contact Burning Heart.",
+          message: "Please check owner details and try again.",
           charity: {}
         });
       }
     } catch (error) {
       res.status(500).json({
         error: true,
-        message: "There was an error processing your request.",
+        message: "Please check owner details and try again.",
         charity: {}
       });
     }
   } else {
     res.status(500).json({
       error: true,
-      message: "There was an error processing your request.",
+      message: "Please check the owner details and try again.",
+      charity: {}
+    });
+  }
+});
+
+// Charity sign terms of services API route
+router.post("/tos/:id", async (req, res) => {
+  const charity = await Charities.findByIdWithToken(req.params.id);
+  if (charity) {
+    try {
+      const signedTOS = await signTOS(charity.stripeToken, req);
+      if (signedTOS) {
+        const updatedCharity = await Charities.update(req.params.id, {
+          termsAccepted: true
+        });
+        if (updatedCharity) {
+          res.status(200).json({
+            error: false,
+            message: "The terms of service were successfully updated.",
+            charity: updatedCharity
+          });
+        } else {
+          res.status(500).json({
+            error: true,
+            message:
+              "There was an error updating your account. Please contact Burning Heart.",
+            charity: {}
+          });
+        }
+      } else {
+        res.status(500).json({
+          error: true,
+          message: "There was an error accepting the terms of service.",
+          charity: {}
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
+        error: true,
+        message: "There was an error accepting the terms of service.",
+        charity: {}
+      });
+    }
+  } else {
+    res.status(500).json({
+      error: true,
+      message: "There was an error accepting the terms of service.",
       charity: {}
     });
   }

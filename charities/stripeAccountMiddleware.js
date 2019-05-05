@@ -41,16 +41,9 @@ async function makeStripeAccount(creds) {
 }
 
 async function makeStripeOwner(creds, accountToken) {
-  await stripe.accounts
-    .createPerson(accountToken, {
-      ...creds
-    })
-    .then(res => {
-      return { error: false };
-    })
-    .catch(err => {
-      return { error: true };
-    });
+  return await stripe.accounts.createPerson(accountToken, {
+    ...creds
+  });
 }
 
 async function signTOS(accountToken, req) {
