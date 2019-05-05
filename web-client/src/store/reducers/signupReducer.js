@@ -11,7 +11,16 @@ import {
   CREATE_NEW_CHARITY_START,
   CREATE_NEW_CHARITY_SUCCESS,
   CREATE_NEW_CHARITY_ERROR,
-  CLOSE_SIGNUP_MODAL
+  CLOSE_SIGNUP_MODAL,
+  SIGNING_TOS,
+  ADDING_OWNER,
+  CANCEL_FURTHER_ACTION,
+  REGISTER_OWNER_START,
+  REGISTER_OWNER_SUCCESS,
+  REGISTER_OWNER_ERROR,
+  SIGN_TOS_START,
+  SIGN_TOS_SUCCESS,
+  SIGN_TOS_ERROR
 } from "../types"; // Import of variable names so that you can use them/reduce errors
 
 // Sets initial state for the application
@@ -52,9 +61,9 @@ const initialState = {
   charityOwner: {
     first_name: "", // done
     last_name: "", // done
-    day: "",
-    month: "",
-    year: "",
+    day: "", // done
+    month: "", // done
+    year: "", // done
     email: "", // done
     line1: "", // done
     city: "", // done
@@ -66,17 +75,25 @@ const initialState = {
       account_opener: true, // done
       director: true, // done
       owner: true, // done
-      percentage_ownership: 100, // done
+      percent_ownership: 100, // done
       title: "CEO" // done
     }
   },
+  addingOwner: false,
+  signingTOS: false,
   modalOpen: false,
   createAccountStart: false,
   createAccountSuccess: false,
   createAccountError: false,
   createCharityStart: false,
   createCharitySuccess: false,
-  createCharityError: false
+  createCharityError: false,
+  createOwnerStart: false,
+  createOwnerSuccess: false,
+  createOwnerErrorL: false,
+  signTOSStart: false,
+  signTOSSuccess: false,
+  signTOSError: false
 };
 
 export const signupReducer = (state = initialState, action) => {
@@ -190,16 +207,74 @@ export const signupReducer = (state = initialState, action) => {
         }
       };
     case CREATE_NEW_CHARITY_ERROR:
+      console.log();
       return {
         ...state,
         createAccountStart: false,
         createCharityError: true,
-        message: action.payload.response.data.message
+        message:
+          "There was an error creating your account. Please contact Burning Heart."
       };
     case CLOSE_SIGNUP_MODAL:
       return {
         ...state,
         modalOpen: false
+      };
+    case SIGNING_TOS:
+      return {
+        ...state,
+        signingTOS: true
+      };
+    case ADDING_OWNER:
+      return {
+        ...state,
+        addingOwner: true
+      };
+    case CANCEL_FURTHER_ACTION:
+      return {
+        ...state,
+        signingTOS: false,
+        addingOwner: false
+      };
+    case REGISTER_OWNER_START:
+      return {
+        ...state,
+        createOwnerError: false,
+        createOwnerStart: true
+      };
+    case REGISTER_OWNER_SUCCESS:
+      return {
+        ...state,
+        createOwnerStart: false,
+        createOwnerSuccess: true,
+        message: action.payload.message
+      };
+    case REGISTER_OWNER_ERROR:
+      return {
+        ...state,
+        createOwnerStart: false,
+        createOwnerError: true,
+        message: action.payload.response.data.message
+      };
+    case SIGN_TOS_ERROR:
+      return {
+        ...state,
+        signTOSError: false,
+        signTOSStart: true
+      };
+    case SIGN_TOS_SUCCESS:
+      return {
+        ...state,
+        signTOSStart: false,
+        signTOSSuccess: true,
+        message: action.payload.message
+      };
+    case SIGN_TOS_ERROR:
+      return {
+        ...state,
+        signTOSStart: false,
+        signTOSError: true,
+        message: action.payload.response.data.message
       };
     default:
       return state;

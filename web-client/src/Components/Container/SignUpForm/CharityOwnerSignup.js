@@ -1,28 +1,68 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
-  nextSignupPage,
-  previousSignupPage,
+  cancelFurtherAction,
+  createCharityOwner,
   handleCharityOwnerForm
 } from "../../../store/actions";
 
 class CharityOwnerSignup extends Component {
-  nextSignupForm = e => {
+  createOwner = e => {
     e.preventDefault();
-    this.props.nextSignupPage();
+
+    const {
+      first_name,
+      last_name,
+      day,
+      month,
+      year,
+      email,
+      line1,
+      city,
+      state,
+      postal_code,
+      phone,
+      ssn_last_4,
+      relationship
+    } = this.props.charityOwner;
+
+    const newOwnerObj = {
+      first_name,
+      last_name,
+      dob: {
+        day: Number(day),
+        month: Number(month),
+        year: Number(year)
+      },
+      email,
+      address: {
+        line1,
+        city,
+        state,
+        postal_code
+      },
+      phone,
+      ssn_last_4,
+      relationship
+    };
+
+    this.props.createCharityOwner(newOwnerObj, this.props.charity.id);
   };
+
   handleCharityForm = e => {
     this.props.handleCharityOwnerForm(e.target.name, e.target.value);
   };
-  previousSignupForm = e => {
+
+  cancelAction = e => {
     e.preventDefault();
-    this.props.previousSignupPage();
+    this.props.cancelFurtherAction();
   };
+
   render() {
     return (
-      <form className="signup-form" onSubmit={this.nextSignupForm}>
+      <form className="signup-form" onSubmit={this.createOwner}>
         <h2 className="signup-form__header no__bottom__margin">
-          Create Charity Owner
+          Register Charity Owner
         </h2>
         <p className="signup_note">
           Contact Burning Heart for any signup issues.
@@ -161,14 +201,14 @@ class CharityOwnerSignup extends Component {
         />
         <div className="signup-form__buttons">
           <button type="submit" className="signup__button">
-            Next
+            Submit
           </button>
           <button
             type="button"
             className="signup__button"
-            onClick={this.previousSignupForm}
+            onClick={this.cancelAction}
           >
-            Previous
+            Cancel
           </button>
         </div>
       </form>
@@ -177,12 +217,13 @@ class CharityOwnerSignup extends Component {
 }
 
 const mapStateToProps = state => ({
-  charityOwner: state.signupReducer.charityOwner
+  charityOwner: state.signupReducer.charityOwner,
+  charity: state.loginReducer.charity
 });
 
 const mapActionsToProps = {
-  nextSignupPage,
-  previousSignupPage,
+  cancelFurtherAction,
+  createCharityOwner,
   handleCharityOwnerForm
 };
 

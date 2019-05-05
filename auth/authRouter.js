@@ -45,7 +45,10 @@ router.post("/register-charity", async (req, res) => {
   // Salt/hash of password
   const hash = bcrypt.hashSync(req.body.password, 14);
   req.body.password = hash;
+
+  console.log(req.body);
   const stripeAccount = await makeStripeAccount(req.body);
+  console.log(stripeAccount);
   if (stripeAccount.id) {
     try {
       const newCharityObj = {

@@ -3,72 +3,72 @@
   background: #f8f8f8;
   width: 100%;
   min-height: 100vh;
+}
 
-  .signup-form {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 600px;
-    background: #ffffff;
-    border: 1px solid #cdcdcd;
+.signup-form {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  border: 1px solid #cdcdcd;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .signup-form__header {
+    font-weight: 700;
+    margin: 50px;
+    text-align: center;
+  }
+
+  .no__bottom__margin {
+    margin: 50px 0 0;
+  }
+
+  .signup_note {
+    margin: 15px 0 50px;
+    font-size: 1.4rem;
+    color: #cdcdcd;
+  }
+
+  .signup__input {
+    width: 60%;
+    height: 50px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    border: 1px solid #cccccc;
+    padding: 0 1.5%;
+  }
+
+  .signup__select {
+    height: 50px;
+    width: 60%;
+    margin-bottom: 20px;
+  }
+
+  .signup-form__buttons {
+    width: 60%;
+    height: 50px;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 90px;
 
-    .signup-form__header {
+    .signup__button {
+      height: 50px;
+      width: 48%;
+      background: #ffb2b3;
+      border: 1px solid #ffb2b3;
+      border-radius: 50px;
+      margin-top: 10px;
+      color: white;
       font-weight: 700;
-      margin: 50px;
-      text-align: center;
-    }
+      cursor: pointer;
 
-    .no__bottom__margin {
-      margin: 50px 0 0;
-    }
-
-    .signup_note {
-      margin: 15px 0 50px;
-      font-size: 1.4rem;
-      color: #cdcdcd;
-    }
-
-    .signup__input {
-      width: 60%;
-      height: 50px;
-      margin-bottom: 30px;
-      border-radius: 3px;
-      border: 1px solid #cccccc;
-      padding: 0 1.5%;
-    }
-
-    .signup__select {
-      height: 50px;
-      width: 60%;
-      margin-bottom: 20px;
-    }
-
-    .signup-form__buttons {
-      width: 60%;
-      height: 50px;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 90px;
-
-      .signup__button {
-        height: 50px;
-        width: 48%;
-        background: #ffb2b3;
+      &:hover {
+        color: #ffb2b3;
+        background: white;
         border: 1px solid #ffb2b3;
-        border-radius: 50px;
-        margin-top: 10px;
-        color: white;
-        font-weight: 700;
-        cursor: pointer;
-
-        &:hover {
-          color: #ffb2b3;
-          background: white;
-          border: 1px solid #ffb2b3;
-        }
       }
     }
   }

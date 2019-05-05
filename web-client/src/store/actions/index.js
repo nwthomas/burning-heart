@@ -47,19 +47,28 @@ import {
   CARD_PAYMENT_ERROR,
   CLOSE_PAYMENT_MODAL,
   HANDLE_PAYMENT_FORM,
-  HANDLE_CARD_TOKEN_ERROR
+  HANDLE_CARD_TOKEN_ERROR,
+  SIGNING_TOS,
+  ADDING_OWNER,
+  CANCEL_FURTHER_ACTION,
+  REGISTER_OWNER_START,
+  REGISTER_OWNER_SUCCESS,
+  REGISTER_OWNER_ERROR,
+  SIGN_TOS_START,
+  SIGN_TOS_SUCCESS,
+  SIGN_TOS_ERROR
 } from "../types";
 
 const restrictedError = "Not authorized. Please try logging in again.";
+
+const baseUrl = "https://burning-heart.herokuapp.com";
+// const baseUrl = "http://localhost:7000";
 
 //============================================================== Signup Action Creators
 export const createDonorAccount = userDetails => dispatch => {
   dispatch({ type: CREATE_NEW_ACCOUNT_START });
   axios
-    .post(
-      "https://burning-heart.herokuapp.com/api/auth/register-account",
-      userDetails
-    )
+    .post(`${baseUrl}/api/auth/register-account`, userDetails)
     .then(res => {
       dispatch({ type: CREATE_NEW_ACCOUNT_SUCCESS, payload: res.data });
     })
@@ -71,15 +80,45 @@ export const createDonorAccount = userDetails => dispatch => {
 export const createCharityAccount = charityDetails => dispatch => {
   dispatch({ type: CREATE_NEW_CHARITY_START });
   axios
-    .post(
-      "https://burning-heart.herokuapp.com/api/auth/register-charity",
-      charityDetails
-    )
+    .post(`${baseUrl}/api/auth/register-charity`, charityDetails)
     .then(res => {
       dispatch({ type: CREATE_NEW_CHARITY_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: CREATE_NEW_CHARITY_ERROR, payload: err });
+    });
+};
+
+export const createCharityOwner = (ownerDetails, charityId) => dispatch => {
+  dispatch({ type: REGISTER_OWNER_START });
+  const token = localStorage.getItem("bhToken");
+  let decodedToken = "";
+
+  if (token) {
+    decodedToken = decode(token);
+  }
+
+  const reqOptions = {
+    headers: { authorization: token }
+  };
+
+  const bodyItems = { ownerDetails, charityId };
+
+  console.log(bodyItems);
+
+  axios
+    .post(
+      `${baseUrl}/api/restricted/charities/create-owner/${
+        decodedToken.subject
+      }`,
+      bodyItems,
+      reqOptions
+    )
+    .then(res => {
+      dispatch({ type: REGISTER_OWNER_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: REGISTER_OWNER_ERROR, payload: err });
     });
 };
 
@@ -129,11 +168,29 @@ export const closeSignUpModal = () => {
   };
 };
 
+export const startAddingOwner = () => {
+  return {
+    type: ADDING_OWNER
+  };
+};
+
+export const startSigningTOS = () => {
+  return {
+    type: SIGNING_TOS
+  };
+};
+
+export const cancelFurtherAction = () => {
+  return {
+    type: CANCEL_FURTHER_ACTION
+  };
+};
+
 //============================================================== Login Action Creators
 export const loginAccount = creds => dispatch => {
   dispatch({ type: LOGIN_APP_START });
   axios
-    .post("https://burning-heart.herokuapp.com/api/auth/login-account", creds)
+    .post(`${baseUrl}/api/auth/login-account`, creds)
     .then(res => {
       dispatch({ type: LOGIN_APP_SUCCESS, payload: res.data });
     })
@@ -149,7 +206,7 @@ export const loginAccount = creds => dispatch => {
 export const loginCharity = creds => dispatch => {
   dispatch({ type: LOGIN_CHARITY_START });
   axios
-    .post("https://burning-heart.herokuapp.com/api/auth/login-charity", creds)
+    .post(`${baseUrl}/api/auth/login-charity`, creds)
     .then(res => {
       dispatch({ type: LOGIN_CHARITY_SUCCESS, payload: res.data });
     })
@@ -178,9 +235,7 @@ export const loginWithToken = _ => dispatch => {
 
   axios
     .get(
-      `https://burning-heart.herokuapp.com/api/restricted/accounts/${
-        decodedToken.subject
-      }`,
+      `${baseUrl}/api/restricted/accounts/${decodedToken.subject}`,
       reqOptions
     )
     .then(res => {
@@ -206,9 +261,7 @@ export const loginWithTokenCharity = _ => dispatch => {
 
   axios
     .get(
-      `https://burning-heart.herokuapp.com/api/restricted/charities/${
-        decodedToken.subject
-      }`,
+      `${baseUrl}/api/restricted/charities/${decodedToken.subject}`,
       reqOptions
     )
     .then(res => {
@@ -277,9 +330,7 @@ export const fetchCharityDonations = _ => dispatch => {
   };
   axios
     .get(
-      `https://burning-heart.herokuapp.com/api/restricted/donations/charity/${
-        decodedToken.subject
-      }`,
+      `${baseUrl}/api/restricted/donations/charity/${decodedToken.subject}`,
       reqOptions
     )
     .then(res => {
@@ -297,10 +348,7 @@ export const fetchCharities = _ => dispatch => {
     headers: { authorization: token }
   };
   axios
-    .get(
-      "https://burning-heart.herokuapp.com/api/restricted/charities",
-      reqOptions
-    )
+    .get(`${baseUrl}/api/restricted/charities`, reqOptions)
     .then(res => {
       const sortedCharities = res.data.charities.sort(function(a, b) {
         if (a.charityName > b.charityName) return 1;
@@ -334,11 +382,7 @@ export const makePayment = (
   const token = localStorage.getItem("bhToken");
   const reqOptions = { headers: { authorization: token } };
   return axios
-    .post(
-      "https://burning-heart.herokuapp.com/api/restricted/donations",
-      donationData,
-      reqOptions
-    )
+    .post(`${baseUrl}/api/restricted/donations`, donationData, reqOptions)
     .then(res => {
       dispatch({ type: CARD_PAYMENT_SUCCESS, payload: res.data });
     })

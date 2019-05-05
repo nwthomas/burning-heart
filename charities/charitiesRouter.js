@@ -1,5 +1,6 @@
 const express = require("express");
 const Charities = require("./charitiesModel.js");
+const { makeStripeOwner } = require("./stripeAccountMiddleware.js");
 
 const router = express.Router();
 
@@ -93,6 +94,58 @@ router.post("/", async (req, res) => {
         charity: {}
       });
     }
+  }
+});
+
+router.post("/create-owner/:id", async (req, res) => {
+  const charity = await Charities.findByIdWithToken(req.body.charityId);
+  if (charity) {
+    try {
+      const ownerStripeRegistration = await makeStripeOwner(
+        req.body.ownerDetails,
+        charity.stripeToken
+      );
+
+      if (ownerStripeRegistration) {
+        const updatedCharity = await Charity.update(req.params.id, {
+          ...charity,
+          ownerAdded: true
+        });
+        if (updatedCharity) {
+          res.status(200).json({
+            error: false,
+            message: "The owner was added successfully to the charity account.",
+            charity: updatedCharity
+          });
+        } else {
+          res.status(500).json({
+            error: true,
+            message:
+              "There was an error updating your account. Please contact Burning Heart.",
+            charity: {}
+          });
+        }
+      } else {
+        res.status(500).json({
+          error: true,
+          message:
+            "There was an error updating your account. Please contact Burning Heart.",
+          charity: {}
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
+        error: true,
+        message: "There was an error processing your request.",
+        charity: {}
+      });
+    }
+  } else {
+    res.status(500).json({
+      error: true,
+      message: "There was an error processing your request.",
+      charity: {}
+    });
   }
 });
 

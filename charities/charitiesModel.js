@@ -4,6 +4,7 @@ module.exports = {
   find,
   findWithPassword,
   findById,
+  findByIdWithToken,
   insert,
   remove,
   update
@@ -55,6 +56,30 @@ function findById(id) {
     );
 }
 
+function findByIdWithToken(id) {
+  return db("charities")
+    .where({ id })
+    .first()
+    .select(
+      "id",
+      "username",
+      "charityName",
+      "phone",
+      "street1",
+      "street2",
+      "city",
+      "state",
+      "zip",
+      "type",
+      "registered",
+      "ownerAdded",
+      "stripeToken",
+      "termsAccepted",
+      "created_at",
+      "updated_at"
+    );
+}
+
 function insert(charity) {
   console.log(charity);
   const { charityName, username } = charity;
@@ -78,14 +103,18 @@ function update(id, changes) {
         .first()
         .select(
           "id",
-          "charityName",
           "username",
+          "charityName",
           "phone",
           "street1",
           "street2",
           "city",
           "state",
           "zip",
+          "type",
+          "registered",
+          "ownerAdded",
+          "termsAccepted",
           "created_at",
           "updated_at"
         );

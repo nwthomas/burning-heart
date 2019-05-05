@@ -126,23 +126,3 @@ export default connect(
   mapStateToProps,
   mapActionsToProps
 )(DonorDashboard);
-
-/*
-
-Next steps:
-
-3. Build payment process for individual charity
-
-4. Refactor Charities table to have username/password + seed data
-
-5. Refactor charitiesModel to not return password
-
-6. Build out charity sign-up process for new account and Stripe
-
-7. Build out simple charity dashboard with donation amounts and account update
-
-8. Web client Jest tests
-
-9. Finalize marketing plan
-
-*/

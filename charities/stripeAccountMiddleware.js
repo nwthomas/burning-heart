@@ -40,53 +40,24 @@ async function makeStripeAccount(creds) {
   });
 }
 
-async function makeStripeOwner(accountToken, creds) {
+async function makeStripeOwner(creds, accountToken) {
   await stripe.accounts
-    .createPerson(res.id, {
-      first_name: "Nathan",
-      last_name: "Thomas",
-      dob: {
-        day: 1,
-        month: 12,
-        year: 1987
-      },
-      email: "nwthomas@me.com",
-      address: {
-        city: "Angwin",
-        line1: "475 Eastern Avenue",
-        postal_code: "94508",
-        state: "CA"
-      },
-      phone: "(707) 483-5207",
-      ssn_last_4: "6563",
-      relationship: {
-        account_opener: true,
-        director: true,
-        owner: true,
-        percent_ownership: 100,
-        title: "CEO"
-      }
+    .createPerson(accountToken, {
+      ...creds
     })
     .then(res => {
-      return res;
+      return { error: false };
     })
     .catch(err => {
-      return err;
+      return { error: true };
     });
 }
 
 async function signTOS(accountToken, req) {
-  await stripe.accounts
-    .update(res.id, {
-      tos_acceptance: {
-        date: Math.floor(Date.now() / 1000),
-        ip: request.connection.remoteAddress // Assumes you're not using a proxy
-      }
-    })
-    .then(res => {
-      return res;
-    })
-    .catch(err => {
-      return err;
-    });
+  return await stripe.accounts.update(accountToken, {
+    tos_acceptance: {
+      date: Math.floor(Date.now() / 1000),
+      ip: req.connection.remoteAddress // Assumes you're not using a proxy
+    }
+  });
 }
