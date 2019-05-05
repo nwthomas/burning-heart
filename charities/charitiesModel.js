@@ -19,6 +19,10 @@ function find() {
     "city",
     "state",
     "zip",
+    "type",
+    "registered",
+    "ownerAdded",
+    "termsAccepted",
     "created_at",
     "updated_at"
   );
@@ -42,34 +46,24 @@ function findById(id) {
       "city",
       "state",
       "zip",
+      "type",
+      "registered",
+      "ownerAdded",
+      "termsAccepted",
       "created_at",
       "updated_at"
     );
 }
 
 function insert(charity) {
-  const {
-    charityName,
-    username,
-    phone,
-    street1,
-    street2,
-    city,
-    state,
-    zip
-  } = charity;
+  console.log(charity);
+  const { charityName, username } = charity;
   return db("charities")
     .insert(charity)
     .then(id => {
       return db("charities").where({
         charityName,
-        username,
-        phone,
-        street1,
-        street2,
-        city,
-        state,
-        zip
+        username
       });
     });
 }

@@ -1,23 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
-  createCharityAccount,
+  nextSignupPage,
   previousSignupPage,
-  handleCharityFormChanges
+  handleCharityOwnerForm
 } from "../../../store/actions";
 
-class CharitySignup extends Component {
-  createNewCharity = e => {
+class CharityOwnerSignup extends Component {
+  nextSignupForm = e => {
     e.preventDefault();
-    const creds = {
-      ...this.props.charityAccount,
-      username: this.props.username,
-      password: this.props.password
-    };
-    this.props.createCharityAccount(creds);
+    this.props.nextSignupPage();
   };
   handleCharityForm = e => {
-    this.props.handleCharityFormChanges(e.target.name, e.target.value);
+    this.props.handleCharityOwnerForm(e.target.name, e.target.value);
   };
   previousSignupForm = e => {
     e.preventDefault();
@@ -25,9 +20,9 @@ class CharitySignup extends Component {
   };
   render() {
     return (
-      <form className="signup-form" onSubmit={this.createNewCharity}>
+      <form className="signup-form" onSubmit={this.nextSignupForm}>
         <h2 className="signup-form__header no__bottom__margin">
-          Create Charity Account
+          Create Charity Owner
         </h2>
         <p className="signup_note">
           Contact Burning Heart for any signup issues.
@@ -36,33 +31,44 @@ class CharitySignup extends Component {
           className="signup__input"
           required
           type="text"
-          placeholder="Charity name"
-          id="charityName"
+          placeholder="First name"
+          id="first_name"
           autoComplete="off"
-          name="charityName"
-          value={this.props.charityAccount.charityName}
+          name="first_name"
+          value={this.props.charityOwner.first_name}
           onChange={this.handleCharityForm}
         />
         <input
           className="signup__input"
           required
           type="text"
-          placeholder="Email"
+          placeholder="Last name"
+          id="last_name"
+          autoComplete="off"
+          name="last_name"
+          value={this.props.charityOwner.last_name}
+          onChange={this.handleCharityForm}
+        />
+        <input
+          className="signup__input"
+          required
+          type="text"
+          placeholder="Owner email"
           id="email"
           autoComplete="off"
           name="email"
-          value={this.props.charityAccount.email}
+          value={this.props.charityOwner.email}
           onChange={this.handleCharityForm}
         />
         <input
           className="signup__input"
           required
           type="text"
-          placeholder="Phone number"
+          placeholder="Owner phone"
           id="phone"
           autoComplete="off"
           name="phone"
-          value={this.props.charityAccount.phone}
+          value={this.props.charityOwner.phone}
           onChange={this.handleCharityForm}
         />
         <input
@@ -70,10 +76,10 @@ class CharitySignup extends Component {
           required
           type="text"
           placeholder="Street 1"
-          id="street1"
+          id="line1"
           autoComplete="off"
-          name="street1"
-          value={this.props.charityAccount.street1}
+          name="line1"
+          value={this.props.charityOwner.line1}
           onChange={this.handleCharityForm}
         />
         <input
@@ -84,7 +90,7 @@ class CharitySignup extends Component {
           id="city"
           autoComplete="off"
           name="city"
-          value={this.props.charityAccount.city}
+          value={this.props.charityOwner.city}
           onChange={this.handleCharityForm}
         />
         <input
@@ -95,67 +101,67 @@ class CharitySignup extends Component {
           id="state"
           autoComplete="off"
           name="state"
-          value={this.props.charityAccount.state}
+          value={this.props.charityOwner.state}
           onChange={this.handleCharityForm}
         />
         <input
           className="signup__input"
           required
           type="text"
-          placeholder="Zip"
-          id="zip"
+          placeholder="Postal code"
+          id="postal_code"
           autoComplete="off"
-          name="zip"
-          value={this.props.charityAccount.zip}
-          onChange={this.handleCharityForm}
-        />
-        <input
-          className="signup__input"
-          required
-          type="text"
-          placeholder="Website"
-          id="url"
-          autoComplete="off"
-          name="url"
-          value={this.props.charityAccount.url}
-          onChange={this.handleCharityForm}
-        />
-        <input
-          className="signup__input"
-          required
-          type="text"
-          placeholder="Tax ID"
-          id="tax_id"
-          autoComplete="off"
-          name="tax_id"
-          value={this.props.charityAccount.tax_id}
+          name="postal_code"
+          value={this.props.charityOwner.postal_code}
           onChange={this.handleCharityForm}
         />
         <input
           className="signup__input"
           required
           type="password"
-          placeholder="Account number"
-          id="account_number"
+          placeholder="Last 4 of SSN"
+          id="ssn_last_4"
           autoComplete="off"
-          name="account_number"
-          value={this.props.charityAccount.account_number}
+          name="ssn_last_4"
+          value={this.props.charityOwner.ssn_last_4}
           onChange={this.handleCharityForm}
         />
         <input
           className="signup__input"
           required
           type="password"
-          placeholder="Routing number"
-          id="routing_number"
+          placeholder="Date of birth day (i.e. 1, 2, 3, etc.)"
+          id="day"
           autoComplete="off"
-          name="routing_number"
-          value={this.props.charityAccount.routing_number}
+          name="day"
+          value={this.props.charityOwner.day}
+          onChange={this.handleCharityForm}
+        />
+        <input
+          className="signup__input"
+          required
+          type="password"
+          placeholder="Date of birth month (i.e. 9, 10, 11, etc.)"
+          id="month"
+          autoComplete="off"
+          name="month"
+          value={this.props.charityOwner.month}
+          onChange={this.handleCharityForm}
+        />
+        <input
+          className="signup__input"
+          required
+          type="password"
+          placeholder="Date of birth year (i.e. 1957, 2001, etc.)"
+          id="year"
+          autoComplete="off"
+          name="year"
+          value={this.props.charityOwner.year}
           onChange={this.handleCharityForm}
         />
         <div className="signup-form__buttons">
           <button type="submit" className="signup__button">
-            Submit
+            Next
           </button>
           <button
             type="button"
@@ -171,18 +177,16 @@ class CharitySignup extends Component {
 }
 
 const mapStateToProps = state => ({
-  charityAccount: state.signupReducer.charityAccount,
-  username: state.signupReducer.username,
-  password: state.signupReducer.password
+  charityOwner: state.signupReducer.charityOwner
 });
 
 const mapActionsToProps = {
-  createCharityAccount,
+  nextSignupPage,
   previousSignupPage,
-  handleCharityFormChanges
+  handleCharityOwnerForm
 };
 
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(CharitySignup);
+)(CharityOwnerSignup);

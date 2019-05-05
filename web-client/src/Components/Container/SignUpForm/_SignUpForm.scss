@@ -2,7 +2,7 @@
   padding: 15vh 3%;
   background: #f8f8f8;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 
   .signup-form {
     margin: 0 auto;
@@ -19,6 +19,16 @@
       font-weight: 700;
       margin: 50px;
       text-align: center;
+    }
+
+    .no__bottom__margin {
+      margin: 50px 0 0;
+    }
+
+    .signup_note {
+      margin: 15px 0 50px;
+      font-size: 1.4rem;
+      color: #cdcdcd;
     }
 
     .signup__input {

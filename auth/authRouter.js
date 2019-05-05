@@ -4,14 +4,16 @@ require("dotenv").config();
 const Accounts = require("../accounts/accountsModel.js");
 const Charities = require("../charities/charitiesModel.js");
 const tokenService = require("./tokenService.js");
-const authConstraints = require("./authConstraints.js"); // Error handling middleware for duplicate usernames and passwords
+const authConstraintsDonor = require("./authConstraints.js"); // Error handling middleware for duplicate usernames and passwords
+const {
+  makeStripeAccount
+} = require("../charities/stripeAccountMiddleware.js");
 
 const router = express.Router();
 
 // Auth account creation API route
-router.post("/register-account", authConstraints, async (req, res) => {
+router.post("/register-account", authConstraintsDonor, async (req, res) => {
   // Salt/hash of password
-  console.log(req.body);
   const hash = bcrypt.hashSync(req.body.password, 14);
   req.body.password = hash;
   try {
@@ -41,28 +43,52 @@ router.post("/register-account", authConstraints, async (req, res) => {
 // Auth charity creation API route
 router.post("/register-charity", async (req, res) => {
   // Salt/hash of password
-  console.log(req.body);
   const hash = bcrypt.hashSync(req.body.password, 14);
   req.body.password = hash;
-  try {
-    const charity = await Charities.insert(req.body);
-    if (charity) {
-      res.status(200).json({
-        error: false,
-        message: "Your charity was created successfully.",
-        charity
-      });
-    } else {
-      res.status(404).json({
+  const stripeAccount = await makeStripeAccount(req.body);
+  if (stripeAccount.id) {
+    try {
+      const newCharityObj = {
+        charityName: req.body.charityName,
+        username: req.body.username,
+        password: req.body.password,
+        phone: req.body.phone,
+        street1: req.body.street1,
+        street2: null,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip,
+        type: "charity",
+        registered: true,
+        ownerAdded: false,
+        termsAccepted: false,
+        stripeToken: stripeAccount.id
+      };
+      const charity = await Charities.insert(newCharityObj);
+      if (charity) {
+        res.status(200).json({
+          error: false,
+          message: "Your charity was created successfully.",
+          charity
+        });
+      } else {
+        res.status(404).json({
+          error: true,
+          message: "Your charity could not be created.",
+          charity: {}
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
         error: true,
-        message: "Your charity could not be created.",
+        message: "There was an error processing your request.",
         charity: {}
       });
     }
-  } catch (error) {
-    res.status(500).json({
+  } else {
+    res.status(404).json({
       error: true,
-      message: "There was an error processing your request.",
+      message: "Please check your charity details and try again.",
       charity: {}
     });
   }
@@ -136,6 +162,9 @@ router.post("/login-charity", async (req, res) => {
           city: charity.city,
           state: charity.state,
           zip: charity.zip,
+          registered: charity.registered,
+          ownerCreated: charity.ownerCreated,
+          termsAccepted: charity.termsAccepted,
           created_at: charity.created_at,
           updated_at: charity.updated_at
         },

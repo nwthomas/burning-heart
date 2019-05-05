@@ -17,7 +17,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Bill & Melinda Gates Foundation",
@@ -30,7 +33,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "United Way Worldwide",
@@ -43,7 +49,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Feeding America",
@@ -56,7 +65,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Americares Foundation",
@@ -69,7 +81,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Task Force for GLobal Health",
@@ -82,7 +97,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Salvation Army",
@@ -95,7 +113,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "St. Jude Children's Research Hospital",
@@ -108,7 +129,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Habitat for Humanity",
@@ -121,7 +145,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "YMCA of the USA",
@@ -134,7 +161,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Food for the Poor",
@@ -147,7 +177,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Goodwill Industries International",
@@ -160,7 +193,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Samaritan's Purse",
@@ -173,7 +209,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Lutheran Services in America",
@@ -186,7 +225,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "American Cancer Society",
@@ -199,7 +241,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "World Vision",
@@ -212,7 +257,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "American National Red Cross",
@@ -225,7 +273,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "American Heart Association",
@@ -238,7 +289,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Planned Parenthood Federation of America",
@@ -251,7 +305,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Doctor's Without Borders",
@@ -264,7 +321,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Museum of Modern Art",
@@ -277,7 +337,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "American Civil Liberties Union and Foundation",
@@ -290,7 +353,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "World Wildlife Fund",
@@ -303,7 +369,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Humane Society of the United States",
@@ -316,7 +385,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Scholarship America",
@@ -329,7 +401,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Mount Sinai Health Systems",
@@ -342,7 +417,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Save the Children Federation",
@@ -355,7 +433,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Mayo Clinic",
@@ -368,7 +449,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Feed the Children",
@@ -381,7 +465,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Make-A-Wish Foundation of America",
@@ -394,7 +481,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "Rotary Foundation of Rotary International",
@@ -407,7 +497,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         },
         {
           charityName: "American Kidney Fund",
@@ -420,7 +513,10 @@ exports.seed = function(knex, Promise) {
           state: faker.fake("{{address.state}}"),
           zip: faker.fake("{{address.zipCode}}"),
           type: "charity",
-          stripeToken: "acct_1ESzrJKy7Q37pCw1"
+          stripeToken: "acct_1ESzrJKy7Q37pCw1",
+          registered: true,
+          ownerAdded: true,
+          termsAccepted: true
         }
       ]);
     });

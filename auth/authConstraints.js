@@ -1,9 +1,9 @@
 const Accounts = require("../accounts/accountsModel.js");
 
-module.exports = authConstraints;
+module.exports = authConstraintsDonor;
 
 // Splits to two smaller functions to separately check for duplicate username and email
-async function authConstraints(req, res, next) {
+async function authConstraintsDonor(req, res, next) {
   console.log("Working!");
   const {
     username,

@@ -4,6 +4,7 @@ import {
   UPDATE_SIGNUP_FORM,
   UPDATE_DONOR_FORM,
   UPDATE_CHARITY_FORM,
+  UPDATE_CHARITY_OWNER_FORM,
   CREATE_NEW_ACCOUNT_START,
   CREATE_NEW_ACCOUNT_SUCCESS,
   CREATE_NEW_ACCOUNT_ERROR,
@@ -27,13 +28,47 @@ const initialState = {
     phone: ""
   },
   charityAccount: {
-    charityName: "",
-    phone: "",
-    street1: "",
-    street2: "",
-    city: "",
-    state: "",
-    zip: ""
+    country: "US", // Preset
+    type: "custom", // Preset
+    business_type: "company", // Preset
+    default_currency: "usd", // Preset
+    requested_capabilities: ["card_payments"], // Preset
+    email: "", // done
+    charityName: "", // done
+    phone: "", // done
+    street1: "", // done
+    city: "", // done
+    state: "", // done
+    zip: "", // done
+    tax_id: "",
+    mcc: "8398", // Preset
+    url: "", // done
+    object: "bank_account", // External acct obj
+    country: "US", // External acct obj
+    currency: "usd", // External acct obj
+    routing_number: "", // done
+    account_number: "" // done
+  },
+  charityOwner: {
+    first_name: "", // done
+    last_name: "", // done
+    day: "",
+    month: "",
+    year: "",
+    email: "", // done
+    line1: "", // done
+    city: "", // done
+    state: "", // done
+    postal_code: "", // done
+    phone: "", // done
+    ssn_last_4: "",
+    relationship: {
+      account_opener: true, // done
+      director: true, // done
+      owner: true, // done
+      percentage_ownership: 100, // done
+      title: "CEO" // done
+    }
   },
   modalOpen: false,
   createAccountStart: false,
@@ -77,6 +112,14 @@ export const signupReducer = (state = initialState, action) => {
           [action.payload.name]: action.payload.value
         }
       };
+    case UPDATE_CHARITY_OWNER_FORM:
+      return {
+        ...state,
+        charityOwner: {
+          ...state.charityOwner,
+          [action.payload.name]: action.payload.value
+        }
+      };
     case CREATE_NEW_ACCOUNT_START:
       return {
         ...state,
@@ -115,8 +158,7 @@ export const signupReducer = (state = initialState, action) => {
         ...state,
         modalOpen: true,
         createCharityError: false,
-        createCharityStart: true,
-        message: action.payload.message
+        createCharityStart: true
       };
     case CREATE_NEW_CHARITY_SUCCESS:
       return {

@@ -6,9 +6,13 @@ import {
   UPDATE_SIGNUP_FORM,
   UPDATE_DONOR_FORM,
   UPDATE_CHARITY_FORM,
+  UPDATE_CHARITY_OWNER_FORM,
   CREATE_NEW_ACCOUNT_START,
   CREATE_NEW_ACCOUNT_SUCCESS,
   CREATE_NEW_ACCOUNT_ERROR,
+  CREATE_NEW_CHARITY_START,
+  CREATE_NEW_CHARITY_SUCCESS,
+  CREATE_NEW_CHARITY_ERROR,
   CLOSE_SIGNUP_MODAL,
   UPDATE_LOGIN_FORM,
   LOGIN_APP_START,
@@ -48,6 +52,36 @@ import {
 
 const restrictedError = "Not authorized. Please try logging in again.";
 
+const charityDetails = {
+  type: "custom", // Preset
+  country: "US", // Preset
+  email: "",
+  requested_capabilities: ["card_payments"], // Preset
+  business_type: "company", // Preset
+  company: {
+    address: {
+      city: "",
+      line1: "",
+      line2: "",
+      postal_code: "",
+      state: ""
+    }
+  },
+  name: "", // Company name
+  phone: "",
+  tax_id: "",
+  external_account: {
+    object: "bank_account",
+    country: "US",
+    currency: "usd",
+    routing_number: "",
+    account_number: ""
+  },
+  individual: {
+    // Finish
+  }
+};
+
 //============================================================== Signup Action Creators
 export const createDonorAccount = userDetails => dispatch => {
   dispatch({ type: CREATE_NEW_ACCOUNT_START });
@@ -61,6 +95,18 @@ export const createDonorAccount = userDetails => dispatch => {
     })
     .catch(err => {
       dispatch({ type: CREATE_NEW_ACCOUNT_ERROR, payload: err });
+    });
+};
+
+export const createCharityAccount = charityDetails => dispatch => {
+  dispatch({ type: CREATE_NEW_CHARITY_START });
+  axios
+    .post("http://localhost:7000/api/auth/register-charity", charityDetails)
+    .then(res => {
+      dispatch({ type: CREATE_NEW_CHARITY_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: CREATE_NEW_CHARITY_ERROR, payload: err });
     });
 };
 
@@ -81,6 +127,13 @@ export const handleDonorFormChanges = (name, value) => {
 export const handleCharityFormChanges = (name, value) => {
   return {
     type: UPDATE_CHARITY_FORM,
+    payload: { name, value }
+  };
+};
+
+export const handleCharityOwnerForm = (name, value) => {
+  return {
+    type: UPDATE_CHARITY_OWNER_FORM,
     payload: { name, value }
   };
 };
