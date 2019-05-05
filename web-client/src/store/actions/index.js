@@ -56,7 +56,8 @@ import {
   REGISTER_OWNER_ERROR,
   SIGN_TOS_START,
   SIGN_TOS_SUCCESS,
-  SIGN_TOS_ERROR
+  SIGN_TOS_ERROR,
+  UPDATE_IDENTITY_DOCUMENT
 } from "../types";
 
 const restrictedError = "Not authorized. Please try logging in again.";
@@ -99,7 +100,7 @@ export const createCharityOwner = (ownerDetails, charityId) => dispatch => {
   }
 
   const reqOptions = {
-    headers: { authorization: token }
+    headers: { authorization: token, "Content-Type": "multipart/form-data" }
   };
 
   const bodyItems = { ownerDetails, charityId };
@@ -177,6 +178,13 @@ export const handleCharityOwnerForm = (name, value) => {
   return {
     type: UPDATE_CHARITY_OWNER_FORM,
     payload: { name, value }
+  };
+};
+
+export const handleOwnerIdentityDocument = file => {
+  return {
+    type: UPDATE_IDENTITY_DOCUMENT,
+    payload: { file }
   };
 };
 

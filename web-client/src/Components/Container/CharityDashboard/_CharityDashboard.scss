@@ -1,15 +1,29 @@
 .charity-dashboard__container {
   width: 100%;
-  min-height: 90vh;
   background: #f8f8f8;
   max-width: 1600px;
   padding: 15vh 3%;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 
-  .charity-dashboard {
-    width: 100%;
-    height: 600px;
+  .charity-dashboard__card {
+    width: 48%;
+    min-height: 200px;
     background: #ffffff;
     border: 1px solid #cdcdcd;
+
+    .charity-dashboard__header {
+      margin: 50px 5% 0;
+      font-weight: 700;
+    }
+
+    .charity-account__details {
+      margin: 30px 5%;
+
+      span {
+        font-weight: 700;
+      }
+    }
   }
 }

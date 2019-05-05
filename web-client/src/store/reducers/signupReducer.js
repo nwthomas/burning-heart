@@ -20,7 +20,8 @@ import {
   REGISTER_OWNER_ERROR,
   SIGN_TOS_START,
   SIGN_TOS_SUCCESS,
-  SIGN_TOS_ERROR
+  SIGN_TOS_ERROR,
+  UPDATE_IDENTITY_DOCUMENT
 } from "../types"; // Import of variable names so that you can use them/reduce errors
 
 // Sets initial state for the application
@@ -76,6 +77,13 @@ const initialState = {
       owner: true, // done
       percent_ownership: 100, // done
       title: "CEO" // done
+    },
+    verification: {
+      document: {
+        front: "",
+        back: "",
+        purpose: "identity_document"
+      }
     }
   },
   addingOwner: false,
@@ -273,6 +281,21 @@ export const signupReducer = (state = initialState, action) => {
         signTOSStart: false,
         signTOSError: true,
         message: action.payload.response.data.message
+      };
+    case UPDATE_IDENTITY_DOCUMENT:
+      return {
+        ...state,
+        charityOwner: {
+          ...state.charityOwner,
+          verification: {
+            ...state.charityOwner.verification,
+            document: {
+              ...state.charityOwner.verification.document,
+              front: action.payload.file,
+              purpose: "identity_document"
+            }
+          }
+        }
       };
     default:
       return state;

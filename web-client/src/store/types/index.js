@@ -21,6 +21,7 @@ export const REGISTER_OWNER_ERROR = "REGISTER_OWNER_ERROR";
 export const SIGN_TOS_START = "SIGN_TOS_START";
 export const SIGN_TOS_SUCCESS = "SIGN_TOS_SUCCESS";
 export const SIGN_TOS_ERROR = "SIGN_TOS_ERROR";
+export const UPDATE_IDENTITY_DOCUMENT = "UPDATE_IDENTITY_DOCUMENT";
 
 // =========================================================== Login Form Types
 export const LOGIN_APP_START = "LOGIN_APP_START";

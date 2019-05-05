@@ -7,6 +7,10 @@ import {
 } from "../../../store/actions";
 
 class CharityOwnerSignup extends Component {
+  state = {
+    selectedFile: ""
+  };
+
   createOwner = e => {
     e.preventDefault();
 
@@ -58,9 +62,23 @@ class CharityOwnerSignup extends Component {
     this.props.cancelFurtherAction();
   };
 
+  handleOwnerFile = e => {
+    this.setState(
+      {
+        selectedFile: e.target.files[0]
+      },
+      console.log(this.state)
+    );
+  };
+
   render() {
     return (
-      <form className="signup-form" onSubmit={this.createOwner}>
+      <form
+        method={"Post"}
+        encType="multipart/form-data"
+        className="signup-form"
+        onSubmit={this.createOwner}
+      >
         <h2 className="signup-form__header no__bottom__margin">
           Register Charity Owner
         </h2>
@@ -198,6 +216,16 @@ class CharityOwnerSignup extends Component {
           name="year"
           value={this.props.charityOwner.year}
           onChange={this.handleCharityForm}
+        />
+        <label htmlFor="verification">Verification:</label>
+        <input
+          className="signup__input"
+          required
+          type="file"
+          id="verification"
+          autoComplete="off"
+          name="verification_front"
+          onChange={this.handleOwnerFile}
         />
         <div className="signup-form__buttons">
           <button type="submit" className="signup__button">
