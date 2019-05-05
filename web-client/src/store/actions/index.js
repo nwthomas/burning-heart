@@ -52,36 +52,6 @@ import {
 
 const restrictedError = "Not authorized. Please try logging in again.";
 
-const charityDetails = {
-  type: "custom", // Preset
-  country: "US", // Preset
-  email: "",
-  requested_capabilities: ["card_payments"], // Preset
-  business_type: "company", // Preset
-  company: {
-    address: {
-      city: "",
-      line1: "",
-      line2: "",
-      postal_code: "",
-      state: ""
-    }
-  },
-  name: "", // Company name
-  phone: "",
-  tax_id: "",
-  external_account: {
-    object: "bank_account",
-    country: "US",
-    currency: "usd",
-    routing_number: "",
-    account_number: ""
-  },
-  individual: {
-    // Finish
-  }
-};
-
 //============================================================== Signup Action Creators
 export const createDonorAccount = userDetails => dispatch => {
   dispatch({ type: CREATE_NEW_ACCOUNT_START });
@@ -101,7 +71,10 @@ export const createDonorAccount = userDetails => dispatch => {
 export const createCharityAccount = charityDetails => dispatch => {
   dispatch({ type: CREATE_NEW_CHARITY_START });
   axios
-    .post("http://localhost:7000/api/auth/register-charity", charityDetails)
+    .post(
+      "https://burning-heart.herokuapp.com/api/auth/register-charity",
+      charityDetails
+    )
     .then(res => {
       dispatch({ type: CREATE_NEW_CHARITY_SUCCESS, payload: res.data });
     })

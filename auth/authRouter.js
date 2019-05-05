@@ -140,14 +140,11 @@ router.post("/login-account", async (req, res) => {
 // Auth charity login API route
 router.post("/login-charity", async (req, res) => {
   let creds = req.body;
-  console.log(creds);
   try {
     const charity = await Charities.findWithPassword()
       .where({ username: creds.username })
       .first();
-    console.log(charity);
     if (charity && bcrypt.compareSync(creds.password, charity.password)) {
-      console.log("Working!");
       const token = tokenService.generateTokenCharity(charity);
       res.status(200).json({
         error: false,
@@ -163,7 +160,7 @@ router.post("/login-charity", async (req, res) => {
           state: charity.state,
           zip: charity.zip,
           registered: charity.registered,
-          ownerCreated: charity.ownerCreated,
+          ownerAdded: charity.ownerAdded,
           termsAccepted: charity.termsAccepted,
           created_at: charity.created_at,
           updated_at: charity.updated_at

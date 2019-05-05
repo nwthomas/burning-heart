@@ -7,11 +7,18 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const charities = await Charities.find();
-    if (charities.length) {
+    const filteredCharities = charities.filter(charity => {
+      if (charity.registered && charity.ownerAdded && charity.termsAccepted) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    if (filteredCharities.length) {
       res.status(200).json({
         error: false,
         message: "The charities were retrieved successfully from the database.",
-        charities
+        charities: filteredCharities
       });
     } else {
       res.status(404).json({
