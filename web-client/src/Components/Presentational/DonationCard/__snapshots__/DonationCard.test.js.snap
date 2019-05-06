@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DonationCard /> should match the snapshot of DonationCard 1`] = `
+<div
+  className="donation__card"
+>
+  <p
+    className="donation__title"
+  >
+    Name
+  </p>
+  <p
+    className="donation__amount"
+  >
+    $10
+  </p>
+</div>
+`;

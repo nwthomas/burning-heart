@@ -100,8 +100,10 @@ export const createCharityOwner = (ownerDetails, charityId) => dispatch => {
   }
 
   const reqOptions = {
-    headers: { authorization: token, "Content-Type": "multipart/form-data" }
+    headers: { authorization: token }
   };
+
+  // "Content-Type": "multipart/form-data"
 
   const bodyItems = { ownerDetails, charityId };
 

@@ -217,7 +217,7 @@ class CharityOwnerSignup extends Component {
           value={this.props.charityOwner.year}
           onChange={this.handleCharityForm}
         />
-        <label htmlFor="verification">Verification:</label>
+        {/* <label htmlFor="verification">Verification:</label>
         <input
           className="signup__input"
           required
@@ -226,7 +226,7 @@ class CharityOwnerSignup extends Component {
           autoComplete="off"
           name="verification_front"
           onChange={this.handleOwnerFile}
-        />
+        /> */}
         <div className="signup-form__buttons">
           <button type="submit" className="signup__button">
             Submit

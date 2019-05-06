@@ -46,6 +46,16 @@ class CharityDashboard extends Component {
                 <span>Postal Code: </span>
                 {this.props.charity.zip}
               </p>
+              <p className="charity-account__details">
+                <span>Total Donations Received: </span>
+                {`$${this.props.charityDonations.reduce((total, accum) => {
+                  return total + accum.amount;
+                }, 0) / 100}`}
+              </p>
+              <p className="payment__information">
+                Donations are paid out to your account on the 1st and 15th of
+                every month.
+              </p>
             </div>
           </>
         ) : (

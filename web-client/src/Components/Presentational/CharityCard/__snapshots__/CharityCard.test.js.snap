@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CharityCard /> should match the snapshot of CharityCard 1`] = `
+<div
+  className="charity__card"
+>
+  <p
+    className="charity__name"
+  >
+    Charity
+  </p>
+  <button
+    className="charity__donate-button"
+    onClick={[Function]}
+    type="button"
+  >
+    Donate
+  </button>
+</div>
+`;

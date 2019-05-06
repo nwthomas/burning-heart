@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> should match the snapshot of Navbar 1`] = `
+<div
+  className="navbar__container"
+>
+  <div
+    className="navbar__main"
+  >
+    <a
+      className="burning-heart__name"
+      href="/"
+      onClick={[Function]}
+    >
+      Burning Heart
+    </a>
+    <nav
+      className="navbar__nav-links"
+    >
+      <a
+        aria-current="page"
+        className="navbar__link active"
+        href="/"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Home
+      </a>
+      <a
+        aria-current={null}
+        className="navbar__link"
+        href="/home"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+      <a
+        aria-current={null}
+        className="navbar__link"
+        href="/signup"
+        onClick={[Function]}
+      >
+        Sign Up
+      </a>
+    </nav>
+  </div>
+</div>
+`;

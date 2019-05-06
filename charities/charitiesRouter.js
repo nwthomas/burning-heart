@@ -100,6 +100,7 @@ router.post("/", async (req, res) => {
 // Charity create legal owner API route
 router.post("/create-owner/:id", async (req, res) => {
   const charity = await Charities.findByIdWithToken(req.params.id);
+  console.log(req.body);
   if (charity) {
     try {
       const ownerStripeRegistration = await makeStripeOwner(
