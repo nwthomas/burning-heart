@@ -27,7 +27,8 @@ class CharityOwnerSignup extends Component {
       postal_code,
       phone,
       ssn_last_4,
-      relationship
+      relationship,
+      verification
     } = this.props.charityOwner;
 
     const newOwnerObj = {
@@ -47,10 +48,15 @@ class CharityOwnerSignup extends Component {
       },
       phone,
       ssn_last_4,
-      relationship
+      relationship,
+      verification
     };
 
-    this.props.createCharityOwner(newOwnerObj, this.props.charity.id);
+    const fileData = new FormData();
+    fileData.append("image", this.state.selectedFile);
+    fileData.append("charityOwner", JSON.stringify(newOwnerObj));
+
+    this.props.createCharityOwner(fileData, this.props.charity.id);
   };
 
   handleCharityForm = e => {

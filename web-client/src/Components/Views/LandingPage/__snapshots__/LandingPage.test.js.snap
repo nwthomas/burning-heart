@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LandingPage /> should match the snapshot of LandingPage 1`] = `
+Array [
+  <div
+    className="cta__banner"
+  >
+    <p
+      className="cta__banner__text"
+    >
+      Burning Heart is a donation app for people who like to give what they can, when they can.
+       
+      <a
+        className="cta__banner__link"
+        href="/signup"
+        onClick={[Function]}
+      >
+        Sign up here.
+      </a>
+    </p>
+  </div>,
+  <header
+    className="landing-page__header"
+  >
+    <div
+      className="landing-page__header__bg"
+    />
+    <nav
+      className="header__navbar"
+    >
+      <a
+        className="burning-heart__name"
+        href="/"
+        onClick={[Function]}
+      >
+        Burning Heart
+      </a>
+      <div
+        className="navbar__hamburger"
+        onClick={[Function]}
+      >
+        <img
+          alt="navbar__menu__icon"
+          src="menu-icon-open.svg"
+        />
+      </div>
+      <div
+        className="navbar__links"
+      >
+        <a
+          aria-current="page"
+          className="navbar__link active"
+          href="/"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          Home
+        </a>
+        <a
+          aria-current={null}
+          className="navbar__link"
+          href="/home"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+        <a
+          aria-current={null}
+          className="navbar__link"
+          href="/signup"
+          onClick={[Function]}
+        >
+          Sign Up
+        </a>
+      </div>
+    </nav>
+    <div
+      className="header__banner"
+    >
+      <div
+        className="header__image"
+      >
+        <img
+          alt="Smoking volcano photograph"
+          src="landing-page-image.jpg"
+        />
+      </div>
+      <div
+        className="header__content"
+      >
+        <h2>
+          For Those Who Like to Give
+        </h2>
+        <p>
+          Burning Heart lets you donate what you want, when you want.
+        </p>
+        <p>
+          Do what feels good. Do what makes you happy. Give.
+        </p>
+        <button
+          className="header__button"
+        >
+          Download
+        </button>
+      </div>
+    </div>
+  </header>,
+  <section
+    className="middle__content"
+  >
+    <div
+      className="mobile__bg"
+    />
+    <div
+      className="demo__information"
+    >
+      <div
+        className="demo__content"
+      >
+        <h2
+          className="demo__header"
+        >
+          A new way to give.
+        </h2>
+        <p
+          className="demo__text"
+        >
+          People are busy. We get it. It's hard to make time to help others. Burning Heart makes it easy by putting the power of micro-donations in the palm of your hand.
+        </p>
+      </div>
+      <div
+        className="iphone__picture"
+      >
+        <img
+          alt="iPhone demo of Burning Heart"
+          src="blank-iphone.png"
+        />
+        <img
+          alt="Fire logo"
+          className="fire-gif"
+          src="fire.gif"
+        />
+      </div>
+    </div>
+  </section>,
+  <footer
+    className="footer__content"
+  >
+    <div
+      className="logo__address"
+    >
+      <div
+        className="footer__logo-name"
+      >
+        <h2>
+          Burning Heart
+        </h2>
+      </div>
+      <address>
+        <p>
+          1 (800) 843-2910
+        </p>
+        <p>
+          1400 Oakwood Avenue
+        </p>
+        <p>
+          San Francisco, CA
+        </p>
+        <p>
+          94574
+        </p>
+      </address>
+    </div>
+    <div
+      className="footer__social__navbar"
+    >
+      <nav
+        className="footer__navbar__links"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+        <a
+          href="/about"
+          onClick={[Function]}
+        >
+          About
+        </a>
+        <a
+          href="/login"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+        <a
+          href="/signup"
+          onClick={[Function]}
+        >
+          Sign Up
+        </a>
+      </nav>
+      <div
+        className="footer__social__links"
+      >
+        <div
+          className="social__link"
+        >
+          <a
+            href="https://www.facebook.com/nwthomas"
+          >
+            <img
+              alt="Facebook logo"
+              src="facebook.svg"
+            />
+          </a>
+        </div>
+        <div
+          className="social__link"
+        >
+          <a
+            href="https://www.instagram.com/nwthomas/"
+          >
+            <img
+              alt="Instagram logo"
+              src="instagram.svg"
+            />
+          </a>
+        </div>
+        <div
+          className="social__link"
+        >
+          <a
+            href="https://twitter.com/nwthomas_"
+          >
+            <img
+              alt="Twitter logo"
+              src="twitter.svg"
+            />
+          </a>
+        </div>
+        <div
+          className="social__link"
+        >
+          <a
+            href="https://www.linkedin.com/in/nwthomas-profile/"
+          >
+            <img
+              alt="LinkedIn logo"
+              src="linkedin.svg"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>,
+]
+`;

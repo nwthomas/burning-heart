@@ -99,54 +99,54 @@ router.post("/", async (req, res) => {
 
 // Charity create legal owner API route
 router.post("/create-owner/:id", async (req, res) => {
-  const charity = await Charities.findByIdWithToken(req.params.id);
-  console.log(req.body);
-  if (charity) {
-    try {
-      const ownerStripeRegistration = await makeStripeOwner(
-        req.body.ownerDetails,
-        charity.stripeToken
-      );
-      console.log(ownerStripeRegistration);
-      if (ownerStripeRegistration) {
-        const updatedCharity = await Charities.update(req.params.id, {
-          ownerAdded: true
-        });
-        if (updatedCharity) {
-          res.status(200).json({
-            error: false,
-            message: "The owner was added successfully to the charity account.",
-            charity: updatedCharity
-          });
-        } else {
-          res.status(500).json({
-            error: true,
-            message:
-              "There was an error updating your account. Please contact Burning Heart.",
-            charity: {}
-          });
-        }
-      } else {
-        res.status(500).json({
-          error: true,
-          message: "Please check owner details and try again.",
-          charity: {}
-        });
-      }
-    } catch (error) {
-      res.status(500).json({
-        error: true,
-        message: "Please check owner details and try again.",
-        charity: {}
-      });
-    }
-  } else {
-    res.status(500).json({
-      error: true,
-      message: "Please check the owner details and try again.",
-      charity: {}
-    });
-  }
+  // const charity = await Charities.findByIdWithToken(req.params.id);
+  console.log(req);
+  // if (charity) {
+  //   try {
+  //     const ownerStripeRegistration = await makeStripeOwner(
+  //       req.body.ownerDetails,
+  //       charity.stripeToken
+  //     );
+  //     console.log(ownerStripeRegistration);
+  //     if (ownerStripeRegistration) {
+  //       const updatedCharity = await Charities.update(req.params.id, {
+  //         ownerAdded: true
+  //       });
+  //       if (updatedCharity) {
+  //         res.status(200).json({
+  //           error: false,
+  //           message: "The owner was added successfully to the charity account.",
+  //           charity: updatedCharity
+  //         });
+  //       } else {
+  //         res.status(500).json({
+  //           error: true,
+  //           message:
+  //             "There was an error updating your account. Please contact Burning Heart.",
+  //           charity: {}
+  //         });
+  //       }
+  //     } else {
+  //       res.status(500).json({
+  //         error: true,
+  //         message: "Please check owner details and try again.",
+  //         charity: {}
+  //       });
+  //     }
+  //   } catch (error) {
+  //     res.status(500).json({
+  //       error: true,
+  //       message: "Please check owner details and try again.",
+  //       charity: {}
+  //     });
+  //   }
+  // } else {
+  //   res.status(500).json({
+  //     error: true,
+  //     message: "Please check the owner details and try again.",
+  //     charity: {}
+  //   });
+  // }
 });
 
 // Charity sign terms of services API route

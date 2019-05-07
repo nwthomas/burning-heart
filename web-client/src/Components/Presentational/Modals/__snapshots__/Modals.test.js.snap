@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginModal /> should match the snapshot of LoginModal 1`] = `
+<div
+  className="modal__container"
+>
+  <div
+    className="modal__box"
+  >
+    <h2
+      className="modal__title"
+    >
+      
+    </h2>
+    <div
+      className="modal__buttons modal__buttons--center"
+    >
+      <button
+        className="modal__button"
+        onClick={[Function]}
+      >
+        Okay
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<PaymentSendingModal /> should match the snapshot of PaymentSendingModal 1`] = `
+<div
+  className="modal__container"
+>
+  <div
+    className="modal__box"
+  >
+    <h2
+      className="modal__title"
+    >
+      
+    </h2>
+    <div
+      className="modal__buttons modal__buttons--center"
+    >
+      <button
+        className="modal__button"
+        onClick={[Function]}
+      >
+        Okay
+      </button>
+    </div>
+  </div>
+</div>
+`;

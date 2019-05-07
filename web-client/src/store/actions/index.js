@@ -90,7 +90,7 @@ export const createCharityAccount = charityDetails => dispatch => {
     });
 };
 
-export const createCharityOwner = (ownerDetails, charityId) => dispatch => {
+export const createCharityOwner = (fileData, charityId) => dispatch => {
   dispatch({ type: REGISTER_OWNER_START });
   const token = localStorage.getItem("bhToken");
   let decodedToken = "";
@@ -101,20 +101,19 @@ export const createCharityOwner = (ownerDetails, charityId) => dispatch => {
 
   const reqOptions = {
     headers: { authorization: token }
+    // "Content-Type": "multipart/form-data"
   };
 
-  // "Content-Type": "multipart/form-data"
+  const bodyItems = { fileData, charityId };
 
-  const bodyItems = { ownerDetails, charityId };
-
-  console.log(bodyItems);
+  console.log(fileData.getAll("charityOwner"));
 
   axios
     .post(
       `${baseUrl}/api/restricted/charities/create-owner/${
         decodedToken.subject
       }`,
-      bodyItems,
+      fileData,
       reqOptions
     )
     .then(res => {

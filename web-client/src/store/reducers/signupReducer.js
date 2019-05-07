@@ -77,14 +77,14 @@ const initialState = {
       owner: true, // done
       percent_ownership: 100, // done
       title: "CEO" // done
+    },
+    verification: {
+      document: {
+        front: "",
+        back: "",
+        purpose: "identity_document"
+      }
     }
-    // verification: {
-    //   document: {
-    //     front: "",
-    //     back: "",
-    //     purpose: "identity_document"
-    //   }
-    // }
   },
   addingOwner: false,
   signingTOS: false,
