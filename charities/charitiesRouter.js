@@ -1,6 +1,7 @@
 const express = require("express");
 const Charities = require("./charitiesModel.js");
 const { makeStripeOwner, signTOS } = require("./stripeAccountMiddleware.js");
+const dataUri = require("../config/dataUri.js");
 
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.get("/", async (req, res) => {
       if (charity.registered && charity.ownerAdded && charity.termsAccepted) {
         return true;
       } else {
-        return false;
+        return true;
       }
     });
     if (filteredCharities.length) {
@@ -100,7 +101,8 @@ router.post("/", async (req, res) => {
 // Charity create legal owner API route
 router.post("/create-owner/:id", async (req, res) => {
   // const charity = await Charities.findByIdWithToken(req.params.id);
-  console.log(req);
+  const file = dataUri(req).content;
+  console.log(file);
   // if (charity) {
   //   try {
   //     const ownerStripeRegistration = await makeStripeOwner(

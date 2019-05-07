@@ -8,7 +8,7 @@ import {
 
 class CharityOwnerSignup extends Component {
   state = {
-    selectedFile: ""
+    selectedFile: null
   };
 
   createOwner = e => {
@@ -52,11 +52,11 @@ class CharityOwnerSignup extends Component {
       verification
     };
 
-    const fileData = new FormData();
-    fileData.append("image", this.state.selectedFile);
-    fileData.append("charityOwner", JSON.stringify(newOwnerObj));
+    const formData = new FormData();
+    formData.append("image", this.state.selectedFile);
+    // fileData.append("charityOwner", JSON.stringify(newOwnerObj));
 
-    this.props.createCharityOwner(fileData, this.props.charity.id);
+    this.props.createCharityOwner(formData, this.props.charity.id);
   };
 
   handleCharityForm = e => {
@@ -223,7 +223,7 @@ class CharityOwnerSignup extends Component {
           value={this.props.charityOwner.year}
           onChange={this.handleCharityForm}
         />
-        {/* <label htmlFor="verification">Verification:</label>
+        <label htmlFor="verification">Verification:</label>
         <input
           className="signup__input"
           required
@@ -232,7 +232,7 @@ class CharityOwnerSignup extends Component {
           autoComplete="off"
           name="verification_front"
           onChange={this.handleOwnerFile}
-        /> */}
+        />
         <div className="signup-form__buttons">
           <button type="submit" className="signup__button">
             Submit

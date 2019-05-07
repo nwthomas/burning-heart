@@ -62,8 +62,8 @@ import {
 
 const restrictedError = "Not authorized. Please try logging in again.";
 
-// const baseUrl = "https://burning-heart.herokuapp.com";
-const baseUrl = "http://localhost:7000";
+const baseUrl = "https://burning-heart.herokuapp.com";
+// const baseUrl = "http://localhost:7000";
 
 //============================================================== Signup Action Creators
 export const createDonorAccount = userDetails => dispatch => {
@@ -90,7 +90,7 @@ export const createCharityAccount = charityDetails => dispatch => {
     });
 };
 
-export const createCharityOwner = (fileData, charityId) => dispatch => {
+export const createCharityOwner = (formData, charityId) => dispatch => {
   dispatch({ type: REGISTER_OWNER_START });
   const token = localStorage.getItem("bhToken");
   let decodedToken = "";
@@ -99,22 +99,19 @@ export const createCharityOwner = (fileData, charityId) => dispatch => {
     decodedToken = decode(token);
   }
 
-  const reqOptions = {
-    headers: { authorization: token }
-    // "Content-Type": "multipart/form-data"
-  };
-
-  const bodyItems = { fileData, charityId };
-
-  console.log(fileData.getAll("charityOwner"));
+  const headers = new Headers({
+    authorization: token,
+    withCredentials: true,
+    "Content-Type": "multipart/form-data"
+  });
 
   axios
     .post(
       `${baseUrl}/api/restricted/charities/create-owner/${
         decodedToken.subject
       }`,
-      fileData,
-      reqOptions
+      formData,
+      headers
     )
     .then(res => {
       dispatch({ type: REGISTER_OWNER_SUCCESS, payload: res.data });
