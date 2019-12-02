@@ -404,7 +404,7 @@ _Example:_
 
 ## ACKNOWLEDGEMENTS
 
-- Thanks to my family and close friends for always teaching me the value of giving back to others. I wouldn't have thought of this project idea if it weren't for you.
+- Thanks to my family, close friends, and particularly my parents for always teaching me the value of giving back to others. I wouldn't have thought of this project idea if it weren't for you.
 - Thanks to [Lambda School](https://lambdaschool.com/) for the phenomenal education I've received. You are the reason I can execute with code when I have an idea instead of stumbling around in the dark.
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/for-you.svg)](https://forthebadge.com)
